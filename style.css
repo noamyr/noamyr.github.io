@@ -1,0 +1,248 @@
+a:link {
+  color: green;
+  background-color: transparent; 
+  text-decoration: underline;
+}
+
+a:visited {
+  color: green;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: black;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+@keyframes appear {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.bold{
+  font-family: "Roboto Mono";
+  font-weight: 700;
+}
+
+.link{
+  font-family: "Roboto Mono";
+  font-style: italic;
+  color: green;
+  background-color: transparent; 
+  text-decoration: underline;
+}
+
+body{
+  margin: 0;
+}
+
+.w{
+  grid-column-Start: 6;
+  grid-column-End: 28;
+}
+.n{
+  grid-column-Start: 2;
+  grid-column-End: 24;
+}
+
+.container{
+  position: relative;
+  float: left;
+}
+
+.generated {
+  background-color: transparent;
+  font-family: "Roboto Mono";
+  font-weight: 100;
+  word-wrap: break-word;
+  text-align: left;
+  animation-name: appear;
+  animation-duration: 0.05s;
+  animation-fill-mode: both;
+}
+
+#basegrid {
+  position: absolute;
+  display: grid;
+  margin: 0;
+  top: 0;
+  left: 0;
+}
+
+.item{
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  background-color: transparent;
+  font-family: "Roboto Mono";
+  font-weight: 400;
+  word-wrap: break-word;
+  top:0px; 
+  margin:0px;
+  text-align: left;
+
+  margin-block-start: 0;
+}
+
+.subtitle {
+  background-color: transparent;
+  font-family: "Roboto Mono";
+  font-weight: 400;
+  word-wrap: break-word;
+  top:0px; 
+  margin:0px;
+  text-align: left;
+  margin-block-start: 0;
+}
+.body {
+  background-color: transparent;
+  font-family: "Roboto Mono";
+  font-weight: 400;
+  word-wrap: break-word;
+  top:0px; 
+  margin:0px;
+  text-align: left;
+
+  margin-block-start: 0;
+}
+
+.caption {
+  font-family: "Roboto Mono";
+  font-weight: 400;
+  word-wrap: break-word;
+  top:0px; 
+  margin:0px;
+  text-align: left;
+
+  margin-block-start: 0;
+}
+
+#scroll{
+  margin: 0;
+  position: absolute;
+  background-color: transparent;
+  font-family: "Roboto Mono";
+  font-weight: 100;
+  word-wrap: break-word;
+  text-align: left;
+  animation-name: appear;
+  animation-duration: 0.05s;
+  animation-fill-mode: both;
+}
+
+@media only screen and (min-width: 600px) {
+  .w{
+    grid-column-Start: 18;
+    grid-column-End: 112;
+  }
+  .n{
+    grid-column-Start: 10;
+    grid-column-End: 40;
+  }
+}
+
+a.footnote1 {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+} 
+
+a.footnote1 span {
+  color: black;
+  z-index: -1;
+  opacity: 0;
+  position: fixed;
+  left: 0%;
+  width: 33%;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+a.footnote1:hover span {
+  color: green;
+  z-index: 9;
+  opacity: 1;
+  left: 0%;
+  width: 33%;
+  background-color: white;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+a.footnote2 {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+} 
+
+a.footnote2 span {
+  color: black;
+  z-index: -1;
+  opacity: 0;
+  position: fixed;
+  left: 33%;
+  width: 33%;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+a.footnote2:hover span {
+  color: green;
+  z-index: 9;
+  opacity: 1;
+  left: 33%;
+  width: 33%;
+  background-color: white;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+
+a.footnote3 {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+} 
+
+a.footnote3 span {
+  color: black;
+  z-index: -1;
+  opacity: 0;
+  position: fixed;
+  left: 66%;
+  width: 33%;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+a.footnote3:hover span {
+  color: green;
+  z-index: 9;
+  opacity: 1;
+  left: 66%;
+  width: 33%;
+  background-color: white;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+
