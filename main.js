@@ -1,14 +1,37 @@
+var markov =[], firstwords =[];
+fetch("./textDB.txt")
+.then((response) => response.text())
+.then((data) => {
+  const words = data.split(" ");
+  for (var i=0, j=0, k=0; i<words.length; i++){
+    if(i%2==1){
+      markov[j] = words[i-1].concat(" ", words[i]);
+      j++;
+    }
+    if(words[i][0]>='A' && words[i][0]<='Z'){
+      if(i==0){
+        firstwords[k]= words[i].concat(" ", words[i+1]);
+      k++;
+      }
+      else if(words[i-1][words[i-1].length-1]=='.' || words[i-1][words[i-1].length-1]=='?' || words[i-1][words[i-1].length-1]=='!'){
+        firstwords[k]= words[i].concat(" ", words[i+1]);
+      k++;
+      } 
+    }
+  }
+  main();
+});
+
+function main(){
 var width = window.innerWidth;
 var height = window.innerHeight;
 var generatedcount = 0, lastwords="";
 var textcount;
 var map=new Array(0);
-var markov =[], firstwords =[];
 var fillcount=0;
 var halfspace=0;
 var animationend=0;
-var loadtime=250;
-textDBappend();
+var loadtime=0;
 if(width>600){
 var segment = 16*4;
 var cursor=6;
@@ -287,27 +310,4 @@ function hyphenate(){
     textcount--;
   }}
 
-function textDBappend(){
-  fetch("./textDB.txt")
-  .then((response) => response.text())
-  .then((data) => {
-    const words = data.split(" ");
-    for (var i=0, j=0, k=0; i<words.length; i++){
-      if(i%2==1){
-        markov[j] = words[i-1].concat(" ", words[i]);
-        j++;
-      }
-      if(words[i][0]>='A' && words[i][0]<='Z'){
-        if(i==0){
-          firstwords[k]= words[i].concat(" ", words[i+1]);
-        k++;
-        }
-        else if(words[i-1][words[i-1].length-1]=='.' || words[i-1][words[i-1].length-1]=='?' || words[i-1][words[i-1].length-1]=='!'){
-          firstwords[k]= words[i].concat(" ", words[i+1]);
-        k++;
-        }
-        
-      }
-    }
-  });
 }
