@@ -31,18 +31,18 @@ var map=new Array(0);
 var fillcount=0;
 var halfspace=0;
 var animationend=0;
-var loadtime=0;
+var loadtime=10;
 if(width>600){
 var segment = 16*4;
 var cursor=6;
 var mcursor=cursor;
-var textspeed=1000;
+var textspeed=2000;
 }
 else{
   var segment=16;
   var cursor=8;
   var mcursor=cursor;
-var textspeed=500;
+var textspeed=1000;
 }
 
 var gridWidth = width / segment;
@@ -172,7 +172,7 @@ idcount=0;
   }
   if(halfspace==1){
     gridreset();
-    cursor-=Math.round(rowspan/2)+2;
+    cursor-=Math.round(rowspan/2)+1;
     halfspace=0;
   }
   else gridreset();
