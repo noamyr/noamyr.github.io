@@ -184,7 +184,7 @@ window.addEventListener("resize", () => {
       if(generatedtext.length<textcount+segment*textspeed)generatedtext+=markovMe(markov,textspeed);
     }
   }
-    else window.scrollTo(0,document.getElementById("basegrid").offsetHeight-gridlineheight-height);
+    //else window.scrollTo(0,document.getElementById("basegrid").offsetHeight-gridlineheight-height);
   };
   /*if (window.scrollY + height >= document.getElementById("basegrid").offsetHeight) {
     window.scrollTo(0,document.getElementById("basegrid").offsetHeight-gridlineheight);
