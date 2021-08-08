@@ -169,9 +169,10 @@ for(i=0;document.getElementById("basegrid").offsetHeight<height;i++){
   gridreset();
 }
 }
-window.addEventListener("resize", () => {
+
+/*window.addEventListener("resize", () => {
   location.reload();
-});
+});*/
 
 
   window.onscroll = function (ev) {
