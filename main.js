@@ -29,18 +29,19 @@ var generatedcount = 0, lastwords="";
 var textcount;
 var map=new Array(0);
 var fillcount=0;
-var halfspace=0;
 var animationend=0;
 var loadtime=10;
+var elementgap=4;
 if(width>600){
 var segment = 16*4;
-var cursor=6;
+var cursor=7;
+var cursorsegment1=cursor, cursorsegment2=cursor+2, cursorsegment3=cursor+4;
 var mcursor=cursor;
 var textspeed=2000;
 }
 else{
   var segment=16;
-  var cursor=8;
+  var cursor=9;
   var mcursor=cursor;
 var textspeed=1000;
 }
@@ -110,12 +111,12 @@ idcount=0;
   var elementheight=item.firstChild.offsetHeight;
   var rowspan=Math.round(elementheight/gridlineheight);
   var x0,x1,y0,y1;
-  item.style.gridRowStart = (cursor).toString();
-  y0=cursor;
-  item.style.gridRowEnd = (cursor+rowspan).toString();
-  y1=cursor+rowspan;
   if(item.className[item.className.length-1]=="w"){
-    cursor+=rowspan+2;
+  item.style.gridRowStart = (cursor).toString();
+  y0=cursor-1;
+  item.style.gridRowEnd = (cursor+rowspan).toString();
+  y1=cursor+rowspan+1;
+    cursor+=rowspan+elementgap;
     if(width>600){
       x0=17;
       x1=112;
@@ -126,35 +127,58 @@ idcount=0;
   }
   else if(item.className[item.className.length-1]=="n"){
     if(width>600){
+      if(i>0)
+      {
+        var nitem=document.getElementsByClassName("item")[i-1];
+        if(nitem.className[nitem.className.length-1]=="w"){
+          cursorsegment1=cursor;
+          cursorsegment2=cursor+2;
+          cursorsegment3=cursor+4;
+        }
+      }
       if(i%3==1)
       {
+        item.style.gridRowStart = (cursorsegment1).toString();
+        y0=cursorsegment1-1;
+        item.style.gridRowEnd = (cursorsegment1+rowspan).toString();
+        y1=cursorsegment1+rowspan+1;
         item.style.gridColumnStart=10;
         x0=9;
         item.style.gridColumnEnd=40;
         x1=40;
+        cursorsegment1+=rowspan+4;
+        cursor=cursorsegment1;
       }
       else if(i%3==2)
       {
+        item.style.gridRowStart = (cursorsegment2).toString();
+        y0=cursorsegment2-1;
+        item.style.gridRowEnd = (cursorsegment2+rowspan).toString();
+        y1=cursorsegment2+rowspan+1;
         item.style.gridColumnStart=10+40;
         x0=9+40;
         item.style.gridColumnEnd=40+40;
         x1=40+40;
+        cursorsegment2+=rowspan+4;
+        cursor=cursorsegment2;
       }
       else{
+        item.style.gridRowStart = (cursorsegment3).toString();
+        y0=cursorsegment3-1;
+        item.style.gridRowEnd = (cursorsegment3+rowspan).toString();
+        y1=cursorsegment3+rowspan+1;
         item.style.gridColumnStart=10+80;
         x0=9+80;
         item.style.gridColumnEnd=40+80;
         x1=40+80;
-      }
-      if(i<document.getElementsByClassName("item").length-1)
-      {
-        var nitem=document.getElementsByClassName("item")[i+1];
-        if(nitem.className[nitem.className.length-1]!="w"){
-          halfspace=1;
-        }
-        cursor+=rowspan+2;
+        cursorsegment3+=rowspan+4;
+        cursor=cursorsegment3;
       }}
       else{
+        item.style.gridRowStart = (cursor).toString();
+        y0=cursor-1;
+        item.style.gridRowEnd = (cursor+rowspan).toString();
+        y1=cursor+rowspan+1;
       if(i%2==1)
       {
         item.style.gridColumnStart=10;
@@ -166,16 +190,11 @@ idcount=0;
         x0=0;
         x1=25;
       }
-      cursor+=rowspan+2;
+      cursor+=rowspan+elementgap;
       }
       
   }
-  if(halfspace==1){
-    gridreset();
-    cursor-=Math.round(rowspan/2)+1;
-    halfspace=0;
-  }
-  else gridreset();
+  gridreset();
   for(var j=y0;j<y1;j++){
     for(var k=x0;k<x1;k++){
       map[j*segment*2+k]=1;
@@ -225,7 +244,7 @@ for(i=0;document.getElementById("basegrid").offsetHeight<height;i++){
 function markovFill(startingpoint){
 var linelast=-999;
 var idstart=idcount;
-for(var i=startingpoint-2;i<map.length/segment;i++){
+for(var i=startingpoint-3;i<map.length/segment;i++){
   for(var j=1;j<=segment*2;j++){
     if(map[i*segment*2+j]==0){
       if(linelast!=-999 && j>linelast+1){
