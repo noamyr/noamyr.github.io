@@ -134,6 +134,14 @@ body{
   animation-fill-mode: both;
 }
 
+.imgn{
+  width: 68.75vw;
+}
+
+.imgw{
+  width: 68.75vw;
+}
+
 @media only screen and (min-width: 600px) {
   .w{
     grid-column-Start: 18;
@@ -142,5 +150,8 @@ body{
   .n{
     grid-column-Start: 10;
     grid-column-End: 40;
+  }
+  .imgn{
+    width: 23.4375vw;
   }
 }

@@ -1,4 +1,7 @@
 var markov =[], firstwords =[];
+
+window.addEventListener('DOMContentLoaded', (event) => {
+
 fetch("./textDB.txt")
 .then((response) => response.text())
 .then((data) => {
@@ -21,6 +24,7 @@ fetch("./textDB.txt")
   }
   main();
 });
+});
 
 function main(){
 var width = window.innerWidth;
@@ -30,7 +34,7 @@ var textcount;
 var map=new Array(0);
 var fillcount=0;
 var animationend=0;
-var loadtime=10;
+var loadtime=0;
 var elementgap=4;
 if(width>600){
 var segment = 16*4;
@@ -94,6 +98,10 @@ for (var i = 0; i < document.getElementsByClassName("body").length; i++) {
 for (var i = 0; i < document.getElementsByClassName("caption").length; i++) {
   document.getElementsByClassName("caption")[i].style.fontSize = (headerSize / 4).toString() + "px";
   document.getElementsByClassName("caption")[i].style.lineHeight = (gridlineheight/2).toString() + "px";
+}
+
+for(var i = 0; i < document.getElementsByClassName("autoh").length; i++){
+  document.getElementsByClassName("autoh")[i].style.height = (Math.round(document.getElementsByClassName("autoh")[i].offsetHeight/gridlineheight)*gridlineheight).toString() + "px";
 }
 
 organize();
