@@ -97,10 +97,9 @@ window.addEventListener('load', (event) => {
     document.getElementsByClassName("caption")[i].style.fontSize = (headerSize / 4).toString() + "px";
     document.getElementsByClassName("caption")[i].style.lineHeight = (gridlineheight/2).toString() + "px";
   }
-  window.addEventListener('load', (event) => {
   for(var i = 0; i < document.getElementsByClassName("autoh").length; i++){
     document.getElementsByClassName("autoh")[i].style.height = (Math.round(document.getElementsByClassName("autoh")[i].offsetHeight/gridlineheight)*gridlineheight).toString() + "px";
-  }});
+  }
   
   organize();
   function organize(){
