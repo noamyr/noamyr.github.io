@@ -1,6 +1,39 @@
 var markov =[], firstwords =[];
 
 window.addEventListener('DOMContentLoaded', (event) => {
+
+
+  async function fetchText() {
+    let response = await fetch('/textDB.txt');
+
+    console.log(response.status); // 200
+    console.log(response.statusText); // OK
+
+    if (response.status === 200) {
+        let data = await response.text();
+        const words = data.split(" ");
+  for (var i=0, j=0, k=0; i<words.length; i++){
+    if(i%2==1){
+      markov[j] = words[i-1].concat(" ", words[i]);
+      j++;
+    }
+    if(words[i][0]>='A' && words[i][0]<='Z'){
+      if(i==0){
+        firstwords[k]= words[i].concat(" ", words[i+1]);
+      k++;
+      }
+      else if(words[i-1][words[i-1].length-1]=='.' || words[i-1][words[i-1].length-1]=='?' || words[i-1][words[i-1].length-1]=='!'){
+        firstwords[k]= words[i].concat(" ", words[i+1]);
+      k++;
+      } 
+    }
+  }
+  main();
+    }
+}
+
+fetchText();
+/*
 fetch("./textDB.txt")
 .then((response) => response.text())
 .then((data) => {
@@ -22,7 +55,8 @@ fetch("./textDB.txt")
     }
   }
   main();
-});
+});*/
+
 });
 
 function main(){
@@ -33,7 +67,7 @@ var textcount;
 var map=new Array(0);
 var fillcount=0;
 var animationend=0;
-var loadtime=0;
+var loadtime=200;
 var elementgap=4;
 if(width>600){
 var segment = 16*4;
@@ -99,14 +133,9 @@ for (var i = 0; i < document.getElementsByClassName("caption").length; i++) {
   document.getElementsByClassName("caption")[i].style.lineHeight = (gridlineheight/2).toString() + "px";
 }
 
-setTimeout(() => {
-
-  for(var i = 0; i < document.getElementsByClassName("autoh").length; i++){
+for(var i = 0; i < document.getElementsByClassName("autoh").length; i++){
   document.getElementsByClassName("autoh")[i].style.height = (Math.round(document.getElementsByClassName("autoh")[i].offsetHeight/gridlineheight)*gridlineheight).toString() + "px";
 }
-
-}, loadtime*2);
-
 
 organize();
 function organize(){
