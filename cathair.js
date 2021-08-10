@@ -195,9 +195,9 @@ window.addEventListener('load', (event) => {
       if(animationend==1){
       if (window.innerHeight + window.scrollY >= document.getElementById("basegrid").offsetHeight+document.getElementById('scroll').offsetHeight) {
         document.getElementById('scroll').style.top=(document.getElementById("basegrid").offsetHeight).toString() + "px";
-        cursor++;
+        cursor+=10;
         gridreset();
-        markovFill(cursor-1);
+        markovFill(cursor-10);
       }
     }
     };
