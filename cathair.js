@@ -227,15 +227,15 @@ window.addEventListener('load', (event) => {
       }
       else if(code==1){
         var textnode = document.createTextNode("T");
-        node.style.backgroundColor="red";
+        node.style.backgroundColor="green";
       }
       else if(code==2){
         var textnode = document.createTextNode("G");
-        node.style.backgroundColor="red";
+        node.style.backgroundColor="pink";
       }
       else{
         var textnode = document.createTextNode("C");
-        node.style.backgroundColor="red";
+        node.style.backgroundColor="blue";
       }
       node.appendChild(textnode);
       document.getElementById("basegrid").appendChild(node);
