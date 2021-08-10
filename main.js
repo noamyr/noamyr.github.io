@@ -33,7 +33,7 @@ var textcount;
 var map=new Array(0);
 var fillcount=0;
 var animationend=0;
-var loadtime=100;
+var loadtime=0;
 var elementgap=4;
 if(width>600){
 var segment = 16*4;
@@ -99,13 +99,13 @@ for (var i = 0; i < document.getElementsByClassName("caption").length; i++) {
   document.getElementsByClassName("caption")[i].style.lineHeight = (gridlineheight/2).toString() + "px";
 }
 
-window.addEventListener('DOMContentLoaded', (event) => {
+setTimeout(() => {
 
   for(var i = 0; i < document.getElementsByClassName("autoh").length; i++){
-    document.getElementsByClassName("autoh")[i].style.height = (Math.round(document.getElementsByClassName("autoh")[i].offsetHeight/gridlineheight)*gridlineheight).toString() + "px";
-  }
+  document.getElementsByClassName("autoh")[i].style.height = (Math.round(document.getElementsByClassName("autoh")[i].offsetHeight/gridlineheight)*gridlineheight).toString() + "px";
+}
 
-});
+}, loadtime*2);
 
 
 organize();
