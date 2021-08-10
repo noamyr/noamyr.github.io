@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('load', (event) => {
 
   var markov =[], firstwords =[];
 
