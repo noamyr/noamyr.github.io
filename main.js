@@ -129,6 +129,8 @@ window.addEventListener('load', (event) => {
       else{
       x0=5;
       x1=28;}
+      item.style.gridColumnStart=(x0+1).toString();
+      item.style.gridColumnEnd=(x1).toString();
     }
     else if(item.className[item.className.length-1]=="n"){
       if(width>600){
