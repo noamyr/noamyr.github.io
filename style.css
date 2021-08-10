@@ -21,6 +21,14 @@ a:hover {
   to {opacity: 1;}
 }
 
+.imgn{
+  width: 68.75vw;
+}
+
+.imgw{
+  width: 68.75vw;
+}
+
 .bold{
   font-family: "Roboto Mono";
   font-weight: 700;
@@ -132,14 +140,6 @@ body{
   animation-name: appear;
   animation-duration: 0.05s;
   animation-fill-mode: both;
-}
-
-.imgn{
-  width: 68.75vw;
-}
-
-.imgw{
-  width: 68.75vw;
 }
 
 @media only screen and (min-width: 600px) {
