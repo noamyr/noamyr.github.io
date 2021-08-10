@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', (event) => {
+
 
   var markov =[], firstwords =[];
 
@@ -343,4 +343,3 @@ window.addEventListener('DOMContentLoaded', (event) => {
 }
 
 fetchText();
-});
