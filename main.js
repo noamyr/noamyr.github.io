@@ -1,4 +1,4 @@
-
+window.addEventListener('load', (event) => {
 
   var markov =[], firstwords =[];
 
@@ -31,7 +31,6 @@
   var generatedcount = 0, lastwords="";
   var textcount;
   var map=new Array(0);
-  var fillcount=0;
   var animationend=0;
   var loadtime=1;
   var elementgap=4;
@@ -98,7 +97,6 @@
     document.getElementsByClassName("caption")[i].style.fontSize = (headerSize / 4).toString() + "px";
     document.getElementsByClassName("caption")[i].style.lineHeight = (gridlineheight/2).toString() + "px";
   }
-  
   window.addEventListener('load', (event) => {
   for(var i = 0; i < document.getElementsByClassName("autoh").length; i++){
     document.getElementsByClassName("autoh")[i].style.height = (Math.round(document.getElementsByClassName("autoh")[i].offsetHeight/gridlineheight)*gridlineheight).toString() + "px";
@@ -209,11 +207,7 @@
       }
     }
   }
-  if(fillcount==0){
-    setTimeout(() => {markovFill(mcursor);}, loadtime*2);
-    fillcount++;
-  }
-  else markovFill(mcursor);
+  setTimeout(() => {markovFill(mcursor);}, loadtime*2);
   for(i=0;document.getElementById("basegrid").offsetHeight<height;i++){
     cursor++;
     gridreset();
@@ -343,3 +337,4 @@
 }
 
 fetchText();
+});
