@@ -1,34 +1,9 @@
 window.addEventListener('load', (event) => {
 
-  var markov =[], firstwords =[];
-
-  async function fetchText() {
-    let response = await fetch('/textDB.txt');
-    if (response.status === 200) {
-        let data = await response.text();
-        const words = data.split(" ");
-  for (var i=0, j=0, k=0; i<words.length; i++){
-    if(i%2==1){
-      markov[j] = words[i-1].concat(" ", words[i]);
-      j++;
-    }
-    if(words[i][0]>='A' && words[i][0]<='Z'){
-      if(i==0){
-        firstwords[k]= words[i].concat(" ", words[i+1]);
-      k++;
-      }
-      else if(words[i-1][words[i-1].length-1]=='.' || words[i-1][words[i-1].length-1]=='?' || words[i-1][words[i-1].length-1]=='!'){
-        firstwords[k]= words[i].concat(" ", words[i+1]);
-      k++;
-      } 
-    }
-  }
-
   main();
   function main(){
   var width = window.innerWidth;
   var height = window.innerHeight;
-  var generatedcount = 0, lastwords="";
   var textcount;
   var map=new Array(0);
   var animationend=0;
@@ -50,8 +25,6 @@ window.addEventListener('load', (event) => {
   
   var gridWidth = width / segment;
   
-  var generatedtext="";
-  setTimeout(() => {generatedtext+=markovMe(markov,1500);}, loadtime);
   var headerSize, gridlineheight;
   headerSize = (gridWidth * 12) / 7.201238462;
   gridlineheight=57/3 * gridWidth/20;
@@ -222,25 +195,12 @@ window.addEventListener('load', (event) => {
       if(animationend==1){
       if (window.innerHeight + window.scrollY >= document.getElementById("basegrid").offsetHeight+document.getElementById('scroll').offsetHeight) {
         document.getElementById('scroll').style.top=(document.getElementById("basegrid").offsetHeight).toString() + "px";
-        var editedtext=generatedtext.slice(textcount,textcount+textspeed);
-        document.getElementById('scroll').innerHTML+=editedtext;
-        textcount+=textspeed;
-        if(generatedtext.length<textcount+segment*textspeed)generatedtext+=markovMe(markov,textspeed);
+        cursor++;
+        gridreset();
+        markovFill(cursor-1);
       }
     }
-      //else window.scrollTo(0,document.getElementById("basegrid").offsetHeight-gridlineheight-height);
     };
-    /*if (window.scrollY + height >= document.getElementById("basegrid").offsetHeight) {
-      window.scrollTo(0,document.getElementById("basegrid").offsetHeight-gridlineheight);
-      document.getElementById(document.getElementsByClassName("generated").length-2).addEventListener('animationend', () => {
-      for(i=0;generatedtext.length<textcount+segment*2*20;i++){
-        generatedtext+=markovMe(markov,1);
-      }
-      cursor+=10;
-      gridreset();
-      markovFill(cursor-mcursor);
-      });
-    }*/
   
   function markovFill(startingpoint){
   var linelast=-999;
@@ -249,7 +209,6 @@ window.addEventListener('load', (event) => {
     for(var j=1;j<=segment*2;j++){
       if(map[i*segment*2+j]==0){
         if(linelast!=-999 && j>linelast+1){
-          hyphenate();
         }
         else{
       var node = document.createElement("div");
@@ -261,7 +220,23 @@ window.addEventListener('load', (event) => {
       node.style.gridcolumnEnd = (j+1).toString();
       if(width>600) node.style.animationDelay = ((idcount-idstart)*0.001).toString()+"s";
       else node.style.animationDelay = ((idcount-idstart)*0.005).toString()+"s";
-      var textnode = document.createTextNode(generatedtext[textcount]);       
+      var code=Math.round(Math.random()*1000)%4;
+      if(code==0){
+        var textnode = document.createTextNode("A");
+        node.style.backgroundColor="red";
+      }
+      else if(code==1){
+        var textnode = document.createTextNode("T");
+        node.style.backgroundColor="red";
+      }
+      else if(code==2){
+        var textnode = document.createTextNode("G");
+        node.style.backgroundColor="red";
+      }
+      else{
+        var textnode = document.createTextNode("C");
+        node.style.backgroundColor="red";
+      }
       node.appendChild(textnode);
       document.getElementById("basegrid").appendChild(node);
       textcount++;
@@ -269,71 +244,9 @@ window.addEventListener('load', (event) => {
       linelast=j;
       }
     }
-    hyphenate();
     linelast=-999;
   }
   document.getElementById(document.getElementsByClassName("generated").length-2).addEventListener('animationend', () => { animationend=1; });
   refreshGeneratedFont();
   }
-  
-  function markovMe(text, runs) {
-    const markovChain = {};
-    const textArr = text;
-    for (let i = 0; i < textArr.length; i++) {
-      let word = textArr[i];
-      if (!markovChain[word]) {
-        markovChain[word] = [];
-      }
-      if (textArr[i + 1]) {
-        markovChain[word].push(textArr[i + 1]);
-      }
-    }
-    const words = Object.keys(markovChain);
-  
-    let result="";
-  
-    if(generatedcount==0){
-      lastwords = firstwords[Math.floor(Math.random() * firstwords.length)];
-      result+=lastwords + " ";
-      generatedcount++;
-    }
-  
-    let word = lastwords;
-    for(var i=0; i<runs; i++){
-    if (!word || !markovChain.hasOwnProperty(word)) word = words[Math.floor(Math.random() * words.length)];
-    else{
-    newWord = markovChain[word][Math.floor(Math.random() * markovChain[word].length)];
-    word = newWord;}
-    
-    result+=word + " ";
-    lastwords=word;
-    generatedcount++;}
-    return result;
-  }
-  
-  function hyphenate(){
-    if(generatedtext[textcount-3]===' '){
-      document.getElementById((idcount-1).toString()).innerHTML = " ";
-      document.getElementById((idcount-2).toString()).innerHTML = " ";
-      textcount-=2;
-    }
-    else if(generatedtext[textcount-2]==' '){
-      document.getElementById((idcount-1).toString()).innerHTML = " ";
-      textcount--;
-    }
-    else if(generatedtext[textcount-1]==' '){
-    }
-    else if(generatedtext[textcount]==' '){
-      textcount++;
-    }
-    else if(generatedtext[textcount-1]!="." && generatedtext[textcount-1]!="!" && generatedtext[textcount-1]!="?" && generatedtext[textcount-1]!='"' && generatedtext[textcount-1]!="'" ){
-      document.getElementById((idcount-1).toString()).innerHTML = "-";
-      textcount--;
-    }}
-  
-  }
-  }
-}
-
-fetchText();
-});
+  }});
