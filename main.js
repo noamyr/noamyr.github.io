@@ -218,8 +218,8 @@
         }
       }
     }
-    markovFill(mcursor);
-  //  setTimeout(() => {markovFill(mcursor);}, loadtime);
+  //  markovFill(mcursor);
+    setTimeout(() => {markovFill(mcursor);}, 2);
     for(i=0;document.getElementById("basegrid").offsetHeight<height;i++){
       cursor++;
       gridreset();
