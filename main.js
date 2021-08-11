@@ -93,6 +93,7 @@ window.addEventListener('load', (event) => {
     }
     for (var i = 0; i < document.getElementsByClassName("item").length; i++) {
     var item=document.getElementsByClassName("item")[i];
+    console.log(item.offsetHeight);
     console.log(item.firstChild.offsetHeight);
     var elementheight=item.firstChild.offsetHeight;
     var rowspan=Math.round(elementheight/gridlineheight);
