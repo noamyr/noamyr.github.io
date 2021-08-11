@@ -59,7 +59,7 @@ window.addEventListener('load', (event) => {
     }
   }
 
-  setTimeout(() => {main();}, 0);
+  setTimeout(() => {main();}, loadtime);
   function main(){
   setTimeout(() => {generatedtext+=markovMe(markov,1500);}, loadtime);
   function gridreset(){
