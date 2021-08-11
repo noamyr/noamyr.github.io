@@ -34,7 +34,7 @@
   settextsize();
 
   window.addEventListener('load', (event) => {
-  setTimeout(() => {fetchText();}, 5);
+  setTimeout(() => {fetchText();}, 10);
   async function fetchText() {
     let response = await fetch('/textDB.txt');
     if (response.status === 200) {
