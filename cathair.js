@@ -14,13 +14,11 @@ window.addEventListener('load', (event) => {
   var cursor=7;
   var cursorsegment1=cursor, cursorsegment2=cursor+2, cursorsegment3=cursor+4;
   var mcursor=cursor;
-  var textspeed=2000;
   }
   else{
     var segment=16;
     var cursor=9;
     var mcursor=cursor;
-  var textspeed=1000;
   }
   
   var gridWidth = width / segment;
@@ -148,7 +146,9 @@ window.addEventListener('load', (event) => {
           x1=40+80;
           cursorsegment3+=rowspan+4;
           cursor=cursorsegment3+1;
-        }}
+        }
+        if(i==document.getElementsByClassName("item").length-1) cursor+=5;
+      }
         else{
           item.style.gridRowStart = (cursor).toString();
           y0=cursor-1;
