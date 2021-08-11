@@ -70,6 +70,8 @@ window.addEventListener('load', (event) => {
   }
   
   organize();
+  document.getElementById("loader").style.display = "none";
+
   function organize(){
   textcount=0;
   idcount=0;
@@ -147,7 +149,6 @@ window.addEventListener('load', (event) => {
           cursorsegment3+=rowspan+4;
           cursor=cursorsegment3+1;
         }
-        if(i==document.getElementsByClassName("item").length-1) cursor+=5;
       }
         else{
           item.style.gridRowStart = (cursor).toString();

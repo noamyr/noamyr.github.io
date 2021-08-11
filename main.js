@@ -37,7 +37,6 @@
   if(width<600) setTimeout(() => {fetchText();}, 300);
   else fetchText();
   async function fetchText() {
-    document.getElementById("loader").style.display = "none";
     let response = await fetch('/textDB.txt');
     if (response.status === 200) {
         let data = await response.text();
@@ -110,7 +109,8 @@
         document.getElementsByClassName("generated")[i].style.fontSize = (headerSize / 2).toString() + "px";
         document.getElementsByClassName("generated")[i].style.lineHeight = (gridlineheight).toString() + "px";
       }}
-  
+    
+    document.getElementById("loader").style.display = "none";
     organize();
   
     function organize(){
