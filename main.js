@@ -37,6 +37,7 @@
   if(width<600) setTimeout(() => {fetchText();}, 300);
   else fetchText();
   async function fetchText() {
+    document.getElementById("loader").style.display = "none";
     let response = await fetch('/textDB.txt');
     if (response.status === 200) {
         let data = await response.text();
