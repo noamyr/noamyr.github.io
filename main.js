@@ -5,7 +5,7 @@
   var textcount;
   var map=new Array(0);
   var animationend=0;
-  var loadtime=1;
+//  var loadtime=1;
   var elementgap=4;
   if(width>600){
   var segment = 16*4;
@@ -59,7 +59,7 @@ window.addEventListener('load', (event) => {
     }
   }
 
-  setTimeout(() => {main();}, loadtime);
+  main();
   function main(){
   generatedtext+=markovMe(markov,1500);
   //setTimeout(() => {generatedtext+=markovMe(markov,1500);}, loadtime);
