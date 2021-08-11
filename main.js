@@ -1,4 +1,3 @@
-
   var width = window.innerWidth;
   var height = window.innerHeight;
   var generatedcount = 0, lastwords="";
@@ -34,8 +33,8 @@
 
   settextsize();
 
-window.addEventListener('load', (event) => {
-  fetchText();
+  window.addEventListener('load', (event) => {
+  setTimeout(() => {fetchText();}, 1);
   async function fetchText() {
     let response = await fetch('/textDB.txt');
     if (response.status === 200) {
@@ -57,7 +56,6 @@ window.addEventListener('load', (event) => {
       } 
     }
   }
-
   main();
   }
 }
