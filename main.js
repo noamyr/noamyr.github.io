@@ -33,6 +33,8 @@
 
   settextsize();
 
+
+  window.addEventListener('DOMContentLoaded', (event) => {
   window.addEventListener('load', (event) => {
   setTimeout(() => {fetchText();}, 300);
   async function fetchText() {
@@ -59,7 +61,7 @@
   main();
   }
 }
-});
+});});
 
 
   function settextsize(){
