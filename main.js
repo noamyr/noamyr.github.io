@@ -194,7 +194,7 @@ window.addEventListener('load', (event) => {
           x1=33;
         }
         else{
-          x0=0;
+          x0=1;
           x1=25;
         }
         cursor+=rowspan+elementgap;
@@ -222,12 +222,13 @@ window.addEventListener('load', (event) => {
   
     window.onscroll = function (ev) {
       if(animationend==1){
-      if (window.innerHeight + window.scrollY >= document.getElementById("basegrid").offsetHeight+document.getElementById('scroll').offsetHeight) {
+      if (window.innerHeight + window.scrollY >= document.getElementById("basegrid").offsetHeight) {
         document.getElementById('scroll').style.top=(document.getElementById("basegrid").offsetHeight).toString() + "px";
-        var editedtext=generatedtext.slice(textcount,textcount+textspeed);
-        document.getElementById('scroll').innerHTML+=editedtext;
-        textcount+=textspeed;
-        if(generatedtext.length<textcount+segment*textspeed)generatedtext+=markovMe(markov,textspeed);
+        /*var editedtext=generatedtext.slice(textcount,textcount+textspeed);
+        document.getElementById('scroll').innerHTML+=editedtext;*/
+        cursor+=10;
+        gridreset();
+        markovFill(cursor-7);
       }
     }
       //else window.scrollTo(0,document.getElementById("basegrid").offsetHeight-gridlineheight-height);
@@ -263,6 +264,7 @@ window.addEventListener('load', (event) => {
       node.style.gridcolumnEnd = (j+1).toString();
       if(width>600) node.style.animationDelay = ((idcount-idstart)*0.001).toString()+"s";
       else node.style.animationDelay = ((idcount-idstart)*0.005).toString()+"s";
+      if(generatedtext.length<textcount+1) generatedtext+=markovMe(markov,1500);
       var textnode = document.createTextNode(generatedtext[textcount]);       
       node.appendChild(textnode);
       document.getElementById("basegrid").appendChild(node);

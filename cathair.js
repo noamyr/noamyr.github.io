@@ -44,9 +44,6 @@ window.addEventListener('load', (event) => {
   document.getElementById("intro").style.width=(width-gridWidth*2).toString() + "px";
   document.getElementById("intro").style.margin=(gridWidth).toString() + "px";
   
-  document.getElementById("scroll").style.fontSize = (headerSize / 2).toString() + "px";
-  document.getElementById("scroll").style.lineHeight = (gridlineheight).toString() + "px";
-  
   for (var i = 0; i < document.getElementsByClassName("title").length; i++) {
     document.getElementsByClassName("title")[i].style.fontSize =
     headerSize.toString() + "px";
@@ -165,7 +162,7 @@ window.addEventListener('load', (event) => {
           x1=33;
         }
         else{
-          x0=0;
+          x0=1;
           x1=25;
         }
         cursor+=rowspan+elementgap;
@@ -193,8 +190,7 @@ window.addEventListener('load', (event) => {
   
     window.onscroll = function (ev) {
       if(animationend==1){
-      if (window.innerHeight + window.scrollY >= document.getElementById("basegrid").offsetHeight+document.getElementById('scroll').offsetHeight) {
-        document.getElementById('scroll').style.top=(document.getElementById("basegrid").offsetHeight).toString() + "px";
+      if (window.innerHeight + window.scrollY >= document.getElementById("basegrid").offsetHeight) {
         cursor+=10;
         gridreset();
         markovFill(cursor-10);
