@@ -80,7 +80,7 @@ window.addEventListener('load', (event) => {
       document.getElementsByClassName("generated")[i].style.lineHeight = (gridlineheight).toString() + "px";
     }}
 
-  organize();
+  setTimeout(() => {organize();}, loadtime);
   
   function organize(){
   textcount=0;
