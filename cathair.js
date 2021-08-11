@@ -70,7 +70,6 @@ window.addEventListener('load', (event) => {
   }
   
   organize();
-  document.getElementById("loader").style.display = "none";
 
   function organize(){
   textcount=0;
@@ -177,6 +176,7 @@ window.addEventListener('load', (event) => {
       }
     }
   }
+  document.getElementById("loader").style.display = "none";
   setTimeout(() => {markovFill(mcursor);}, loadtime*2);
   for(i=0;document.getElementById("basegrid").offsetHeight<height;i++){
     cursor++;

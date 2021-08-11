@@ -110,9 +110,7 @@
         document.getElementsByClassName("generated")[i].style.lineHeight = (gridlineheight).toString() + "px";
       }}
     
-    document.getElementById("loader").style.display = "none";
-    organize();
-  
+    organize();    
     function organize(){
     textcount=0;
     idcount=0;
@@ -219,6 +217,7 @@
         }
       }
     }
+    document.getElementById("loader").style.display = "none";
   //  markovFill(mcursor);
     setTimeout(() => {markovFill(mcursor);}, 1);
     for(i=0;document.getElementById("basegrid").offsetHeight<height;i++){
