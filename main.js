@@ -33,8 +33,6 @@
   
   settextsize();
 
-setTimeout(() => {
-
 window.addEventListener('load', (event) => {
 
   var markov =[], firstwords =[];
@@ -95,6 +93,7 @@ window.addEventListener('load', (event) => {
     }
     for (var i = 0; i < document.getElementsByClassName("item").length; i++) {
     var item=document.getElementsByClassName("item")[i];
+    console.log(item.firstChild.offsetHeight);
     var elementheight=item.firstChild.offsetHeight;
     var rowspan=Math.round(elementheight/gridlineheight);
     var x0,x1,y0,y1;
@@ -322,7 +321,7 @@ window.addEventListener('load', (event) => {
 }
 
 fetchText();
-});}, 0);
+});
 
 
   function settextsize(){
