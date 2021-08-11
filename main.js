@@ -33,6 +33,8 @@
   
   settextsize();
 
+setTimeout(() => {
+
 window.addEventListener('load', (event) => {
 
   var markov =[], firstwords =[];
@@ -80,8 +82,8 @@ window.addEventListener('load', (event) => {
       document.getElementsByClassName("generated")[i].style.lineHeight = (gridlineheight).toString() + "px";
     }}
 
-  setTimeout(() => {organize();}, loadtime);
-  
+  organize();
+
   function organize(){
   textcount=0;
   idcount=0;
@@ -320,7 +322,7 @@ window.addEventListener('load', (event) => {
 }
 
 fetchText();
-});
+});}, loadtime);
 
 
   function settextsize(){
