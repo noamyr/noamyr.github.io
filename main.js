@@ -322,7 +322,7 @@ window.addEventListener('load', (event) => {
 }
 
 fetchText();
-});}, loadtime);
+});}, 0);
 
 
   function settextsize(){
