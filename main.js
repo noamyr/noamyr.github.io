@@ -70,10 +70,7 @@ window.addEventListener('load', (event) => {
   
   document.getElementById("intro").style.width=(width-gridWidth*2).toString() + "px";
   document.getElementById("intro").style.margin=(gridWidth).toString() + "px";
-  
-  document.getElementById("scroll").style.fontSize = (headerSize / 2).toString() + "px";
-  document.getElementById("scroll").style.lineHeight = (gridlineheight).toString() + "px";
-  
+    
   for (var i = 0; i < document.getElementsByClassName("title").length; i++) {
     document.getElementsByClassName("title")[i].style.fontSize =
     headerSize.toString() + "px";
@@ -223,7 +220,6 @@ window.addEventListener('load', (event) => {
     window.onscroll = function (ev) {
       if(animationend==1){
       if (window.innerHeight + window.scrollY >= document.getElementById("basegrid").offsetHeight) {
-        document.getElementById('scroll').style.top=(document.getElementById("basegrid").offsetHeight).toString() + "px";
         /*var editedtext=generatedtext.slice(textcount,textcount+textspeed);
         document.getElementById('scroll').innerHTML+=editedtext;*/
         cursor+=10;
