@@ -124,14 +124,14 @@ window.addEventListener('load', (event) => {
     y1=cursor+rowspan+1;
       cursor+=rowspan+elementgap;
       if(width>600){
-        x0=17;
-        x1=112;
+        x0=16;
+        x1=111;
       }
       else{
-      x0=5;
-      x1=28;}
-      item.style.gridColumnStart=(x0+1).toString();
-      item.style.gridColumnEnd=(x1).toString();
+      x0=4;
+      x1=27;}
+      item.style.gridColumnStart=(x0+2).toString();
+      item.style.gridColumnEnd=(x1+1).toString();
     }
     else if(item.className[item.className.length-1]=="n"){
       if(width>600){
@@ -151,9 +151,9 @@ window.addEventListener('load', (event) => {
           item.style.gridRowEnd = (cursorsegment1+rowspan).toString();
           y1=cursorsegment1+rowspan+1;
           item.style.gridColumnStart=10;
-          x0=9;
+          x0=8;
           item.style.gridColumnEnd=40;
-          x1=40;
+          x1=39;
           cursorsegment1+=rowspan+4;
           cursor=cursorsegment1+1;
         }
@@ -164,9 +164,9 @@ window.addEventListener('load', (event) => {
           item.style.gridRowEnd = (cursorsegment2+rowspan).toString();
           y1=cursorsegment2+rowspan+1;
           item.style.gridColumnStart=10+40;
-          x0=9+40;
+          x0=8+40;
           item.style.gridColumnEnd=40+40;
-          x1=40+40;
+          x1=39+40;
           cursorsegment2+=rowspan+4;
           cursor=cursorsegment2+1;
         }
@@ -176,9 +176,9 @@ window.addEventListener('load', (event) => {
           item.style.gridRowEnd = (cursorsegment3+rowspan).toString();
           y1=cursorsegment3+rowspan+1;
           item.style.gridColumnStart=10+80;
-          x0=9+80;
+          x0=8+80;
           item.style.gridColumnEnd=40+80;
-          x1=40+80;
+          x1=39+80;
           cursorsegment3+=rowspan+4;
           cursor=cursorsegment3+1;
         }}
@@ -190,13 +190,13 @@ window.addEventListener('load', (event) => {
         if(i%2==1)
         {
           item.style.gridColumnStart=10;
-          x0=9;
+          x0=8;
           item.style.gridColumnEnd=32;
-          x1=33;
+          x1=32;
         }
         else{
-          x0=1;
-          x1=25;
+          x0=0;
+          x1=24;
         }
         cursor+=rowspan+elementgap;
         }
@@ -248,9 +248,9 @@ window.addEventListener('load', (event) => {
   function markovFill(startingpoint){
   var linelast=-999;
   var idstart=idcount;
-  for(var i=startingpoint-3;i<map.length/segment;i++){
+  for(var i=startingpoint-3;i<map.length/(segment*2);i++){
     for(var j=1;j<=segment*2;j++){
-      if(map[i*segment*2+j]==0){
+      if(map[i*segment*2+j-1]==0){
         if(linelast!=-999 && j>linelast+1){
           hyphenate();
         }
@@ -265,11 +265,12 @@ window.addEventListener('load', (event) => {
       if(width>600) node.style.animationDelay = ((idcount-idstart)*0.001).toString()+"s";
       else node.style.animationDelay = ((idcount-idstart)*0.005).toString()+"s";
 //      node.style.backgroundColor="red";
-      var textnode = document.createTextNode(generatedtext[textcount]);       
+      var textnode = document.createTextNode(generatedtext[textcount]);   
       node.appendChild(textnode);
       document.getElementById("basegrid").appendChild(node);
       textcount++;
-      idcount++;}
+      idcount++;
+    }
       linelast=j;
       }
     }
