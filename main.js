@@ -61,7 +61,8 @@ window.addEventListener('load', (event) => {
 
   setTimeout(() => {main();}, loadtime);
   function main(){
-  setTimeout(() => {generatedtext+=markovMe(markov,1500);}, loadtime);
+  generatedtext+=markovMe(markov,1500);
+  //setTimeout(() => {generatedtext+=markovMe(markov,1500);}, loadtime);
   function gridreset(){
     document.getElementById("basegrid").style.gridTemplateColumns=basewidth.repeat(segment*2);
     document.getElementById("basegrid").style.gridTemplateRows=baseheight.repeat(cursor-1);
@@ -93,8 +94,6 @@ window.addEventListener('load', (event) => {
     }
     for (var i = 0; i < document.getElementsByClassName("item").length; i++) {
     var item=document.getElementsByClassName("item")[i];
-    console.log(item.offsetHeight);
-    console.log(item.firstChild.offsetHeight);
     var elementheight=item.firstChild.offsetHeight;
     var rowspan=Math.round(elementheight/gridlineheight);
     var x0,x1,y0,y1;
@@ -190,7 +189,8 @@ window.addEventListener('load', (event) => {
       }
     }
   }
-  setTimeout(() => {markovFill(mcursor);}, loadtime*2);
+  markovFill(mcursor);
+//  setTimeout(() => {markovFill(mcursor);}, loadtime);
   for(i=0;document.getElementById("basegrid").offsetHeight<height;i++){
     cursor++;
     gridreset();
