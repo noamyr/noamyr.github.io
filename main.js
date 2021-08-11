@@ -243,6 +243,7 @@ window.addEventListener('load', (event) => {
     }*/
   
   function markovFill(startingpoint){
+    animationend=0;
   var linelast=-999;
   var idstart=idcount;
   for(var i=startingpoint-3;i<map.length/segment;i++){
