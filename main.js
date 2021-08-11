@@ -101,7 +101,8 @@ window.addEventListener('load', (event) => {
     document.getElementsByClassName("autoh")[i].style.height = (Math.round(document.getElementsByClassName("autoh")[i].offsetHeight/gridlineheight)*gridlineheight).toString() + "px";
   }
   
-  organize();
+  setTimeout(() => {organize();}, loadtime);
+  
   function organize(){
   textcount=0;
   idcount=0;
