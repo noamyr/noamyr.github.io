@@ -177,7 +177,7 @@ window.addEventListener('load', (event) => {
           cursor=cursorsegment3+1;
         }
       
-        if(i==document.getElementsByClassName("item").length-1) cursor+=5;
+        if(i==document.getElementsByClassName("item").length-1) cursor=Math.max(cursorsegment1, cursorsegment2, cursorsegment3)+1;
       }
         else{
           item.style.gridRowStart = (cursor).toString();
