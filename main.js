@@ -1,3 +1,38 @@
+
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  var generatedcount = 0, lastwords="";
+  var textcount;
+  var map=new Array(0);
+  var animationend=0;
+  var loadtime=1;
+  var elementgap=4;
+  if(width>600){
+  var segment = 16*4;
+  var cursor=7;
+  var cursorsegment1=cursor, cursorsegment2=cursor+2, cursorsegment3=cursor+4;
+  var mcursor=cursor;
+  var textspeed=2000;
+  }
+  else{
+    var segment=16;
+    var cursor=9;
+    var mcursor=cursor;
+  var textspeed=1000;
+  }
+  
+  var gridWidth = width / segment;
+  
+  var generatedtext="";
+  var headerSize, gridlineheight;
+  headerSize = (gridWidth * 12) / 7.201238462;
+  gridlineheight=57/3 * gridWidth/20;
+  var basewidth=(gridWidth/2).toString()+"px ", baseheight=((gridlineheight).toString()+"px ");
+  document.getElementById("basegrid").style.gridTemplateColumns=basewidth.repeat(segment*2);
+  document.getElementById("basegrid").style.gridTemplateRows=baseheight.repeat(Math.round(height/gridlineheight));
+  
+  settextsize();
+
 window.addEventListener('load', (event) => {
 
   var markov =[], firstwords =[];
@@ -26,39 +61,7 @@ window.addEventListener('load', (event) => {
 
   main();
   function main(){
-  var width = window.innerWidth;
-  var height = window.innerHeight;
-  var generatedcount = 0, lastwords="";
-  var textcount;
-  var map=new Array(0);
-  var animationend=0;
-  var loadtime=1;
-  var elementgap=4;
-  if(width>600){
-  var segment = 16*4;
-  var cursor=7;
-  var cursorsegment1=cursor, cursorsegment2=cursor+2, cursorsegment3=cursor+4;
-  var mcursor=cursor;
-  var textspeed=2000;
-  }
-  else{
-    var segment=16;
-    var cursor=9;
-    var mcursor=cursor;
-  var textspeed=1000;
-  }
-  
-  var gridWidth = width / segment;
-  
-  var generatedtext="";
   setTimeout(() => {generatedtext+=markovMe(markov,1500);}, loadtime);
-  var headerSize, gridlineheight;
-  headerSize = (gridWidth * 12) / 7.201238462;
-  gridlineheight=57/3 * gridWidth/20;
-  var basewidth=(gridWidth/2).toString()+"px ", baseheight=((gridlineheight).toString()+"px ");
-  document.getElementById("basegrid").style.gridTemplateColumns=basewidth.repeat(segment*2);
-  document.getElementById("basegrid").style.gridTemplateRows=baseheight.repeat(Math.round(height/gridlineheight));
-  
   function gridreset(){
     document.getElementById("basegrid").style.gridTemplateColumns=basewidth.repeat(segment*2);
     document.getElementById("basegrid").style.gridTemplateRows=baseheight.repeat(cursor-1);
@@ -67,41 +70,17 @@ window.addEventListener('load', (event) => {
   function mapreset(end){
     for(var i=0; map.length<segment*2*(end) ;i++) map.push(0);
   }
-  
-  document.getElementById("intro").style.width=(width-gridWidth*2).toString() + "px";
-  document.getElementById("intro").style.margin=(gridWidth).toString() + "px";
-  
-  document.getElementById("scroll").style.fontSize = (headerSize / 2).toString() + "px";
-  document.getElementById("scroll").style.lineHeight = (gridlineheight).toString() + "px";
-  
-  for (var i = 0; i < document.getElementsByClassName("title").length; i++) {
-    document.getElementsByClassName("title")[i].style.fontSize =
-    headerSize.toString() + "px";
-    document.getElementsByClassName("title")[i].style.lineHeight =
-    (gridlineheight*2).toString() + "px";
-  }
-  function refreshGeneratedFont(){
-  for (var i = 0; i < document.getElementsByClassName("generated").length; i++) {
-    document.getElementsByClassName("generated")[i].style.fontSize = (headerSize / 2).toString() + "px";
-    document.getElementsByClassName("generated")[i].style.lineHeight = (gridlineheight).toString() + "px";
-  }}
-  for (var i = 0; i < document.getElementsByClassName("subtitle").length; i++) {
-    document.getElementsByClassName("subtitle")[i].style.fontSize = (headerSize / 2).toString() + "px";
-    document.getElementsByClassName("subtitle")[i].style.lineHeight = (gridlineheight).toString() + "px";
-  }
-  for (var i = 0; i < document.getElementsByClassName("body").length; i++) {
-    document.getElementsByClassName("body")[i].style.fontSize = (headerSize / 3).toString() + "px";
-    document.getElementsByClassName("body")[i].style.lineHeight = (gridlineheight*2/3).toString() + "px";
-  }
-  for (var i = 0; i < document.getElementsByClassName("caption").length; i++) {
-    document.getElementsByClassName("caption")[i].style.fontSize = (headerSize / 4).toString() + "px";
-    document.getElementsByClassName("caption")[i].style.lineHeight = (gridlineheight/2).toString() + "px";
-  }
   for(var i = 0; i < document.getElementsByClassName("autoh").length; i++){
     document.getElementsByClassName("autoh")[i].style.height = (Math.round(document.getElementsByClassName("autoh")[i].offsetHeight/gridlineheight)*gridlineheight).toString() + "px";
   }
   
-  setTimeout(() => {organize();}, loadtime);
+  function refreshGeneratedFont(){
+    for (var i = 0; i < document.getElementsByClassName("generated").length; i++) {
+      document.getElementsByClassName("generated")[i].style.fontSize = (headerSize / 2).toString() + "px";
+      document.getElementsByClassName("generated")[i].style.lineHeight = (gridlineheight).toString() + "px";
+    }}
+
+  organize();
   
   function organize(){
   textcount=0;
@@ -342,3 +321,31 @@ window.addEventListener('load', (event) => {
 
 fetchText();
 });
+
+
+  function settextsize(){
+  document.getElementById("intro").style.width=(width-gridWidth*2).toString() + "px";
+  document.getElementById("intro").style.margin=(gridWidth).toString() + "px";
+  
+  document.getElementById("scroll").style.fontSize = (headerSize / 2).toString() + "px";
+  document.getElementById("scroll").style.lineHeight = (gridlineheight).toString() + "px";
+  
+  for (var i = 0; i < document.getElementsByClassName("title").length; i++) {
+    document.getElementsByClassName("title")[i].style.fontSize =
+    headerSize.toString() + "px";
+    document.getElementsByClassName("title")[i].style.lineHeight =
+    (gridlineheight*2).toString() + "px";
+  }
+  for (var i = 0; i < document.getElementsByClassName("subtitle").length; i++) {
+    document.getElementsByClassName("subtitle")[i].style.fontSize = (headerSize / 2).toString() + "px";
+    document.getElementsByClassName("subtitle")[i].style.lineHeight = (gridlineheight).toString() + "px";
+  }
+  for (var i = 0; i < document.getElementsByClassName("body").length; i++) {
+    document.getElementsByClassName("body")[i].style.fontSize = (headerSize / 3).toString() + "px";
+    document.getElementsByClassName("body")[i].style.lineHeight = (gridlineheight*2/3).toString() + "px";
+  }
+  for (var i = 0; i < document.getElementsByClassName("caption").length; i++) {
+    document.getElementsByClassName("caption")[i].style.fontSize = (headerSize / 4).toString() + "px";
+    document.getElementsByClassName("caption")[i].style.lineHeight = (gridlineheight/2).toString() + "px";
+  }
+  }
