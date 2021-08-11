@@ -39,11 +39,13 @@ window.addEventListener('load', (event) => {
   var cursor=7;
   var cursorsegment1=cursor, cursorsegment2=cursor+2, cursorsegment3=cursor+4;
   var mcursor=cursor;
+  var textspeed=2000;
   }
   else{
     var segment=16;
     var cursor=9;
     var mcursor=cursor;
+  var textspeed=1000;
   }
   
   var gridWidth = width / segment;
@@ -68,7 +70,10 @@ window.addEventListener('load', (event) => {
   
   document.getElementById("intro").style.width=(width-gridWidth*2).toString() + "px";
   document.getElementById("intro").style.margin=(gridWidth).toString() + "px";
-    
+  
+  document.getElementById("scroll").style.fontSize = (headerSize / 2).toString() + "px";
+  document.getElementById("scroll").style.lineHeight = (gridlineheight).toString() + "px";
+  
   for (var i = 0; i < document.getElementsByClassName("title").length; i++) {
     document.getElementsByClassName("title")[i].style.fontSize =
     headerSize.toString() + "px";
@@ -175,10 +180,7 @@ window.addEventListener('load', (event) => {
           x1=40+80;
           cursorsegment3+=rowspan+4;
           cursor=cursorsegment3+1;
-        }
-      
-        if(i==document.getElementsByClassName("item").length-1) cursor=Math.max(cursorsegment1, cursorsegment2, cursorsegment3)+1;
-      }
+        }}
         else{
           item.style.gridRowStart = (cursor).toString();
           y0=cursor-1;
@@ -220,12 +222,12 @@ window.addEventListener('load', (event) => {
   
     window.onscroll = function (ev) {
       if(animationend==1){
-      if (window.innerHeight + window.scrollY >= document.getElementById("basegrid").offsetHeight) {
-        /*var editedtext=generatedtext.slice(textcount,textcount+textspeed);
-        document.getElementById('scroll').innerHTML+=editedtext;*/
-        cursor+=10;
-        gridreset();
-        markovFill(cursor-7);
+      if (window.innerHeight + window.scrollY >= document.getElementById("basegrid").offsetHeight+document.getElementById('scroll').offsetHeight) {
+        document.getElementById('scroll').style.top=(document.getElementById("basegrid").offsetHeight).toString() + "px";
+        var editedtext=generatedtext.slice(textcount,textcount+textspeed);
+        document.getElementById('scroll').innerHTML+=editedtext;
+        textcount+=textspeed;
+        if(generatedtext.length<textcount+segment*textspeed)generatedtext+=markovMe(markov,textspeed);
       }
     }
       //else window.scrollTo(0,document.getElementById("basegrid").offsetHeight-gridlineheight-height);
@@ -243,7 +245,6 @@ window.addEventListener('load', (event) => {
     }*/
   
   function markovFill(startingpoint){
-    animationend=0;
   var linelast=-999;
   var idstart=idcount;
   for(var i=startingpoint-3;i<map.length/segment;i++){
@@ -262,7 +263,7 @@ window.addEventListener('load', (event) => {
       node.style.gridcolumnEnd = (j+1).toString();
       if(width>600) node.style.animationDelay = ((idcount-idstart)*0.001).toString()+"s";
       else node.style.animationDelay = ((idcount-idstart)*0.005).toString()+"s";
-      if(generatedtext.length<textcount+1) generatedtext+=markovMe(markov,1500);
+//      node.style.backgroundColor="red";
       var textnode = document.createTextNode(generatedtext[textcount]);       
       node.appendChild(textnode);
       document.getElementById("basegrid").appendChild(node);
