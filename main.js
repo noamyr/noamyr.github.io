@@ -36,7 +36,8 @@
 
   window.addEventListener('DOMContentLoaded', (event) => {
   window.addEventListener('load', (event) => {
-  setTimeout(() => {fetchText();}, 300);
+  if(width<600)setTimeout(() => {fetchText();}, 300);
+  else fetchText();
   async function fetchText() {
     let response = await fetch('/textDB.txt');
     if (response.status === 200) {
