@@ -152,9 +152,10 @@
               cursorsegment1=cursor;
               cursorsegment2=cursor+2;
               cursorsegment3=cursor+4;
+              var firstnarrow=i-1;
             }
           }
-          if(i%3==1)
+          if((i-firstnarrow)%3==1)
           {
             item.style.gridRowStart = (cursorsegment1).toString();
             y0=cursorsegment1-1;
@@ -167,7 +168,7 @@
             cursorsegment1+=rowspan+4;
             cursor=cursorsegment1+1;
           }
-          else if(i%3==2)
+          else if((i-firstnarrow)%3==2)
           {
             item.style.gridRowStart = (cursorsegment2).toString();
             y0=cursorsegment2-1;
@@ -191,7 +192,15 @@
             x1=39+80;
             cursorsegment3+=rowspan+4;
             cursor=cursorsegment3+1;
-          }}
+          }
+          if(i<document.getElementsByClassName("item").length-1)
+          {
+            var nitem=document.getElementsByClassName("item")[i+1];
+            if(nitem.className[nitem.className.length-1]=="w"){
+              cursor=Math.max(cursorsegment1,cursorsegment2,cursorsegment3);
+            }
+          }
+        }
           else{
             item.style.gridRowStart = (cursor).toString();
             y0=cursor-1;
