@@ -160,7 +160,7 @@ body{
 @media only screen and (min-width: 600px) {
   .w{
     grid-column-Start: 32;
-    grid-column-End: 97;
+    grid-column-End: 96;
   }
   .n{
     grid-column-Start: 10;
