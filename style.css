@@ -158,6 +158,26 @@ body{
   z-index: 2;
 }
 
+.youtubewidesquare{
+  width: 68.75vw;
+  height: 68.75vw;
+}
+
+.youtubenarrowsquare{
+  width: 68.75vw;
+  height: 68.75vw;
+}
+
+.youtubewide{
+  width: 68.75vw;
+  height: 41.7410714286vw;
+}
+
+.youtubenarrow{
+  width: 23.4375vw;
+  height: 41.7410714286vw;
+}
+
 @media only screen and (min-width: 600px) {
   .w{
     grid-column-Start: 32;
@@ -173,4 +193,25 @@ body{
   .imgn{
     width: 23.4375vw;
   }
+
+  .youtubewidesquare{
+    width: 50vw;
+    height: 50vw;
+  }
+
+  .youtubenarrowsquare{
+    width: 23.4375vw;
+    height: 23.4375vw;
+  }
+
+  .youtubewide{
+    width: 50vw;
+    height: 30.3571428571vw;
+  }
+
+  .youtubenarrow{
+    width: 23.4375vw;
+    height: 14.2299107143vw;
+  }
+
 }
