@@ -92,8 +92,8 @@ window.addEventListener('load', (event) => {
     y1=cursor+rowspan+1;
       cursor+=rowspan+elementgap;
       if(width>600){
-        x0=17;
-        x1=112;
+        x0=30;
+        x1=96;
       }
       else{
       x0=5;

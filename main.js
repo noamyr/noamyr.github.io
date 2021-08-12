@@ -134,8 +134,8 @@
       y1=cursor+rowspan+1;
         cursor+=rowspan+elementgap;
         if(width>600){
-          x0=16;
-          x1=111;
+          x0=30;
+          x1=96;
         }
         else{
         x0=4;

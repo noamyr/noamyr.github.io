@@ -159,12 +159,15 @@ body{
 
 @media only screen and (min-width: 600px) {
   .w{
-    grid-column-Start: 18;
-    grid-column-End: 112;
+    grid-column-Start: 32;
+    grid-column-End: 97;
   }
   .n{
     grid-column-Start: 10;
     grid-column-End: 40;
+  }
+  .imgw{
+    width: 50vw;
   }
   .imgn{
     width: 23.4375vw;
