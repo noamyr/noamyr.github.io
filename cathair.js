@@ -31,8 +31,9 @@ document.getElementById("basegrid").style.gridTemplateRows=baseheight.repeat(Mat
 
 settextsize();
 
-
-main();
+window.addEventListener('DOMContentLoaded', (event) => {
+  window.addEventListener('load', (event) => {
+main();});});
 
 function settextsize(){
 document.getElementById("intro").style.width=(width-gridWidth*2).toString() + "px";
