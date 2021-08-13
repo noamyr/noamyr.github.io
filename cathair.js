@@ -240,19 +240,19 @@ function main(){
           var code=Math.round(Math.random()*1000)%4;
           if(code==0){
             var textnode = document.createTextNode("A");
-            node.style.backgroundColor="red";
+            node.style.backgroundColor="palegreen";
           }
           else if(code==1){
             var textnode = document.createTextNode("T");
-            node.style.backgroundColor="green";
+            node.style.backgroundColor="crimson";
           }
           else if(code==2){
             var textnode = document.createTextNode("G");
-            node.style.backgroundColor="pink";
+            node.style.backgroundColor="royalblue";
           }
           else{
             var textnode = document.createTextNode("C");
-            node.style.backgroundColor="blue";
+            node.style.backgroundColor="coral";
           }
           node.appendChild(textnode);
           document.getElementById("basegrid").appendChild(node);

@@ -47,14 +47,13 @@ a:hover {
 .link{
   font-family: "Roboto Mono";
   font-style: italic;
-  color: green;
   background-color: transparent; 
   text-decoration: underline;
 }
 
 body{
   margin: 0;
-  background-color: honeydew;
+  background-color: mistyrose;
 }
 
 .w{
