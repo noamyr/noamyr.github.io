@@ -79,7 +79,6 @@ body{
   animation-name: appear;
   animation-duration: 0.05s;
   animation-fill-mode: both;
-  background-color: whitesmoke;
 }
 
 #basegrid {
@@ -153,8 +152,6 @@ body{
   animation-name: appear;
   animation-duration: 0.05s;
   animation-fill-mode: both;
-
-  background-color: whitesmoke;
 }
 
 #intro{
