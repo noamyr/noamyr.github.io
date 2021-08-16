@@ -77,7 +77,7 @@ body{
   word-wrap: break-word;
   text-align: left;
   animation-name: appear;
-  animation-duration: 0.05s;
+  animation-duration: 0.5s;
   animation-fill-mode: both;
 }
 
