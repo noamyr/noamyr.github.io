@@ -14,7 +14,7 @@ var textspeed=2000;
 }
 else{
   var segment=16;
-  var cursor=9;
+  var cursor=10;
   var mcursor=cursor;
 var textspeed=1000;
 }
