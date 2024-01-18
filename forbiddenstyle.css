@@ -33,10 +33,9 @@ h1{
 }
 
 #outputImage {
+    margin-bottom: 16px;
     max-width: 100%;
     height: auto;
-    margin-bottom: 16px;
-
 }
 
 a{
