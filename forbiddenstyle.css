@@ -37,6 +37,14 @@ a{
     color: white;
 }
 
+a:visited{
+    color: white;
+}
+
+a:hover{
+    color: red;
+}
+
 
 button {
     background-color: #EE2A35; /* Red button */
