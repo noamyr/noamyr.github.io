@@ -53,9 +53,8 @@ input{
     margin-bottom: 16px;
 }
 
-span{
+.bold{
     color: white;
-    line-height: 100%;
 }
 
 button {
