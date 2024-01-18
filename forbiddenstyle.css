@@ -35,6 +35,8 @@ h1{
 #outputImage {
     max-width: 100%;
     height: auto;
+    margin-bottom: 16px;
+
 }
 
 a{
@@ -49,7 +51,7 @@ a:hover{
     color: red;
 }
 
-input{
+#imageInput{
     margin-bottom: 16px;
 }
 
