@@ -1,0 +1,16 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+#outputImage {
+    margin-top: 20px;
+    max-width: 100%;
+    height: auto;
+}
