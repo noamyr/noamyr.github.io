@@ -17,12 +17,12 @@ p {
     margin-bottom: 16px;
     color: black;
     font-size: 16px;
-    max-width: 425px;
+    max-width: 767px;
 }
 
 ul{
     list-style-position: outside;
-    max-width: 425px;
+    max-width: 767px;
     margin-left: 32px;
 }
 
