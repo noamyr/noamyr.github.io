@@ -1,34 +1,38 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    box-sizing: border-box;
+}
 
 body {
     font-family: Arial, sans-serif;
-    text-align: left;
-    margin: 0;
-    padding: 10px;
+    overflow-x: hidden;
+    margin: 16px 16px;
+    text-rendering: optimizeLegibility;
     background-color: #009736;
 }
 
 p {
+    margin-bottom: 16px;
     color: black;
     font-size: 16px;
+    max-width: 425px;
 }
 
 ul{
     list-style-position: outside;
-
+    max-width: 425px;
+    margin-left: 32px;
 }
 
 h1{
     color: white;
     font-size: 32px;
-}
-
-.container {
-    width: 80%;
-    margin-left: 20px;
+    margin-bottom: 16px;
 }
 
 #outputImage {
-    margin-top: 20px;
     max-width: 100%;
     height: auto;
 }
@@ -45,12 +49,23 @@ a:hover{
     color: red;
 }
 
+input{
+    margin-bottom: 16px;
+}
+
+span{
+    color: white;
+    line-height: 100%;
+}
+
 button {
     background-color: #EE2A35; 
     color: white; 
-    border: 1px; 
+    border: none;
     border-radius: 16px;
     cursor: pointer;
+    margin-bottom: 16px;
+    padding: 2px 8px;
 }
 
 button:hover {
