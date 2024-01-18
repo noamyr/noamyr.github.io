@@ -1,16 +1,51 @@
+
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 50px;
+    text-align: left;
+    margin: 0;
+    padding: 10px;
+    background-color: #009736; /* Green background */
+}
+
+p {
+    color: black;
+    font-size: 16px;
+}
+
+ul{
+    list-style-position: outside;
+
+}
+
+h1{
+    color: white;
+    font-size: 32px;
 }
 
 .container {
     width: 80%;
-    margin: auto;
+    margin-left: 20px;
 }
 
 #outputImage {
     margin-top: 20px;
     max-width: 100%;
     height: auto;
+}
+
+a{
+    color: white;
+}
+
+
+button {
+    background-color: #EE2A35; /* Red button */
+    color: white; /* White text on button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #C11F28; /* Darker shade of red for hover effect */
 }
