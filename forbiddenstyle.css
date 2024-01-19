@@ -10,7 +10,7 @@ body {
     overflow-x: hidden;
     margin: 16px 16px;
     text-rendering: optimizeLegibility;
-    background-color: #009736;
+    background-color: #008730;
 }
 
 p {
@@ -59,7 +59,7 @@ a:hover{
 }
 
 button {
-    background-color: #EE2A35; 
+    background-color: #e22732; 
     color: white; 
     border: none;
     border-radius: 16px;
