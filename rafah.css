@@ -1,0 +1,77 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    box-sizing: border-box;
+}
+
+#map {
+    height: 800px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    margin: 16px 16px;
+    text-rendering: optimizeLegibility;
+    background-color: #008730;
+}
+
+p {
+    margin-bottom: 16px;
+    color: black;
+    font-size: 16px;
+    max-width: 540px;
+}
+
+ul{
+    list-style-position: outside;
+    max-width: 540px;
+    margin-left: 32px;
+}
+
+h1{
+    color: white;
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+img {
+    margin-bottom: 16px;
+    max-width: 100%;
+    height: auto;
+}
+
+a{
+    color: white;
+}
+
+a:visited{
+    color: white;
+}
+
+a:hover{
+    color: red;
+}
+
+#imageInput{
+    margin-bottom: 16px;
+}
+
+.bold{
+    color: white;
+}
+
+button {
+    background-color: #e22732; 
+    color: white; 
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    padding: 2px 8px;
+}
+
+button:hover {
+    background-color: #C11F28; 
+}
