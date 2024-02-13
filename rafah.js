@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        // Update the overlay for the first time
+        // Initial call to update the overlay
         updateSvgOverlay();
 
         map.on('move', updateSvgOverlay);
@@ -18,22 +18,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateSvgOverlay() {
-        var center = map.getCenter(); // Current center of the map
+        if (svgOverlay) {
+            map.removeLayer(svgOverlay);
+        }
 
-        // Rafah's approximate geographical size (latitude and longitude deltas)
-        // Adjust these values based on the actual size of Rafah
+        var center = map.getCenter(); // Current center of the map
         var latDelta = 0.064; // Latitude span
         var lngDelta = 0.076; // Longitude span
 
-        // Calculate the bounds for the overlay based on Rafah's size
+        // Calculate the bounds for the overlay
         var overlayBounds = [
             [center.lat - latDelta / 2, center.lng - lngDelta / 2],
             [center.lat + latDelta / 2, center.lng + lngDelta / 2]
         ];
-
-        if (svgOverlay) {
-            map.removeLayer(svgOverlay);
-        }
 
         svgOverlay = L.imageOverlay('rafah.svg', overlayBounds, {
             opacity: 0.5,
@@ -46,17 +43,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function onLocationError(e) {
-        console.log(e.message);
-        // Fallback to a default location
-        initMap(31.343, 34.263); // Example: Default to a central position
+        console.log('Location error:', e.message);
+        // Fallback to Rafah's accurate coordinates, with a more zoomed-out view
+        initMap(31.343, 34.263); // Rafah's coordinates
     }
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            onLocationFound({latlng: {lat: position.coords.latitude, lng: position.coords.longitude}});
-        }, onLocationError);
+    // Feature detection for Geolocation API
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(onLocationFound, onLocationError, {
+            enableHighAccuracy: true, // Request the best possible results
+            timeout: 5000, // Set a timeout limit
+            maximumAge: 0 // Accept only fresh location information
+        });
     } else {
         console.log('Geolocation is not supported by this browser.');
         onLocationError({message: 'Geolocation not supported.'});
     }
 });
+
+// Ensure to replace 'path/to/your/rafah.svg' with the actual path to your SVG file.
