@@ -6,7 +6,10 @@
 }
 
 #map {
-    height: 500px;
+    height: 540px;
+    width: 100%;
+    max-width: 1024px;
+    margin-bottom: 16px;
 }
 
 body {
@@ -14,7 +17,7 @@ body {
     overflow-x: hidden;
     margin: 16px 16px;
     text-rendering: optimizeLegibility;
-    background-color: #008730;
+    background-color: #F8f8ff;
 }
 
 p {
@@ -28,12 +31,21 @@ ul{
     list-style-position: outside;
     max-width: 540px;
     margin-left: 32px;
+    margin-bottom: 16px;
+    margin-top: -16px;
 }
 
 h1{
-    color: white;
+    color: #00A95C;
     font-size: 32px;
     margin-bottom: 16px;
+}
+
+h2{
+    color: #E45D50;
+    font-size: 24px;
+    margin-bottom: 16px;
+    margin-top: -16px;
 }
 
 img {
@@ -43,35 +55,13 @@ img {
 }
 
 a{
-    color: white;
-}
-
-a:visited{
-    color: white;
+    color: #00A95C;
 }
 
 a:hover{
-    color: red;
-}
-
-#imageInput{
-    margin-bottom: 16px;
+    color: #E45D50;
 }
 
 .bold{
-    color: white;
-}
-
-button {
-    background-color: #e22732; 
-    color: white; 
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    margin-bottom: 16px;
-    padding: 2px 8px;
-}
-
-button:hover {
-    background-color: #C11F28; 
+    color: #E45D50;
 }

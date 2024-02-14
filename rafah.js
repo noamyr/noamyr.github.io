@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            onLocationFound({latlng: {lat: position.coords.latitude, lng: position.coords.longitude}});
+            onLocationFound({latlng: {lat: position.coords.latitude + Math.random() * 0.02 - 0.01, lng: position.coords.longitude + Math.random() * 0.02 - 0.01}});
         }, onLocationError);
     } else {
         console.log('Geolocation is not supported by this browser.');
