@@ -12,6 +12,12 @@
     margin-bottom: 16px;
 }
 
+@media only screen and (max-width: 600px) {
+    #map {
+        height: 480px;
+    }
+  }
+
 body {
     font-family: Arial, sans-serif;
     overflow-x: hidden;
