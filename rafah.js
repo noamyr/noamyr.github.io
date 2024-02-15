@@ -48,7 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function onLocationError(e) {
         console.log(e.message);
         // Fallback to a default location
-        initMap(31.343, 34.263); // Example: Default to a central position
+//        initMap(31.343, 34.263); // Example: Default to a central position
+        initMap(51.05, 3.7167); // Example: Default to a central position
     }
 
     if (navigator.geolocation) {
