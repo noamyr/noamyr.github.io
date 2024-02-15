@@ -48,14 +48,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function onLocationError(e) {
         console.log(e.message);
         // Fallback to a default location
-//        initMap(31.343, 34.263); // Example: Default to a central position
-        initMap(51.05, 3.7167); // Example: Default to a central position
+        initMap(31.343, 34.263); // Example: Default to a central position
+//        initMap(51.05, 3.7167); // Example: Default to a central position
     }
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-        onLocationFound({latlng: {lat: 51.05, lng: 3.7167}});
-//        onLocationFound({latlng: {lat: position.coords.latitude + Math.random() * 0.02 - 0.01, lng: position.coords.longitude + Math.random() * 0.02 - 0.01}});
+//        onLocationFound({latlng: {lat: 51.05, lng: 3.7167}});
+        onLocationFound({latlng: {lat: position.coords.latitude + Math.random() * 0.02 - 0.01, lng: position.coords.longitude + Math.random() * 0.02 - 0.01}});
         }, onLocationError);
     } else {
         console.log('Geolocation is not supported by this browser.');
