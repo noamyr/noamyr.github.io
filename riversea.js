@@ -18,13 +18,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     if (elementId === 'riverArt') {
                         lastRiverImageId = artwork.objectNumber;
+                        const imageElement = document.getElementById(elementId);
+                        imageElement.alt = `Painting depicting a river, sourced from the Rijksmuseum database. ${artwork.title} by ${artwork.principalOrFirstMaker}, ${artwork.longTitle}`;
+                        imageElement.src = artwork.webImage.url;
                     } else if (elementId === 'seaArt') {
                         lastSeaImageId = artwork.objectNumber;
+                        const imageElement = document.getElementById(elementId);
+                        imageElement.alt = `Painting depicting a sea, sourced from the Rijksmuseum database. ${artwork.title} by ${artwork.principalOrFirstMaker}, ${artwork.longTitle}`;
+                        imageElement.src = artwork.webImage.url;
                     }
-
-                    const imageElement = document.getElementById(elementId);
-                    imageElement.alt = `${artwork.title} by ${artwork.principalOrFirstMaker}, ${artwork.longTitle}`;
-                    imageElement.src = artwork.webImage.url;
                 } else {
                     document.getElementById(elementId).alt = 'No artwork found';
                 }
@@ -44,11 +46,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (intervalId) {
             clearInterval(intervalId);
             intervalId = null;
-            this.textContent = 'Resume Refreshing';
+            this.textContent = 'Resume Refreshing Images';
             this.style.backgroundColor = '#00A95C';
         } else {
             intervalId = setInterval(refreshArtworks, 5000);
-            this.textContent = 'Stop Refreshing';
+            this.textContent = 'Stop Refreshing Images';
             this.style.backgroundColor = '#E45D50';
         }
     });
@@ -56,6 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load initial artworks immediately, then set up automatic refresh
     refreshArtworks(); // Load images immediately on page load
     intervalId = setInterval(refreshArtworks, 5000);
-    refreshButton.textContent = 'Stop Refreshing';
+    refreshButton.textContent = 'Stop Refreshing Images';
     refreshButton.style.backgroundColor = '#E45D50';
 });
