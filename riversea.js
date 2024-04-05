@@ -47,11 +47,11 @@ document.addEventListener('DOMContentLoaded', function() {
             clearInterval(intervalId);
             intervalId = null;
             this.textContent = 'Resume Refreshing Images';
-            this.style.backgroundColor = '#00A95C';
+            this.style.backgroundColor = '#008145';
         } else {
             intervalId = setInterval(refreshArtworks, 5000);
             this.textContent = 'Stop Refreshing Images';
-            this.style.backgroundColor = '#E45D50';
+            this.style.backgroundColor = '#c24e44';
         }
     });
 
@@ -59,5 +59,5 @@ document.addEventListener('DOMContentLoaded', function() {
     refreshArtworks(); // Load images immediately on page load
     intervalId = setInterval(refreshArtworks, 5000);
     refreshButton.textContent = 'Stop Refreshing Images';
-    refreshButton.style.backgroundColor = '#E45D50';
+    refreshButton.style.backgroundColor = '#c24e44';
 });
