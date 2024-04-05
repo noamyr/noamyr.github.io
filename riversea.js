@@ -19,12 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (elementId === 'riverArt') {
                         lastRiverImageId = artwork.objectNumber;
                         const imageElement = document.getElementById(elementId);
-                        imageElement.alt = `Painting depicting a river, sourced from the Rijksmuseum database. ${artwork.title} by ${artwork.principalOrFirstMaker}, ${artwork.longTitle}`;
+                        imageElement.alt = `Painting depicting a river, sourced from the Rijksmuseum database. ${artwork.longTitle}`;
                         imageElement.src = artwork.webImage.url;
                     } else if (elementId === 'seaArt') {
                         lastSeaImageId = artwork.objectNumber;
                         const imageElement = document.getElementById(elementId);
-                        imageElement.alt = `Painting depicting a sea, sourced from the Rijksmuseum database. ${artwork.title} by ${artwork.principalOrFirstMaker}, ${artwork.longTitle}`;
+                        imageElement.alt = `Painting depicting a sea, sourced from the Rijksmuseum database. ${artwork.longTitle}`;
                         imageElement.src = artwork.webImage.url;
                     }
                 } else {
