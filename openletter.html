@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Manifesto and Signature Collection</title>
+    <meta charset="UTF-8">
+    <title>Signature Form</title>
 </head>
 <body>
-    <h1>Manifesto</h1>
-    <p>Your manifesto text goes here...</p>
-    <h2>Sign the Manifesto</h2>
+    <h1>Sign the Manifesto</h1>
     <form id="signatureForm" onsubmit="submitSignature(); return false;">
         <input type="text" id="name" placeholder="Enter your name" required>
+        <select id="status">
+            <option value="student">Student</option>
+            <option value="alumni">Alumni</option>
+            <option value="employee">Employee</option>
+            <option value="na">N/A</option>
+        </select>
         <button type="submit">Submit</button>
-    </form>    
+    </form>
     <h2>Signatures</h2>
     <div id="signatures"></div>
-
     <script src="openletter.js"></script>
 </body>
 </html>

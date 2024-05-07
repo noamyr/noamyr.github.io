@@ -1,36 +1,41 @@
 function submitSignature() {
     var name = document.getElementById('name').value;
+    var status = document.getElementById('status').value;
     var script = document.createElement('script');
-    script.src = `https://script.google.com/macros/s/AKfycbzjOBYfw75gODksCBLA_9nhVZ0VLcbPckil_4U-7-DRHH6Eso9PRH9VjtfxEY8HH0n6JA/exec?callback=processSubmitResponse&name=${encodeURIComponent(name)}`;
+    script.src = `https://script.google.com/macros/s/AKfycbxdjjHZ-UdigeX8QTzCW2fdCzBeYSFIR_4PLT0kxj2nmwLoo4hI76tkf3-zv4EfzlObRg/exec?callback=handleResponse&name=${encodeURIComponent(name)}&status=${encodeURIComponent(status)}`;
     document.head.appendChild(script);
-    document.head.removeChild(script); // Clean up script tag after insertion
+    document.head.removeChild(script); // Clean up script tag after execution
 }
 
-
-function processSubmitResponse(response) {
-    if (response && response.status === "success") {
-        fetchSignatures();
+function handleResponse(response) {
+    console.log('Server responded with:', response);
+    if (response.status === 'success') {
+        alert('Signature submitted successfully!');
+        fetchSignatures(); // Refresh the list of signatures
     } else {
-        console.error('Failed to submit signature, server responded with:', response);
-        alert("Failed to submit signature.");
+        alert('Failed to submit signature.');
+    }
+}
+
+function fetchSignatures() {
+    var script = document.createElement('script');
+    script.src = `https://script.google.com/macros/s/AKfycbxdjjHZ-UdigeX8QTzCW2fdCzBeYSFIR_4PLT0kxj2nmwLoo4hI76tkf3-zv4EfzlObRg/exec?callback=displaySignatures&operation=fetchSignatures`;
+    document.head.appendChild(script);
+    document.head.removeChild(script); // Clean up script tag after execution
+}
+
+function displaySignatures(data) {
+    console.log(data); // To see exactly what is being received
+    if (Array.isArray(data)) {
+        var signaturesDiv = document.getElementById('signatures');
+        signaturesDiv.innerHTML = '';  // Clear previous entries
+        data.forEach(function(entry) {
+            signaturesDiv.innerHTML += `<p>${entry.name} - ${entry.status}</p>`;
+        });
+    } else {
+        alert("Data received is not an array: " + JSON.stringify(data));
     }
 }
 
 
-function fetchSignatures() {
-    var script = document.createElement('script');
-    script.src = `https://script.google.com/macros/s/AKfycbzjOBYfw75gODksCBLA_9nhVZ0VLcbPckil_4U-7-DRHH6Eso9PRH9VjtfxEY8HH0n6JA/exec?callback=displaySignatures`;
-    document.head.appendChild(script);
-    document.head.removeChild(script);  // Clean up script tag after insertion
-}
-
-function displaySignatures(data) {
-    var signaturesDiv = document.getElementById('signatures');
-    signaturesDiv.innerHTML = '';  // Clear previous entries
-    data.forEach(function(sig) {
-        signaturesDiv.innerHTML += `<p>${sig.name}</p>`;
-    });
-}
-
-// Load signatures when the page loads
-window.onload = fetchSignatures;
+window.onload = fetchSignatures; // Fetch signatures when the page loads
