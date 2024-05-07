@@ -25,17 +25,17 @@ function fetchSignatures() {
 }
 
 function displaySignatures(data) {
-    console.log(data); // To see exactly what is being received
-    if (Array.isArray(data)) {
-        var signaturesDiv = document.getElementById('signatures');
-        signaturesDiv.innerHTML = '';  // Clear previous entries
-        data.forEach(function(entry) {
-            signaturesDiv.innerHTML += `<p>${entry.name} - ${entry.status}</p>`;
-        });
-    } else {
-        alert("Data received is not an array: " + JSON.stringify(data));
-    }
+    var signaturesDiv = document.getElementById('signatures');
+    var countElement = document.getElementById('count');
+    signaturesDiv.innerHTML = '';
+    data.forEach(function(entry) {
+        signaturesDiv.innerHTML += `<p>${entry.name} - ${entry.status}</p>`;
+    });
+    countElement.innerHTML = `Total Signatures: ${data.length}`;
 }
 
+function printPage() {
+    window.print();
+}
 
 window.onload = fetchSignatures; // Fetch signatures when the page loads

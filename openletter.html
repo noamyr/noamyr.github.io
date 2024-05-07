@@ -2,21 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Signature Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="etc_images/watermelon_1f349.png">
+    <link rel="stylesheet" href="openletter.css">
+    <title>An Open Letter to the Executive Board of Design Academy Eindhoven: A Call for Action and Accountability in Support of Palestine</title>
 </head>
 <body>
-    <h1>Sign the Manifesto</h1>
+    <h1>An Open Letter to the Executive Board of Design Academy Eindhoven: A Call for Action and Accountability in Support of Palestine</h1>
+    <button onclick="printPage()">Print this page, and mail it to:<br> Design Academy Eindhoven<br>PO Box 2125<br>5600 CC Eindhoven<br>The Netherlands</button>
+    <p>Dear Executive Board of Design Academy Eindhoven,</p>
+    <p>We hope this open letter finds you well.</p>
+    <p><a href="https://www.designacademy.nl/p/study-at-dae#:~:text=design%20as%20a%20global%20phenomenon%20with%20an%20increasing%20urgency%20to%20reform%20social%20structures%20and%20systems">“Design as a global phenomenon with an increasing urgency to reform social structures and systems,”</a> as discussed on the school’s website, is inseparable from the ongoing apartheid and genocide in Palestine, supported by designed infrastructures of oppression, segregation, and violence. We critically question the role of <a href="https://www.designacademy.nl/p/about-dae#:~:text=one%20of%20the%20world%E2%80%99s%20leading%20design%20schools">“one of the world’s leading design schools,”</a> especially at this crucial moment when movements for Palestine are being organized in various educational institutions.</p>
+    <p>As students, alumni, and employees of Design Academy Eindhoven, we request the following from the institution:</p>
+    <ul><li>Assess the complicity of the Design Academy and divest from Israel. Sever ties with institutions complicit in genocide, from the products in the vending machines to partner universities.</li>
+        <li>Mobilize the school’s cultural capital against the genocide. We are profoundly disappointed that the design industry, despite its slogans about its capacity to facilitate social change, remains silent on this urgent issue. For example, hardly any programs about Palestine could be found at Dutch Design Week or Milan Design Week. Utilize the school’s unique status in the scene—its well-known graduation shows and curated programs during design weeks—to help the design industry deviate from its apolitical path.</li>
+        <li>Provide a hospitable environment for student-organized resistance against the ongoing genocide. Prove that design education is more than just a neoliberal apparatus for producing star designers; it is an open environment where the contingencies of radical imagination still exist. This is also a gentle reminder for current students and alumni to organize collective grassroots actions using the school as a platform.</li>
+    </ul>
+    <p>What the history of design remembers us as will depend on what we do in this pressing moment of global history.</p>
+
+    <h2>Sign the Open Letter</h2>
     <form id="signatureForm" onsubmit="submitSignature(); return false;">
         <input type="text" id="name" placeholder="Enter your name" required>
         <select id="status">
-            <option value="student">Student</option>
-            <option value="alumni">Alumni</option>
-            <option value="employee">Employee</option>
-            <option value="na">N/A</option>
+            <option value="Student">Student</option>
+            <option value="Alumni">Alumni</option>
+            <option value="Employee">Employee</option>
+            <option value="Friend">Friend</option>
         </select>
         <button type="submit">Submit</button>
     </form>
-    <h2>Signatures</h2>
+    <h2 id="count">Total Signatures: 0</h2>
     <div id="signatures"></div>
     <script src="openletter.js"></script>
 </body>

@@ -1,12 +1,27 @@
-  *{
+*{
     margin: 0px;
     padding: 0px;
     border: 0px;
     box-sizing: border-box;
 }
 
+button {
+    background-color: #c24e44; 
+    color: white; 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    max-width: 280px;
+    margin-bottom: 16px;
+    padding: 4px 4px;
+}
+
+button:hover {
+    background-color: #C11F28; 
+}
+
 body {
-    font-family: roboto, sans-serif;
+    font-family: Arial, sans-serif;
     overflow-x: hidden;
     margin: 16px 16px;
     text-rendering: optimizeLegibility;
@@ -29,35 +44,21 @@ ul{
 }
 
 h1{
-    color: black;
-    font-size: 15vw;
-    font-weight: 500;
-    margin-bottom: 16px;
-    line-height: 1;
-}
-
-.subscripttitle{
-    margin-bottom: 16px;
-    max-width: 540px;
-    font-size: 16px;
-    font-weight: 400;
-    font-style: italic;
-}
-
-h2{
     color: #008145;
     font-size: 18px;
     margin-bottom: 16px;
-    margin-top: -16px;
+}
+
+h2{
+    color: #c24e44;
+    font-size: 18px;
+    margin-bottom: 16px;
 }
 
 img {
-    height: 20vw;
-    min-height: 150px;
-    width: auto;
-    vertical-align: baseline;
-    font-size: 16px;
-    font-weight: normal;
+    margin-bottom: 16px;
+    max-width: 100%;
+    height: auto;
 }
 
 a{
@@ -71,19 +72,3 @@ a:hover{
 .bold{
     color: #c24e44;
 }
-
-#toggleRefresh {
-    color: white;
-    font-size: 12px; 
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    margin-bottom: 16px;
-    padding: 2px 8px;
-}
-
-@media only screen and (min-width: 768px) {
-    h1{
-        font-size: 72px;
-    }
-  }
