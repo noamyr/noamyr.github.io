@@ -3,11 +3,9 @@ function submitSignature() {
     var script = document.createElement('script');
     script.src = `https://script.google.com/macros/s/AKfycbwjlASs9TtAvaVVqb8ZJZgOjvJIl1N_XTj-C4SZoAVCrGOZBpOHVTtvUfIMXpSqcZ1iIQ/exec?callback=processSubmitResponse&name=${encodeURIComponent(name)}`;
     document.head.appendChild(script);
-    // Remove script after load to clean up
-    script.onload = script.onerror = function() {
-        document.head.removeChild(script);
-    };
+    document.head.removeChild(script); // Clean up script tag after insertion
 }
+
 
 function processSubmitResponse(response) {
     if (response && response.status === "success") {
