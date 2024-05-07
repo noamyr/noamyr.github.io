@@ -1,32 +1,38 @@
 function submitSignature() {
     var name = document.getElementById('name').value;
-    fetch('https://script.google.com/macros/s/AKfycbwgqA4X-Y2VOMXm3SmRybG9VS1CFXPq6uLLmM_WHNp6GMoPw4cFiLz-e3_FidJrCFoRhA/exec', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({name: name})
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        fetchSignatures();
-    })
-    .catch(error => console.error('Error:', error));
+    var script = document.createElement('script');
+    script.src = `https://script.google.com/macros/s/AKfycbwjlASs9TtAvaVVqb8ZJZgOjvJIl1N_XTj-C4SZoAVCrGOZBpOHVTtvUfIMXpSqcZ1iIQ/exec?callback=processSubmitResponse&name=${encodeURIComponent(name)}`;
+    document.head.appendChild(script);
+    // Remove script after load to clean up
+    script.onload = script.onerror = function() {
+        document.head.removeChild(script);
+    };
 }
 
+function processSubmitResponse(response) {
+    if (response && response.status === "success") {
+        fetchSignatures();
+    } else {
+        console.error('Failed to submit signature, server responded with:', response);
+        alert("Failed to submit signature.");
+    }
+}
+
+
 function fetchSignatures() {
-    fetch('https://script.google.com/macros/s/AKfycbwgqA4X-Y2VOMXm3SmRybG9VS1CFXPq6uLLmM_WHNp6GMoPw4cFiLz-e3_FidJrCFoRhA/exec')
-    .then(response => response.json())
-    .then(data => {
-        var signaturesDiv = document.getElementById('signatures');
-        signaturesDiv.innerHTML = '';
-        data.forEach(function(sig) {
-            signaturesDiv.innerHTML += `<p>${sig.name}</p>`;
-        });
+    var script = document.createElement('script');
+    script.src = `https://script.google.com/macros/s/AKfycbwjlASs9TtAvaVVqb8ZJZgOjvJIl1N_XTj-C4SZoAVCrGOZBpOHVTtvUfIMXpSqcZ1iIQ/exec?callback=displaySignatures`;
+    document.head.appendChild(script);
+    document.head.removeChild(script);  // Clean up script tag after insertion
+}
+
+function displaySignatures(data) {
+    var signaturesDiv = document.getElementById('signatures');
+    signaturesDiv.innerHTML = '';  // Clear previous entries
+    data.forEach(function(sig) {
+        signaturesDiv.innerHTML += `<p>${sig.name}</p>`;
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    fetchSignatures();
-});
+// Load signatures when the page loads
+window.onload = fetchSignatures;
