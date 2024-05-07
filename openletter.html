@@ -7,10 +7,10 @@
     <h1>Manifesto</h1>
     <p>Your manifesto text goes here...</p>
     <h2>Sign the Manifesto</h2>
-    <form id="signatureForm">
-        <input type="text" id="name" placeholder="Enter your name">
-        <button type="button" onclick="submitSignature()">Submit</button>
-    </form>
+    <form id="signatureForm" onsubmit="submitSignature(); return false;">
+        <input type="text" id="name" placeholder="Enter your name" required>
+        <button type="submit">Submit</button>
+    </form>    
     <h2>Signatures</h2>
     <div id="signatures"></div>
 
