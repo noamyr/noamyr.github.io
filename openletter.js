@@ -1,7 +1,7 @@
 function submitSignature() {
     var name = document.getElementById('name').value;
     var script = document.createElement('script');
-    script.src = `https://script.google.com/macros/s/AKfycbzjIaP3IdZrbtgxnyZiGQwmoKGWVAcLGBTo81ejHcoEoj7uVXZPTL4yR8JLvy05wZuvbw/exec?callback=processSubmitResponse&name=${encodeURIComponent(name)}`;
+    script.src = `https://script.google.com/macros/s/AKfycbzjOBYfw75gODksCBLA_9nhVZ0VLcbPckil_4U-7-DRHH6Eso9PRH9VjtfxEY8HH0n6JA/exec?callback=processSubmitResponse&name=${encodeURIComponent(name)}`;
     document.head.appendChild(script);
     document.head.removeChild(script); // Clean up script tag after insertion
 }
@@ -19,7 +19,7 @@ function processSubmitResponse(response) {
 
 function fetchSignatures() {
     var script = document.createElement('script');
-    script.src = `https://script.google.com/macros/s/AKfycbzjIaP3IdZrbtgxnyZiGQwmoKGWVAcLGBTo81ejHcoEoj7uVXZPTL4yR8JLvy05wZuvbw/exec?callback=displaySignatures`;
+    script.src = `https://script.google.com/macros/s/AKfycbzjOBYfw75gODksCBLA_9nhVZ0VLcbPckil_4U-7-DRHH6Eso9PRH9VjtfxEY8HH0n6JA/exec?callback=displaySignatures`;
     document.head.appendChild(script);
     document.head.removeChild(script);  // Clean up script tag after insertion
 }
