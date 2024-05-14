@@ -1,4 +1,7 @@
 function submitSignature() {
+    var submitButton = document.querySelector('button[type="submit"]');
+    submitButton.disabled = true;  // Disable the submit button
+
     var name = document.getElementById('name').value;
     var status = document.getElementById('status').value;
     var script = document.createElement('script');
@@ -9,6 +12,9 @@ function submitSignature() {
 
 function handleResponse(response) {
     console.log('Server responded with:', response);
+    var submitButton = document.querySelector('button[type="submit"]');
+    submitButton.disabled = false;  // Re-enable the submit button
+
     if (response.status === 'success') {
         alert('Signature submitted successfully!');
         fetchSignatures(); // Refresh the list of signatures
