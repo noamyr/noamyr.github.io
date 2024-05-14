@@ -47,12 +47,37 @@ function printPage() {
 }
 
 function sendEmail() {
-    var subject = "An Open Letter to the Executive Board of Design Academy Eindhoven: A Call for Action and Accountability in Support of Palestine";
-    var body = "Dear Executive Board,%0D%0A%0D%0AHere is the update on the signature collection:%0D%0A%0D%0A";
-    var signatures = document.getElementById('signatures').innerText;
-    body += signatures.replace(/\n/g, '%0D%0A');
-    body += "%0D%0A%0D%0ABest regards,%0D%0A[Your Name]";
-    var mailtoLink = `mailto:executive@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    var subject = "Open Letter to the Executive Board of Design Academy Eindhoven";
+    var body = `Dear Executive Board of Design Academy Eindhoven,
+
+We hope this open letter finds you well.
+
+“Design as a global phenomenon with an increasing urgency to reform social structures and systems,” as discussed on the school’s website, is inseparable from the ongoing apartheid and genocide in Palestine, supported by designed infrastructures of oppression, segregation, and violence. We critically question the role of “one of the world’s leading design schools,” especially at this crucial moment when movements for Palestine are being organized in various educational institutions globally.
+
+As students, alumni, and employees of Design Academy Eindhoven, we request the following from the institution:
+
+1. Assess the complicity of itself and its collaborators and organize boycotts. Sever ties with institutions complicit in genocide, from the products in the vending machines to partner universities, including Bezalel Academy of Art and Design and Shenkar College.
+2. Support Palestinian students, designers and collaborators in and around the institution. Initiate ties with a Palestinian art school, Dar al-Kalima University.
+3. Support student-organized resistance against the ongoing genocide. While big institutions in the design industry have remained utterly silent, design students and young designers have been organizing various programs that are highly urgent and relevant. Elevator Radio was one of the only consistent voices about Palestine during the recent Milan Design Week. Complicating Everything, organized by Leigh Tukker and Pete Fung, will hold discussions about the occupation and settler colonialism in a carefully facilitated way within the school. Many DAE students are attending the student encampment taking place at TU/e to show solidarity. Support these initiatives and prove that design education is more than just a neoliberal apparatus for producing star designers, but an open environment where the contingencies of radical imagination still exist.
+4. Beyond cherishing these student-based initiatives, mobilize the school’s cultural capital more fundamentally against the genocide. Utilize the school’s unique status in the scene—its well-known graduation shows and curated programs during design weeks—to help the design industry deviate from its apolitical path. Do not consume activism as a gimmick or a token, but as an integral part of the school’s approach to design and its position in the global design scene, especially when it is urgently needed.
+
+What the history of design remembers us as will depend on what we do in this pressing moment of global history.
+
+Best regards,
+
+Signed by:
+`;
+
+    // Fetch and shuffle signatures
+    var signaturesDiv = document.getElementById('signatures');
+    var signaturesArray = signaturesDiv.innerText.trim().split('\n').filter(entry => entry.trim() !== "");
+    shuffleArray(signaturesArray);
+
+    // Add signatures and count to body
+    body += signaturesArray.join('\n');
+    body += `\n\nTotal Signatures: ${signaturesArray.length}`;
+
+    var mailtoLink = `mailto:info@designacademy.nl,ExecutiveBoard@designacademy.nl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailtoLink;
 }
 

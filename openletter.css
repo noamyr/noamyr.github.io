@@ -11,14 +11,22 @@ button {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    max-width: 280px;
+    max-width: 240px;
     margin-bottom: 16px;
+    margin-right: 16px;
     padding: 4px 4px;
 }
 
 button:hover {
     background-color: #C11F28; 
 }
+
+@media only screen and (max-width: 768px) {
+    button{
+        max-width: 96px;
+        margin-right: 8px;
+    }
+  }
 
 body {
     font-family: Arial, sans-serif;
