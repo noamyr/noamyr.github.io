@@ -27,6 +27,7 @@ function fetchSignatures() {
 function displaySignatures(data) {
     var signaturesDiv = document.getElementById('signatures');
     var countElement = document.getElementById('count');
+    shuffleArray(data); // Shuffle the data before displaying
     signaturesDiv.innerHTML = '';
     data.forEach(function(entry) {
         signaturesDiv.innerHTML += `<p>${entry.name} - ${entry.status}</p>`;
@@ -34,8 +35,25 @@ function displaySignatures(data) {
     countElement.innerHTML = `Total Signatures: ${data.length}`;
 }
 
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1)); // Random index from 0 to i
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+}
+
 function printPage() {
     window.print();
+}
+
+function sendEmail() {
+    var subject = "An Open Letter to the Executive Board of Design Academy Eindhoven: A Call for Action and Accountability in Support of Palestine";
+    var body = "Dear Executive Board,%0D%0A%0D%0AHere is the update on the signature collection:%0D%0A%0D%0A";
+    var signatures = document.getElementById('signatures').innerText;
+    body += signatures.replace(/\n/g, '%0D%0A');
+    body += "%0D%0A%0D%0ABest regards,%0D%0A[Your Name]";
+    var mailtoLink = `mailto:executive@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
 }
 
 window.onload = fetchSignatures; // Fetch signatures when the page loads
