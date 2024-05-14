@@ -1,4 +1,11 @@
+let isSubmitting = false;
+
 function submitSignature() {
+    if (isSubmitting) {
+        return;  // Prevent further submissions while a submission is in progress
+    }
+
+    isSubmitting = true;  // Set the flag to true to indicate a submission is in progress
     var submitButton = document.querySelector('button[type="submit"]');
     submitButton.disabled = true;  // Disable the submit button
 
@@ -14,6 +21,7 @@ function handleResponse(response) {
     console.log('Server responded with:', response);
     var submitButton = document.querySelector('button[type="submit"]');
     submitButton.disabled = false;  // Re-enable the submit button
+    isSubmitting = false;  // Reset the flag
 
     if (response.status === 'success') {
         alert('Signature submitted successfully!');
