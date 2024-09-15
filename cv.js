@@ -1,0 +1,76 @@
+// Your Google Sheets API key and Spreadsheet ID
+const apiKey = 'AIzaSyBhk_CsqKO2vUEpyreEoNGO2eEnkqFJ8gA'; // Replace with your actual API key
+const spreadsheetId = '1Y5JZ2PSF4RTpjv1o0BJArLmAvLrA0k1zpHXbvwZOaJ0'; // Your Spreadsheet ID
+
+// Define ranges for each section
+const ranges = {
+  education: 'Education!A1:E10', // Make sure the range includes the URL (first column)
+  lectures: 'Lectures&Workshops!A1:E100',
+  residencies: 'Residencies!A1:E100',
+  exhibitions: 'Exhibitions!A1:E100',
+  writings: 'Writings!A1:E100',
+  awards: 'Awards!A1:E100'
+  // Add more ranges if needed
+};
+
+// Fetch data for all sections on page load
+document.addEventListener('DOMContentLoaded', () => {
+  fetchData('education');
+  fetchData('lectures');
+  fetchData('residencies');
+  fetchData('exhibitions');
+  fetchData('writings');
+  fetchData('awards');
+});
+
+// Function to fetch data for a specific section
+function fetchData(section) {
+  const range = ranges[section];
+  fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`)
+    .then(response => response.json())
+    .then(data => {
+      displayData(section, data);
+    })
+    .catch(error => console.error('Error fetching data:', error));
+}
+
+// Function to display data in the correct table, making second column clickable based on URL in first column
+function displayData(section, data) {
+  const tableBody = document.getElementById(`${section}-body`);
+  tableBody.innerHTML = ''; // Clear existing rows
+
+  // Reverse the order of the rows
+  const reversedData = data.values.reverse();
+
+  reversedData.forEach(row => {
+    const tr = document.createElement('tr');
+    
+    // Create a cell for the second column (display text) and make it clickable if a URL exists
+    const displayTextCell = document.createElement('td');
+    const url = row[0]; // URL (first column in spreadsheet)
+    const displayText = row[1]; // Display text (second column in spreadsheet)
+
+    if (url) {
+      // If URL exists, make the display text clickable
+      const a = document.createElement('a');
+      a.href = url;           // Use the URL from the first column
+      a.textContent = displayText; // The clickable display text
+      a.target = '_blank';    // Open in new tab
+      displayTextCell.appendChild(a);
+    } else {
+      // If no URL, just show the display text as regular text
+      displayTextCell.textContent = displayText;
+    }
+    
+    tr.appendChild(displayTextCell);
+
+    // Append the other columns (Institution, Year, Notes)
+    tr.innerHTML += `
+      <td>${row[2]}</td> 
+      <td>${row[3]}</td>
+      <td>${row[4]}</td> 
+    `;
+
+    tableBody.appendChild(tr);
+  });
+}
