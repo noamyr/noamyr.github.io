@@ -119,22 +119,42 @@ Promise.all([
     
         // Get the height of the h1 element
         const h1Height = h1Element.offsetHeight + 16; // Add padding for visual spacing
+        
+        // Get the other section (opposite of the current one)
+        const otherSection = section.classList.contains('left') 
+            ? document.querySelector('.right') 
+            : document.querySelector('.left');
+        const otherScrollBox = otherSection.querySelector('.scroll-box');
+        const otherArrow = otherSection.querySelector('.arrow');
     
         // Check if it's mobile or desktop
         if (window.innerWidth <= 768) {
             // MOBILE: Use grid-template-rows for mobile layout
             if (isHidden) {
-                scrollBox.classList.remove('hidden-content'); // Expand if it was collapsed
-                sectionsWrapper.style.gridTemplateRows = 'auto auto'; // Reset to default row heights
+                // Expand the clicked section
+                scrollBox.classList.remove('hidden-content');
+                sectionsWrapper.style.gridTemplateRows = 'auto auto'; // Reset both rows
                 arrow.textContent = '▲'; // Change the arrow to indicate expansion
+    
+                // Enable the collapsing function of the other section and make its arrow visible
+                otherArrow.style.display = 'inline'; // Ensure the other section's arrow is visible
             } else {
-                scrollBox.classList.add('hidden-content'); // Collapse if it was expanded
-                if (section.classList.contains('left')) {
-                    sectionsWrapper.style.gridTemplateRows = `${h1Height}px auto`; // Collapse left section, right expands
+                // Collapse the clicked section, but only if the other section is currently expanded
+                if (!otherScrollBox.classList.contains('hidden-content')) {
+                    scrollBox.classList.add('hidden-content'); // Collapse the current section
+                    if (section.classList.contains('left')) {
+                        sectionsWrapper.style.gridTemplateRows = `${h1Height}px auto`; // Collapse left section, right expands
+                    } else {
+                        sectionsWrapper.style.gridTemplateRows = `auto ${h1Height}px`; // Collapse right section, left expands
+                    }
+                    arrow.textContent = '▼'; // Change the arrow to indicate collapse
+    
+                    // Disable the collapsing function of the other section and hide its arrow
+                    otherArrow.style.display = 'none'; // Hide the other section's arrow
                 } else {
-                    sectionsWrapper.style.gridTemplateRows = `auto ${h1Height}px`; // Collapse right section, left expands
+                    // Prevent collapsing both sections on mobile by keeping one section open
+                    arrow.style.display = 'none'; // Hide the arrow of the current section if it is the only expanded section
                 }
-                arrow.textContent = '▼'; // Change the arrow to indicate collapse
             }
         } else {
             // DESKTOP: Directly manipulate the height of individual sections

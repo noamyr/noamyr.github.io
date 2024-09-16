@@ -103,6 +103,7 @@ p{
 }
 
 .arrow {
+    vertical-align: middle; /* Center the arrow vertically */
     color: #FF665E;
     font-size: 12px; /* Adjust size */
 }
