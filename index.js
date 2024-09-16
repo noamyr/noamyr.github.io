@@ -109,3 +109,39 @@ Promise.all([
         });
     })
     .catch(error => console.error('Error fetching data:', error));
+
+    function toggleSection(h1Element) {
+        const section = h1Element.parentElement; // Get the clicked section (either .left or .right)
+        const scrollBox = section.querySelector('.scroll-box');
+        const isHidden = scrollBox.classList.contains('hidden-content'); // Check if the clicked section is collapsed
+        const allSectionsOnSameSide = document.querySelectorAll(`.${section.classList.contains('left') ? 'left' : 'right'}`); // Get sections on the same side
+    
+        // First, collapse all sections on the same side except the clicked one
+        allSectionsOnSameSide.forEach(sec => {
+            const secScrollBox = sec.querySelector('.scroll-box');
+            if (sec !== section) {
+                secScrollBox.classList.add('hidden-content'); // Collapse other sections on the same side
+            }
+        });
+    
+        // Toggle the clicked section
+        if (isHidden) {
+            scrollBox.classList.remove('hidden-content'); // Expand if it was collapsed
+        } else {
+            scrollBox.classList.add('hidden-content'); // Collapse if it was expanded
+        }
+    
+        // On mobile, adjust the layout based on the expanded/collapsed state
+        if (window.innerWidth <= 768) {
+            const anyExpanded = Array.from(allSectionsOnSameSide).some(sec => !sec.querySelector('.scroll-box').classList.contains('hidden-content'));
+    
+            // Remove the expanded class from all sections on the same side first
+            allSectionsOnSameSide.forEach(sec => sec.classList.remove('expanded'));
+    
+            // Add expanded class only to the clicked section if it's expanded
+            if (!isHidden) {
+                section.classList.add('expanded');
+            }
+        }
+    }
+    
