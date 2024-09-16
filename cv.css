@@ -25,7 +25,7 @@ a{
 
 h1 {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     text-align: left;
     margin: 0;
 }
@@ -33,7 +33,7 @@ h1 {
 h2{
     font-family: "Roboto Condensed", sans-serif;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
     margin-bottom: 8px;
 }
@@ -96,7 +96,7 @@ tbody tr:nth-child(even) {
 /* Style for sortable columns */
 th {
     cursor: pointer;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 /* Mobile: Single column layout */
