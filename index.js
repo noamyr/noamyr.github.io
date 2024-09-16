@@ -156,7 +156,8 @@ Promise.all([
                     arrow.style.display = 'none'; // Hide the arrow of the current section if it is the only expanded section
                 }
             }
-        } else {
+        } 
+        else {
             // DESKTOP: Directly manipulate the height of individual sections
             if (isHidden) {
                 scrollBox.classList.remove('hidden-content'); // Expand if it was collapsed

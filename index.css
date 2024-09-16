@@ -108,7 +108,6 @@ p{
     font-size: 12px; /* Adjust size */
 }
 
-
 /* Mobile-specific styles */
 @media (max-width: 768px) {
     .sections-wrapper {    
