@@ -101,6 +101,7 @@ p{
 /* CSS for hidden section content */
 .hidden-content {
     display: none; /* Hides the content when folded */
+    height: 0px;
 }
 
 /* CSS for the sections when unfolded */
