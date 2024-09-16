@@ -107,6 +107,6 @@ tbody tr:nth-child(even) {
     }
 
     .scroll-box {
-        max-height: 500px;
+        max-height: 50vh;
     }
 }
