@@ -114,33 +114,38 @@ Promise.all([
         const section = h1Element.parentElement; // Get the clicked section (either .left or .right)
         const scrollBox = section.querySelector('.scroll-box');
         const isHidden = scrollBox.classList.contains('hidden-content'); // Check if the clicked section is collapsed
-        const allSectionsOnSameSide = document.querySelectorAll(`.${section.classList.contains('left') ? 'left' : 'right'}`); // Get sections on the same side
+        const sectionsWrapper = document.querySelector('.sections-wrapper'); // Get the grid container
+        const arrow = h1Element.querySelector('.arrow'); // Get the arrow element
     
-        // First, collapse all sections on the same side except the clicked one
-        allSectionsOnSameSide.forEach(sec => {
-            const secScrollBox = sec.querySelector('.scroll-box');
-            if (sec !== section) {
-                secScrollBox.classList.add('hidden-content'); // Collapse other sections on the same side
-            }
-        });
+        // Get the height of the h1 element
+        const h1Height = h1Element.offsetHeight + 16; // Add padding for visual spacing
     
-        // Toggle the clicked section
-        if (isHidden) {
-            scrollBox.classList.remove('hidden-content'); // Expand if it was collapsed
-        } else {
-            scrollBox.classList.add('hidden-content'); // Collapse if it was expanded
-        }
-    
-        // On mobile, adjust the layout based on the expanded/collapsed state
+        // Check if it's mobile or desktop
         if (window.innerWidth <= 768) {
-            const anyExpanded = Array.from(allSectionsOnSameSide).some(sec => !sec.querySelector('.scroll-box').classList.contains('hidden-content'));
-    
-            // Remove the expanded class from all sections on the same side first
-            allSectionsOnSameSide.forEach(sec => sec.classList.remove('expanded'));
-    
-            // Add expanded class only to the clicked section if it's expanded
-            if (!isHidden) {
-                section.classList.add('expanded');
+            // MOBILE: Use grid-template-rows for mobile layout
+            if (isHidden) {
+                scrollBox.classList.remove('hidden-content'); // Expand if it was collapsed
+                sectionsWrapper.style.gridTemplateRows = 'auto auto'; // Reset to default row heights
+                arrow.textContent = '▲'; // Change the arrow to indicate expansion
+            } else {
+                scrollBox.classList.add('hidden-content'); // Collapse if it was expanded
+                if (section.classList.contains('left')) {
+                    sectionsWrapper.style.gridTemplateRows = `${h1Height}px auto`; // Collapse left section, right expands
+                } else {
+                    sectionsWrapper.style.gridTemplateRows = `auto ${h1Height}px`; // Collapse right section, left expands
+                }
+                arrow.textContent = '▼'; // Change the arrow to indicate collapse
+            }
+        } else {
+            // DESKTOP: Directly manipulate the height of individual sections
+            if (isHidden) {
+                scrollBox.classList.remove('hidden-content'); // Expand if it was collapsed
+                section.style.height = 'auto'; // Let the section grow naturally
+                arrow.textContent = '▲'; // Change the arrow to indicate expansion
+            } else {
+                scrollBox.classList.add('hidden-content'); // Collapse the section content
+                section.style.height = `${h1Height}px`; // Set the height of the section to the height of the h1 element
+                arrow.textContent = '▼'; // Change the arrow to indicate collapse
             }
         }
     }

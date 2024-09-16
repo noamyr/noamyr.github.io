@@ -86,7 +86,6 @@ p{
 .right {
     position: relative;
     width: 100%;
-    height: auto;
     box-sizing: border-box;
 }
 
@@ -101,13 +100,13 @@ p{
 /* CSS for hidden section content */
 .hidden-content {
     display: none; /* Hides the content when folded */
-    height: 0px;
 }
 
-/* CSS for the sections when unfolded */
-.expanded {
-    grid-template-rows: 1fr 3fr; /* One section smaller, the other takes more space */
+.arrow {
+    color: #FF665E;
+    font-size: 12px; /* Adjust size */
 }
+
 
 /* Mobile-specific styles */
 @media (max-width: 768px) {
