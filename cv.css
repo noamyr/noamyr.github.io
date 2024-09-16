@@ -87,13 +87,12 @@ table {
 
 th, td {
     padding-right: 8px;
-    padding-bottom: 8px;
+    padding-bottom: 16px;
 }
 
-tbody tr:nth-child(even) {
+td{
 }
 
-/* Style for sortable columns */
 th {
     cursor: pointer;
     font-weight: 500;
