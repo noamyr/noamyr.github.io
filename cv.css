@@ -92,6 +92,11 @@ th, td {
 tbody tr:nth-child(even) {
 }
 
+/* Style for sortable columns */
+th {
+    cursor: pointer;
+}
+
 /* Mobile: Single column layout */
 @media (max-width: 767px) {
     body {

@@ -74,3 +74,57 @@ function displayData(section, data) {
     tableBody.appendChild(tr);
   });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const tables = document.querySelectorAll('table');
+
+  tables.forEach((table) => {
+    const headers = table.querySelectorAll('th');
+    
+    headers.forEach((header, index) => {
+      header.addEventListener('click', () => {
+        const isAscending = header.classList.contains('asc');
+        sortTableByColumn(table, index, !isAscending);
+        updateSortClasses(header, headers, !isAscending);
+      });
+    });
+  });
+});
+
+/**
+ * Sorts a table by the specified column.
+ */
+function sortTableByColumn(table, columnIndex, asc = true) {
+  const tbody = table.querySelector('tbody');
+  const rowsArray = Array.from(tbody.querySelectorAll('tr'));
+  
+  const sortedRows = rowsArray.sort((a, b) => {
+    const aText = a.cells[columnIndex].textContent.trim();
+    const bText = b.cells[columnIndex].textContent.trim();
+    
+    const aVal = isNaN(aText) ? aText.toLowerCase() : parseFloat(aText);
+    const bVal = isNaN(bText) ? bText.toLowerCase() : parseFloat(bText);
+    
+    if (aVal > bVal) {
+      return asc ? 1 : -1;
+    } else if (aVal < bVal) {
+      return asc ? -1 : 1;
+    } else {
+      return 0;
+    }
+  });
+
+  // Clear existing rows and append the sorted ones
+  tbody.innerHTML = '';
+  sortedRows.forEach(row => tbody.appendChild(row));
+}
+
+/**
+ * Updates the sort classes for the column headers.
+ */
+function updateSortClasses(activeHeader, headers, asc) {
+  headers.forEach(header => {
+    header.classList.remove('asc', 'desc');
+  });
+  activeHeader.classList.add(asc ? 'asc' : 'desc');
+}
