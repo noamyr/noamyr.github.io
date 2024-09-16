@@ -33,14 +33,12 @@ fetch('https://data.techforpalestine.org/api/v3/infrastructure-damaged.json')
         const dataItem = document.createElement('div');
         dataItem.classList.add('data-item');
         dataItem.innerHTML = `
-        <p><strong>Civic Buildings Destroyed:</strong> ${mostRecentReport.civic_buildings.ext_destroyed || 'N/A'}</p>
-        <p><strong>Educational Buildings Destroyed:</strong> ${mostRecentReport.educational_buildings.ext_destroyed || 'N/A'}</p>
-        <p><strong>Educational Buildings Damaged:</strong> ${mostRecentReport.educational_buildings.ext_damaged || 'N/A'}</p>
-        <p><strong>Mosques Destroyed:</strong> ${mostRecentReport.places_of_worship.ext_mosques_destroyed || 'N/A'}</p>
-        <p><strong>Mosques Damaged:</strong> ${mostRecentReport.places_of_worship.ext_mosques_damaged || 'N/A'}</p>
-        <p><strong>Residential Buildings Destroyed:</strong> ${mostRecentReport.residential.ext_destroyed || 'N/A'}</p>
-        <h4>Report Date: ${mostRecentReport.report_date}</h4>
-
+        <p><bold>Civic Buildings Destroyed:</bold> ${mostRecentReport.civic_buildings.ext_destroyed || 'N/A'}</p>
+        <p><bold>Educational Buildings Destroyed:</bold> ${mostRecentReport.educational_buildings.ext_destroyed || 'N/A'}</p>
+        <p><bold>Educational Buildings Damaged:</bold> ${mostRecentReport.educational_buildings.ext_damaged || 'N/A'}</p>
+        <p><bold>Mosques Destroyed:</bold> ${mostRecentReport.places_of_worship.ext_mosques_destroyed || 'N/A'}</p>
+        <p><bold>Mosques Damaged:</bold> ${mostRecentReport.places_of_worship.ext_mosques_damaged || 'N/A'}</p>
+        <p><bold>Residential Buildings Destroyed:</bold> ${mostRecentReport.residential.ext_destroyed || 'N/A'}</p>
     `;
         infrastructureSection.appendChild(dataItem);
     })
@@ -67,10 +65,10 @@ Promise.all([
         websites.forEach(website => {
             combinedList.push({
                 type: 'website',
-                name: website.name || 'N/A',
-                description: website.description || 'N/A',
-                categories: website.categories.join(', ') || 'N/A',
-                url: website.url || 'N/A'
+                name: website.name,
+                description: website.description,
+                categories: website.categories.join(', '),
+                url: website.url
             });
         });
 
@@ -78,10 +76,10 @@ Promise.all([
         socialMedia.forEach(account => {
             combinedList.push({
                 type: 'social',
-                name: account.name || 'N/A',
-                description: account.description || 'N/A',
-                network: account.network || 'N/A',
-                url: account.url || 'N/A'
+                name: account.name,
+                description: account.description,
+                network: account.network,
+                url: account.url
             });
         });
 
@@ -97,15 +95,13 @@ Promise.all([
             dataItem.classList.add('data-item');
             if (item.type === 'website') {
                 dataItem.innerHTML = `
-                <p><strong>Website Name:</strong> <a href="${item.url}" target="_blank">${item.name}</a></p>
-                <p><strong>Description:</strong> ${item.description}</p>
-                <p><strong>Categories:</strong> ${item.categories}</p>
+                <p><a href="${item.url}" target="_blank">${item.name}</a> (website - ${item.categories})</p>
+                <p>${item.description}</p>
             `;
             } else if (item.type === 'social') {
                 dataItem.innerHTML = `
-                <p><strong>Account Name:</strong> <a href="${item.url}" target="_blank">${item.name}</a></p>
-                <p><strong>Platform:</strong> ${item.network}</p>
-                <p><strong>Description:</strong> ${item.description}</p>
+                <p><a href="${item.url}" target="_blank">${item.name}</a> (${item.network})</p>
+                <p>${item.description}</p>
             `;
             }
             combinedSection.appendChild(dataItem);
