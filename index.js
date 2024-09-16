@@ -6,15 +6,15 @@ fetch('https://data.techforpalestine.org/api/v3/summary.json')
         const gazaData = data.gaza;
         const westBankData = data.west_bank;
         summarySection.innerHTML = `
-        <h4>Gaza:</h4>
-        <p><strong>Total Killed:</strong> ${gazaData.killed.total || 'N/A'}</p>
-        <p><strong>Children Killed:</strong> ${gazaData.killed.children || 'N/A'}</p>
-        <p><strong>Women Killed:</strong> ${gazaData.killed.women || 'N/A'}</p>
-        <p><strong>Injured:</strong> ${gazaData.injured.total || 'N/A'}</p>
-        <h4>West Bank:</h4>
-        <p><strong>Total Killed:</strong> ${westBankData.killed.total || 'N/A'}</p>
-        <p><strong>Children Killed:</strong> ${westBankData.killed.children || 'N/A'}</p>
-        <p><strong>Injured:</strong> ${westBankData.injured.total || 'N/A'}</p>
+        <h2>Gaza Casualties:</h2>
+        <p>Total Killed: ${gazaData.killed.total || 'N/A'}<br>
+        Children Killed: ${gazaData.killed.children || 'N/A'}<br>
+        Women Killed: ${gazaData.killed.women || 'N/A'}<br>
+        Injured:${gazaData.injured.total || 'N/A'}</p>
+        <h2>West Bank Casualties:</h2>
+        <p>Total Killed: ${westBankData.killed.total || 'N/A'}<br>
+        Children Killed: ${westBankData.killed.children || 'N/A'}<br>
+        Injured: ${westBankData.injured.total || 'N/A'}</p>
     `;
     })
     .catch(error => console.error('Error fetching summary data:', error));
@@ -33,12 +33,13 @@ fetch('https://data.techforpalestine.org/api/v3/infrastructure-damaged.json')
         const dataItem = document.createElement('div');
         dataItem.classList.add('data-item');
         dataItem.innerHTML = `
-        <p><bold>Civic Buildings Destroyed:</bold> ${mostRecentReport.civic_buildings.ext_destroyed || 'N/A'}</p>
-        <p><bold>Educational Buildings Destroyed:</bold> ${mostRecentReport.educational_buildings.ext_destroyed || 'N/A'}</p>
-        <p><bold>Educational Buildings Damaged:</bold> ${mostRecentReport.educational_buildings.ext_damaged || 'N/A'}</p>
-        <p><bold>Mosques Destroyed:</bold> ${mostRecentReport.places_of_worship.ext_mosques_destroyed || 'N/A'}</p>
-        <p><bold>Mosques Damaged:</bold> ${mostRecentReport.places_of_worship.ext_mosques_damaged || 'N/A'}</p>
-        <p><bold>Residential Buildings Destroyed:</bold> ${mostRecentReport.residential.ext_destroyed || 'N/A'}</p>
+        <h2>Infrastructure Damage:</h2>
+        <p>Civic Buildings Destroyed: ${mostRecentReport.civic_buildings.ext_destroyed || 'N/A'}<br>
+        Educational Buildings Destroyed: ${mostRecentReport.educational_buildings.ext_destroyed || 'N/A'}<br>
+        Educational Buildings Damaged: ${mostRecentReport.educational_buildings.ext_damaged || 'N/A'}<br>
+        Mosques Destroyed: ${mostRecentReport.places_of_worship.ext_mosques_destroyed || 'N/A'}<br>
+        Mosques Damaged: ${mostRecentReport.places_of_worship.ext_mosques_damaged || 'N/A'}<br>
+        Residential Buildings Destroyed: ${mostRecentReport.residential.ext_destroyed || 'N/A'}</p>
     `;
         infrastructureSection.appendChild(dataItem);
     })
@@ -95,13 +96,13 @@ Promise.all([
             dataItem.classList.add('data-item');
             if (item.type === 'website') {
                 dataItem.innerHTML = `
-                <p><a href="${item.url}" target="_blank">${item.name}</a> (website - ${item.categories})</p>
-                <p>${item.description}</p>
+                <p><a href="${item.url}" target="_blank">${item.name}</a> (website - ${item.categories})<br>
+                ${item.description}</p>
             `;
             } else if (item.type === 'social') {
                 dataItem.innerHTML = `
-                <p><a href="${item.url}" target="_blank">${item.name}</a> (${item.network})</p>
-                <p>${item.description}</p>
+                <p><a href="${item.url}" target="_blank">${item.name}</a> (${item.network})<br>
+                ${item.description}</p>
             `;
             }
             combinedSection.appendChild(dataItem);

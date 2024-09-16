@@ -30,17 +30,19 @@ bold{
 h1 {
     font-size: 16px;
     font-weight: bold;
-    text-align: left;
     margin-bottom: 16px;
 }
 
 h2{
-    font-family: "Roboto Condensed", sans-serif;
     font-size: 16px;
-    font-weight: 500;
-    font-style: normal;
-    margin-bottom: 8px;
+    font-weight: bold;
 }
+
+
+p{
+    margin-bottom: 16px;
+}
+
 
 .section {
     display: flex;
@@ -83,10 +85,6 @@ h2{
 
 .right {
     background-color: rgb(255,235,235);
-}
-
-.data-section {
-    margin-bottom: 16px;
 }
 
 .data-item {
