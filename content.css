@@ -1,0 +1,92 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    box-sizing: border-box;
+    vertical-align: top;
+    text-align: left;
+}
+
+/* Base styles */
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;    
+    margin: 16px;
+    padding: 0;
+    height: 100vh;  /* Full viewport height */
+    overflow: hidden; /* Prevent body scrolling */
+    background-color: rgb(245,255,245);
+}
+
+img{
+    position: relative;
+    max-width: 100%;
+    margin-bottom: 16px;
+}
+
+a{
+    color: #00A95C;
+}
+
+bold{
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+h2{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+p{
+    margin-bottom: 16px;
+}
+
+
+.section {
+    overflow: hidden; /* Ensure section content doesn't break out */
+    overflow-y: auto;  /* Allow vertical scrolling */
+    height: 100%;  /* Set height to ensure scrolling */
+}
+
+/* Keep the structure divided */
+.sections-wrapper {    
+    top: 16px; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    position: absolute;
+    grid-template-columns: 1fr 1fr;  /* Three equal-width columns */
+    gap: 16px;
+    padding: 0 16px;
+}
+
+.left,
+.right {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    .sections-wrapper {    
+        display: grid;
+        position: absolute;
+        top: 0; 
+        left: 0;
+        right: 0;
+        bottom: 0;
+        grid-template-columns: auto;  
+        grid-template-rows: auto auto;  
+        gap: 16px;
+    }
+}
