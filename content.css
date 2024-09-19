@@ -128,6 +128,7 @@ th {
     .section {
         height: auto;
         margin-bottom: 16px;
+        padding-right: 0px;
     }
 
     .scroll-box {
