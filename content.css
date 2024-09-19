@@ -29,6 +29,11 @@ a{
     color: #00A95C;
 }
 
+.caption{
+    margin-top: -16px;
+    font-size: 12px;
+}
+
 bold{
     font-weight: 700;
 }
