@@ -29,6 +29,12 @@ a{
     color: #00A95C;
 }
 
+ol{
+    list-style-type: decimal;
+    margin-left: 16px;
+    margin-bottom: 16px;
+}
+
 .caption{
     margin-top: -16px;
     font-size: 12px;
