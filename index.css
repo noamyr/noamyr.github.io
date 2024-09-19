@@ -68,7 +68,7 @@ p{
 /* Keep the structure divided */
 .sections-wrapper {    
     display: grid;
-    position: absolute;
+    position: fixed;
     top: 16px; /* Start below the header */
     left: 0;
     right: 0;

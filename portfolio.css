@@ -63,7 +63,7 @@ p{
     right: 0;
     bottom: 0;
     display: grid;
-    position: absolute;
+    position: fixed;
     grid-template-columns: 1fr 1fr;  /* Three equal-width columns */
     gap: 16px;
     padding: 0 16px;
