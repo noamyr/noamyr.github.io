@@ -46,8 +46,15 @@ ol, ul{
     font-size: smaller;  
 }
 
-.bold{
+bold{
     font-weight: 700;
+}
+
+i{
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    vertical-align: baseline;
 }
 
 h1 {
