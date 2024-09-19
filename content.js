@@ -4,7 +4,7 @@ const spreadsheetId = '1Y5JZ2PSF4RTpjv1o0BJArLmAvLrA0k1zpHXbvwZOaJ0'; // Your Sp
 
 // Define ranges for each section
 const ranges = {
-  portfolio: 'Portfolio!A1:F100'
+  portfolio: 'Portfolio!A1:G100'
   // Add more ranges if needed
 };
 
@@ -29,42 +29,57 @@ function displayData(section, data) {
   const tableBody = document.getElementById(`${section}-body`);
   tableBody.innerHTML = ''; // Clear existing rows
 
-  // Reverse the order of the rows
+  // Reverse the order of the rows if needed
   const reversedData = data.values.reverse();
 
   reversedData.forEach(row => {
     const tr = document.createElement('tr');
     
-    // Create a cell for the second column (display text) and make it clickable if a URL exists
+    // Create a cell for the thumbnail image (new first column)
+    const thumbnailCell = document.createElement('td');
+    const imgUrl = row[0]; // Image URL (first column in the spreadsheet)
+
+    if (imgUrl) {
+      const img = document.createElement('img');
+      img.src = imgUrl;
+      img.alt = 'Thumbnail';
+      img.style.height = '64px'; // Set height to 64px
+      img.style.width = '64px'; // Set height to 64px
+      img.style.maxWidth = '64px'; // Set height to 64px
+      thumbnailCell.appendChild(img);
+    }
+    
+    tr.appendChild(thumbnailCell);
+
+    // Create a cell for the second column (Title) and make it clickable if a URL exists
     const displayTextCell = document.createElement('td');
-    const url = row[0]; // URL (first column in spreadsheet)
-    const displayText = row[1]; // Display text (second column in spreadsheet)
+    const url = row[1]; // URL (second column in the spreadsheet)
+    const displayText = row[2]; // Display text (third column in the spreadsheet)
 
     if (url) {
-      // If URL exists, make the display text clickable
       const a = document.createElement('a');
-      a.href = url;           // Use the URL from the first column
+      a.href = url;           // Use the URL from the second column
       a.textContent = displayText; // The clickable display text
-      a.target = '_blank';    // Open in new tab
+      a.target = '_blank';    // Open in a new tab
       displayTextCell.appendChild(a);
     } else {
-      // If no URL, just show the display text as regular text
       displayTextCell.textContent = displayText;
     }
     
     tr.appendChild(displayTextCell);
 
-    // Append the other columns (Institution, Year, Notes)
+    // Append the other columns (Category, Year, Notes, Funding)
     tr.innerHTML += `
-      <td>${row[2]}</td> 
-      <td>${row[3]}</td>
+      <td>${row[3]}</td> 
       <td>${row[4]}</td>
-      <td>${row[5]}</td> 
+      <td>${row[5]}</td>
+      <td>${row[6]}</td> 
     `;
 
     tableBody.appendChild(tr);
   });
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const tables = document.querySelectorAll('table');
