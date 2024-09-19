@@ -83,7 +83,7 @@ p{
 
 /* Scroll box (content inside sections that should scroll) */
 .scroll-box {
-    max-height: 30vh;
+    max-height: 50vh;
     overflow-y: auto;  /* Allow vertical scrolling */
     margin-bottom: 16px;
 }
@@ -130,6 +130,6 @@ th {
     }
 
     .scroll-box {
-        max-height: 30vh;
+        max-height: 50vh;
     }
 }
