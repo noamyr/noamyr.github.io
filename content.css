@@ -21,7 +21,7 @@ body {
 
 img, iframe{
     position: relative;
-    max-width: 100%;
+    max-width: 75%;
     margin-bottom: 16px;
 }
 
