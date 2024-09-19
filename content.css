@@ -59,6 +59,7 @@ p{
     overflow: hidden; /* Ensure section content doesn't break out */
     overflow-y: auto;  /* Allow vertical scrolling */
     height: 100%;  /* Set height to ensure scrolling */
+    padding-right: 16px;
 }
 
 /* Keep the structure divided */
