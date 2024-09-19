@@ -34,7 +34,13 @@ a{
     font-size: 12px;
 }
 
-bold{
+.footnote{
+    font-weight: 700;
+    vertical-align: super;
+    font-size: smaller;  
+}
+
+.bold{
     font-weight: 700;
 }
 
