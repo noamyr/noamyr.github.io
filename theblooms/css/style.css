@@ -218,6 +218,7 @@ input:checked + .slider:before {
 
   #caption {
     margin-top: 0;
+    font-size: 0.8rem;
   }
 
   #diagram {
