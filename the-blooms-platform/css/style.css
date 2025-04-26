@@ -191,11 +191,6 @@ input:checked + .slider:before {
 .link.next    { color: orange; stroke: orange; stroke-width: 2.5; }
 .link.visited { color: #6a5acd; stroke: #6a5acd; stroke-width: 1.5; }
 
-/* Improve legend text and circles visibility */
-.node-legend text {
-  font-weight: bold;
-}
-
 /* Mobile layout adjustments */
 @media (max-width: 768px) {
   #mainContent {
