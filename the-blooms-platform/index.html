@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Blooms</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="introOverlay" class="intro-overlay">
+  <div class="intro-content">
+    <h1>Welcome to the Narrative Diagram</h1>
+    <p>Click anywhere to begin the guided narration.</p>
+  </div>
+</div>
+
+<div id="container">
+  <div id="mainContent">
+    <div id="diagram">
+      <div id="modeControl">
+        <label class="switch">
+          <input type="checkbox" id="modeToggle" checked>
+          <span class="slider"></span>
+        </label>
+        <div id="modeLabel">Random Mode</div>
+      </div>
+    </div>
+
+    <div id="cinema" class="cinema-card">
+      <div class="cinema-image-wrapper">
+        <img id="cinemaImage" src="" alt="Cinema Image" />
+      </div>
+      <div id="caption">Subtitle Placeholder</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>

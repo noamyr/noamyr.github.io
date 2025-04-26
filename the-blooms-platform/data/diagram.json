@@ -1,0 +1,3265 @@
+{
+  "nodes": [
+    {
+      "id": "n19",
+      "caption": "The Azolla Event",
+      "labels": [
+        "Bloom"
+      ],
+      "properties": {
+        "Time": "49 million years ago",
+        "Location": "Arctic Ocean"
+      },
+      "category": "Bloom"
+    },
+    {
+      "id": "n20",
+      "caption": "Symbiotic Cyanobacterium",
+      "labels": [
+        "Human and Nonhuman Agencies"
+      ],
+      "category": "Human and Nonhuman Agencies"
+    },
+    {
+      "id": "n21",
+      "caption": "Increase Of Phospate In The Arctic Ocean",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n22",
+      "caption": "Azolla",
+      "labels": [
+        "Blooming Organisms"
+      ],
+      "category": "Blooming Organisms"
+    },
+    {
+      "id": "n23",
+      "caption": "Geo-Engineering Startup",
+      "labels": [
+        "Capital"
+      ],
+      "category": "Capital"
+    },
+    {
+      "id": "n24",
+      "caption": "Potential Of Drawback Of Atmospheric CO2 By Azolla",
+      "labels": [
+        "Speculation"
+      ],
+      "category": "Speculation"
+    },
+    {
+      "id": "n25",
+      "caption": "Petrochemical Industry",
+      "labels": [
+        "Capital"
+      ],
+      "category": "Capital"
+    },
+    {
+      "id": "n26",
+      "caption": "Potential Petrochemical Under The Arctic Ocean",
+      "labels": [
+        "Speculation"
+      ],
+      "category": "Speculation"
+    },
+    {
+      "id": "n27",
+      "caption": "Climate Crisis",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n28",
+      "caption": "Farmers In The Philippines",
+      "labels": [
+        "Human and Nonhuman Agencies"
+      ],
+      "category": "Human and Nonhuman Agencies"
+    },
+    {
+      "id": "n31",
+      "caption": "Sustainable Animal Feed From Azolla",
+      "labels": [
+        "Technology"
+      ],
+      "category": "Technology"
+    },
+    {
+      "id": "n32",
+      "caption": "Domesticated Animals",
+      "labels": [
+        "Human and Nonhuman Agencies"
+      ],
+      "category": "Human and Nonhuman Agencies"
+    },
+    {
+      "id": "n33",
+      "caption": "Hydrocarbon Extraction Technologies",
+      "labels": [
+        "Technology"
+      ],
+      "category": "Technology"
+    },
+    {
+      "id": "n34",
+      "caption": "Early Tulip Floriculture",
+      "labels": [
+        "Bloom"
+      ],
+      "properties": {
+        "Time": "10th century",
+        "Location": "Persia"
+      },
+      "category": "Bloom"
+    },
+    {
+      "id": "n44",
+      "caption": "Catastrophe Bonds",
+      "labels": [
+        "Capital"
+      ],
+      "category": "Capital"
+    },
+    {
+      "id": "n45",
+      "caption": "Speculation On Climate Catastrophes",
+      "labels": [
+        "Speculation"
+      ],
+      "category": "Speculation"
+    },
+    {
+      "id": "n46",
+      "caption": "Tulip",
+      "labels": [
+        "Blooming Organisms"
+      ],
+      "category": "Blooming Organisms"
+    },
+    {
+      "id": "n48",
+      "caption": "Dutch East India Company (VOC)",
+      "labels": [
+        "Capital"
+      ],
+      "category": "Capital"
+    },
+    {
+      "id": "n49",
+      "caption": "Insect Pollinators ",
+      "labels": [
+        "Human and Nonhuman Agencies"
+      ],
+      "category": "Human and Nonhuman Agencies"
+    },
+    {
+      "id": "n50",
+      "caption": "Tulip Mania",
+      "labels": [
+        "Speculation"
+      ],
+      "category": "Speculation"
+    },
+    {
+      "id": "n51",
+      "caption": "Dutch Tulip Monoculture",
+      "labels": [
+        "Bloom"
+      ],
+      "properties": {
+        "Location": "Netherlands"
+      },
+      "category": "Bloom"
+    },
+    {
+      "id": "n52",
+      "caption": "Early Cultivators Of Tulip In Persia",
+      "labels": [
+        "Human and Nonhuman Agencies"
+      ],
+      "category": "Human and Nonhuman Agencies"
+    },
+    {
+      "id": "n53",
+      "caption": "The Ottoman Empire",
+      "labels": [
+        "Capital"
+      ],
+      "category": "Capital"
+    },
+    {
+      "id": "n54",
+      "caption": "Futures Trading",
+      "labels": [
+        "Technology"
+      ],
+      "category": "Technology"
+    },
+    {
+      "id": "n55",
+      "caption": "SARS-CoV-2",
+      "labels": [
+        "Blooming Organisms"
+      ],
+      "category": "Blooming Organisms"
+    },
+    {
+      "id": "n56",
+      "caption": "The COVID-19 Pandemic",
+      "labels": [
+        "Bloom"
+      ],
+      "properties": {
+        "Location": "Worldwide",
+        "Time": "2019"
+      },
+      "category": "Bloom"
+    },
+    {
+      "id": "n57",
+      "caption": "Dutch Flower Group",
+      "labels": [
+        "Capital"
+      ],
+      "category": "Capital"
+    },
+    {
+      "id": "n58",
+      "caption": "Speculation On Future Tulip Demands",
+      "labels": [
+        "Speculation"
+      ],
+      "category": "Speculation"
+    },
+    {
+      "id": "n59",
+      "caption": "Aalsmeer Flower Auction",
+      "labels": [
+        "Technology"
+      ],
+      "category": "Technology"
+    },
+    {
+      "id": "n60",
+      "caption": "Logistical Infrastructure",
+      "labels": [
+        "Technology"
+      ],
+      "category": "Technology"
+    },
+    {
+      "id": "n61",
+      "caption": "Supply Chain Finance",
+      "labels": [
+        "Capital"
+      ],
+      "category": "Capital"
+    },
+    {
+      "id": "n62",
+      "caption": "COVID-19 Logistical Failure",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n63",
+      "caption": "Mass Dumping Of Tulips",
+      "labels": [
+        "Bloom"
+      ],
+      "properties": {
+        "Location": "Netherlands"
+      },
+      "category": "Bloom"
+    },
+    {
+      "id": "n68",
+      "caption": "Attention Catching Capacity Of Tulip",
+      "labels": [
+        "Value"
+      ],
+      "category": "Value"
+    },
+    {
+      "id": "n69",
+      "caption": "Flamboyant Petals",
+      "labels": [
+        "Technology"
+      ],
+      "category": "Technology"
+    },
+    {
+      "id": "n70",
+      "caption": "Attention Economy",
+      "labels": [
+        "Technology"
+      ],
+      "category": "Technology"
+    },
+    {
+      "id": "n71",
+      "caption": "Pollination Of Tulips",
+      "labels": [
+        "Labor"
+      ],
+      "category": "Labor"
+    },
+    {
+      "id": "n72",
+      "caption": "Cultivation Of Tulips",
+      "labels": [
+        "Labor"
+      ],
+      "category": "Labor"
+    },
+    {
+      "id": "n73",
+      "caption": "Carbon Sequestration Metabolism",
+      "labels": [
+        "Labor"
+      ],
+      "category": "Labor"
+    },
+    {
+      "id": "n75",
+      "caption": "Nitrogen Fixing Metabolism",
+      "labels": [
+        "Labor"
+      ],
+      "category": "Labor"
+    },
+    {
+      "id": "n79",
+      "caption": "The Second Azolla Event",
+      "labels": [
+        "Bloom"
+      ],
+      "properties": {
+        "Location": "The North Sea"
+      },
+      "category": "Bloom"
+    },
+    {
+      "id": "n80",
+      "caption": "Drawback Of Atmospheric CO2",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n81",
+      "caption": "Genetic Modification",
+      "labels": [
+        "Labor"
+      ],
+      "category": "Labor"
+    },
+    {
+      "id": "n82",
+      "caption": "CRISPR",
+      "labels": [
+        "Technology"
+      ],
+      "category": "Technology"
+    },
+    {
+      "id": "n83",
+      "caption": "BBB",
+      "labels": [
+        "Human and Nonhuman Agencies"
+      ],
+      "category": "Human and Nonhuman Agencies"
+    },
+    {
+      "id": "n84",
+      "caption": "Tulip As The New Symbol Of The Farmer's Movement",
+      "labels": [
+        "Speculation"
+      ],
+      "category": "Speculation"
+    },
+    {
+      "id": "n85",
+      "caption": "Azolla-Friendly Legislation",
+      "labels": [
+        "Technology"
+      ],
+      "category": "Technology"
+    },
+    {
+      "id": "n86",
+      "caption": "Deep-Time Azolla Futures Trading",
+      "labels": [
+        "Speculation"
+      ],
+      "category": "Speculation"
+    },
+    {
+      "id": "n87",
+      "caption": "Nitrogen Crisis",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n88",
+      "caption": "Mass Cultivation Of Azolla",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n89",
+      "caption": "Cool Down Of The Global Climate",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n90",
+      "caption": "Sudden Increase Of Phosphate In The North Sea",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n91",
+      "caption": "Permafrost Thawing",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n92",
+      "caption": "Phosphate Runoff",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n93",
+      "caption": "Primordial Azolla Spores",
+      "labels": [
+        "Human and Nonhuman Agencies"
+      ],
+      "category": "Human and Nonhuman Agencies"
+    },
+    {
+      "id": "n94",
+      "caption": "Dense Flammable Brush",
+      "labels": [
+        "Human and Nonhuman Agencies"
+      ],
+      "category": "Human and Nonhuman Agencies"
+    },
+    {
+      "id": "n95",
+      "caption": "Mass Wildfire",
+      "labels": [
+        "Bloom"
+      ],
+      "properties": {
+        "Location": "the Natura 2000 site"
+      },
+      "category": "Bloom"
+    },
+    {
+      "id": "n96",
+      "caption": "Burning Tulip Field",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n97",
+      "caption": "Nitrogen Runoff (NH3, NOx)",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n98",
+      "caption": "2015 Integrated Approach To Nitrogen (PAS)",
+      "labels": [
+        "Speculation"
+      ],
+      "category": "Speculation"
+    },
+    {
+      "id": "n99",
+      "caption": "Post-Fire Charred Soil",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n100",
+      "caption": "Reindeer Lichen Bloom",
+      "labels": [
+        "Bloom"
+      ],
+      "properties": {
+        "Location": "Destroyed tulip fields"
+      },
+      "category": "Bloom"
+    },
+    {
+      "id": "n101",
+      "caption": "Bioartists",
+      "labels": [
+        "Human and Nonhuman Agencies"
+      ],
+      "category": "Human and Nonhuman Agencies"
+    },
+    {
+      "id": "n102",
+      "caption": "Moss Exhibitions",
+      "labels": [
+        "Speculation"
+      ],
+      "category": "Speculation"
+    },
+    {
+      "id": "n103",
+      "caption": "Reindeer Lichen As The Symbol Of Green-Liberalism",
+      "labels": [
+        "Speculation"
+      ],
+      "category": "Speculation"
+    },
+    {
+      "id": "n104",
+      "caption": "Real Estate Developer",
+      "labels": [
+        "Capital"
+      ],
+      "category": "Capital"
+    },
+    {
+      "id": "n105",
+      "caption": "Green Architects",
+      "labels": [
+        "Human and Nonhuman Agencies"
+      ],
+      "category": "Human and Nonhuman Agencies"
+    },
+    {
+      "id": "n106",
+      "caption": "Scale Model Of The Green Housing Estate With Ornamental Reindeer Lichen",
+      "labels": [
+        "Speculation"
+      ],
+      "category": "Speculation"
+    },
+    {
+      "id": "n107",
+      "caption": "Fictitious Value Of The Green Housing Estate",
+      "labels": [
+        "Value"
+      ],
+      "category": "Value"
+    },
+    {
+      "id": "n108",
+      "caption": "Green Villa Town",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n109",
+      "caption": "Reindeer Lichen",
+      "labels": [
+        "Blooming Organisms"
+      ],
+      "category": "Blooming Organisms"
+    },
+    {
+      "id": "n110",
+      "caption": "The Polisario Front",
+      "labels": [
+        "Human and Nonhuman Agencies"
+      ],
+      "category": "Human and Nonhuman Agencies"
+    },
+    {
+      "id": "n111",
+      "caption": "The Bou Craa Mine",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n112",
+      "caption": "Phosphate As A Scarce Resource",
+      "labels": [
+        "Value"
+      ],
+      "category": "Value"
+    },
+    {
+      "id": "n113",
+      "caption": "100 Km Conveyor Belt",
+      "labels": [
+        "Technology"
+      ],
+      "category": "Technology"
+    },
+    {
+      "id": "n114",
+      "caption": "Dutch Agribusiness - Moroccan Government Alliance",
+      "labels": [
+        "Capital"
+      ],
+      "category": "Capital"
+    },
+    {
+      "id": "n115",
+      "caption": "Sahrawi Population",
+      "labels": [
+        "Human and Nonhuman Agencies"
+      ],
+      "category": "Human and Nonhuman Agencies"
+    },
+    {
+      "id": "n116",
+      "caption": "North Sea-Sahara Underwater Phosphate Conveyor",
+      "labels": [
+        "Technology"
+      ],
+      "category": "Technology"
+    },
+    {
+      "id": "n117",
+      "caption": "Mass Phosphate Leak",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "properties": {
+        "Location": "The North Sea"
+      },
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n118",
+      "caption": "The Canary Current ",
+      "labels": [
+        "Human and Nonhuman Agencies"
+      ],
+      "category": "Human and Nonhuman Agencies"
+    },
+    {
+      "id": "n119",
+      "caption": "Transportation Of Azolla To West Sahara",
+      "labels": [
+        "Labor"
+      ],
+      "category": "Labor"
+    },
+    {
+      "id": "n120",
+      "caption": "Sustainable Fertilizer From Azolla",
+      "labels": [
+        "Technology"
+      ],
+      "category": "Technology"
+    },
+    {
+      "id": "n121",
+      "caption": "Resource Sovereignty ",
+      "labels": [
+        "Value"
+      ],
+      "category": "Value"
+    },
+    {
+      "id": "n122",
+      "caption": "Azolla Bloom Logistical Failure",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n123",
+      "caption": "Phosphate Shipment Bottleneck",
+      "labels": [
+        "Environmental Conditions"
+      ],
+      "category": "Environmental Conditions"
+    },
+    {
+      "id": "n124",
+      "caption": "High Risk Associated With West Sahara Phosphate",
+      "labels": [
+        "Speculation"
+      ],
+      "category": "Speculation"
+    },
+    {
+      "id": "n125",
+      "caption": "Global Divestment From West Sahara Phosphate",
+      "labels": [
+        "Capital"
+      ],
+      "category": "Capital"
+    },
+    {
+      "id": "n126",
+      "caption": "Sabotage",
+      "labels": [
+        "Labor"
+      ],
+      "category": "Labor"
+    },
+    {
+      "id": "n127",
+      "caption": "Creation Of Bioart",
+      "labels": [
+        "Labor"
+      ],
+      "category": "Labor"
+    },
+    {
+      "id": "n128",
+      "caption": "Creation Of Architecture Planning And Models",
+      "labels": [
+        "Labor"
+      ],
+      "category": "Labor"
+    },
+    {
+      "id": "n129",
+      "caption": "\"Pioneering\" Growth",
+      "labels": [
+        "Labor"
+      ],
+      "category": "Labor"
+    },
+    {
+      "id": "n130",
+      "caption": "Symbolic Value Of Green Liberalism",
+      "labels": [
+        "Value"
+      ],
+      "category": "Value"
+    },
+    {
+      "id": "n131",
+      "caption": "Symbolic Value Of Agro-Conservatism",
+      "labels": [
+        "Value"
+      ],
+      "category": "Value"
+    },
+    {
+      "id": "n133",
+      "caption": "Post-Nitrogen Crisis Fertilizer Strategy",
+      "labels": [
+        "Technology"
+      ],
+      "properties": {
+        "definition": "A capital-driven reengineering of fertilizer systems in response to regulatory limits on nitrogen emissions, appropriating the rhetoric of sustainability while extending extractive infrastructure."
+      },
+      "category": "Technology"
+    },
+    {
+      "id": "n134",
+      "caption": "Green Agricultural Justification",
+      "labels": [
+        "Value"
+      ],
+      "category": "Value"
+    },
+    {
+      "id": "n136",
+      "caption": "Geopolitical Infrastructure Of Fertilizer",
+      "labels": [
+        "Capital"
+      ],
+      "category": "Capital"
+    },
+    {
+      "id": "n137",
+      "caption": "Extractive Appropriation Of Regenerative Practices",
+      "labels": [
+        "Speculation"
+      ],
+      "properties": {
+        "definition": "The abstraction and rebranding of regenerative, often Southern or Indigenous, agricultural practices by capitalist systems to serve industrial needs under the guise of sustainability."
+      },
+      "category": "Speculation"
+    },
+    {
+      "id": "n138",
+      "caption": "Speculative Aesthetics",
+      "labels": [
+        "Speculation"
+      ],
+      "properties": {
+        "definition": "The abstraction and rebranding of regenerative, often Southern or Indigenous, agricultural practices by capitalist systems to serve industrial needs under the guise of sustainability."
+      },
+      "category": "Speculation"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "n70",
+      "type": "The geo-engineering startup speculates on Azolla\u2019s prehistoric capacity to sequester atmospheric CO\u2082, proposing its engineered revival as a scalable carbon drawdown solution, thus converting ecological memory into a platform for climate finance and techno-fix investment.",
+      "fromId": "n23",
+      "toId": "n24"
+    },
+    {
+      "id": "n71",
+      "fromId": "n22",
+      "toId": "n19",
+      "type": "The Azolla Event refers to the massive reproductive proliferation of Azolla 49 million years ago, during which its unchecked growth across Arctic waters sequestered atmospheric carbon at a planetary scale, embedding the species into deep-time cycles of climate regulation and fossil accumulation."
+    },
+    {
+      "id": "n79",
+      "fromId": "n19",
+      "toId": "n26",
+      "type": "The Azolla Event, which occurred 49 million years ago, led petrochemical corporations to speculate that the organic remains of ancient Azolla blooms had contributed to fossil fuel deposits in the Arctic seabed\u2014driving extensive underwater exploration and justifying new frontiers of extractive infrastructure under the guise of deep-time resource recovery."
+    },
+    {
+      "id": "n80",
+      "type": "The petrochemical industry speculates on ancient carbon reserves formed by the First Azolla Event, treating the Arctic seabed as a deep-time fossil fuel archive whose biological origins are abstracted into extractive value.",
+      "fromId": "n25",
+      "toId": "n26"
+    },
+    {
+      "id": "n81",
+      "fromId": "n21",
+      "toId": "n19",
+      "type": "The surge of phosphate in the Arctic Ocean created nutrient-rich conditions that triggered the unfathomable reproduction of Azolla, catalyzing the Azolla Event as a planetary-scale bloom that transformed atmospheric composition through accelerated carbon sequestration."
+    },
+    {
+      "id": "n83",
+      "type": "The petrochemical industry functions as a core engine of capitalist accumulation by externalizing environmental costs through fossil fuel combustion, systematically embedding carbon emissions into production, infrastructure, and everyday life, thereby producing the climate crisis as a structural consequence of capital\u2019s metabolic relation with nature.",
+      "fromId": "n25",
+      "toId": "n27"
+    },
+    {
+      "id": "n84",
+      "fromId": "n27",
+      "toId": "n23",
+      "type": "Amid the intensifying climate crisis, geo-engineering startups emerge as capitalist instruments to defer systemic collapse by removing excess atmospheric carbon\u2014enabling the continuation of extractive operations under the guise of technocratic mitigation, rather than structural transformation."
+    },
+    {
+      "id": "n98",
+      "fromId": "n20",
+      "toId": "n31",
+      "type": "The symbiotic cyanobacterium living within Azolla enriches its protein content through nitrogen fixation, making the plant nutritionally viable as a high-protein, low-impact feedstock for sustainable animal agriculture."
+    },
+    {
+      "id": "n99",
+      "fromId": "n22",
+      "toId": "n31",
+      "type": "Azolla\u2019s high protein content and rapid vegetative reproduction make it an ideal ingredient for sustainable animal feed, offering a low-input, high-yield alternative to conventional feed crops within agro-industrial systems."
+    },
+    {
+      "id": "n100",
+      "fromId": "n28",
+      "toId": "n31",
+      "type": "Farmers in the Philippines cultivate Azolla to produce sustainable animal feed, integrating its nitrogen-fixing properties and rapid biomass production into localized, low-cost livestock systems that reduce dependency on imported or industrial feedstocks."
+    },
+    {
+      "id": "n101",
+      "fromId": "n31",
+      "toId": "n32",
+      "type": "Sustainable animal feed, including Azolla-based formulations, is consumed by domesticated animals as an alternative nutrient source that supports livestock production while minimizing the environmental impact of conventional feed systems."
+    },
+    {
+      "id": "n102",
+      "fromId": "n32",
+      "toId": "n27",
+      "type": "Industrial farming contributes to the climate crisis through its reliance on fossil-fuel-based inputs, large-scale monocultures, and methane-emitting livestock systems, making it a key driver of greenhouse gas emissions and ecological degradation."
+    },
+    {
+      "id": "n103",
+      "type": "Hydrocarbon extraction technologies contribute to the climate crisis by enabling the continuous release of fossil carbon into the atmosphere, expanding the scale and speed of emissions through mechanized extraction, and locking in infrastructural dependence on carbon-intensive energy systems.",
+      "fromId": "n33",
+      "toId": "n27"
+    },
+    {
+      "id": "n104",
+      "type": "The petrochemical industry drives the evolution of hydrocarbon extraction technologies by investing in increasingly invasive, high-efficiency systems designed to access harder-to-reach reserves, propelling a technological trajectory toward deeper, riskier, and more thermally disruptive operations that intensify ecological destabilization.",
+      "fromId": "n25",
+      "toId": "n33"
+    },
+    {
+      "id": "n118",
+      "type": "Speculation on climate catastrophes ironically contributes to the climate crisis by financializing disaster, channeling investment into risk markets rather than mitigation, and incentivizing the maintenance of instability as a profitable condition within capitalist accumulation.",
+      "fromId": "n45",
+      "toId": "n27"
+    },
+    {
+      "id": "n119",
+      "type": "Catbonds speculate on climate catastrophes by turning extreme weather events into financial instruments, allowing investors to profit from insurable losses while embedding climate volatility into the logic of capital circulation.",
+      "fromId": "n44",
+      "toId": "n45"
+    },
+    {
+      "id": "n120",
+      "type": "The climate crisis intensifies the vulnerability of farmers in the Philippines through more frequent typhoons, droughts, and unpredictable weather patterns, disrupting planting cycles, reducing crop yields, and deepening precarity within already marginalized agrarian economies.",
+      "fromId": "n27",
+      "toId": "n28"
+    },
+    {
+      "id": "n121",
+      "type": "The tulip\u2019s biological expressiveness\u2014its upright posture, fire-like petal shapes, and springtime bloom\u2014offered Persian cultivators a living form through which to express metaphysical ideas of transience, beauty, and cosmic order, making the flower indispensable to the aesthetic, literary, and botanical practices that defined this early cultural bloom.",
+      "fromId": "n46",
+      "toId": "n34"
+    },
+    {
+      "id": "n126",
+      "type": "The Dutch East India Company shaped Tulip Mania by cultivating a speculative financial culture through its innovations in joint-stock trading and futures contracts, creating a climate of market abstraction in which tulips\u2014like spices and shares\u2014were commodified, priced on anticipation, and traded as volatile symbols of value.",
+      "fromId": "n48",
+      "toId": "n50"
+    },
+    {
+      "id": "n127",
+      "type": "Early tulip cultivation in Persia laid the aesthetic and horticultural foundations for Tulip Mania by refining the flower\u2019s visual variability and symbolic resonance, which, once transposed into European trade and financial systems, enabled its abstraction into a speculative commodity driven by rarity, desire, and display.",
+      "fromId": "n34",
+      "toId": "n50"
+    },
+    {
+      "id": "n129",
+      "type": "The early cultivation of tulips in Persia shaped the tulip as a blooming species by embedding it within poetic, philosophical, and horticultural traditions, selecting for traits that emphasized harmony, color gradation, and seasonal rhythm\u2014thereby guiding its evolution toward a form attuned to human sensibility and symbolic value.",
+      "fromId": "n34",
+      "toId": "n46"
+    },
+    {
+      "id": "n130",
+      "type": "Tulip Mania ontologically transformed the tulip from a botanical organism into a financial entity, reclassifying its worth through contracts, futures, and aesthetic branding\u2014ushering it into a mode of existence defined by volatility, anticipation, and exchange.",
+      "fromId": "n50",
+      "toId": "n46"
+    },
+    {
+      "id": "n131",
+      "type": "The tulip\u2019s vivid variability, seasonal scarcity, and visual singularity enabled its abstraction into a speculative asset, making it uniquely suited to the early financial logics of rarity, desire, and symbolic value that catalyzed Tulip Mania.",
+      "fromId": "n46",
+      "toId": "n50"
+    },
+    {
+      "id": "n132",
+      "type": "The tulip\u2019s biological specificity\u2014its synchronized blooming, sensitivity to light and temperature, and capacity for aesthetic variation\u2014makes it ideal for industrial cultivation, enabling the Dutch tulip monoculture to optimize visual uniformity, seasonal timing, and market spectacle, while reinforcing the flower\u2019s role as both export commodity and cultural icon.",
+      "fromId": "n46",
+      "toId": "n51"
+    },
+    {
+      "id": "n134",
+      "type": "The Ottoman Empire fostered the tulip\u2019s development through dedicated cultivation, poetic codification, and garden aesthetics, selectively shaping its biological form and elevating it into a species of imperial refinement\u2014dependent on human attention, care, and symbolic labor.",
+      "fromId": "n53",
+      "toId": "n46"
+    },
+    {
+      "id": "n135",
+      "type": "The tulip, with its elegant structure, vivid variation, and fleeting bloom, became indispensable to the Ottoman Empire\u2019s cultural expression and political imagery, offering a botanical form through which imperial order, divine beauty, and temporal sensitivity were materially and symbolically rendered\u2014making the empire\u2019s aesthetic worldview dependent on the tulip\u2019s embodied presence.",
+      "fromId": "n46",
+      "toId": "n53"
+    },
+    {
+      "id": "n138",
+      "type": "Futures trading enabled Tulip Mania by abstracting tulips from their biological temporality and material form, transforming them into speculative contracts tradable on anticipated future value\u2014thus detaching price from use and fueling a financial bubble driven by symbolic desire and market anticipation.",
+      "fromId": "n54",
+      "toId": "n50"
+    },
+    {
+      "id": "n139",
+      "type": "Futures trading evolves into catbonds by extending the logic of speculative finance from commodity markets to climate risk, transforming uncertain future catastrophes into tradable securities that allow investors to bet on, hedge against, or profit from extreme weather events and ecological disruptions.",
+      "fromId": "n54",
+      "toId": "n44"
+    },
+    {
+      "id": "n140",
+      "type": "SARS-CoV-2, emerging through multispecies entanglements and ecological disruption, initiates the COVID-19 pandemic as a form of viral blooming\u2014an uncontrolled proliferation of genomic material across bodies, borders, and systems\u2014transforming biological replication into a global event that reorganizes labor, movement, attention, and infrastructure on a planetary scale.",
+      "fromId": "n55",
+      "toId": "n56"
+    },
+    {
+      "id": "n141",
+      "type": "The Dutch Flower Group creates the \u201cbloom\u201d of tulips by orchestrating a tightly controlled monoculture through capital investment, supply chain coordination, and aesthetic standardization\u2014transforming tulip cultivation into a synchronized, industrialized spectacle calibrated for global markets and seasonal demand.",
+      "fromId": "n57",
+      "toId": "n51"
+    },
+    {
+      "id": "n142",
+      "type": "The Dutch Flower Group redefines the tulip as an industrial object, selecting, breeding, and engineering it to meet the demands of monocultural scale, synchronized blooming, and global market aesthetics\u2014transforming the species from a seasonal plant into a programmable commodity.",
+      "fromId": "n57",
+      "toId": "n46"
+    },
+    {
+      "id": "n143",
+      "type": "The tulip, through its biological rhythms, visual appeal, and perishability, provides the foundational aesthetic and metabolic template around which the Dutch Flower Group has built its entire logistical, financial, and symbolic infrastructure\u2014shaping how floriculture is organized, valued, and imagined.",
+      "fromId": "n46",
+      "toId": "n57"
+    },
+    {
+      "id": "n144",
+      "type": "Tulip Mania, as an early incident of speculative abstraction, laid the cultural and financial foundations for the Dutch Flower Group by embedding floriculture within a legacy of volatility, desire, and market anticipation\u2014structuring the Group\u2019s business model around aesthetic commodification, price-sensitive logistics, and attention-driven demand cycles.",
+      "fromId": "n50",
+      "toId": "n57"
+    },
+    {
+      "id": "n145",
+      "fromId": "n57",
+      "toId": "n58",
+      "type": "The Dutch Flower Group speculates on the future value of tulips by analyzing market trends and projected demand, adjusting their annual production cycles accordingly to maximize profit within floricultural futures logistics."
+    },
+    {
+      "id": "n146",
+      "fromId": "n54",
+      "toId": "n58",
+      "type": "Futures trading provides the financial infrastructure through which speculation on future tulip demand is formalized, enabling market actors to hedge, manipulate, or capitalize on anticipated fluctuations in floricultural value."
+    },
+    {
+      "id": "n147",
+      "type": "The Aalsmeer Flower Auction centralizes market visibility and price-setting for tulips, making future demand speculation dependent on its real-time data flows, auction rhythms, and seasonal performance signals\u2014effectively turning the auction into a predictive infrastructure that shapes production decisions and financial forecasts across the floriculture economy.",
+      "fromId": "n59",
+      "toId": "n58"
+    },
+    {
+      "id": "n148",
+      "type": "The Aalsmeer Flower Auction reinforces the Dutch Flower Group\u2019s market dominance by providing real-time price signals, global buyer access, and logistical infrastructure that allow the company to fine-tune production, maximize turnover, and consolidate its position within floriculture\u2019s speculative economy.",
+      "fromId": "n59",
+      "toId": "n57"
+    },
+    {
+      "id": "n149",
+      "type": "The Dutch tulip monoculture, with its predictable cycles, standardized outputs, and sensitivity to timing, creates the material and temporal conditions for speculation on future tulip demand\u2014allowing traders and financiers to forecast prices, hedge risk, and treat the bloom as a tradable seasonal asset.",
+      "fromId": "n51",
+      "toId": "n58"
+    },
+    {
+      "id": "n150",
+      "type": "The Dutch tulip monoculture creates the material foundation for the Aalsmeer Flower Auction by supplying a steady, standardized, and high-volume flow of blooms, enabling the auction\u2019s scale, temporal precision, and reliance on synchronized pricing mechanisms that depend on monocultural regularity and predictability.",
+      "fromId": "n51",
+      "toId": "n59"
+    },
+    {
+      "id": "n151",
+      "type": "The climate crisis contributes to the emergence of pandemics like COVID-19 by accelerating habitat destruction, biodiversity loss, and human-wildlife contact, creating ecological conditions in which zoonotic diseases are more likely to spill over into human populations through disrupted ecosystems and intensified global connectivity.",
+      "fromId": "n27",
+      "toId": "n55"
+    },
+    {
+      "id": "n152",
+      "type": "The COVID-19 pandemic reshaped logistical infrastructure by exposing the fragility of just-in-time systems, prompting shifts toward regionalization, buffer stock strategies, and automation, while simultaneously accelerating the consolidation of global supply chains under platform capitalism and crisis-driven logistics.",
+      "fromId": "n56",
+      "toId": "n60"
+    },
+    {
+      "id": "n153",
+      "type": "The COVID-19 pandemic disrupted the cash flow assumptions underpinning supply chain finance, exposing its dependence on uninterrupted circulation; delayed shipments, contract defaults, and market volatility destabilized receivables-based lending, prompting a reevaluation of risk, liquidity, and resilience in global trade finance systems.",
+      "fromId": "n56",
+      "toId": "n61"
+    },
+    {
+      "id": "n154",
+      "type": "Logistical infrastructure enables the functioning of the Aalsmeer Flower Auction by integrating cold-chain transport, just-in-time delivery, and digital tracking systems, transforming the auction into a high-speed node where perishable value is realized through synchronized global circulation.",
+      "fromId": "n60",
+      "toId": "n59"
+    },
+    {
+      "id": "n155",
+      "type": "Supply chain finance shaped the Aalsmeer Flower Auction into a high-speed, high-volume marketplace by enabling floricultural capital to flow independently of immediate payment, optimizing cash cycles and encouraging just-in-time production that aligns perfectly with the auction\u2019s demand for synchronized logistics and rapid turnover.",
+      "fromId": "n61",
+      "toId": "n59"
+    },
+    {
+      "id": "n156",
+      "type": "Futures trading shapes the development of supply chain finance by introducing mechanisms to hedge against price volatility and delivery risk, enabling financiers to extend credit and liquidity based on anticipated cash flows secured by contractual future sales, thereby embedding speculation into the temporal structure of trade finance.",
+      "fromId": "n54",
+      "toId": "n61"
+    },
+    {
+      "id": "n157",
+      "type": "Futures trading contributes to the development of logistical infrastructure by demanding precision, predictability, and temporal discipline in the movement of goods, incentivizing the construction of supply chains capable of meeting contractually fixed delivery windows and stabilizing commodity flows for speculative financial planning.",
+      "fromId": "n54",
+      "toId": "n60"
+    },
+    {
+      "id": "n158",
+      "type": "Supply chain finance manipulates speculation on future tulip demand by front-loading capital based on projected sales, pressuring growers to produce according to financialized forecasts rather than actual market conditions\u2014thereby amplifying volatility, overproduction, and the cyclical inflation of value tied to seasonal attention peaks.",
+      "fromId": "n61",
+      "toId": "n58"
+    },
+    {
+      "id": "n159",
+      "type": "Supply chain finance shapes logistical infrastructure by demanding speed, predictability, and visibility, incentivizing the development of hyper-optimized systems\u2014like tracking technologies, automated warehousing, and just-in-time routing\u2014that prioritize capital circulation over resilience.",
+      "fromId": "n61",
+      "toId": "n60"
+    },
+    {
+      "id": "n160",
+      "type": "Logistical infrastructure enables and stabilizes supply chain finance by providing the physical and temporal architecture through which financial instruments\u2014such as receivables, credit terms, and inventory-based securities\u2014can be calculated, leveraged, and extracted as predictable flows of value.",
+      "fromId": "n60",
+      "toId": "n61"
+    },
+    {
+      "id": "n161",
+      "type": "Supply chain finance, with its reliance on tightly synchronized cash flows and just-in-time delivery, amplified the impact of COVID-19 disruptions by leaving no buffer for delays or breakdowns, turning minor interruptions into cascading logistical failures across global trade networks.",
+      "fromId": "n61",
+      "toId": "n62"
+    },
+    {
+      "id": "n162",
+      "type": "The hyper-optimized, centralized nature of global logistical infrastructure\u2014designed for efficiency over adaptability\u2014amplified systemic collapse during the COVID-19 pandemic, as the shutdown of key nodes paralyzed entire networks with no fallback mechanisms.",
+      "fromId": "n60",
+      "toId": "n62"
+    },
+    {
+      "id": "n163",
+      "type": "The COVID-19 pandemic marked a historically significant rupture in global logistics, exposing the brittleness of just-in-time systems, fragmenting supply routes, and revealing the systemic risks embedded in hyper-optimized, debt-leveraged circulation\u2014transforming logistical failure from a localized disruption into a planetary condition.",
+      "fromId": "n56",
+      "toId": "n62"
+    },
+    {
+      "id": "n164",
+      "type": "The collapse of transport infrastructure and export markets during the COVID-19 pandemic made it impossible to distribute millions of freshly cut tulips, leading to their mass dumping as a last-resort response to perishable overproduction and market paralysis.",
+      "fromId": "n62",
+      "toId": "n63"
+    },
+    {
+      "id": "n165",
+      "type": "Supply chain finance, with its reliance on credit-linked cash flows and just-in-time delivery, pressures producers to maintain continuous output regardless of market volatility; when distribution collapsed during the pandemic, this financialized tempo drove overproduction straight into mass dumping.",
+      "fromId": "n61",
+      "toId": "n63"
+    },
+    {
+      "id": "n166",
+      "type": "The rigidity of just-in-time logistical infrastructure\u2014designed for speed and efficiency rather than resilience\u2014left no buffer when the COVID-19 pandemic disrupted distribution, forcing the immediate disposal of surplus tulips that could neither be stored nor rerouted, turning supply chain precision into waste production.",
+      "fromId": "n60",
+      "toId": "n63"
+    },
+    {
+      "id": "n168",
+      "fromId": "n59",
+      "toId": "n63",
+      "type": "The Alsmeer Flower Auction becomes the origin point of a mass dumping event, as unsold or logistically blocked tulips are discarded en masse\u2014revealing the fragility of just-in-time floriculture under conditions of market or infrastructural failure."
+    },
+    {
+      "id": "n169",
+      "type": "The logistical failure caused by the COVID-19 pandemic disrupted the temporal precision of tulip exports, leading growers to modify monocultural practices by experimenting with bloom timing, storage technologies, and domestic market redirection\u2014transformations that paradoxically reinforced monoculture\u2019s dependence on speculative demand while masking its systemic fragility under the language of resilience.",
+      "fromId": "n62",
+      "toId": "n51"
+    },
+    {
+      "id": "n170",
+      "type": "The COVID-19-induced logistical collapse destabilized confidence in the predictability of tulip exports, prompting erratic speculation on future demand as market actors grappled with perishability, shifting consumer rituals, and the fragility of attention-based valuation\u2014recasting the tulip as both risky asset and nostalgic commodity.",
+      "fromId": "n62",
+      "toId": "n58"
+    },
+    {
+      "id": "n171",
+      "type": "The COVID-19 logistical failure exposed the Dutch Flower Group\u2019s structural dependency on global just-in-time distribution, forcing sudden operational shutdowns, revenue collapse, and internal crisis management, revealing the corporation\u2019s vulnerability to disruptions in speculative perishable markets.",
+      "fromId": "n62",
+      "toId": "n57"
+    },
+    {
+      "id": "n172",
+      "fromId": "n51",
+      "toId": "n63",
+      "type": "Tulips cultivated through the Dutch tulip monoculture are discarded on a massive scale when market demand collapses, exposing the structural vulnerability of monocultural overproduction to shifts in global consumption and logistical breakdown."
+    },
+    {
+      "id": "n173",
+      "type": "The biological traits of the tulip\u2014its perishability, synchronized blooming, and dependence on precise climatic and logistical conditions\u2014made it especially vulnerable to disruption; these species-specific temporalities amplified the scale and urgency of dumping when infrastructure failed, turning the flower\u2019s biology into a driver of waste.",
+      "fromId": "n46",
+      "toId": "n63"
+    },
+    {
+      "id": "n174",
+      "fromId": "n63",
+      "toId": "n58",
+      "type": "The mass dumping of tulips disrupts market confidence and historical pricing patterns, prompting more volatile and risk-averse speculation on future tulip demand within floricultural futures trading."
+    },
+    {
+      "id": "n191",
+      "type": "The Dutch East India Company pioneered early forms of supply chain finance by introducing joint-stock investment, forward contracts, and credit-backed trade, transforming long-distance shipping into a financialized enterprise where time, risk, and cargo were abstracted into instruments of speculation and capital accumulation.",
+      "fromId": "n48",
+      "toId": "n61"
+    },
+    {
+      "id": "n192",
+      "type": "The Dutch East India Company institutionalized early logistical technologies by developing standardized shipping routes, warehousing systems, and accounting methods, embedding extractive trade into scalable infrastructures that laid the foundation for modern global logistics and capitalist circulation.",
+      "fromId": "n48",
+      "toId": "n60"
+    },
+    {
+      "id": "n193",
+      "type": "As a biological organism, the tulip provides the genetic, metabolic, and reproductive substrate through which the flamboyant petal can emerge\u2014its physiology producing the pigments, cellular structures, and bloom temporality that make petal flamboyance possible as a visual and functional interface.",
+      "fromId": "n46",
+      "toId": "n69"
+    },
+    {
+      "id": "n194",
+      "type": "The flamboyant petal retroactively redefines the tulip species by becoming the dominant vector through which its worth is perceived, selected, and circulated\u2014transforming the species\u2019 evolutionary future through aesthetic feedback from human economies.",
+      "fromId": "n69",
+      "toId": "n46"
+    },
+    {
+      "id": "n195",
+      "type": "The tulip\u2019s capacity to arrest attention\u2014through its symmetry, vivid coloration, and ephemeral bloom\u2014feeds the attention economy by providing an ideal object for circulation: instantly legible, emotionally resonant, and easily commodified across media, marketing, and speculation.",
+      "fromId": "n68",
+      "toId": "n70"
+    },
+    {
+      "id": "n196",
+      "type": "The attention economy amplifies and instrumentalizes the tulip\u2019s aesthetic properties by selecting, reproducing, and framing them for maximum visibility\u2014transforming its biological charisma into a curated spectacle optimized for virality, affective engagement, and financial return.",
+      "fromId": "n70",
+      "toId": "n68"
+    },
+    {
+      "id": "n197",
+      "type": "The tulip\u2019s capacity to capture attention drives speculative breeding practices that enhance petal flamboyance, treating the petal itself as a modifiable interface engineered to sustain visibility, market fascination, and symbolic inflation across cycles of cultural and economic speculation.",
+      "fromId": "n68",
+      "toId": "n69"
+    },
+    {
+      "id": "n198",
+      "type": "In the Ottoman Empire, the tulip\u2019s attention-catching capacity was cultivated through courtly aesthetics and poetic symbolism, where the flower\u2019s elegance became a vehicle of spiritual refinement and imperial taste, embedding it in visual and affective economies long before commodified spectacle.",
+      "fromId": "n53",
+      "toId": "n68"
+    },
+    {
+      "id": "n199",
+      "type": "For insect pollinators, the tulip\u2019s attention-catching traits function biologically\u2014as ecological signals evolved to attract reproductive agents, grounding the flower\u2019s visual properties in nonhuman perceptual regimes prior to human speculation.",
+      "fromId": "n49",
+      "toId": "n68"
+    },
+    {
+      "id": "n200",
+      "type": "In early Persian cultivation, the tulip\u2019s visual allure was embedded in poetic and cosmological systems, where attention was not commodified but contemplative\u2014orienting care, storytelling, and symbolic value around the flower\u2019s fleeting presence.",
+      "fromId": "n52",
+      "toId": "n68"
+    },
+    {
+      "id": "n201",
+      "type": "Through their interaction with tulips, insect pollinators evolve foraging patterns, sensory capacities, and ecological dependencies\u2014becoming attuned to floral rhythms as part of a mutual metabolic infrastructure.",
+      "fromId": "n49",
+      "toId": "n71"
+    },
+    {
+      "id": "n202",
+      "type": "Pollination labor, performed through multispecies attention and touch, enables the tulip\u2019s reproduction and biodiversity, shaping its evolutionary trajectory in ways that foreground visual appeal and biological responsiveness.",
+      "fromId": "n71",
+      "toId": "n46"
+    },
+    {
+      "id": "n203",
+      "type": "The tulip\u2019s vivid coloration, petal architecture, and seasonal timing are evolved invitations to insect pollinators, directing their movement and foraging behavior toward reproductive labor.",
+      "fromId": "n46",
+      "toId": "n71"
+    },
+    {
+      "id": "n204",
+      "type": "For early cultivators, tulip cultivation was a practice of perceptual attunement and symbolic refinement, embedding horticultural care within poetic, spiritual, and seasonal rhythms that shaped both the flower\u2019s form and the cultivator\u2019s relationship to land and meaning.",
+      "fromId": "n52",
+      "toId": "n72"
+    },
+    {
+      "id": "n205",
+      "type": "The tulip\u2019s biological specificity\u2014its seasonal rhythm, sensitivity to climate, and aesthetic variability\u2014necessitates deliberate human intervention, giving rise to cultivation labor as an organized response to its demands for care, timing, and visual refinement.",
+      "fromId": "n46",
+      "toId": "n72"
+    },
+    {
+      "id": "n206",
+      "type": "Cultivation labor shapes the tulip\u2019s ontological form by selectively enhancing traits such as petal flamboyance, bloom synchronization, and resilience, transforming it from a wild organism into a cultivated species attuned to symbolic, aesthetic, or market-driven regimes.",
+      "fromId": "n72",
+      "toId": "n46"
+    },
+    {
+      "id": "n208",
+      "type": "The speculative frenzy drove selective breeding toward more flamboyant and variegated petals, treating the flower\u2019s appearance as a technological surface to be optimized for visual rarity, aesthetic uniqueness, and pricing volatility.",
+      "fromId": "n50",
+      "toId": "n69"
+    },
+    {
+      "id": "n209",
+      "type": "Flamboyant petals act as multispecies communication devices, evolved through co-dependence with insect pollinators whose foraging behaviors shaped the tulip\u2019s form and coloration long before its visuality was monetized in human economies.",
+      "fromId": "n49",
+      "toId": "n69"
+    },
+    {
+      "id": "n210",
+      "type": "Persian cultivators selectively enhanced tulip traits not for market spectacle but for harmony with metaphysical aesthetics, shaping flamboyant petals as sensory expressions of divine geometry rather than economic surplus.",
+      "fromId": "n52",
+      "toId": "n69"
+    },
+    {
+      "id": "n211",
+      "type": "The imperial patronage of tulip gardens and varietal experimentation in the Ottoman Empire contributed to early practices of petal intensification, treating flamboyance as a form of visual diplomacy and horticultural prestige rather than commercial utility.",
+      "fromId": "n53",
+      "toId": "n69"
+    },
+    {
+      "id": "n212",
+      "type": "For the Dutch Flower Group, cultivation labor is industrialized and instrumentalized\u2014distributed across automated greenhouses, labor hierarchies, and data-driven cycles\u2014reorganizing floral life into predictable units of value calibrated for global export and speculative demand.",
+      "fromId": "n57",
+      "toId": "n72"
+    },
+    {
+      "id": "n213",
+      "type": "The Dutch Flower Group intervenes in pollination labor by replacing or bypassing insect-mediated processes through controlled breeding, artificial pollination, and greenhouse isolation\u2014transforming pollination from a multispecies ecological interaction into a standardized reproductive task governed by efficiency, predictability, and intellectual property regimes.",
+      "fromId": "n57",
+      "toId": "n71"
+    },
+    {
+      "id": "n214",
+      "type": "The Dutch Flower Group industrializes the tulip\u2019s attention-catching capacity by embedding it into marketing, auction platforms, and seasonal media cycles\u2014turning spectacle into a measurable asset that drives consumer behavior and investor confidence.",
+      "fromId": "n57",
+      "toId": "n68"
+    },
+    {
+      "id": "n215",
+      "type": "Tulip Mania amplified the tulip\u2019s attention-catching capacity by embedding its visual traits within financial narratives of rarity, desire, and excess\u2014transforming its bloom into a signal of speculative intensity, where attention itself became a medium of value creation.",
+      "fromId": "n50",
+      "toId": "n68"
+    },
+    {
+      "id": "n216",
+      "type": "The Dutch East India Company instrumentalized the tulip\u2019s visual appeal within a speculative trade culture, amplifying its attention-catching properties through catalogues, paintings, and pricing data\u2014translating desire into a financialized visual commodity.",
+      "fromId": "n48",
+      "toId": "n68"
+    },
+    {
+      "id": "n217",
+      "type": "The Dutch East India Company shaped the tulip as a species by integrating it into global trade and speculative finance, driving selective breeding for rarity and visual excess that transformed it from a regional plant into a market-optimized, aestheticized commodity-species.",
+      "fromId": "n48",
+      "toId": "n46"
+    },
+    {
+      "id": "n218",
+      "fromId": "n22",
+      "toId": "n73",
+      "type": "Through photosynthesis, Azolla fixes atmospheric carbon and congeals it into vegetal mass, performing a metabolic conversion in which gaseous matter is condensed into organic form\u2014accumulated, stored, and rendered materially present through its rapid growth."
+    },
+    {
+      "id": "n222",
+      "fromId": "n20",
+      "toId": "n75",
+      "type": "The symbiotic cyanobacterium within Azolla fixes atmospheric nitrogen by converting inert N\u2082 into biologically usable compounds, congealing atmospheric abundance into fertile substance through metabolic labor that nourishes both the plant and its surrounding ecology."
+    },
+    {
+      "id": "n223",
+      "fromId": "n75",
+      "toId": "n19",
+      "type": "The nitrogen-fixing labor of Azolla\u2019s symbiotic cyanobacterium enabled rapid, self-sustaining reproduction during the First Azolla Event by supplying a steady internal source of bioavailable nitrogen, allowing the plant to proliferate across nutrient-poor Arctic waters and drive planetary-scale carbon sequestration."
+    },
+    {
+      "id": "n224",
+      "fromId": "n75",
+      "toId": "n22",
+      "type": "Azolla relies on the nitrogen fixed by its symbiotic cyanobacterium to sustain its rapid vegetative growth, internalizing external atmospheric inputs through microbial labor to fuel its dense biomass production in otherwise nitrogen-deficient environments."
+    },
+    {
+      "id": "n241",
+      "fromId": "n73",
+      "toId": "n80",
+      "type": "The carbon sequestration labor of Azolla lowers atmospheric CO\u2082 levels by capturing gaseous carbon through photosynthesis and congealing it into biomass, gradually subtracting carbon from the atmosphere and embedding it in organic matter and sedimentary layers."
+    },
+    {
+      "id": "n243",
+      "fromId": "n80",
+      "toId": "n24",
+      "type": "The potentiality of Azolla\u2019s capacity to draw down atmospheric CO\u2082 becomes a site of financial speculation, as various economic actors project its metabolic labor into future value scenarios, transforming ecological function into a tradable promise of planetary repair."
+    },
+    {
+      "id": "n244",
+      "type": "The Dutch Flower Group speculates on Azolla\u2019s carbon drawdown potential as a way to offset the emissions of industrial floriculture, framing the plant\u2019s ancient biocapacity as a marketable solution within carbon credit schemes and green branding strategies.",
+      "fromId": "n57",
+      "toId": "n24"
+    },
+    {
+      "id": "n245",
+      "type": "The Dutch Flower Group supports the geo-engineering startup to offset the environmental costs of industrial floriculture\u2014particularly phosphate runoff and carbon emissions\u2014by investing in speculative Azolla-based carbon drawdown, thus transforming ecological guilt into marketable sustainability capital.",
+      "fromId": "n57",
+      "toId": "n23"
+    },
+    {
+      "id": "n246",
+      "fromId": "n24",
+      "toId": "n82",
+      "type": "The speculative potential of Azolla\u2019s carbon drawdown capacity drives investment into CRISPR-based genetic modification, aiming to enhance its metabolic efficiency and scalability for climate intervention, thereby transforming a living organism into an engineered asset of ecological utility."
+    },
+    {
+      "id": "n247",
+      "fromId": "n24",
+      "toId": "n81",
+      "type": "The perceived potential of Azolla to draw down atmospheric CO\u2082 attracts investment into its genetic modification, as actors seek to optimize its growth rate, carbon sequestration efficiency, and environmental adaptability\u2014reconfiguring the plant as a bioengineered tool for large-scale climate mitigation."
+    },
+    {
+      "id": "n248",
+      "fromId": "n82",
+      "toId": "n81",
+      "type": "CRISPR technology is employed as the operative mechanism for the labor of genetic modification, enabling precise genomic interventions that restructure biological function into programmable traits aligned with ecological, agricultural, or financial objectives."
+    },
+    {
+      "id": "n249",
+      "fromId": "n81",
+      "toId": "n22",
+      "type": "Azolla is genetically modified to enhance specific traits such as growth rate, carbon sequestration capacity, or environmental resilience, transforming it into a biologically engineered organism optimized for targeted ecological functions and speculative value extraction."
+    },
+    {
+      "id": "n250",
+      "fromId": "n22",
+      "toId": "n79",
+      "type": "The drastic reproduction of artificially cultured Azolla in the North Sea triggers the Second Azolla Event, as engineered bloom cycles spiral beyond containment\u2014transforming controlled climate intervention into an unintended planetary-scale ecological disruption."
+    },
+    {
+      "id": "n252",
+      "fromId": "n22",
+      "toId": "n20",
+      "type": "Azolla and its symbiotic cyanobacterium engage in a closed-loop metabolic economy, wherein Azolla supplies glucose generated via photosynthesis in exchange for bioavailable nitrogen fixed by the cyanobacterium\u2014sustaining a reciprocal system of resource exchange that enables accelerated growth and ecological self-sufficiency."
+    },
+    {
+      "id": "n253",
+      "type": "The Dutch Flower Group sustains BBB by financially and symbolically backing its agrarian populism, using the party as a political vehicle to safeguard floriculture\u2019s access to land, resources, and deregulated environmental policy under the banner of rural heritage.",
+      "fromId": "n57",
+      "toId": "n83"
+    },
+    {
+      "id": "n254",
+      "type": "BBB elevates the tulip as a nationalist icon of agrarian identity, rebranding a historically commodified export crop into a symbol of rural resistance and cultural continuity.",
+      "fromId": "n83",
+      "toId": "n84"
+    },
+    {
+      "id": "n255",
+      "type": "The tulip\u2019s qualities as a species\u2014its striking visual form, seasonal rhythm, and deep entwinement with Dutch cultural identity\u2014make it an ideal symbolic vessel for the farmer\u2019s movement, allowing it to condense complex issues of land, labor, and national heritage into a single, instantly recognizable bloom.",
+      "fromId": "n46",
+      "toId": "n84"
+    },
+    {
+      "id": "n256",
+      "type": "The tulip\u2019s attention-catching capacity\u2014its visual clarity, emotional charge, and cultural recognizability\u2014makes it an ideal symbol for the farmer\u2019s movement, condensing complex struggles over land, labor, and sovereignty into a single, media-friendly emblem that circulates easily across protest imagery, political messaging, and national identity narratives.",
+      "fromId": "n68",
+      "toId": "n84"
+    },
+    {
+      "id": "n257",
+      "type": "The Dutch East India Company, as a historical icon of maritime trade and national capitalist expansion, lends symbolic authority to the tulip\u2019s rebranding by grounding it in a legacy of Dutch economic pride\u2014enabling the farmer\u2019s movement to elevate the flower as both rural heritage and a nostalgic emblem of sovereign agrarian identity.",
+      "fromId": "n48",
+      "toId": "n84"
+    },
+    {
+      "id": "n258",
+      "type": "Tulip Mania serves as a historical backdrop by haunting the tulip with the memory of speculative excess, allowing the farmer\u2019s movement to reclaim the flower as both a symbol of national pride and a warning against financial abstraction\u2014reframing it as a rooted emblem of agrarian sovereignty in contrast to its volatile past.",
+      "fromId": "n50",
+      "toId": "n84"
+    },
+    {
+      "id": "n259",
+      "type": "The Dutch tulip monoculture provides the cultural, ecological, and aesthetic landscape in which the tulip emerges as the farmer\u2019s emblem: its vast, orderly fields embody national pride, visual spectacle, and rural labor, allowing the flower to be reclaimed as a symbol of agrarian identity, sovereignty, and resistance within an increasingly volatile political and environmental terrain.",
+      "fromId": "n51",
+      "toId": "n84"
+    },
+    {
+      "id": "n260",
+      "type": "The Dutch Flower Group, as a dominant force in industrial floriculture, unintentionally contributes to the tulip\u2019s symbolic reinvention by embodying the very extractive, globalized conditions that the farmer\u2019s movement resists\u2014allowing the tulip to be reclaimed as a figure of agrarian pride, sovereignty, and protest against the corporatization of land, labor, and seasonal life.",
+      "fromId": "n57",
+      "toId": "n84"
+    },
+    {
+      "id": "n261",
+      "type": "BBB champions Azolla-friendly legislation by framing Azolla as a patriotic, low-tech solution to nitrogen regulation, allowing the party to promote environmental compliance without threatening the cultural and economic interests of Dutch farmers.",
+      "fromId": "n83",
+      "toId": "n85"
+    },
+    {
+      "id": "n263",
+      "type": "By embodying a nationalist vision of rural pride and ecological renewal, the tulip symbol enables the framing of Azolla as a patriotic, farmer-led solution, pressuring policymakers to adopt legislation that aligns environmental goals with agrarian identity.",
+      "fromId": "n84",
+      "toId": "n85"
+    },
+    {
+      "id": "n264",
+      "fromId": "n24",
+      "toId": "n85",
+      "type": "The perceived potential of Azolla to mitigate atmospheric CO\u2082 leads to the introduction of Azolla-friendly legislation, which incentivizes its cultivation and regulatory support, embedding its metabolic labor within state-sanctioned frameworks of climate governance."
+    },
+    {
+      "id": "n265",
+      "type": "Azolla-friendly legislation incentivizes large-scale cultivation and transport of Azolla across regions, unintentionally setting the conditions for its ecological escape, overproliferation, and transoceanic drift\u2014culminating in the Second Azolla Event as a runaway bloom with planetary consequences.",
+      "fromId": "n85",
+      "toId": "n79"
+    },
+    {
+      "id": "n266",
+      "fromId": "n19",
+      "toId": "n80",
+      "type": "The Azolla Event is hypothesized to have caused a significant drawdown of atmospheric CO\u2082 by enabling vast, sustained blooms of Azolla that sequestered carbon through photosynthesis and sedimentation, altering the planet\u2019s climate trajectory over geological time."
+    },
+    {
+      "id": "n267",
+      "fromId": "n79",
+      "toId": "n80",
+      "type": "The Second Azolla Event triggers a large-scale drawdown of atmospheric CO\u2082 as artificially cultivated Azolla proliferates uncontrollably, congealing carbon into biomass at a planetary scale and echoing the deep-time climatic impact of its prehistoric predecessor."
+    },
+    {
+      "id": "n269",
+      "type": "The Dutch Flower Group invests in Deep-time Azolla Futures Trading to hedge against the ecological costs of industrial floriculture, using Azolla\u2019s speculative carbon drawdown potential to generate green financial assets that offset emissions and enhance the group\u2019s sustainability portfolio.",
+      "fromId": "n57",
+      "toId": "n86"
+    },
+    {
+      "id": "n270",
+      "type": "The geo-engineering startup co-operates Deep-time Azolla Futures Trading by projecting the long-term carbon sequestration potential of engineered Azolla as a speculative asset, converting ecological time into financial instruments tradable in climate futures markets.",
+      "fromId": "n23",
+      "toId": "n86"
+    },
+    {
+      "id": "n271",
+      "type": "The petrochemical industry engages with Deep-time Azolla Futures Trading as a hedging mechanism, investing in carbon drawdown futures to offset emissions liabilities while co-opting ecological time as a financial instrument to prolong its extractive operations under the guise of climate responsibility.",
+      "fromId": "n25",
+      "toId": "n86"
+    },
+    {
+      "id": "n272",
+      "type": "Catbonds provide the financial risk infrastructure that legitimizes Azolla futures by insuring against project failure, stabilizing these speculative assets within volatile climate markets.",
+      "fromId": "n44",
+      "toId": "n86"
+    },
+    {
+      "id": "n274",
+      "type": "The environmental volatility triggered by the Second Azolla Event introduces price instability and speculative spikes in Azolla-based instruments, revealing the risk of treating planetary metabolism as a financial substrate.",
+      "fromId": "n79",
+      "toId": "n86"
+    },
+    {
+      "id": "n276",
+      "type": "Futures trading, as a financial technology, structures Deep-time Azolla Futures Trading by converting Azolla\u2019s carbon sequestration labor and potential fossilization into standardized contracts that quantify future ecological outcomes\u2014enabling investors to speculate on carbon drawdown yields, sedimentary accumulation rates, and geo-temporal offset value across extended climate scenarios.",
+      "fromId": "n54",
+      "toId": "n86"
+    },
+    {
+      "id": "n277",
+      "type": "The nitrogen crisis incentivizes the controlled mass cultivation of Azolla as a policy-driven response to fertilizer restrictions, promoting it as a low-emission, nitrogen-fixing plant compatible with environmental regulation.",
+      "fromId": "n87",
+      "toId": "n88"
+    },
+    {
+      "id": "n278",
+      "fromId": "n85",
+      "toId": "n88",
+      "type": "Azolla-friendly legislation enables the commercial farming of Azolla in the North Sea by legitimizing large-scale cultivation practices, providing regulatory support, and aligning ecological intervention with economic incentives for climate-responsive agribusiness."
+    },
+    {
+      "id": "n279",
+      "type": "BBB facilitates the mass cultivation of Azolla by mobilizing state support, subsidies, and rural labor networks, promoting it as a farmer-led innovation that aligns traditional agrarian values with green policy, while inadvertently accelerating ecological overproliferation.",
+      "fromId": "n83",
+      "toId": "n88"
+    },
+    {
+      "id": "n280",
+      "fromId": "n88",
+      "toId": "n79",
+      "type": "The uncontrollable reproduction of Azolla from the cultivation facility escapes intended containment, resulting in the Second Azolla Event\u2014a runaway bloom that transforms a managed climate solution into an ecological tipping point."
+    },
+    {
+      "id": "n281",
+      "type": "The Dutch Flower Group cultivates Azolla at scale in the North Sea by deploying floating bioplatforms and nutrient-channeling infrastructure, framing the operation as a climate-positive offset strategy while leveraging marine space for agro-industrial expansion disguised as ecological remediation.",
+      "fromId": "n57",
+      "toId": "n88"
+    },
+    {
+      "id": "n282",
+      "type": "Azolla\u2019s capacity to fix atmospheric nitrogen underpins its mass cultivation as a low-cost, self-fertilizing biomass, positioning it as a biological substitute within post-crisis fertilizer regimes and green developmentalist strategies.",
+      "fromId": "n75",
+      "toId": "n88"
+    },
+    {
+      "id": "n283",
+      "type": "The tulip, repurposed as a visual emblem of agrarian resistance, generates media spectacle and symbolic resonance, feeding the attention economy with imagery that condenses national identity, ecological crisis, and rural struggle into a shareable, emotionally charged icon.",
+      "fromId": "n84",
+      "toId": "n70"
+    },
+    {
+      "id": "n284",
+      "type": "The attention economy amplifies the tulip\u2019s visual symbolism\u2014its historical familiarity, color, and simplicity\u2014turning it into a politically useful image optimized for protest signs, viral visuals, and nationalist performance.",
+      "fromId": "n70",
+      "toId": "n84"
+    },
+    {
+      "id": "n285",
+      "type": "The institutional adoption of Azolla as a nitrogen-fixing crop alleviates immediate pressure from the nitrogen crisis, allowing agricultural production to continue under new ecological compliance frameworks without challenging the underlying intensity of land use.",
+      "fromId": "n88",
+      "toId": "n87"
+    },
+    {
+      "id": "n286",
+      "fromId": "n19",
+      "toId": "n89",
+      "type": "The Azolla Event cooled the global climate by sequestering massive amounts of atmospheric CO\u2082, contributing to the onset of the Late Cenozoic Ice Age\u2014a long-term climatic shift that established the temperate conditions still shaping Earth\u2019s biosphere today."
+    },
+    {
+      "id": "n290",
+      "fromId": "n90",
+      "toId": "n79",
+      "type": "The sudden increase of phosphate in the North Sea accelerates Azolla\u2019s reproductive metabolism beyond containment, unleashing a rapid biomass explosion that culminates in the Second Azolla Event\u2014a runaway bloom with planetary ecological consequences."
+    },
+    {
+      "id": "n291",
+      "fromId": "n90",
+      "toId": "n88",
+      "type": "The elevated phosphate levels in the North Sea flow into the mass Azolla cultivation facility, unintentionally fertilizing the biomass and intensifying its growth beyond projected thresholds, destabilizing the controlled parameters of industrial farming."
+    },
+    {
+      "id": "n292",
+      "fromId": "n91",
+      "toId": "n90",
+      "type": "Permafrost thawing releases previously locked phosphorus compounds into Arctic waters, which are carried through oceanic currents into the North Sea, causing a sudden increase in phosphate levels that alters regional nutrient cycles and ecological dynamics"
+    },
+    {
+      "id": "n293",
+      "type": "Phosphate runoff from burned and eroded tulip fields flows into river systems and coastal catchments, rapidly transporting concentrated agricultural phosphorus into the North Sea and triggering a sudden spike in nutrient levels that disrupts marine ecologies.",
+      "fromId": "n92",
+      "toId": "n90"
+    },
+    {
+      "id": "n294",
+      "type": "The intensive phosphate inputs required to sustain tulip monocultures exceed plant uptake, leading to widespread runoff into surrounding soils and waterways, entangling ornamental agriculture with ecological degradation.",
+      "fromId": "n51",
+      "toId": "n92"
+    },
+    {
+      "id": "n295",
+      "fromId": "n27",
+      "toId": "n91",
+      "type": "The intensification of the climate crisis raises global temperatures, causing the thawing of permafrost layers and releasing trapped greenhouse gases and nutrients\u2014unleashing latent ecological feedback loops embedded in frozen soils."
+    },
+    {
+      "id": "n296",
+      "type": "Petro-extractive technologies accelerate permafrost thawing by emitting greenhouse gases and disturbing thermal balances through infrastructure development, drilling, and heat transfer, directly contributing to the destabilization of frozen carbon reserves.",
+      "fromId": "n33",
+      "toId": "n91"
+    },
+    {
+      "id": "n297",
+      "type": "The petrochemical industry accelerates permafrost thawing by driving global warming through sustained fossil fuel combustion and by expanding extractive operations into Arctic territories, where infrastructure and thermal disruption compound the destabilization of frozen carbon reserves\u2014turning the Arctic into both a sacrifice zone and a feedback loop of climate crisis.",
+      "fromId": "n25",
+      "toId": "n91"
+    },
+    {
+      "id": "n298",
+      "fromId": "n89",
+      "toId": "n51",
+      "type": "The Late Cenozoic Ice Age, initiated by the Azolla Event, established a stable temperate climate with defined seasonal cycles\u2014creating the environmental conditions necessary for the development and large-scale success of the Dutch tulip monoculture."
+    },
+    {
+      "id": "n299",
+      "fromId": "n91",
+      "toId": "n93",
+      "type": "Permafrost thawing releases primordial Azolla spores preserved since the First Azolla Event, reintroducing ancient genetic material into contemporary ecosystems and blurring the boundary between deep-time biology and present-day climate disturbance."
+    },
+    {
+      "id": "n300",
+      "fromId": "n93",
+      "toId": "n88",
+      "type": "Primordial Azolla spores released from thawing permafrost hybridize with artificially cultured Azolla in the North Sea, introducing ancient genetic traits that disrupt engineered growth cycles and contribute to the instability leading to the Second Azolla Event."
+    },
+    {
+      "id": "n301",
+      "fromId": "n93",
+      "toId": "n79",
+      "type": "Primordial Azolla spores hybridize with artificially cultured strains on commercial Azolla farms in the North Sea, introducing unpredictable genetic variations that compromise bioengineered stability and accelerate the onset of uncontrolled bloom conditions."
+    },
+    {
+      "id": "n302",
+      "fromId": "n19",
+      "toId": "n93",
+      "type": "The Azolla Event results in the widespread dispersal of Azolla spores across the planet, as massive blooms release reproductive material into global water systems and sediment layers, embedding the species into Earth's geological and ecological archives."
+    },
+    {
+      "id": "n303",
+      "type": "The nitrogen crisis, by disrupting managed agricultural systems and reducing synthetic fertilizer inputs, leads to land abandonment and ecological imbalances that favor the unchecked growth of nitrogen-loving pioneer species, resulting in dense, flammable bush that increases wildfire risk.",
+      "fromId": "n87",
+      "toId": "n94"
+    },
+    {
+      "id": "n304",
+      "type": "Dense, flammable bush accumulates dry biomass that acts as fuel, increasing fire intensity, spread rate, and difficulty of containment, thereby serving as a critical ecological condition that amplifies the scale and destructiveness of mass wildfires.",
+      "fromId": "n94",
+      "toId": "n95"
+    },
+    {
+      "id": "n305",
+      "type": "Escalating climate instability culminates in an unprecedented mass wildfire in the Netherlands, marking a historical ecological rupture that clears the ground\u2014both literally and symbolically\u2014for reindeer lichen bloom and the reordering of political and aesthetic imaginaries.",
+      "fromId": "n27",
+      "toId": "n95"
+    },
+    {
+      "id": "n306",
+      "type": "As the mass wildfire spreads across rural landscapes, it reaches the highly flammable, phosphate-enriched tulip monocultures, where the concentrated fertilizers and dense planting accelerate combustion, turning the cultivated fields into sites of intensified ecological and symbolic destruction.",
+      "fromId": "n95",
+      "toId": "n96"
+    },
+    {
+      "id": "n307",
+      "type": "The nitrogen crisis compels the Dutch state to implement the PAS policy as a regulatory fix, aiming to balance economic activity with ecological thresholds by quantifying nitrogen emissions, assigning credits, and restricting high-emission practices through a technocratic framework of environmental governance.",
+      "fromId": "n87",
+      "toId": "n98"
+    },
+    {
+      "id": "n308",
+      "type": "The PAS policy, by imposing restrictions on nitrogen emissions, triggered widespread discontent among farmers, creating the socio-political conditions for BBB\u2019s emergence as a populist force defending agricultural autonomy and opposing environmental regulation perceived as elite imposition.",
+      "fromId": "n98",
+      "toId": "n83"
+    },
+    {
+      "id": "n309",
+      "type": "The Dutch tulip monoculture, driven by high-input fertilization and chemical standardization, oversaturates soils with nitrogen compounds that exceed plant uptake; during rainfall, this surplus leaches into waterways, contributing to widespread nitrogen runoff and downstream ecological degradation.",
+      "fromId": "n51",
+      "toId": "n97"
+    },
+    {
+      "id": "n310",
+      "type": "Widespread nitrogen runoff from industrial agriculture accumulates in soil, water, and air, leading to eutrophication, biodiversity loss, and atmospheric pollution, eventually escalating into a nitrogen crisis marked by ecological degradation and mounting regulatory pressure across sectors.",
+      "fromId": "n97",
+      "toId": "n87"
+    },
+    {
+      "id": "n311",
+      "type": "The Dutch tulip monoculture, with its dense planting, high phosphate input, and chemical-laden biomass, creates a highly flammable agricultural landscape that becomes a prime ignition zone during mass wildfire events, resulting in the catastrophic burning of tulip fields.",
+      "fromId": "n51",
+      "toId": "n96"
+    },
+    {
+      "id": "n312",
+      "type": "The combustion of phosphate-enriched tulip monocultures produces intensely charred soil layers saturated with residual fertilizers and carbonized plant matter, creating a chemically altered substrate that both stores fire memory and destabilizes local nutrient cycles.",
+      "fromId": "n96",
+      "toId": "n99"
+    },
+    {
+      "id": "n313",
+      "type": "Mass fire combusts surface vegetation and organic matter, leaving behind charred residues rich in black carbon, altering soil composition, reducing microbial activity, and creating a hydrophobic layer that reshapes post-fire ecological dynamics.",
+      "fromId": "n95",
+      "toId": "n99"
+    },
+    {
+      "id": "n315",
+      "type": "The burning tulip field, widely circulated as a spectacle of loss, transformed the flower from a commodity into a nationalist emblem\u2014galvanizing rural identity, stoking resistance to ecological regulation, and elevating the tulip as a symbol of the farmer\u2019s struggle for sovereignty amid crisis.",
+      "fromId": "n96",
+      "toId": "n84"
+    },
+    {
+      "id": "n316",
+      "type": "The symbolic charge of the tulip reinforces BBB\u2019s cultural legitimacy, allowing the party to mobilize nostalgia and aesthetic nationalism in defense of agribusiness interests disguised as farmer advocacy.",
+      "fromId": "n84",
+      "toId": "n83"
+    },
+    {
+      "id": "n317",
+      "fromId": "n101",
+      "toId": "n100",
+      "type": "Bioartists reproduce the reindeer lichen bloom within controlled or representational environments, aestheticizing its post-disturbance growth as a symbolic medium of ecological resilience, while abstracting its metabolic labor into visual and curatorial forms."
+    },
+    {
+      "id": "n318",
+      "fromId": "n100",
+      "toId": "n101",
+      "type": "Bioartists extract both material (lichen) and narrative value from the bloom of reindeer lichen, incorporating its post-disturbance presence into artworks that translate multispecies recovery into symbolic capital within ecological and institutional aesthetics."
+    },
+    {
+      "id": "n320",
+      "fromId": "n100",
+      "toId": "n102",
+      "type": "The reindeer lichen bloom is instrumentalized as the environmental backdrop of moss exhibitions, providing a curated aesthetic of post-crisis regeneration that reinforces visual narratives of resilience and ecological calm within speculative display environments."
+    },
+    {
+      "id": "n322",
+      "fromId": "n102",
+      "toId": "n103",
+      "type": "The popularity of moss exhibitions elevates reindeer lichen into a symbolic artifact of green liberalism, transforming its ecological function into a visual shorthand for ethical sustainability, curated care, and post-disaster harmony."
+    },
+    {
+      "id": "n323",
+      "fromId": "n84",
+      "toId": "n103",
+      "type": "Reindeer lichen consolidates its symbolic status within green liberalism through ideological antagonism against the tulip\u2014the emblem of agro-conservatism\u2014framing itself as an ethically superior ecological alternative opposed to populist agrarian politics."
+    },
+    {
+      "id": "n324",
+      "fromId": "n103",
+      "toId": "n84",
+      "type": "The tulip consolidates its symbolic status within the farmer's movement through ideological antagonism against reindeer lichen\u2014the emblem of green liberalism\u2014positioning itself as an authentic representation of rural sovereignty, local tradition, and populist resistance to urban ecological aesthetics."
+    },
+    {
+      "id": "n325",
+      "type": "The burning of tulip fields introduces a quantifiable ecological disaster into insurance-linked securities, triggering payouts or market adjustments within catbond structures and reinforcing the profitability of climate volatility as an asset class.",
+      "fromId": "n96",
+      "toId": "n44"
+    },
+    {
+      "id": "n326",
+      "type": "The regulatory constraints of PAS on nitrogen emissions create demand for alternative, low-emission fertilization methods, leading to policy shifts that promote Azolla cultivation as a biologically compliant solution within the new environmental framework.",
+      "fromId": "n98",
+      "toId": "n85"
+    },
+    {
+      "id": "n327",
+      "fromId": "n106",
+      "toId": "n107",
+      "type": "The scale models of Green Villa Town serve as visual representations that materially enact and amplify the estate's fictitious value, embedding speculative ecological futures into tangible architectural forms that justify premium pricing and investment narratives."
+    },
+    {
+      "id": "n328",
+      "fromId": "n107",
+      "toId": "n106",
+      "type": "The fictitious value of the green housing estate reshapes architectural design practices, compelling planners and architects to reorganize spatial layouts, aesthetics, and ecological features to visually justify speculative financial expectations."
+    },
+    {
+      "id": "n330",
+      "fromId": "n107",
+      "toId": "n105",
+      "type": "Green architects\u2019 wages are derived from the fictitious value of green housing estates, as their compensation becomes tied to speculative market projections and the capacity of architectural design to inflate ecological narratives into monetized futures."
+    },
+    {
+      "id": "n331",
+      "fromId": "n104",
+      "toId": "n105",
+      "type": "Real estate developers hire green architects, whose labor translates ecological aesthetics into marketable spatial designs aligned with speculative investment narratives."
+    },
+    {
+      "id": "n332",
+      "fromId": "n104",
+      "toId": "n106",
+      "type": "Real estate developers commission architectural plans for green housing estates, converting ecological speculation into visual blueprints that justify inflated financial valuations."
+    },
+    {
+      "id": "n333",
+      "fromId": "n103",
+      "toId": "n104",
+      "type": "Real estate developers instrumentalize reindeer lichen as the visual and symbolic emblem of their sustainable branding, appropriating multispecies resilience for corporate legitimacy."
+    },
+    {
+      "id": "n334",
+      "type": "The ornamental integration of reindeer lichen into scale models literalizes its symbolic function\u2014fixing it as a miniature emblem of ecological sophistication within speculative real estate marketing.",
+      "fromId": "n103",
+      "toId": "n106"
+    },
+    {
+      "id": "n335",
+      "fromId": "n104",
+      "toId": "n88",
+      "type": "Real estate developers sponsor the mass cultivation of Azolla to greenwash their business practices, converting ecological labor into marketing strategies that obscure extractive real estate dynamics."
+    },
+    {
+      "id": "n336",
+      "fromId": "n106",
+      "toId": "n108",
+      "type": "The greenery of the housing estate is symbolically represented through the incorporation of reindeer lichen into architectural scale models, embedding multispecies aesthetics into speculative real estate visualization."
+    },
+    {
+      "id": "n337",
+      "fromId": "n107",
+      "toId": "n108",
+      "type": "The fictitious value assigned to green housing estates reshapes their material construction practices, compelling builders to select materials and techniques that visually fulfill speculative market expectations."
+    },
+    {
+      "id": "n338",
+      "type": "Real estate developers initiate Green Villa Town as a prototype for green speculation\u2014deploying eco-architecture and lifestyle branding to capture value from post-disaster landscapes.",
+      "fromId": "n104",
+      "toId": "n108"
+    },
+    {
+      "id": "n340",
+      "fromId": "n108",
+      "toId": "n92",
+      "type": "Green Villa Town, despite its ecological branding, relies on artificial fertilizers, causing significant phosphate runoff that undermines its claims of sustainability and ecological responsibility."
+    },
+    {
+      "id": "n341",
+      "fromId": "n108",
+      "toId": "n97",
+      "type": "Green Villa Town, despite its green exterior, depends heavily on artificial fertilizers, generating considerable nitrogen runoff and ecological disruption that contradicts its marketed sustainability."
+    },
+    {
+      "id": "n342",
+      "type": "Mass wildfire accelerates permafrost thawing by increasing surface temperatures and destabilizing vegetation cover, releasing trapped greenhouse gases and feeding back into planetary warming cycles.",
+      "fromId": "n95",
+      "toId": "n91"
+    },
+    {
+      "id": "n343",
+      "type": "The nitrogen-fixing labor of symbiotic cyanobacteria sustains the growth and ecological resilience of reindeer lichen, enabling it to colonize barren landscapes and function as a regenerative agent in post-crisis ecologies.",
+      "fromId": "n75",
+      "toId": "n109"
+    },
+    {
+      "id": "n344",
+      "type": "Reindeer lichen provides a protective habitat and structural support for symbiotic cyanobacteria, enabling their survival in harsh, nutrient-poor environments.",
+      "fromId": "n109",
+      "toId": "n20"
+    },
+    {
+      "id": "n347",
+      "fromId": "n109",
+      "toId": "n99",
+      "type": "Reindeer lichen thrives on post-charred soil, performing regenerative ecological labor by pioneering growth and gradually converting burned landscapes into sites of speculative ecological aesthetics."
+    },
+    {
+      "id": "n349",
+      "type": "Mass wildfire volatilizes nitrogen stored in vegetation and soil, while also leaving behind ash rich in reactive nitrogen compounds; subsequent rainfall mobilizes these residues, washing them into waterways and causing nitrogen runoff that disrupts aquatic ecosystems.",
+      "fromId": "n95",
+      "toId": "n97"
+    },
+    {
+      "id": "n350",
+      "type": "Mass wildfires around tulip fields destabilize soil structure and destroy plant cover, leaving exposed, phosphate-rich agricultural soils vulnerable to erosion; subsequent rainfall washes accumulated fertilizer into waterways, resulting in large-scale phosphate runoff and eutrophication.",
+      "fromId": "n95",
+      "toId": "n92"
+    },
+    {
+      "id": "n351",
+      "fromId": "n26",
+      "toId": "n86",
+      "type": "The geological possibility of Azolla\u2019s biomass fossilizing into hydrocarbons ignites speculative financial interest in future fossil fuel formation beneath the North Sea, extending extraction horizons into deep planetary time."
+    },
+    {
+      "id": "n352",
+      "fromId": "n104",
+      "toId": "n86",
+      "type": "Real estate developers in the Netherlands invest in Deep-time Azolla Futures Trading, capitalizing on speculative instruments that commodify Azolla\u2019s potential for future carbon sequestration and fossilization."
+    },
+    {
+      "id": "n353",
+      "fromId": "n88",
+      "toId": "n86",
+      "type": "Azolla farming and its deep-time potential to become fossil fuel in the geological future inspire Deep-time Azolla Futures Trading, where contracts are issued based on projected biomass accumulation, carbon burial rates, and fossilization trajectories\u2014enabling long-term speculation on planetary transformation by converting Azolla\u2019s metabolic processes into quantifiable risk-bearing assets."
+    },
+    {
+      "id": "n354",
+      "type": "The unpredictability and scale of the Second Azolla Event\u2014marked by runaway bloom, transoceanic drift, and carbon drawdown\u2014trigger new classes of catbonds that monetize ecological volatility, transforming Azolla\u2019s speculative behavior into insurable climate-linked financial products.",
+      "fromId": "n79",
+      "toId": "n44"
+    },
+    {
+      "id": "n355",
+      "type": "The global logistical breakdown caused by the COVID-19 pandemic\u2014marked by port closures, supply chain bottlenecks, and labor shortages\u2014triggers catbond mechanisms tied to pandemic-related business interruption, translating systemic vulnerability into financial payouts and speculative opportunity within disaster-linked securities markets.",
+      "fromId": "n62",
+      "toId": "n44"
+    },
+    {
+      "id": "n356",
+      "type": "The conveyor belt conditions the mine\u2019s operation by setting the pace and scale of extraction, aligning it with the demands of global circulation and export logistics.",
+      "fromId": "n113",
+      "toId": "n111"
+    },
+    {
+      "id": "n357",
+      "type": "The scarcity of phosphate increases the strategic importance of the mine, intensifying its exploitation, securitization, and geopolitical value, while deepening the entrenchment of extractive infrastructure and settler-colonial control over the resource.",
+      "fromId": "n112",
+      "toId": "n111"
+    },
+    {
+      "id": "n360",
+      "type": "The Dutch agribusiness\u2013Moroccan Government alliance directly shapes the mine environment by funding the expansion of conveyor infrastructure, intensifying phosphate extraction rates, and reinforcing military presence around the Bou Craa site\u2014turning the landscape into a fortified zone of logistical and chemical degradation driven by export demands.",
+      "fromId": "n114",
+      "toId": "n111"
+    },
+    {
+      "id": "n361",
+      "type": "The strategic value of scarce phosphate drives Dutch agribusiness to secure geopolitical alliances with occupying powers to guarantee input flows under green capitalist rationales.",
+      "fromId": "n112",
+      "toId": "n114"
+    },
+    {
+      "id": "n362",
+      "type": "The alliance between Dutch agribusiness and the Moroccan state materially sustains the oppression of the Polisario Front by reinforcing the political-economic structures that enable the extraction of Sahrawi phosphate under military occupation.",
+      "fromId": "n114",
+      "toId": "n110"
+    },
+    {
+      "id": "n363",
+      "type": "The Polisario Front mobilizes and represents the Sahrawi population in their collective struggle against phosphate extraction, acting as a political and militant force advancing demands for resource sovereignty and territorial autonomy.",
+      "fromId": "n110",
+      "toId": "n115"
+    },
+    {
+      "id": "n364",
+      "type": "The Sahrawi population empowers and legitimizes the Polisario Front as their political vehicle and resistance movement, grounding its authority in shared experiences of dispossession and the ongoing fight for control over local resources.",
+      "fromId": "n115",
+      "toId": "n110"
+    },
+    {
+      "id": "n365",
+      "type": "The Dutch agribusiness\u2013Moroccan government alliance actively contributes to the oppression of the Sahrawi people by profiting from and legitimizing the extraction of phosphate from occupied territory, thereby entrenching their dispossession and political marginalization.",
+      "fromId": "n114",
+      "toId": "n115"
+    },
+    {
+      "id": "n366",
+      "type": "The Sahrawi people contest and resist the mine as a symbol and instrument of occupation, asserting their right to land, resources, and political self-determination.",
+      "fromId": "n115",
+      "toId": "n111"
+    },
+    {
+      "id": "n367",
+      "type": "The 100km conveyor belt evolves into the North Sea\u2013Sahara Underwater Phosphate Conveyor, extending the logic of continuous extraction into a submerged transcontinental infrastructure that links the Bou Craa mine to European agricultural systems.",
+      "fromId": "n113",
+      "toId": "n116"
+    },
+    {
+      "id": "n368",
+      "type": "BBB, while promoting rural sovereignty and farmer interests, ultimately reinforces Dutch agribusiness's reliance on foreign phosphate extraction, aligning with neo-colonial supply chains under nationalist-green rhetoric.",
+      "fromId": "n83",
+      "toId": "n114"
+    },
+    {
+      "id": "n369",
+      "fromId": "n114",
+      "toId": "n116",
+      "type": "The Dutch agribusiness\u2013Moroccan Government alliance extends the Bou Craa conveyor belt into an underwater phosphate conveyor, physically connecting the resource frontier of the Sahara Desert to the logistical hub of the North Sea."
+    },
+    {
+      "id": "n370",
+      "fromId": "n104",
+      "toId": "n114",
+      "type": "Real estate developers invest in the Dutch agribusiness\u2013Moroccan Government alliance, integrating urban speculation with phosphate extraction by channeling capital through the infrastructural apparatus of agro-industrial expansion."
+    },
+    {
+      "id": "n371",
+      "type": "The Dutch Flower Group plays a pivotal role in the Dutch agribusiness\u2013Moroccan Government alliance by driving demand for high-phosphate inputs to sustain floricultural monocultures, thereby justifying and reinforcing political and logistical ties with the Moroccan state to secure access to Saharan phosphate extracted under conditions of occupation.",
+      "fromId": "n57",
+      "toId": "n114"
+    },
+    {
+      "id": "n372",
+      "type": "The underwater phosphate conveyor became a necessary infrastructural fix to sustain the Dutch tulip monoculture\u2019s escalating nutrient demands, as soil exhaustion and global fertilizer dependency made long-distance phosphate extraction indispensable to the continuity of high-yield, visually perfect floriculture.",
+      "fromId": "n116",
+      "toId": "n51"
+    },
+    {
+      "id": "n374",
+      "fromId": "n116",
+      "toId": "n117",
+      "type": "The malfunction of the North Sea\u2013Sahara Underwater Phosphate Conveyor results in a mass phosphate leak, rupturing the logistical flow and releasing concentrated nutrients into surrounding marine ecosystems."
+    },
+    {
+      "id": "n375",
+      "fromId": "n117",
+      "toId": "n90",
+      "type": "The mass phosphate leak causes a sudden surge in phosphate concentration in the North Sea, destabilizing aquatic nutrient cycles and triggering unintended ecological consequences downstream."
+    },
+    {
+      "id": "n376",
+      "type": "The high market value of phosphate is materially produced through infrastructural technologies like the 100 km conveyor belt, which enable the large-scale extraction, circulation, and commodification of phosphate under conditions of settler-colonial control.",
+      "fromId": "n112",
+      "toId": "n113"
+    },
+    {
+      "id": "n377",
+      "type": "The high market value of phosphate drives the intensification of extractive infrastructure, exemplified by the transformation of the 100 km conveyor belt into the North Sea\u2013Sahara Underwater Phosphate Conveyor, expanding the spatial and logistical reach of settler-colonial extraction.",
+      "fromId": "n112",
+      "toId": "n116"
+    },
+    {
+      "id": "n378",
+      "fromId": "n118",
+      "toId": "n119",
+      "type": "The Canary Current carries Azolla from the North Sea to the West Sahara coast, transforming oceanic circulation into an unintentional infrastructure for biomass redistribution across postcolonial ecologies."
+    },
+    {
+      "id": "n379",
+      "type": "The uncontrollable overpopulation of Azolla triggered by the Second Azolla Event spills into West Sahara via the Canary Current, transforming oceanic circulation into an unintended vector of ecological displacement and speculative resource redistribution.",
+      "fromId": "n79",
+      "toId": "n119"
+    },
+    {
+      "id": "n380",
+      "type": "Azolla transported to West Sahara is processed by the Sahrawi people into sustainable fertilizer, turning a redirected ecological surplus into a material resource for local agricultural autonomy.",
+      "fromId": "n119",
+      "toId": "n120"
+    },
+    {
+      "id": "n381",
+      "type": "The introduction of sustainable fertilizer technology expands the agricultural possibilities available to the Sahrawi people by reducing dependency on external inputs and enabling localized food production.",
+      "fromId": "n120",
+      "toId": "n115"
+    },
+    {
+      "id": "n382",
+      "type": "The Sahrawi people develop and apply sustainable fertilizer technology by processing Azolla, embedding ecological knowledge and labor into new systems of nutrient self-sufficiency.",
+      "fromId": "n115",
+      "toId": "n120"
+    },
+    {
+      "id": "n383",
+      "type": "Sustainable fertilizer technology strengthens the resource sovereignty of the Sahrawi people by enabling the autonomous circulation of nutrients within reclaimed ecological systems.",
+      "fromId": "n120",
+      "toId": "n121"
+    },
+    {
+      "id": "n384",
+      "type": "The increasing strategic value of resource sovereignty motivates the Polisario Front to intensify its resistance against ongoing phosphate extractivism, positioning control over local resources as a central demand in the struggle for political and ecological autonomy.",
+      "fromId": "n121",
+      "toId": "n110"
+    },
+    {
+      "id": "n386",
+      "type": "The global scarcity of phosphate amplifies the urgency and geopolitical significance of the Sahrawi people\u2019s claim to resource sovereignty, transforming localized ecological control into a globally contested terrain of strategic importance.",
+      "fromId": "n112",
+      "toId": "n121"
+    },
+    {
+      "id": "n387",
+      "type": "The financialization of supply chains locked producers into continuous circulation cycles; when the Second Azolla Bloom obstructed maritime routes, the absence of flexible financing mechanisms led to stalled payments, credit defaults, and a systemic unraveling of logistical coordination tied to ecological volatility.",
+      "fromId": "n61",
+      "toId": "n122"
+    },
+    {
+      "id": "n388",
+      "type": "The fixed, maritime-dependent logistical infrastructure proved incapable of adapting to ecological blockages like the Second Azolla Bloom, as sea routes and port operations were physically overwhelmed by biological overflow, revealing a lack of resilience to non-human disruptions.",
+      "fromId": "n60",
+      "toId": "n122"
+    },
+    {
+      "id": "n389",
+      "type": "The Second Azolla Bloom choked shipping routes and paralyzed cold-chain logistics, stranding tulip exports at distribution hubs; with markets intact but access severed, growers were once again forced to dump vast quantities of flowers\u2014this time not from a lack of demand, but from a surplus of ecological disruption beyond corporate control.",
+      "fromId": "n122",
+      "toId": "n63"
+    },
+    {
+      "id": "n390",
+      "type": "Futures trading, by enforcing fixed delivery schedules and speculative overproduction, incentivized the large-scale cultivation and transport of Azolla to meet anticipated carbon drawdown contracts, ultimately overwhelming maritime infrastructure and triggering the logistical failure in the North Sea.",
+      "fromId": "n54",
+      "toId": "n122"
+    },
+    {
+      "id": "n391",
+      "type": "The Azolla-driven logistical failure introduced deep uncertainty into the reliability of export routes, prompting volatile speculation on future tulip demand as traders, growers, and financiers recalibrated expectations around perishability, market timing, and the feasibility of just-in-time floriculture in a disrupted ecological landscape.",
+      "fromId": "n122",
+      "toId": "n58"
+    },
+    {
+      "id": "n392",
+      "type": "The Azolla-driven logistical failure disrupts maritime transport routes critical to the Dutch Flower Group\u2019s global supply chains, delaying exports, increasing costs, and exposing the group\u2019s dependence on fragile ecological infrastructures\u2014forcing a reevaluation of its logistical strategies and sustainability claims.",
+      "fromId": "n122",
+      "toId": "n57"
+    },
+    {
+      "id": "n393",
+      "type": "The Azolla-driven logistical failure forces a fundamental reconfiguration of the Dutch tulip monoculture: unable to rely on stable export flows, growers shift toward hyper-resilient, speculative practices\u2014like programmable bloom cycles and carbon-offset branding\u2014that ironically intensify monocultural logics under the guise of adaptive sustainability.",
+      "fromId": "n122",
+      "toId": "n51"
+    },
+    {
+      "id": "n394",
+      "fromId": "n79",
+      "toId": "n122",
+      "type": "The Second Azolla Event precipitates a critical logistical failure in the North Sea, disrupting phosphate and tulip distribution infrastructures."
+    },
+    {
+      "id": "n395",
+      "type": "The infrastructural disruptions triggered by the Second Azolla Bloom\u2014clogged shipping routes, halted phosphate transport, and cascading supply chain breakdowns\u2014activate catbond clauses linked to ecological risk, transforming the bloom\u2019s logistical fallout into a financial event that redistributes capital through insured disaster markets.",
+      "fromId": "n122",
+      "toId": "n44"
+    },
+    {
+      "id": "n396",
+      "type": "The logistical bottleneck constrains the mine\u2019s capacity to export phosphate, forcing adjustments in extraction rates, storage, and labor organization, and potentially transforming the mine from a site of continuous extraction into a stockpiling zone marked by tension between resource abundance and restricted circulation.",
+      "fromId": "n123",
+      "toId": "n111"
+    },
+    {
+      "id": "n397",
+      "type": "The high value of phosphate as a scarce resource intensifies pressure on its logistical bottlenecks\u2014such as the conveyor belt and port infrastructure\u2014by driving efforts to maximize throughput, which in turn exacerbates infrastructural strain, territorial militarization, and geopolitical conflict over control of these chokepoints.",
+      "fromId": "n112",
+      "toId": "n123"
+    },
+    {
+      "id": "n398",
+      "type": "The Azolla-driven logistical failure in the North Sea, where massive blooms clogged shipping routes and port access, intensified the phosphate transportation bottleneck by obstructing maritime flows from key extraction and distribution hubs, disrupting global fertilizer logistics and triggering cascading delays across agricultural supply chains.",
+      "fromId": "n122",
+      "toId": "n123"
+    },
+    {
+      "id": "n399",
+      "type": "The heightened geopolitical instability and logistical vulnerabilities surrounding West Sahara phosphate render it a volatile asset, prompting global financial divestment as investors retreat from the escalating risk embedded in its extraction and trade.",
+      "fromId": "n124",
+      "toId": "n125"
+    },
+    {
+      "id": "n400",
+      "type": "Global divestment diminishes the exchange value of phosphate by destabilizing its market circulation under occupation, while preserving its use value for the Sahrawi people as a potential resource for sovereign, self-determined agriculture.",
+      "fromId": "n125",
+      "toId": "n112"
+    },
+    {
+      "id": "n401",
+      "type": "The geopolitical risk posed by Polisario Front actions\u2014such as sabotage of phosphate infrastructure or blockades of extraction routes\u2014activates catbond clauses linked to political instability and supply chain disruption, converting anti-colonial resistance into quantifiable risk events within global insurance and investment frameworks.",
+      "fromId": "n124",
+      "toId": "n44"
+    },
+    {
+      "id": "n402",
+      "type": "The activation of catbonds in response to Polisario Front disruptions signals heightened geopolitical and infrastructural risk, prompting investors and corporations to divest from Sahara phosphate to avoid volatility and reputational damage, thereby translating political resistance into financial deterrence.",
+      "fromId": "n44",
+      "toId": "n125"
+    },
+    {
+      "id": "n403",
+      "type": "Global divestment disrupts the extractive operations of the mine, potentially slowing or halting its activity, thereby reducing environmental degradation and opening possibilities for ecological restoration or reappropriation by the Sahrawi people.",
+      "fromId": "n125",
+      "toId": "n111"
+    },
+    {
+      "id": "n404",
+      "type": "The global divestment from West Sahara phosphate critically undermines the Dutch agribusiness\u2013Moroccan Government alliance by withdrawing financial backing from its extractive operations, exposing the alliance\u2019s dependency on external capital and geopolitical stability.",
+      "fromId": "n125",
+      "toId": "n114"
+    },
+    {
+      "id": "n405",
+      "type": "The intervention of the Polisario Front repositions West Sahara phosphate as a high-risk and volatile commodity in global markets, as repeated acts of resistance and sabotage destabilize extraction routes and render the resource financially insecure.",
+      "fromId": "n110",
+      "toId": "n124"
+    },
+    {
+      "id": "n406",
+      "type": "Global divestment from West Sahara phosphate critically weakens the Dutch agribusiness\u2013Moroccan Government alliance by undermining the financial viability of their extractive partnership and destabilizing its geopolitical legitimacy.",
+      "fromId": "n125",
+      "toId": "n121"
+    },
+    {
+      "id": "n407",
+      "type": "Global divestment from West Sahara Phosphate empowers the Sahrawi population by weakening the economic viability of phosphate extraction from the Bou Craa mine, thereby undermining the resource exploitation that sustains occupation and increasing international pressure for Sahrawi self-determination.",
+      "fromId": "n125",
+      "toId": "n115"
+    },
+    {
+      "id": "n408",
+      "type": "The Polisario Front\u2019s strategic interventions recast West Sahara phosphate as a commodity marked by high volatility and geopolitical risk, leading global markets to reassess its extractive desirability.",
+      "fromId": "n110",
+      "toId": "n126"
+    },
+    {
+      "id": "n409",
+      "type": "Global divestment from West Sahara phosphate reinforces Sahrawi resource sovereignty by disrupting external control over extraction and opening space for localized, self-determined use of ecological resources.",
+      "fromId": "n126",
+      "toId": "n116"
+    },
+    {
+      "id": "n410",
+      "type": "The Polisario Front\u2019s sabotage causes a critical failure in the North Sea\u2013Sahara Underwater Phosphate Conveyor, halting transcontinental extraction flows and exposing the vulnerability of global phosphate logistics to political resistance.",
+      "fromId": "n126",
+      "toId": "n113"
+    },
+    {
+      "id": "n411",
+      "type": "Sabotage by the Polisario Front significantly reduces the rate of phosphate extraction at the Bou Craa mine, destabilizing output and weakening the economic infrastructure of occupation.",
+      "fromId": "n126",
+      "toId": "n111"
+    },
+    {
+      "id": "n412",
+      "fromId": "n127",
+      "toId": "n102",
+      "type": "Bioart is featured in moss exhibitions, where it serves as a visual and conceptual device that curates ecological complexity into institutional narratives of speculative sustainability."
+    },
+    {
+      "id": "n413",
+      "fromId": "n127",
+      "toId": "n103",
+      "type": "Bioart reduces the ecological agency of reindeer lichen by aestheticizing it as a symbolic surface for green liberal values, detaching its pioneering labor from its ecological specificity."
+    },
+    {
+      "id": "n414",
+      "fromId": "n101",
+      "toId": "n127",
+      "type": "Bioartists create bioart through the translation of biological processes and multispecies relations into aesthetic forms that circulate within ecological and speculative cultural economies."
+    },
+    {
+      "id": "n415",
+      "fromId": "n105",
+      "toId": "n128",
+      "type": "The creative labor of green architects is expressed through their wage relation, translating ecological design into commodified outputs shaped by speculative real estate development and market metrics."
+    },
+    {
+      "id": "n416",
+      "fromId": "n128",
+      "toId": "n106",
+      "type": "Green architects produce architecture planning and models that visualize speculative ecological futures and translate sustainability narratives into standardized design outputs."
+    },
+    {
+      "id": "n417",
+      "fromId": "n128",
+      "toId": "n108",
+      "type": "The creative labor of green architects materializes in the construction of Green Villa Town, transforming speculative ecological aesthetics into built real estate infrastructure aligned with green capital."
+    },
+    {
+      "id": "n418",
+      "fromId": "n109",
+      "toId": "n129",
+      "type": "Lichens function as pioneer species, initiating colonization on bare rock or disaster-stripped terrain through metabolic processes that recondition damaged ecosystems for future life."
+    },
+    {
+      "id": "n419",
+      "fromId": "n129",
+      "toId": "n102",
+      "type": "The pioneering ecological role of reindeer lichen is instrumentalized as a narrative device in moss exhibitions, where its regenerative labor is repurposed into symbolic recovery aesthetics."
+    },
+    {
+      "id": "n420",
+      "fromId": "n129",
+      "toId": "n100",
+      "type": "The pioneering growth behavior of reindeer lichen leads to its blooms, visually manifesting post-disturbance resilience and signaling the slow return of ecological complexity."
+    },
+    {
+      "id": "n421",
+      "fromId": "n99",
+      "toId": "n129",
+      "type": "Post-fire charred soil provides the ideal environmental substrate for the growth of reindeer lichen, whose metabolic resilience allows it to establish life in conditions marked by past catastrophe."
+    },
+    {
+      "id": "n423",
+      "type": "The symbolic value of green liberalism instrumentalizes the reindeer lichen bloom as a visual emblem of post-disaster ecological renewal, circulating its imagery in exhibitions, eco-marketing, and policy discourse.",
+      "toId": "n103",
+      "fromId": "n130"
+    },
+    {
+      "id": "n425",
+      "fromId": "n130",
+      "toId": "n104",
+      "type": "The ideals of green liberalism are subsumed under the interests of real estate developers, who appropriate its ecological aesthetics and ethical language to legitimize speculative construction and extractive land use."
+    },
+    {
+      "id": "n426",
+      "type": "The demand for symbolic alignment with green liberalism influences what kinds of bioart are fundable and visible, subtly reshaping artistic labor to reproduce familiar tropes of ecological harmony and techno-ethical speculation.",
+      "fromId": "n130",
+      "toId": "n127"
+    },
+    {
+      "id": "n427",
+      "fromId": "n130",
+      "toId": "n105",
+      "type": "Green liberalism serves as the pedagogical foundation for ecological architects, shaping their design ethos around sustainability tropes that align with institutional and market expectations."
+    },
+    {
+      "id": "n428",
+      "fromId": "n130",
+      "toId": "n101",
+      "type": "Green liberalism informs the pedagogical orientation of bioartists, guiding their practices through frameworks of care, resilience, and environmental ethics embedded in liberal institutional structures."
+    },
+    {
+      "id": "n429",
+      "type": "The tulip, reclaimed as a rural nationalist icon, amplifies the symbolic value of agro-conservatism by visually anchoring its ideals of tradition, land stewardship, and resistance to ecological governance.",
+      "fromId": "n84",
+      "toId": "n131"
+    },
+    {
+      "id": "n430",
+      "type": "Agro-conservatism invests the tulip with cultural and political meaning, elevating it from an export commodity to a visual shorthand for agrarian identity and the struggle against perceived external threats to farmer autonomy.",
+      "fromId": "n131",
+      "toId": "n84"
+    },
+    {
+      "id": "n431",
+      "type": "Agro-conservatism supplies BBB with a cultural imaginary rooted in tradition, land stewardship, and rural authenticity, which the party mobilizes to justify resistance to environmental regulation and to legitimize extractive practices as expressions of national heritage.",
+      "fromId": "n131",
+      "toId": "n83"
+    },
+    {
+      "id": "n432",
+      "type": "Agro-conservatism frames Azolla as a traditional, nature-based solution aligned with pastoral ideals, allowing policymakers to endorse Azolla-friendly legislation as both ecologically sound and culturally resonant with rural heritage narratives.",
+      "fromId": "n131",
+      "toId": "n85"
+    },
+    {
+      "id": "n433",
+      "type": "The symbolic value of agro-conservatism is essential for the Dutch Flower Group as it allows the company to frame its industrial floriculture practices within narratives of rural tradition, national pride, and farmer identity\u2014masking extractive, globalized operations behind a culturally resonant image of naturalness and heritage.",
+      "fromId": "n131",
+      "toId": "n57"
+    },
+    {
+      "id": "n434",
+      "type": "The removal of atmospheric CO\u2082 reduces the greenhouse effect by decreasing the amount of infrared radiation trapped in the Earth\u2019s atmosphere, lowering global temperatures over time through a rebalancing of the planet\u2019s radiative energy budget.",
+      "fromId": "n80",
+      "toId": "n89"
+    },
+    {
+      "id": "n435",
+      "fromId": "n109",
+      "toId": "n102",
+      "type": "Although taxonomically distinct from moss, reindeer lichen is deployed as moss within moss exhibitions, blurring biological categories to fulfill curatorial aesthetics of softness, slowness, and ecological recovery."
+    },
+    {
+      "id": "n436",
+      "fromId": "n130",
+      "toId": "n107",
+      "type": "The symbolic value of green liberalism directly constitutes the fictitious value of Green Villa Town, converting visual markers of ecological responsibility into speculative real estate premiums."
+    },
+    {
+      "id": "n437",
+      "fromId": "n107",
+      "toId": "n104",
+      "type": "The fictitious value of the green housing estate feeds back into the capital of real estate developers, enabling the accumulation of financial assets through the speculative inflation of ecological aesthetics."
+    },
+    {
+      "id": "n438",
+      "fromId": "n108",
+      "toId": "n107",
+      "type": "The green villa town generates the fictitious value of the green housing estate by materializing green liberal symbolism into physical infrastructure that amplifies speculative market appeal."
+    },
+    {
+      "id": "n439",
+      "fromId": "n73",
+      "toId": "n20",
+      "type": "Glucose produced through Azolla\u2019s photosynthesis is not only metabolized by the plant itself but also feeds its symbiotic cyanobacterium, sustaining the microbial nitrogen-fixing labor through intra-organismic exchange."
+    },
+    {
+      "id": "n440",
+      "type": "The agricultural practices of farmers in the Philippines inspire the Sahrawi people to adopt Azolla cultivation, transmitting situated knowledge across geopolitical contexts in support of localized ecological sovereignty.",
+      "fromId": "n28",
+      "toId": "n120"
+    },
+    {
+      "id": "n441",
+      "type": "The mine imposes environmental harm, economic exclusion, and militarized control on the Sahrawi people, reinforcing their dispossession and limiting access to their own resource wealth.",
+      "fromId": "n111",
+      "toId": "n115"
+    },
+    {
+      "id": "n442",
+      "type": "The Bou Craa mine feeds raw phosphate into the 100km conveyor belt, initiating its passage through extractive infrastructure and setting the material flow toward export-driven agro-industrial circuits.",
+      "fromId": "n111",
+      "toId": "n113"
+    },
+    {
+      "id": "n443",
+      "type": "The growing scarcity of phosphate intensifies its strategic role in offsetting nitrogen regulation, binding the two nutrient cycles within capital-driven agro-extractive systems.",
+      "fromId": "n112",
+      "toId": "n87"
+    },
+    {
+      "id": "n444",
+      "type": "The Dutch agribusiness\u2013Moroccan Government alliance restructures fertilizer sourcing to maintain profit margins amid nitrogen restrictions, reinforcing dependencies on external phosphate inputs.",
+      "fromId": "n114",
+      "toId": "n87"
+    },
+    {
+      "id": "n445",
+      "type": "Sustainable fertilizer is instrumentalized to comply with the 2015 Integrated Approach to Nitrogen (PAS), maintaining intensive production under regulatory pressure while concealing extractive continuity.",
+      "fromId": "n120",
+      "toId": "n98"
+    },
+    {
+      "id": "n447",
+      "type": "The strategic value of phosphate as a scarce resource drives the Dutch agribusiness\u2013Moroccan Government alliance, securing geopolitical access to phosphate reserves under green capitalist rationales.",
+      "fromId": "n133",
+      "toId": "n114"
+    },
+    {
+      "id": "n448",
+      "type": "The post-nitrogen crisis fertilizer strategy produces sustainable fertilizer not to fulfill ecological objectives, but to manufacture regulatory alibis that justify continued\u2014and often intensified\u2014phosphorus extraction.",
+      "fromId": "n87",
+      "toId": "n133"
+    },
+    {
+      "id": "n449",
+      "type": "The post-nitrogen crisis fertilizer strategy provides both the discursive and material foundation for green agricultural justification, legitimizing ecological narratives while reproducing exploitative input regimes.",
+      "fromId": "n133",
+      "toId": "n120"
+    },
+    {
+      "id": "n450",
+      "type": "The post-nitrogen crisis fertilizer strategy reinforces the Dutch agribusiness\u2013Moroccan Government alliance by deepening phosphate dependency and framing geopolitical entanglement as a sustainable transition.",
+      "fromId": "n133",
+      "toId": "n134"
+    },
+    {
+      "id": "n451",
+      "type": "The post-nitrogen crisis fertilizer strategy appropriates Azolla as a biomimetic solution, abstracting it from Southern agro-ecologies and scaling it up as a green industrial input for the global North.",
+      "fromId": "n133",
+      "toId": "n88"
+    },
+    {
+      "id": "n452",
+      "type": "The mass cultivation of Azolla is deployed within green agricultural justification, co-opting its historical role in communal regenerative farming to symbolize high-tech ecological modernization and industrial sustainability.",
+      "fromId": "n88",
+      "toId": "n134"
+    },
+    {
+      "id": "n453",
+      "type": "The mass cultivation of Azolla transforms a historically communal and low-input agricultural practice into a scalable input for industrial farming, enabling the extractive appropriation of regenerative practices under the logic of green growth.",
+      "fromId": "n88",
+      "toId": "n137"
+    },
+    {
+      "id": "n454",
+      "type": "The post-nitrogen crisis fertilizer strategy in Northern agribusiness seizes upon the imagery of regenerative techniques\u2014such as Azolla use\u2014to enable the extractive appropriation of regenerative practices while sustaining industrial supply chains.",
+      "fromId": "n133",
+      "toId": "n137"
+    },
+    {
+      "id": "n455",
+      "type": "The extractive appropriation of regenerative practices provides the rhetorical foundation for green agricultural justification, allowing ecological modernization discourse to legitimize continued extraction.",
+      "fromId": "n137",
+      "toId": "n134"
+    },
+    {
+      "id": "n456",
+      "type": "The extractive appropriation of regenerative practices reinforces the narrative of sustainable fertilizer by integrating biological techniques like Azolla application, while erasing their embedded social and ecological contexts.",
+      "fromId": "n137",
+      "toId": "n120"
+    },
+    {
+      "id": "n457",
+      "type": "Bioartists contribute to the aesthetic framing of regenerative practices, making them legible\u2014and appropriable\u2014within green cultural economies.",
+      "fromId": "n137",
+      "toId": "n101"
+    },
+    {
+      "id": "n458",
+      "type": "Exhibitions frame moss and lichen as agents of post-disaster renewal, translating ecological functions into speculative aesthetics disconnected from land-based traditions.",
+      "fromId": "n137",
+      "toId": "n102"
+    },
+    {
+      "id": "n459",
+      "type": "Reindeer lichen is transformed from a pioneer species into a marketable emblem of resilience and eco-modernity, detaching it from its ecological and Indigenous contexts.",
+      "fromId": "n137",
+      "toId": "n103"
+    },
+    {
+      "id": "n460",
+      "type": "The appropriation of regenerative imagery supports the discursive infrastructure of green liberalism, where aesthetics and speculation replace systemic change.",
+      "fromId": "n137",
+      "toId": "n130"
+    },
+    {
+      "id": "n461",
+      "type": "The symbolic labor of bioartists contributes to green agricultural justification by embedding green capitalist strategies within cultural narratives of regeneration, aestheticizing ecological recovery while masking extractive continuities.",
+      "fromId": "n134",
+      "toId": "n101"
+    },
+    {
+      "id": "n462",
+      "type": "Green agricultural justification legitimizes sustainable fertilizer by recoding extractive nutrient flows as ecologically responsible solutions.",
+      "fromId": "n134",
+      "toId": "n120"
+    },
+    {
+      "id": "n463",
+      "type": "Green agricultural justification reinforces the symbolic value of agro-conservatism by aligning ecological rhetoric with traditionalist imaginaries of responsible land stewardship.",
+      "fromId": "n134",
+      "toId": "n131"
+    },
+    {
+      "id": "n464",
+      "type": "Green agricultural justification promotes the mass cultivation of Azolla as a regenerative emblem, instrumentalizing its ecological labor within industrial greenwashing strategies.",
+      "fromId": "n134",
+      "toId": "n88"
+    },
+    {
+      "id": "n465",
+      "type": "The Dutch agribusiness\u2013Moroccan Government alliance legitimizes itself through claims of ecological responsibility, while materially sustaining settler extraction by embedding green rhetoric within infrastructures of territorial occupation and resource removal.",
+      "fromId": "n114",
+      "toId": "n134"
+    },
+    {
+      "id": "n466",
+      "type": "The geopolitical infrastructure of fertilizer, including conveyor belts and underwater transport systems, enables the Dutch agribusiness\u2013Moroccan Government alliance to extract and circulate phosphate across colonial borders.",
+      "fromId": "n136",
+      "toId": "n114"
+    },
+    {
+      "id": "n467",
+      "type": "The geopolitical infrastructure of fertilizer mediates the circulation of phosphate as a scarce resource, securing access to extraction zones through transnational logistical systems.",
+      "fromId": "n136",
+      "toId": "n112"
+    },
+    {
+      "id": "n468",
+      "type": "The 100km conveyor belt functions as a key component of the geopolitical infrastructure of fertilizer, transforming spatial occupation into logistical continuity.",
+      "fromId": "n113",
+      "toId": "n136"
+    },
+    {
+      "id": "n469",
+      "type": "The North Sea\u2013Sahara Underwater Phosphate Conveyor extends the geopolitical infrastructure of fertilizer into submarine space, embedding occupation within logistical flows of ecological resource transfer.",
+      "fromId": "n116",
+      "toId": "n136"
+    },
+    {
+      "id": "n470",
+      "type": "BBB naturalizes extractive fertilizer sourcing as essential to preserving the cultural identity and viability of the Dutch farmer, reinforcing nationalist versions of ecological modernization.",
+      "fromId": "n83",
+      "toId": "n134"
+    },
+    {
+      "id": "n471",
+      "type": "Aesthetic displays of ecological recovery simulate resilience through curated visual forms, detaching it from systemic transformation and reinforcing the illusion of environmental repair within the existing structures of capital.",
+      "fromId": "n138",
+      "toId": "n102"
+    },
+    {
+      "id": "n472",
+      "type": "When co-opted by green liberalism, bioart practices contribute to the financialization of crisis and regeneration by producing speculative visual languages that aestheticize ecological breakdown and repackage it as cultural capital.",
+      "fromId": "n138",
+      "toId": "n127"
+    },
+    {
+      "id": "n473",
+      "type": "Speculative aesthetics mobilize visual tropes and narrative devices to legitimize extractive greenwashing, framing it as ecological innovation while obscuring the material reproduction of capitalist accumulation.",
+      "fromId": "n138",
+      "toId": "n134"
+    },
+    {
+      "id": "n474",
+      "type": "Speculative imaginaries of eco-futures aesthetically support the abstraction and commodification of regenerative practices, detaching them from their material conditions and embedding them in circuits of green speculation.",
+      "fromId": "n137",
+      "toId": "n138"
+    },
+    {
+      "id": "n475",
+      "type": "Aesthetic projections of green urbanism generate the fictitious value of green housing estates by visualizing imagined ecological futures as assets, embedding ecological signifiers within the speculative logic of real estate finance.",
+      "fromId": "n138",
+      "toId": "n107"
+    },
+    {
+      "id": "n476",
+      "type": "Catbonds commodify ecological risk by turning regenerative practices into insurable assets, abstracting them from their situated contexts to serve as speculative instruments in financial markets designed to profit from climate volatility.",
+      "fromId": "n44",
+      "toId": "n137"
+    },
+    {
+      "id": "n477",
+      "type": "Azolla futures generate projected carbon drawdown outcomes that underwrite catbond policies, enabling insurers and investors to price and trade climate risk based on ecological performance.",
+      "fromId": "n86",
+      "toId": "n44"
+    },
+    {
+      "id": "n478",
+      "type": "Symbiotic cyanobacteria fix atmospheric nitrogen within the lichen body, supplying essential nutrients that allow reindeer lichen to grow in depleted soils and pioneer post-disturbance landscapes.",
+      "fromId": "n20",
+      "toId": "n109"
+    },
+    {
+      "id": "n479",
+      "type": "The burning tulip field, as both ecological catastrophe and visual spectacle, becomes a symbolic site for speculative aesthetics, inspiring artistic and design imaginaries that aestheticize collapse, commodify loss, and reframe environmental crisis as a canvas for visionary futures.",
+      "fromId": "n96",
+      "toId": "n138"
+    },
+    {
+      "id": "n480",
+      "type": "The mass dumping of tulips exposed the systemic fragility of supply chain finance, revealing how financial instruments tied to uninterrupted circulation collapse when confronted with infrastructural breakdown, prompting reassessments of risk, insurance, and inventory liquidity across the floral trade.",
+      "fromId": "n63",
+      "toId": "n61"
+    },
+    {
+      "id": "n481",
+      "type": "As a biological-aesthetic technology, the tulip\u2019s flamboyant petals mediate light, color, and symmetry to generate speculative desire\u2014transforming visual excess into a mechanism for attracting human attention and fueling value projections in floricultural markets.",
+      "fromId": "n69",
+      "toId": "n68"
+    },
+    {
+      "id": "n482",
+      "type": "Flamboyant petals were reengineered by VOC-era growers to maximize visual rarity and price volatility, treating the flower\u2019s appearance as a speculative instrument within the early infrastructure of globalized finance and commodified nature.",
+      "fromId": "n48",
+      "toId": "n69"
+    },
+    {
+      "id": "n483",
+      "type": "The Dutch Flower Group treats flamboyant petals as programmable biotechnologies, refining them through breeding, light exposure, and fertilizer regimes to deliver consistent aesthetic impact at scale, sustaining the tulip\u2019s market visibility and symbolic function within a saturated visual economy.",
+      "fromId": "n57",
+      "toId": "n69"
+    },
+    {
+      "id": "n484",
+      "type": "The tulip\u2019s intrinsic visual appeal\u2014its striking coloration, symmetry, and ephemerality\u2014made it a uniquely potent object of speculative desire, catalyzing the cultural and financial conditions for Tulip Mania by offering a form easily abstracted into tradable value.",
+      "fromId": "n68",
+      "toId": "n50"
+    },
+    {
+      "id": "n485",
+      "type": "Flamboyant petals functioned as aesthetic leverage: they enabled the emergence of varietal catalogues, pricing tiers, and reputation economies, forming the visual infrastructure that allowed speculation to escalate and become institutionalized as cultural logic.",
+      "fromId": "n69",
+      "toId": "n50"
+    },
+    {
+      "id": "n486",
+      "type": "In evolutionary terms, the tulip\u2019s reproductive strategy\u2014dependent on attracting pollinators\u2014drives the development of petal forms that amplify visibility, positioning the petal as an evolved attention device within multispecies ecologies.",
+      "fromId": "n46",
+      "toId": "n69"
+    },
+    {
+      "id": "n487",
+      "type": "Economically, the tulip\u2019s consistency and responsiveness to artificial selection allow its petals to be manipulated through breeding, rendering flamboyance a programmable trait aligned with commercial and symbolic value.",
+      "fromId": "n46",
+      "toId": "n69"
+    },
+    {
+      "id": "n488",
+      "type": "Through horticultural capitalism, the petal acts as a site of intervention: by being continuously selected for visibility and rarity, it reshapes the species\u2019 genetic pool, turning the tulip into an object of design more than ecological adaptation.",
+      "fromId": "n69",
+      "toId": "n46"
+    },
+    {
+      "id": "n489",
+      "type": "Culturally and symbolically, the flamboyant petal detaches the tulip from its wild origins, reconstituting it as an aesthetic commodity\u2014thus allowing the species to persist not primarily as a plant, but as a surface of spectacle embedded in market and media systems.",
+      "fromId": "n69",
+      "toId": "n46"
+    },
+    {
+      "id": "n490",
+      "type": "The First Azolla Event, through massive carbon drawdown and global cooling, contributed to the formation of a stable, temperate climate regime in the Northern Hemisphere\u2014creating long-term ecological conditions of moderate seasonality and photoperiodic regularity that would later prove ideal for the development of precision-based tulip monoculture in the Netherlands.",
+      "fromId": "n19",
+      "toId": "n51"
+    },
+    {
+      "id": "n491",
+      "type": "The Dutch Flower Group, in pursuit of precision breeding for color, bloom timing, and shelf life, drives demand for CRISPR technology as a tool for rapid, targeted genetic modification\u2014contributing to its wider use in floriculture and beyond by normalizing genomic intervention as a standard practice in aesthetic optimization and market differentiation.",
+      "fromId": "n57",
+      "toId": "n82"
+    },
+    {
+      "id": "n492",
+      "type": "BBB promotes legislation that normalizes the use of CRISPR by framing it as an innovation that empowers Dutch farmers to remain globally competitive and self-sufficient, positioning gene-editing not as technocratic overreach but as a patriotic tool for rural resilience, food security, and agricultural sovereignty.",
+      "fromId": "n83",
+      "toId": "n82"
+    },
+    {
+      "id": "n493",
+      "type": "Real estate developers sponsor moss exhibitions as part of greenwashing campaigns, using curated ecological aesthetics to signal sustainability while continuing to extract value through gentrification and speculative architecture.",
+      "fromId": "n104",
+      "toId": "n102"
+    },
+    {
+      "id": "n494",
+      "type": "Bioartists inadvertently reinforce the symbolic value of green liberalism by aestheticizing ecological intervention as ethical innovation, creating spectacles of care that depoliticize underlying structures of extraction.",
+      "fromId": "n101",
+      "toId": "n130"
+    },
+    {
+      "id": "n495",
+      "type": "Green agricultural justification provides the ideological cover for Azolla-friendly legislation, reframing large-scale monocultural cultivation as a climate solution while masking its extractive and speculative logics.",
+      "fromId": "n134",
+      "toId": "n85"
+    },
+    {
+      "id": "n496",
+      "type": "CRISPR offers bioartists a controversial yet seductive tool for engaging with living matter as a creative material, reframing gene editing as a site of aesthetic speculation and biopolitical critique.",
+      "fromId": "n82",
+      "toId": "n101"
+    },
+    {
+      "id": "n497",
+      "type": "CRISPR enters speculative aesthetics as both subject and medium\u2014its promise of control and transformation rendering genomes as open scripts for imagining futures at the scale of life itself.",
+      "fromId": "n82",
+      "toId": "n138"
+    },
+    {
+      "id": "n498",
+      "type": "The Green Villa Town aestheticizes sustainability through curated landscapes and smart-growth narratives, aligning with speculative aesthetics by projecting ecologically idealized futures designed for capital circulation and lifestyle branding.",
+      "fromId": "n108",
+      "toId": "n138"
+    },
+    {
+      "id": "n499",
+      "type": "The fictitious value of green housing estates draws on ecological trauma, marketing reclaimed or fire-damaged sites as opportunities for \u201cregenerative design,\u201d thereby financializing the aesthetics of recovery.",
+      "fromId": "n99",
+      "toId": "n108"
+    },
+    {
+      "id": "n500",
+      "type": "Real estate developers co-opt green agricultural justification to secure land-use rezoning, presenting ornamental gardens and \u201ccommunity farming\u201d as eco-social assets while displacing non-capitalist land practices.",
+      "fromId": "n104",
+      "toId": "n134"
+    },
+    {
+      "id": "n501",
+      "type": "By contributing symbolic labor and curatorial value to the development, bioartists unintentionally elevate the cultural capital of Green Villa Town\u2014accelerating its gentrification trajectory, which in turn renders the area unaffordable for the very precarious artistic labor it initially relied on, displacing bioartists from the ecosystems they helped materialize.",
+      "fromId": "n108",
+      "toId": "n101"
+    },
+    {
+      "id": "n502",
+      "type": "Green Villa Town instrumentalizes bioartists to aestheticize its ecological vision, commissioning living installations and biotechnological expressions of care that serve as visual proof of sustainability, while packaging speculative nature as a premium lifestyle commodity.",
+      "fromId": "n101",
+      "toId": "n108"
+    },
+    {
+      "id": "n503",
+      "type": "Speculative aesthetics underwrites the creation of architecture planning and models, turning design scenarios into tools for enacting eco-political fictions as urban form.",
+      "fromId": "n138",
+      "toId": "n128"
+    },
+    {
+      "id": "n504",
+      "type": "Green Villa Town\u2019s emergence as a climate-proof development fuels speculation on climate catastrophes by turning disaster risk into an asset class for real estate investment.",
+      "fromId": "n108",
+      "toId": "n45"
+    },
+    {
+      "id": "n505",
+      "type": "Sustainable fertilizer produced from Azolla by farmers in the South constitutes a metabolic and political negation of the geopolitical infrastructure of phosphate fertilizer\u2014rejecting transnational extraction, supply chain dependency, and settler-colonial phosphate regimes in favor of localized, regenerative, and sovereign nutrient cycles.",
+      "fromId": "n120",
+      "toId": "n136"
+    },
+    {
+      "id": "n506",
+      "type": "Reindeer lichen, as a resilient post-disturbance organism, is culturally extracted by bioartists who appropriate its aesthetic and symbolic qualities\u2014fragility, survival, ecological purity\u2014without necessarily engaging with its ecological labor or multispecies entanglements, turning it into a signifier of speculative care within institutionalized exhibition circuits.",
+      "fromId": "n109",
+      "toId": "n101"
+    },
+    {
+      "id": "n507",
+      "type": "Bioartists often reduce reindeer lichen to an aesthetic medium or metaphor, instrumentalizing its presence to signify environmental sensitivity, while reproducing extractive representational logics that ignore its autonomous ecological role or the conditions under which it blooms\u2014such as disturbance, acidification, and fire.",
+      "fromId": "n101",
+      "toId": "n109"
+    },
+    {
+      "id": "n508",
+      "type": "Through their intervention in cultural subsidy policy, BBB contributes to the precaritization of bioartists by defunding or delegitimizing speculative, critical, and ecologically engaged practices that do not conform to nationalist or utilitarian cultural metrics\u2014thereby intensifying dependence on real estate patronage, institutional co-option, or greenwashing commissions.",
+      "fromId": "n83",
+      "toId": "n101"
+    },
+    {
+      "id": "n509",
+      "type": "Bioartists\u2014especially those aligned with speculative, ecological, or cosmopolitical frameworks\u2014are often framed by BBB and its supporters as emblematic of elite, urban, or abstract cultural labor, reinforcing a populist antagonism toward publicly funded, conceptually-driven practices perceived as disconnected from \u201creal\u201d rural or national interests.",
+      "fromId": "n101",
+      "toId": "n83"
+    },
+    {
+      "id": "n510",
+      "type": "The colonial wealth accumulated by the Dutch East India Company forms part of the financial bedrock of cultural institutions whose subsidies support contemporary bioartists, creating a structural contradiction in which practices that critique extraction and ecological violence are materially sustained by the afterlife of imperial accumulation.",
+      "fromId": "n48",
+      "toId": "n101"
+    },
+    {
+      "id": "n511",
+      "type": "The attention economy extracts surplus value from bioartists by circulating their visually compelling, eco-critical works as media objects, monetizing ecological aesthetics through engagement metrics and institutional visibility.",
+      "fromId": "n70",
+      "toId": "n101"
+    },
+    {
+      "id": "n512",
+      "type": "The practices of bioartists are reshaped by the demands of attention: time, form, and material are increasingly optimized for shareability, exhibition cycles, and funding narratives, shifting artistic labor toward performative visibility and ecological stylization.",
+      "fromId": "n101",
+      "toId": "n70"
+    },
+    {
+      "id": "n513",
+      "type": "The attention economy captures moss exhibitions as symbols of quiet recovery and tactile intimacy, converting them into replicable images that anchor narratives of resilience and care in green branding, public programming, and online circulation.",
+      "fromId": "n70",
+      "toId": "n102"
+    },
+    {
+      "id": "n514",
+      "type": "As moss exhibitions become increasingly curated for their affective legibility and photogenic stillness, the logic of attention reshapes their spatial and temporal design\u2014compressing ecological time into consumable formats and mediating care through spectacle.",
+      "fromId": "n102",
+      "toId": "n70"
+    },
+    {
+      "id": "n515",
+      "type": "The attention economy harvests speculative aesthetics by monetizing its imagery of futurity, ambiguity, and crisis\u2014extracting affective engagement from aestheticized uncertainty and rendering potentiality itself a resource.",
+      "fromId": "n70",
+      "toId": "n138"
+    },
+    {
+      "id": "n516",
+      "type": "Speculative aesthetics adapts its strategies toward futurity-as-content, subtly reorienting artistic inquiry toward the production of visually captivating, easily disseminated \"worlds\" that function well within funding platforms, trend forecasting, and institutional commissions.",
+      "fromId": "n138",
+      "toId": "n70"
+    },
+    {
+      "id": "n517",
+      "type": "Reindeer lichen bloom's ecological materiality is restructured through capture: the lichen becomes staged, preserved, or artificially cultivated not for ecological function but for continuous representability in green real estate, museum vitrines, and speculative models.",
+      "fromId": "n100",
+      "toId": "n70"
+    },
+    {
+      "id": "n518",
+      "type": "The reindeer lichen bloom is extracted as symbolic surplus: an image of natural rebirth after catastrophe, used in design fictions, exhibitions, and development rhetoric to signal ecological healing and brand environmental stewardship.",
+      "fromId": "n70",
+      "toId": "n100"
+    },
+    {
+      "id": "n519",
+      "type": "The labor of bioart generates symbolic value for green liberalism by transforming ecological materials into signs of ethical care, innovation, and sustainability\u2014making aesthetic critique part of green institutional branding.",
+      "fromId": "n127",
+      "toId": "n130"
+    },
+    {
+      "id": "n520",
+      "type": "The creative labor of architects produces renderings, models, and simulations that visually manifest ecological futurity, inflating the fictitious value of green housing estates by embedding design speculation into real estate pricing.",
+      "fromId": "n128",
+      "toId": "n107"
+    },
+    {
+      "id": "n521",
+      "type": "The speculative market logic of green estates dictates the visual language and deliverables expected from architectural labor, driving planning toward models that promise ecological performance without structural transformation.",
+      "fromId": "n107",
+      "toId": "n128"
+    },
+    {
+      "id": "n522",
+      "type": "The metabolic labor of reindeer lichen\u2019s pioneering growth following ecological disturbance is extracted as a symbol of post-crisis resilience, contributing to the visual and affective infrastructure of green liberal legitimacy.",
+      "fromId": "n129",
+      "toId": "n130"
+    },
+    {
+      "id": "n523",
+      "type": "Symbolic demand for visible \u201cnature healing\u201d leads to the strategic conservation or curatorial placement of reindeer lichen, turning its growth into an ecological performance staged for institutional or real estate legitimacy.",
+      "fromId": "n130",
+      "toId": "n129"
+    },
+    {
+      "id": "n524",
+      "type": "Bioart contributes cultural surplus to green housing estates by embedding narratives of ecological intelligence and speculative care into real estate aesthetics, raising symbolic and monetary value.",
+      "fromId": "n127",
+      "toId": "n107"
+    },
+    {
+      "id": "n525",
+      "type": "The speculative logics of green development shape the types of bioart that are invited, funded, and installed\u2014encouraging practices that reinforce the visual fiction of sustainable urbanism.",
+      "fromId": "n107",
+      "toId": "n127"
+    },
+    {
+      "id": "n526",
+      "type": "Planning and modeling practices aestheticize environmental policy through simulations and visual coherence, generating symbolic value that makes green liberalism legible, fundable, and materially appealing.",
+      "fromId": "n128",
+      "toId": "n130"
+    },
+    {
+      "id": "n527",
+      "type": "The symbolic imperatives of green liberalism shape design parameters, pushing planning toward photogenic, index-friendly outputs rather than ecologically or socially radical transformation.",
+      "fromId": "n130",
+      "toId": "n128"
+    },
+    {
+      "id": "n528",
+      "type": "Green liberalism depends on speculative aesthetics to generate emotionally persuasive narratives of sustainability, which serve to defer systemic change through design fiction and affective futurity.",
+      "fromId": "n130",
+      "toId": "n138"
+    },
+    {
+      "id": "n529",
+      "type": "Speculative aesthetics is also mobilized by agro-conservative imaginaries, often in reactionary form\u2014visualizing a return to \u201csoil-based authenticity\u201d or pre-globalized, locally-rooted values as emotionally legible alternatives to technocratic futurism.",
+      "fromId": "n138",
+      "toId": "n131"
+    },
+    {
+      "id": "n530",
+      "type": "Green liberalism anchors fictitious value through visible \u201ceco-design,\u201d turning aesthetic indicators of care into financial premiums in housing markets.",
+      "fromId": "n130",
+      "toId": "n107"
+    },
+    {
+      "id": "n531",
+      "type": "Agro-conservatism benefits from the backlash against speculative green urbanism, positioning itself as a grounded, rural counter-value\u2014while simultaneously exploiting the same aesthetics of ecological proximity (e.g., moss, local materials, pollinators).",
+      "fromId": "n107",
+      "toId": "n131"
+    },
+    {
+      "id": "n532",
+      "type": "BBB's antagonism reinforces the legitimacy of green liberalism by giving it an oppositional figure to resist, sustaining its affective hold on urban, liberal publics\u2014even as both perpetuate extractive policies in different registers.",
+      "fromId": "n83",
+      "toId": "n130"
+    },
+    {
+      "id": "n533",
+      "type": "Climate catastrophe forecasts become tools for real estate speculation, allowing developers to reposition \u201cclimate-resilient\u201d architecture as a future-proof investment narrative\u2014fueling gentrification under ecological pretext.",
+      "fromId": "n45",
+      "toId": "n104"
+    },
+    {
+      "id": "n534",
+      "type": "Supply chain finance mechanisms underwrite the just-in-time delivery of phosphate and nitrogen products across borders, making speculative flows essential to the stabilization of extractive fertilizer regimes.",
+      "fromId": "n61",
+      "toId": "n136"
+    },
+    {
+      "id": "n535",
+      "type": "Speculative finance frameworks appropriate regenerative practices by assigning value to their future potential as \u201csolutions\u201d to climate catastrophe\u2014turning lived repair work into collateral for securitized risk narratives.",
+      "fromId": "n45",
+      "toId": "n137"
+    },
+    {
+      "id": "n536",
+      "type": "The selective uptake of regenerative practices into speculative finance systems reinforces their framing as crisis-contingent interventions, entrenching a model where care and repair gain value only in proximity to collapse.",
+      "fromId": "n137",
+      "toId": "n45"
+    },
+    {
+      "id": "n537",
+      "type": "Speculative discourse on climate catastrophes creates aesthetic demand for artworks that visualize or materialize planetary threat\u2014positioning bioartists as mediators of trauma, extinction, or multispecies precarity for institutional circulation.",
+      "fromId": "n45",
+      "toId": "n101"
+    },
+    {
+      "id": "n538",
+      "type": "By translating ecological breakdown into affective and visual forms, bioartists feed speculative imaginaries\u2014generating emotionally charged content that supports institutional attention, grant cycles, and green capital accumulation.",
+      "fromId": "n101",
+      "toId": "n45"
+    },
+    {
+      "id": "n539",
+      "type": "Many bioart practices rely on symbolic, material, or epistemic borrowing from other ontologies\u2014particularly Indigenous, regenerative, or scientific cosmologies\u2014whose authority is aestheticized but often abstracted from context or agency.",
+      "toId": "n137",
+      "fromId": "n127"
+    },
+    {
+      "id": "n540",
+      "type": "Speculation on climate catastrophes creates demand for exhibitions that visually narrativize ecological recovery, positioning moss as an emblem of post-crisis resilience\u2014flattening complex socio-ecological trauma into symbolic surface aesthetics designed for contemplative consumption.",
+      "fromId": "n45",
+      "toId": "n102"
+    },
+    {
+      "id": "n541",
+      "type": "By translating ecological disturbance into lush representations of \u201chealing,\u201d moss exhibitions risk reinforcing speculative regimes by offering visual closure to unresolved crises\u2014substituting aesthetic resolution for structural intervention, and reproducing an economy of visibility that feeds disaster finance and green institutional legitimacy.",
+      "fromId": "n102",
+      "toId": "n45"
+    },
+    {
+      "id": "n542",
+      "type": "The creation of Azolla futures markets formalizes the extractive appropriation of regenerative practices, detaching them from situated labor and embedding them in speculative instruments structured by Northern capital.",
+      "fromId": "n86",
+      "toId": "n137"
+    },
+    {
+      "id": "n543",
+      "type": "CRISPR is used to enhance Azolla\u2019s sequestration or bloom control, stabilizing the organism for commodification and thereby legitimizing it as a tradable ecological asset.",
+      "fromId": "n82",
+      "toId": "n86"
+    },
+    {
+      "id": "n544",
+      "type": "Speculative aesthetics provides the narrative and visual scaffolding for deep-time contracts, creating renderings, scenarios, and symbolic imaginaries that naturalize the trading of millennia-scale ecological value.",
+      "fromId": "n138",
+      "toId": "n86"
+    },
+    {
+      "id": "n545",
+      "type": "The surreal temporality and ethical contradictions of Azolla futures become raw material for speculative artworks, installations, and publications that explore the uncanny convergence of botany, finance, and extinction.",
+      "fromId": "n86",
+      "toId": "n138"
+    },
+    {
+      "id": "n546",
+      "type": "Deep-time Azolla futures trading incentivizes the overcultivation and mismanagement of bloom cycles to meet speculative yield expectations, and in doing so, it becomes a structural driver of ecological destabilization\u2014contributing directly to the onset of the Second Azolla Event as a tipping-point phenomenon triggered by the financial abstraction of Azolla\u2019s metabolic labor.",
+      "fromId": "n86",
+      "toId": "n79"
+    },
+      {
+        "id": "n547",
+        "fromId": "n58",
+        "toId": "n46",
+        "type": "Tulip speculation under 17th-century capitalism abstracted the flower into a bearer of fictitious capital, selectively breeding it for visual novelty while severing its reproduction from seasonal rhythms, soil ecologies, and multispecies dependencies."
+      },
+      {
+        "id": "n548",
+        "fromId": "n58",
+        "toId": "n48",
+        "type": "Tulip speculation was incorporated into Dutch East India Company’s colonial trade networks, where the extraction and circulation of plant life served both imperial accumulation and the ecological restructuring of colonies through plantation logics and monocultural cultivation."
+      },
+      {
+        "id": "n549",
+        "fromId": "n58",
+        "toId": "n54",
+        "type": "The pricing of unbloomed tulip bulbs in 17th-century markets formalized the temporal disjunction between production and circulation, prefiguring derivative finance as a technology to commodify natural uncertainty and abstract future ecologies into present speculation."
+      },
+      {
+        "id": "n550",
+        "fromId": "n58",
+        "toId": "n59",
+        "type": "Speculation on future tulip demands laid the ideological and logistical foundations for the Dutch auction system, where floricultural commodities are circulated at industrial scale, severing flowers from their ecological rhythms and subordinating their value to the imperatives of accelerated market turnover."
+      },
+      {
+        "id": "n551",
+        "fromId": "n58",
+        "toId": "n68",
+        "type": "Speculation on future tulip demands intensified the selective amplification of visual traits to maximize perceived value, transforming the tulip into an economic signal within emergent markets where aesthetic attention was commodified as a speculative asset."
+      },
+        {
+          "id": "n552",
+          "fromId": "n27",
+          "toId": "n21",
+          "type": "Contemporary warming destabilizes biogeochemical boundaries that once enabled Arctic phosphate accumulation, echoing conditions that triggered prehistoric Azolla blooms and planetary-scale feedback loops."
+        },
+        {
+          "id": "n553",
+          "fromId": "n98",
+          "toId": "n21",
+          "type": "Modern attempts to regulate nutrient flows through policy frameworks unwittingly parallel ancient phosphate fluxes, exposing the longue durée of ecological mismanagement under shifting modes of accumulation."
+        },
+        {
+          "id": "n554",
+          "fromId": "n86",
+          "toId": "n21",
+          "type": "Contemporary speculation on Azolla’s ancient carbon sequestration projects backwards onto the prehistoric phosphate surge, reimagining biogeochemical transformations as tradable assets within long temporalities of ecological commodification."
+        },
+        {
+          "id": "n555",
+          "fromId": "n48",
+          "toId": "n25",
+          "type": "The Dutch East India Company’s colonial trade networks established extractive infrastructures—ports, shipping routes, and labor regimes—that were later repurposed to transport fossil materials and organize the global flows of petro-industrial production."
+        },
+        {
+          "id": "n556",
+          "fromId": "n54",
+          "toId": "n25",
+          "type": "Futures markets enabled capital to flow into petro-industrial expansion by compressing ecological time into tradable risk, allowing fossil infrastructure to be built ahead of material extraction and grounded labor."
+        },
+        {
+          "id": "n557",
+          "fromId": "n19",
+          "toId": "n25",
+          "type": "The planetary cooling triggered by the first Azolla bloom created the temperate climate conditions necessary for colonial expansion and fossil-fueled industrialization, laying the deep ecological groundwork for the emergence of the petrochemical industry."
+        },
+        {
+          "id": "n558",
+          "fromId": "n73",
+          "toId": "n25",
+          "type": "The petrochemical industry mimics ancient biogeochemical sequestration regimes by engineering industrial sinks for carbon, converting planetary-scale ecological rhythms into controlled inputs for fossil-driven value production."
+        },
+        {
+          "id": "n559",
+          "fromId": "n19",
+          "toId": "n48",
+          "type": "The planetary cooling initiated by the first Azolla bloom created the climatic stability and oceanic conditions that enabled transoceanic navigation, upon which the Dutch East India Company built its maritime empire."
+        },
+        {
+          "id": "n560",
+          "fromId": "n52",
+          "toId": "n48",
+          "type": "The Dutch East India Company’s floricultural trade depended on the expropriation of cultivation knowledge developed by Persian horticulturists, enacting a form of primitive accumulation through botanical appropriation."
+        },
+        {
+          "id": "n561",
+          "fromId": "n46",
+          "toId": "n48",
+          "type": "The Dutch East India Company commodified the tulip as a colonial asset, transforming its aesthetic and ecological qualities into instruments of speculation and imperial exchange."
+        },
+        {
+          "id": "n562",
+          "fromId": "n118",
+          "toId": "n48",
+          "type": "The Dutch East India Company relied on the Canary Current as a material infrastructure of imperial mobility, channeling ecological flows into the logistical machinery of oceanic extraction."
+        },
+        {
+          "id": "n563",
+          "fromId": "n69",
+          "toId": "n49",
+          "type": "The visual form of the tulip petal evolved through multispecies encounters, where insect attention and human aesthetic selection jointly shaped its morphology, embedding co-evolution within more-than-human regimes of attraction and communication."
+        },
+        {
+          "id": "n564",
+          "fromId": "n27",
+          "toId": "n49",
+          "type": "Rising temperatures desynchronize flowering cycles and insect lifeways, disrupting the co-evolved rhythms that once structured pollination as a mutualistic ecological relation."
+        },
+        {
+          "id": "n565",
+          "fromId": "n46",
+          "toId": "n49",
+          "type": "The tulip’s ornamental breeding under capitalist floriculture displaced its ecological function, weakening co-evolved relationships with pollinators in favor of visual traits suited for speculative consumption."
+        },
+        {
+          "id": "n566",
+          "fromId": "n51",
+          "toId": "n49",
+          "type": "Tulip monoculture reduced floral diversity and seasonal rhythm, fragmenting pollinator habitats and dissolving the multispecies interdependencies of agroecological reproduction."
+        },
+        {
+          "id": "n567",
+          "fromId": "n98",
+          "toId": "n49",
+          "type": "Monocultures fueled by nitrogen-based fertilizers reduce floral diversity, fragmenting the ecological infrastructure required for sustaining co-evolved insect-plant interactions."
+        },
+        {
+          "id": "n568",
+          "fromId": "n46",
+          "toId": "n52",
+          "type": "The early cultivation of tulips in Persia unfolded through co-evolutionary labor, where the flower’s sensory and reproductive traits demanded human attention, care, and adaptation, embedding horticultural practice within multispecies negotiations of beauty, seasonality, and technique."
+        },
+        {
+          "id": "n569",
+          "fromId": "n19",
+          "toId": "n52",
+          "type": "The climatic stabilization initiated by the Azolla bloom made possible the emergence of seasonal cultivation regimes in Persia, enabling agricultural co-evolution with tulips through stable ecological rhythms."
+        },
+        {
+          "id": "n570",
+          "fromId": "n49",
+          "toId": "n52",
+          "type": "The interdependence between tulips and insect pollinators shaped early horticultural techniques, as Persian cultivators adapted to the reproductive needs of both plant and pollinator in practices of multispecies care."
+        },
+        {
+          "id": "n571",
+          "fromId": "n73",
+          "toId": "n52",
+          "type": "The metabolic labor of early tulip cultivation involved redirecting carbon flows through seasonal timing and soil stewardship, making Persian horticulture an early form of planetary co-regulation through plant labor."
+        },
+        {
+          "id": "n572",
+          "fromId": "n48",
+          "toId": "n54",
+          "type": "The Dutch East India Company’s long-distance commodity trade structured the spatial and temporal disconnects that futures contracts emerged to manage, transforming logistical uncertainty into speculative value."
+        },
+        {
+          "id": "n573",
+          "fromId": "n46",
+          "toId": "n54",
+          "type": "The volatile pricing of tulip bulbs prefigured the speculative logic of futures trading, where plant life was abstracted into a site of financial gambling severed from its ecological conditions."
+        },
+        {
+          "id": "n574",
+          "fromId": "n59",
+          "toId": "n54",
+          "type": "The Dutch flower auction system formalized the disconnection between commodity value and ecological time, laying the groundwork for speculative trading regimes that operate independently of material reproduction."
+        },
+        {
+          "id": "n575",
+          "fromId": "n61",
+          "toId": "n54",
+          "type": "Futures trading emerged alongside techniques like supply chain finance that restructure production through debt-based anticipation, enclosing labor and logistics into abstract cycles of repayment, speculation, and risk management."
+        },
+        {
+          "id": "n576",
+          "fromId": "n19",
+          "toId": "n118",
+          "type": "The planetary cooling induced by Azolla blooms altered oceanic temperature gradients, contributing to the formation of stable current systems like the Canary Current that later enabled transoceanic circulation."
+        },
+        {
+          "id": "n577",
+          "fromId": "n89",
+          "toId": "n118",
+          "type": "The long-term cooling of Earth's climate established the thermal and salinity contrasts necessary for the Canary Current to persist as a major component of Atlantic circulation."
+        },
+        {
+          "id": "n578",
+          "fromId": "n27",
+          "toId": "n118",
+          "type": "The contemporary destabilization of ocean currents under warming pressures reveals the historical contingency of systems like the Canary Current, challenging the illusion of their permanence and exposing their co-production by planetary metabolism."
+        }
+  ]
+}
