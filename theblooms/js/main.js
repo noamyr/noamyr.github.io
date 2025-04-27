@@ -153,7 +153,7 @@ function updateCinemaByLinkKey(linkKey) {
     return;
   }
 
-  const imageUrl = `/img/${linkObj.id}.jpg`;
+  const imageUrl = `./img/${linkObj.id}.jpg`; 
   imageElement.src = imageUrl;
   imageElement.onload = () => {
     imageElement.style.display = 'block';
