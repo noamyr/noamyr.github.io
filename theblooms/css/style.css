@@ -91,13 +91,6 @@ html, body {
   background: #ddd;
 }
 
-/* Hide broken or missing images */
-#cinemaImage:empty,
-#cinemaImage[src=""],
-#cinemaImage:not([src]) {
-  display: none;
-}
-
 /* Caption under cinema */
 #caption {
   font-family: 'Barlow', sans-serif;
