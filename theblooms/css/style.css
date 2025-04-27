@@ -191,16 +191,16 @@ input:checked + .slider:before {
 .link.next    { color: orange; stroke: orange; stroke-width: 2.5; }
 .link.visited { color: #6a5acd; stroke: #6a5acd; stroke-width: 1.5; }
 
-/* Mobile layout adjustments (final version) */
+/* Mobile layout adjustments (final-final version) */
 @media (max-width: 768px) {
   html, body {
     height: 100%;
     overflow: hidden;
-    overscroll-behavior: none;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     background: #f3f3f3;
+    box-sizing: border-box;
+    overscroll-behavior: none;
   }
 
   #mainContent {
@@ -208,9 +208,11 @@ input:checked + .slider:before {
     flex-direction: column;
     height: calc(var(--vh, 1vh) * 100);
     width: 100%;
-    overflow: hidden;
+    overflow-y: auto; /* <-- allow only vertical scroll inside */
+    overflow-x: hidden;
     box-sizing: border-box;
     padding: 0;
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
   }
 
   #diagram {
@@ -264,7 +266,6 @@ input:checked + .slider:before {
     letter-spacing: 0.02em;
   }
 
-  /* Remove gradient fade effect */
   #diagram::after {
     background: none;
   }
