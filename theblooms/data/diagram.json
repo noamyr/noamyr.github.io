@@ -154,7 +154,7 @@
     },
     {
       "id": "n49",
-      "caption": "Insect Pollinators ",
+      "caption": "Nonhuman Pollinators ",
       "labels": [
         "Human and Nonhuman Agencies"
       ],
@@ -1247,7 +1247,7 @@
     },
     {
       "id": "n199",
-      "type": "For insect pollinators, the tulip\u2019s attention-catching traits function biologically\u2014as ecological signals evolved to attract reproductive agents, grounding the flower\u2019s visual properties in nonhuman perceptual regimes prior to human speculation.",
+      "type": "For nonhuman pollinators, the tulip\u2019s attention-catching traits function biologically\u2014as ecological signals evolved to attract reproductive agents, grounding the flower\u2019s visual properties in nonhuman perceptual regimes prior to human speculation.",
       "fromId": "n49",
       "toId": "n68"
     },
@@ -1259,7 +1259,7 @@
     },
     {
       "id": "n201",
-      "type": "Through their interaction with tulips, insect pollinators evolve foraging patterns, sensory capacities, and ecological dependencies\u2014becoming attuned to floral rhythms as part of a mutual metabolic infrastructure.",
+      "type": "Through their interaction with tulips, nonhuman pollinators evolve foraging patterns, sensory capacities, and ecological dependencies\u2014becoming attuned to floral rhythms as part of a mutual metabolic infrastructure.",
       "fromId": "n49",
       "toId": "n71"
     },
@@ -1271,7 +1271,7 @@
     },
     {
       "id": "n203",
-      "type": "The tulip\u2019s vivid coloration, petal architecture, and seasonal timing are evolved invitations to insect pollinators, directing their movement and foraging behavior toward reproductive labor.",
+      "type": "The tulip\u2019s vivid coloration, petal architecture, and seasonal timing are evolved invitations to nonhuman pollinators, directing their movement and foraging behavior toward reproductive labor.",
       "fromId": "n46",
       "toId": "n71"
     },
@@ -1301,7 +1301,7 @@
     },
     {
       "id": "n209",
-      "type": "Flamboyant petals act as multispecies communication devices, evolved through co-dependence with insect pollinators whose foraging behaviors shaped the tulip\u2019s form and coloration long before its visuality was monetized in human economies.",
+      "type": "Flamboyant petals act as multispecies communication devices, evolved through co-dependence with nonhuman pollinators whose foraging behaviors shaped the tulip\u2019s form and coloration long before its visuality was monetized in human economies.",
       "fromId": "n49",
       "toId": "n69"
     },
@@ -1325,7 +1325,7 @@
     },
     {
       "id": "n213",
-      "type": "The Dutch Flower Group intervenes in pollination labor by replacing or bypassing insect-mediated processes through controlled breeding, artificial pollination, and greenhouse isolation\u2014transforming pollination from a multispecies ecological interaction into a standardized reproductive task governed by efficiency, predictability, and intellectual property regimes.",
+      "type": "The Dutch Flower Group intervenes in pollination labor by replacing or bypassing nonhuman-mediated processes through controlled breeding, artificial pollination, and greenhouse isolation\u2014transforming pollination from a multispecies ecological interaction into a standardized reproductive task governed by efficiency, predictability, and intellectual property regimes.",
       "fromId": "n57",
       "toId": "n71"
     },
@@ -3169,13 +3169,13 @@
           "id": "n563",
           "fromId": "n69",
           "toId": "n49",
-          "type": "The visual form of the tulip petal evolved through multispecies encounters, where insect attention and human aesthetic selection jointly shaped its morphology, embedding co-evolution within more-than-human regimes of attraction and communication."
+          "type": "The visual form of the tulip petal evolved through multispecies encounters, where nonhuman attention and human aesthetic selection jointly shaped its morphology, embedding co-evolution within more-than-human regimes of attraction and communication."
         },
         {
           "id": "n564",
           "fromId": "n27",
           "toId": "n49",
-          "type": "Rising temperatures desynchronize flowering cycles and insect lifeways, disrupting the co-evolved rhythms that once structured pollination as a mutualistic ecological relation."
+          "type": "Rising temperatures desynchronize flowering cycles and ecological lifeways, disrupting the co-evolved rhythms that once structured pollination as a mutualistic ecological relation."
         },
         {
           "id": "n565",
@@ -3193,7 +3193,7 @@
           "id": "n567",
           "fromId": "n98",
           "toId": "n49",
-          "type": "Monocultures fueled by nitrogen-based fertilizers reduce floral diversity, fragmenting the ecological infrastructure required for sustaining co-evolved insect-plant interactions."
+          "type": "Monocultures fueled by nitrogen-based fertilizers reduce floral diversity, fragmenting the ecological infrastructure required for sustaining co-evolved environment-plant interactions."
         },
         {
           "id": "n568",
@@ -3211,7 +3211,7 @@
           "id": "n570",
           "fromId": "n49",
           "toId": "n52",
-          "type": "The interdependence between tulips and insect pollinators shaped early horticultural techniques, as Persian cultivators adapted to the reproductive needs of both plant and pollinator in practices of multispecies care."
+          "type": "The interdependence between tulips and nonhuman pollinators shaped early horticultural techniques, as Persian cultivators adapted to the reproductive needs of both plant and pollinator in practices of multispecies care."
         },
         {
           "id": "n571",
