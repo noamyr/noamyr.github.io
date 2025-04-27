@@ -193,37 +193,38 @@ input:checked + .slider:before {
 
 @media (max-width: 768px) {
   html, body {
-    height: 100%;
     margin: 0;
     padding: 0;
+    height: 100%;
     overflow: hidden;
-    overscroll-behavior: none;
     background: #f3f3f3;
+    overscroll-behavior: none;
   }
 
   #mainContent {
     display: flex;
     flex-direction: column;
-    height: calc(var(--vh, 1vh) * 100);
+    height: 100dvh; /* 100 dynamic vh unit, works natively on iOS 16+, Android */
     width: 100%;
-    box-sizing: border-box;
+    overflow: hidden;
   }
 
   #diagram {
     flex: 1 1 auto;
-    overflow: hidden; /* no scroll */
+    overflow: auto; /* Only diagram scrolls internally */
+    -webkit-overflow-scrolling: touch;
     position: relative;
   }
 
   #cinema {
     flex: 0 0 auto;
     min-width: 0;
-    margin: 0;
-    padding: 16px;
+    width: 100%;
     background: #fafafa;
     border-radius: 8px 8px 0 0;
     box-shadow: 0 -4px 10px rgba(0,0,0,0.08);
-    box-sizing: border-box;
+    padding: 16px;
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -234,17 +235,16 @@ input:checked + .slider:before {
     aspect-ratio: 1.66 / 1;
     background: #ddd;
     margin-bottom: 16px;
-    overflow: hidden;
+    border-radius: 0;
   }
 
   #caption {
     font-family: 'Barlow', sans-serif;
     font-size: 0.8rem;
-    margin: 0;
-    width: 100%;
     text-align: center;
     color: #333;
     letter-spacing: 0.02em;
+    margin: 0;
   }
 
   #diagram::after {
@@ -253,7 +253,7 @@ input:checked + .slider:before {
     left: 0;
     right: 0;
     bottom: 0;
-    height: 50px; /* fade size */
+    height: 50px;
     background: linear-gradient(to top, #f3f3f3 0%, transparent 100%);
     pointer-events: none;
     z-index: 2;
