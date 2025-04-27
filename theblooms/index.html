@@ -42,28 +42,32 @@
 <script type="module" src="js/main.js"></script>
 <script>
   function updateLayout() {
-    // Wait for cinema size to stabilize
     requestAnimationFrame(() => {
       const mainContent = document.getElementById('mainContent');
       const diagram = document.getElementById('diagram');
       const cinema = document.getElementById('cinema');
   
       if (mainContent && diagram && cinema) {
-        const visualHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+        let viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+  
+        // Fix iOS Safari toolbar issue by shrinking a little
+        const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        if (isIOS && isSafari) {
+          viewportHeight -= 8; // Subtract 8px to avoid Safari toolbar glitch
+        }
+  
         const cinemaHeight = cinema.offsetHeight;
-        diagram.style.height = (visualHeight - cinemaHeight) + 'px';
+        diagram.style.height = (viewportHeight - cinemaHeight) + 'px';
       }
     });
   }
   
-  // Update at safe moments
   window.addEventListener('load', updateLayout);
   window.addEventListener('resize', updateLayout);
   if (window.visualViewport) {
     window.visualViewport.addEventListener('resize', updateLayout);
   }
-  
-  // Also fix after images/text settle (important!)
   document.fonts && document.fonts.ready.then(updateLayout);
   window.addEventListener('DOMContentLoaded', updateLayout);
   </script>
