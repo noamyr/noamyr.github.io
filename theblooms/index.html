@@ -40,36 +40,5 @@
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script type="module" src="js/main.js"></script>
-<script>
-  function updateLayout() {
-    requestAnimationFrame(() => {
-      const mainContent = document.getElementById('mainContent');
-      const diagram = document.getElementById('diagram');
-      const cinema = document.getElementById('cinema');
-  
-      if (mainContent && diagram && cinema) {
-        let viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-  
-        // Fix iOS Safari toolbar issue by shrinking a little
-        const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-        if (isIOS && isSafari) {
-          viewportHeight -= 8; // Subtract 8px to avoid Safari toolbar glitch
-        }
-  
-        const cinemaHeight = cinema.offsetHeight;
-        diagram.style.height = (viewportHeight - cinemaHeight) + 'px';
-      }
-    });
-  }
-  
-  window.addEventListener('load', updateLayout);
-  window.addEventListener('resize', updateLayout);
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', updateLayout);
-  }
-  document.fonts && document.fonts.ready.then(updateLayout);
-  window.addEventListener('DOMContentLoaded', updateLayout);
-  </script>
-  </body>
+</body>
 </html>
