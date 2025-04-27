@@ -191,13 +191,24 @@ input:checked + .slider:before {
 .link.next    { color: orange; stroke: orange; stroke-width: 2.5; }
 .link.visited { color: #6a5acd; stroke: #6a5acd; stroke-width: 1.5; }
 
-/* Mobile layout adjustments (updated for dynamic fixed-bottom cinema card) */
+/* Mobile layout adjustments (final version) */
 @media (max-width: 768px) {
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #f3f3f3;
+  }
+
   #mainContent {
+    display: flex;
     flex-direction: column;
     height: calc(var(--vh, 1vh) * 100);
-    overflow: hidden;
     width: 100%;
+    overflow: hidden;
     box-sizing: border-box;
     padding: 0;
   }
@@ -236,6 +247,13 @@ input:checked + .slider:before {
     overflow: hidden;
   }
 
+  #cinemaImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #ddd;
+  }
+
   #caption {
     font-family: 'Barlow', sans-serif;
     font-size: 0.8rem;
@@ -246,7 +264,8 @@ input:checked + .slider:before {
     letter-spacing: 0.02em;
   }
 
+  /* Remove gradient fade effect */
   #diagram::after {
-    background: linear-gradient(to top, #f3f3f3 0%, transparent 100%);
+    background: none;
   }
 }
