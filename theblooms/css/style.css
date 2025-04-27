@@ -214,6 +214,7 @@ input:checked + .slider:before {
   #diagram {
     grid-row: 1;
     position: relative;
+    min-height: 0;
     overflow: auto; /* diagram scrolls internally if needed */
     -webkit-overflow-scrolling: touch;
   }
