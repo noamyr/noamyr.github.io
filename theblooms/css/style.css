@@ -191,45 +191,43 @@ input:checked + .slider:before {
 .link.next    { color: orange; stroke: orange; stroke-width: 2.5; }
 .link.visited { color: #6a5acd; stroke: #6a5acd; stroke-width: 1.5; }
 
-/* Mobile layout adjustments (final-final version) */
 @media (max-width: 768px) {
+  /* prevent body/page from scrolling */
   html, body {
     height: 100%;
-    overflow: hidden;
     margin: 0;
     padding: 0;
-    background: #f3f3f3;
-    box-sizing: border-box;
+    overflow: hidden;
     overscroll-behavior: none;
+    background: #f3f3f3;
   }
 
+  /* use the JS --vh hack to get true viewport height */
   #mainContent {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr auto;   /* diagram fills, card auto-height */
     height: calc(var(--vh, 1vh) * 100);
     width: 100%;
-    overflow-y: auto; /* <-- allow only vertical scroll inside */
-    overflow-x: hidden;
     box-sizing: border-box;
-    padding: 0;
-    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+    overflow: hidden;               /* prevent whole-page scroll */
   }
 
+  /* diagram sits in row 1 and can scroll internally */
   #diagram {
-    flex: 1 1 auto;
-    width: 100%;
-    min-height: 0;
-    overflow: hidden;
+    grid-row: 1;
     position: relative;
-    box-sizing: border-box;
+    overflow: auto;                 /* only diagram scrolls if content overflows */
+    -webkit-overflow-scrolling: touch;
   }
 
+  /* cinema card pinned in row 2 */
   #cinema {
-    flex: 0 0 auto;
+    grid-row: 2;
     width: 100%;
-    min-width: auto;
-    margin: 0;
-    padding: 16px;
+    min-width: 0;
+    padding-top: 0;
+    padding-left: 16px;
+    padding-right: 16px;
     background: #fafafa;
     border-radius: 8px 8px 0 0;
     box-shadow: 0 -4px 10px rgba(0,0,0,0.08);
@@ -237,7 +235,7 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    margin: 0px;
   }
 
   .cinema-image-wrapper {
@@ -245,21 +243,15 @@ input:checked + .slider:before {
     aspect-ratio: 1.66 / 1;
     background: #ddd;
     margin-bottom: 16px;
-    border-radius: 0;
+    margin-top: 16px;
     overflow: hidden;
-  }
-
-  #cinemaImage {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background: #ddd;
+    border-radius: 0;
   }
 
   #caption {
     font-family: 'Barlow', sans-serif;
     font-size: 0.8rem;
-    margin-top: 0;
+    margin: 0;
     width: 100%;
     text-align: center;
     color: #333;
@@ -267,6 +259,14 @@ input:checked + .slider:before {
   }
 
   #diagram::after {
-    background: none;
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50px; /* fade height */
+    background: linear-gradient(to top, #f3f3f3 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 2;
   }
 }
