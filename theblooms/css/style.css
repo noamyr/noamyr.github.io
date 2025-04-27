@@ -217,6 +217,8 @@ input:checked + .slider:before {
   #cinema {
     flex: 0 0 auto;
     width: 100%;
+    min-width: 0;
+    margin: 0;
     padding: 16px;
     background: #fafafa;
     border-radius: 8px 8px 0 0;
