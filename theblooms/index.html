@@ -45,8 +45,27 @@
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   }
-  updateVH();
-  window.addEventListener('resize', updateVH);
+  
+  function adjustDiagramHeight() {
+    const mainContent = document.getElementById('mainContent');
+    const diagram = document.getElementById('diagram');
+    const cinema = document.getElementById('cinema');
+  
+    if (mainContent && diagram && cinema) {
+      const mainHeight = window.innerHeight;
+      const cinemaHeight = cinema.offsetHeight;
+      diagram.style.height = (mainHeight - cinemaHeight) + 'px';
+    }
+  }
+  
+  function fullUpdate() {
+    updateVH();
+    adjustDiagramHeight();
+  }
+  
+  // run both on load and resize
+  window.addEventListener('load', fullUpdate);
+  window.addEventListener('resize', fullUpdate);
   </script>
 </body>
 </html>
