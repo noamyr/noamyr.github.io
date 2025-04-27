@@ -191,52 +191,68 @@ input:checked + .slider:before {
 .link.next    { color: orange; stroke: orange; stroke-width: 2.5; }
 .link.visited { color: #6a5acd; stroke: #6a5acd; stroke-width: 1.5; }
 
-/* Mobile layout adjustments */
+/* Mobile layout adjustments (updated for fixed-bottom cinema card) */
 @media (max-width: 768px) {
+  /* Full mobile viewport is used without vertical scroll */
   #mainContent {
     flex-direction: column;
+    height: 100vh; /* Fixed full screen height */
+    overflow: hidden;
     width: 100%;
     box-sizing: border-box;
     padding: 0;
   }
 
+  /* Diagram flexibly fills the remaining vertical space */
+  #diagram {
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 0; /* Allows diagram to shrink nicely */
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  /* Cinema card always pinned to bottom, adapts height to content */
   #cinema {
     flex: 0 0 auto;
     width: 100%;
     min-width: auto;
     margin: 0;
     padding: 16px;
+    background: #fafafa;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.08);
     box-sizing: border-box;
-    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
   }
 
+  /* Cinema image wrapper */
   .cinema-image-wrapper {
     width: 100%;
     aspect-ratio: 1.66 / 1;
+    background: #ddd;
     margin-bottom: 16px;
+    border-radius: 0;
+    overflow: hidden;
   }
 
+  /* Caption styling */
   #caption {
+    font-family: 'Barlow', sans-serif;
+    font-size: 1rem;
     margin-top: 0;
-    font-size: 0.8rem;
-  }
-
-  #diagram {
-    flex: 1 1 auto;
     width: 100%;
-    height: auto;
-    box-sizing: border-box;
+    text-align: center;
+    color: #333;
+    letter-spacing: 0.02em;
   }
 
+  /* Remove old gradient fade that is no longer needed */
   #diagram::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 50px;
-    background: linear-gradient(to top, #f3f3f3 0%, transparent 100%);
-    pointer-events: none;
-    z-index: 2;
+    display: none;
   }
 }
