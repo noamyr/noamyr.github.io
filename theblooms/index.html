@@ -40,18 +40,18 @@
 
 <script>
   function updateVH() {
-    const vh = window.innerHeight * 0.01;
+    const vh = (window.visualViewport ? window.visualViewport.height : window.innerHeight) * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   }
   
   // Set it initially
   updateVH();
   
-  // Update it at key events
+  // Listen to all important events
   window.addEventListener('resize', updateVH);
   window.addEventListener('orientationchange', updateVH);
-  window.addEventListener('scroll', updateVH); // <-- NEW
-  window.addEventListener('touchmove', updateVH); // <-- NEW
+  window.visualViewport && window.visualViewport.addEventListener('resize', updateVH); // when address bar shrinks/expands
+  window.visualViewport && window.visualViewport.addEventListener('scroll', updateVH); // when visual viewport changes on scroll
   window.addEventListener('load', updateVH);
   </script>
 
