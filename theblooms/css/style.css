@@ -191,7 +191,6 @@ input:checked + .slider:before {
 .link.next    { color: orange; stroke: orange; stroke-width: 2.5; }
 .link.visited { color: #6a5acd; stroke: #6a5acd; stroke-width: 1.5; }
 
-/* Mobile layout adjustments */
 @media (max-width: 768px) {
   html, body {
     margin: 0;
@@ -203,24 +202,24 @@ input:checked + .slider:before {
   }
 
   #mainContent {
-    display: grid;
-    grid-template-rows: 1fr auto; /* diagram + cinema card */
-    height: calc(var(--vh, 1vh) * 100); /* use JS-calculated viewport */
+    display: flex;
+    flex-direction: column;
+    height: calc(var(--vh, 1vh) * 100);
     width: 100%;
     box-sizing: border-box;
-    overflow: hidden; /* prevent whole-page scroll */
+    overflow: hidden;
   }
 
   #diagram {
-    grid-row: 1;
+    flex: 1 1 auto; /* flex-grow to fill leftover */
+    min-height: 0;  /* important to prevent overflow */
+    overflow: auto;
     position: relative;
-    min-height: 0;
-    overflow: auto; /* diagram scrolls internally if needed */
     -webkit-overflow-scrolling: touch;
   }
 
   #cinema {
-    grid-row: 2;
+    flex: 0 0 auto; /* just as much height as needed */
     width: 100%;
     min-width: 0;
     margin: 0;
@@ -259,7 +258,6 @@ input:checked + .slider:before {
     letter-spacing: 0.02em;
   }
 
-  /* Soft fade at bottom of diagram */
   #diagram::after {
     content: "";
     position: absolute;
