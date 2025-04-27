@@ -42,24 +42,30 @@
 <script type="module" src="js/main.js"></script>
 <script>
   function updateLayout() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    // Wait for cinema size to stabilize
+    requestAnimationFrame(() => {
+      const mainContent = document.getElementById('mainContent');
+      const diagram = document.getElementById('diagram');
+      const cinema = document.getElementById('cinema');
   
-    const mainContent = document.getElementById('mainContent');
-    const diagram = document.getElementById('diagram');
-    const cinema = document.getElementById('cinema');
-  
-    if (mainContent && diagram && cinema) {
-      const visualHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-      const cinemaHeight = cinema.offsetHeight;
-      diagram.style.height = (visualHeight - cinemaHeight) + 'px';
-    }
+      if (mainContent && diagram && cinema) {
+        const visualHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+        const cinemaHeight = cinema.offsetHeight;
+        diagram.style.height = (visualHeight - cinemaHeight) + 'px';
+      }
+    });
   }
   
+  // Update at safe moments
   window.addEventListener('load', updateLayout);
   window.addEventListener('resize', updateLayout);
   if (window.visualViewport) {
     window.visualViewport.addEventListener('resize', updateLayout);
   }
-  </script></body>
+  
+  // Also fix after images/text settle (important!)
+  document.fonts && document.fonts.ready.then(updateLayout);
+  window.addEventListener('DOMContentLoaded', updateLayout);
+  </script>
+  </body>
 </html>
