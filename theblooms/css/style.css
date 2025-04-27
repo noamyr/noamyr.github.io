@@ -193,10 +193,10 @@ input:checked + .slider:before {
 
 @media (max-width: 768px) {
   html, body {
-    height: auto; /* allow natural body height */
+    height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* prevent side scrolling */
+    overflow: hidden;
     overscroll-behavior: none;
     background: #f3f3f3;
   }
@@ -204,19 +204,19 @@ input:checked + .slider:before {
   #mainContent {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* use full screen */
+    height: calc(var(--vh, 1vh) * 100);
+    width: 100%;
     box-sizing: border-box;
   }
 
   #diagram {
     flex: 1 1 auto;
-    overflow: hidden;
+    overflow: hidden; /* no scroll */
     position: relative;
   }
 
   #cinema {
     flex: 0 0 auto;
-    width: 100%;
     min-width: 0;
     margin: 0;
     padding: 16px;
@@ -233,27 +233,27 @@ input:checked + .slider:before {
     width: 100%;
     aspect-ratio: 1.66 / 1;
     background: #ddd;
+    margin-bottom: 16px;
     overflow: hidden;
-    border-radius: 0;
   }
 
   #caption {
     font-family: 'Barlow', sans-serif;
     font-size: 0.8rem;
     margin: 0;
+    width: 100%;
     text-align: center;
     color: #333;
     letter-spacing: 0.02em;
-    width: 100%;
   }
 
   #diagram::after {
     content: "";
     position: absolute;
-    bottom: 0;
     left: 0;
     right: 0;
-    height: 50px;
+    bottom: 0;
+    height: 50px; /* fade size */
     background: linear-gradient(to top, #f3f3f3 0%, transparent 100%);
     pointer-events: none;
     z-index: 2;
