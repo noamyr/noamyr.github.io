@@ -193,10 +193,10 @@ input:checked + .slider:before {
 
 @media (max-width: 768px) {
   html, body {
-    height: 100%;
+    height: auto; /* allow natural body height */
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: hidden; /* prevent side scrolling */
     overscroll-behavior: none;
     background: #f3f3f3;
   }
@@ -204,25 +204,22 @@ input:checked + .slider:before {
   #mainContent {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 100%;
+    min-height: 100vh; /* use full screen */
     box-sizing: border-box;
-    overflow: hidden;
   }
 
   #diagram {
     flex: 1 1 auto;
-    overflow: hidden; /* or 'auto' if you want to allow internal scroll */
+    overflow: hidden;
     position: relative;
-    -webkit-overflow-scrolling: touch;
   }
 
   #cinema {
     flex: 0 0 auto;
     width: 100%;
     min-width: 0;
-    padding: 16px;
     margin: 0;
+    padding: 16px;
     background: #fafafa;
     border-radius: 8px 8px 0 0;
     box-shadow: 0 -4px 10px rgba(0,0,0,0.08);
@@ -236,7 +233,6 @@ input:checked + .slider:before {
     width: 100%;
     aspect-ratio: 1.66 / 1;
     background: #ddd;
-    margin-bottom: 16px;
     overflow: hidden;
     border-radius: 0;
   }
@@ -245,18 +241,18 @@ input:checked + .slider:before {
     font-family: 'Barlow', sans-serif;
     font-size: 0.8rem;
     margin: 0;
-    width: 100%;
     text-align: center;
     color: #333;
     letter-spacing: 0.02em;
+    width: 100%;
   }
 
   #diagram::after {
     content: "";
     position: absolute;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
     height: 50px;
     background: linear-gradient(to top, #f3f3f3 0%, transparent 100%);
     pointer-events: none;
