@@ -31,25 +31,9 @@ export function renderDiagram({ nodes, links }, options = {}) {
     const g   = svg.append('g').attr('class', 'zoom-layer');
 
     const zoomBehavior = d3.zoom()
-    // custom filter:
-    .filter(function(event) {
-      // Always allow wheel events (desktop pinch/scroll)
-      if (event.type === 'wheel') return true;
-      // On touch devices, allow if >1 touch point (pinch)
-      if (event.sourceEvent && event.sourceEvent.touches && event.sourceEvent.touches.length > 1) {
-        return true;
-      }
-      // Otherwise, only allow single-pointer drag when centering is off:
-      // note: centeringMode is the internal flag you already use
-      if (centeringMode === 'none' && event.type === 'mousedown' && event.button === 0) {
-        return true;
-      }
-      // block everything else (e.g. single-finger panning when centering is on)
-      return false;
-    })
-    .scaleExtent([1/zoomExtent, zoomExtent])
-    .on('zoom', ({transform}) => g.attr('transform', transform));
-
+      .scaleExtent([1/zoomExtent, zoomExtent])
+      .on('zoom', ({transform}) => g.attr('transform', transform));
+      
     svg.call(zoomBehavior).call(zoomBehavior.translateTo, 0, 0);
     function enableZoom() {
       svg.call(zoomBehavior);
