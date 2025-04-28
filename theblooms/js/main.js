@@ -49,7 +49,7 @@ function narrateText(text, onEnd) {
 }
 
 /* Diagram Updating */
-function updateDiagram(linkKey) {
+function updateDiagram(linkKey, shouldCenter = true) {
   const [sourceId, targetId] = linkKey.split("->").map((s) => s.trim());
 
   const nextIds = visibleLinks
@@ -63,29 +63,28 @@ function updateDiagram(linkKey) {
           typeof l.target === "object" ? l.target.id : l.target
         }`
     );
+    if (!diagram) {
+      diagram = renderDiagram(
+        { nodes: visibleNodes, links: visibleLinks },
+        {
+          containerId: "#diagram",
+          zoomExtent: 3,
+          showLabels: true,
+          directed: true,
+          colorByCategory: true,
+          nodeRadius: 8,
+          arrowSize: 4,
+          arrowOffset: 10,
+          maxCurveOffset: 50,
+          currentLinkId: linkKey,
+          subsequentIds: nextIds,
+          shouldCenter: navigationMode === "random" // pass this option directly
+        }
+      );
+    } else {
+      window._diagramInstance.updateLinks(linkKey, nextIds, shouldCenter);
+    }
 
-  if (!diagram) {
-    diagram = renderDiagram(
-      { nodes: visibleNodes, links: visibleLinks },
-      {
-        containerId: "#diagram",
-        zoomExtent: 3,
-        showLabels: true,
-        directed: true,
-        colorByCategory: true,
-        nodeRadius: 8,
-        arrowSize: 4,
-        arrowOffset: 10,
-        maxCurveOffset: 50,
-        currentLinkId: linkKey,
-        subsequentIds: nextIds,
-      }
-    );
-  } else {
-    window._diagramInstance.updateLinks(linkKey, nextIds);
-  }
-
-  window._diagramInstance.centerOnCurrentTarget(300);
   currentLinkKey = linkKey;
 }
 
@@ -172,7 +171,7 @@ function narrateLink(linkKey) {
   updateCinemaByLinkKey(linkKey);
 
   speechSynthesis.cancel(); // Always cancel any speech immediately
-  updateDiagram(linkKey);
+  updateDiagram(linkKey, navigationMode === "random");
 
   const [_, targetId] = linkKey.split("->").map(s => s.trim());
 
@@ -293,16 +292,21 @@ if (navToggle) {
   navToggle.addEventListener("change", () => {
     if (navToggle.checked) {
       navigationMode = "random";
-      modeLabel.textContent = "Random Mode";
+      modeLabel.textContent = "Guided Mode";
       clearManualNextNodes();
-      console.log("Navigation mode: RANDOM");
+      console.log("Navigation mode: GUIDED");
+        // ✅ Immediately re-center on the current target:
+      if (window._diagramInstance && window._diagramInstance.centerOnCurrentTarget) {
+        window._diagramInstance.centerOnCurrentTarget(300);
+      }
+
     } else {
       navigationMode = "manual";
-      modeLabel.textContent = "Manual Mode";
+      modeLabel.textContent = "Explore Mode";
       clearManualNextNodes();
       const targetId = currentLinkKey.split("->")[1].trim();
       showManualNextNodes(targetId);
-      console.log("Navigation mode: MANUAL");
+      console.log("Navigation mode: EXPLORE");
     }
   });
 }

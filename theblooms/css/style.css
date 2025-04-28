@@ -11,7 +11,9 @@ html, body {
 #container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #mainContent {
@@ -37,6 +39,10 @@ html, body {
   display: block;
 }
 
+#modeLabel {
+  font-size: 1rem;
+}
+
 /* Floating mode control inside diagram */
 #modeControl {
   position: absolute;
@@ -44,7 +50,7 @@ html, body {
   right: 16px;
   background: rgba(255, 255, 255, 0.9);
   padding: 6px 10px;
-  border-radius: 6px;
+  border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
@@ -137,7 +143,7 @@ html, body {
   position: relative;
   display: inline-block;
   width: 60px;
-  height: 34px;
+  height: 32px;
 }
 .switch input {
   display: none;
@@ -148,13 +154,13 @@ html, body {
   top: 0; left: 0; right: 0; bottom: 0;
   background: #ccc;
   transition: .4s;
-  border-radius: 34px;
+  border-radius: 36px;
 }
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 24px;
+  width: 24px;
   left: 4px;
   bottom: 4px;
   background: white;
@@ -188,22 +194,28 @@ input:checked + .slider:before {
   html, body {
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
     background: #f3f3f3;
     overscroll-behavior: none;
-    height: auto; /* allow scroll naturally */
+    overflow-x: hidden;
+    overflow-y: auto; /* allow vertical scrolling */
   }
 
   #mainContent {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* make sure whole screen height is used */
     width: 100%;
     box-sizing: border-box;
   }
 
   #diagram {
-    flex: 1 0 auto;
-    overflow: visible; /* no forced scroll inside */
+    flex: 0 0 auto;
+    height: 65vh; /* or 60vh */
+    max-height: none;
+    min-height: 300px;
+    overflow: visible; /* allow diagram edges to show slightly */
     position: relative;
   }
 
@@ -214,12 +226,15 @@ input:checked + .slider:before {
     margin: 0;
     padding: 16px;
     background: #fafafa;
-    border-radius: 8px 8px 0 0;
+    border-radius: 16px 16px 0 0;
     box-shadow: 0 -4px 10px rgba(0,0,0,0.08);
     display: flex;
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+    flex-shrink: 0;
   }
 
   .cinema-image-wrapper {
@@ -228,6 +243,15 @@ input:checked + .slider:before {
     background: #ddd;
     margin-bottom: 16px;
     border-radius: 0;
+    overflow: hidden;
+  }
+
+  #cinemaImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: #ddd;
   }
 
   #caption {
@@ -248,17 +272,7 @@ input:checked + .slider:before {
     height: 50px;
     background: linear-gradient(to top, #f3f3f3 0%, transparent 100%);
     pointer-events: none;
-    z-index: 2;
+    z-index: 5;
   }
-  #cinema::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 40px; /* height of fade effect */
-    background: linear-gradient(to bottom, #fafafa 0%, rgba(250,250,250,0) 100%);
-    pointer-events: none;
-    z-index: 2;
-  }
+
 }

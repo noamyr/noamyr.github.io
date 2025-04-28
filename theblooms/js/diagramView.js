@@ -77,7 +77,7 @@ export function renderDiagram({ nodes, links }, options = {}) {
 
     let centeringMode = 'lock';
 
-    function updateLinks(linkKey, subs) {
+    function updateLinks(linkKey, subs, shouldCenter = true) {
       if (_curLink && _curLink !== linkKey) {
         visitedHistory.push(_curLink);
         if (visitedHistory.length > 15) visitedHistory.shift();
@@ -88,6 +88,13 @@ export function renderDiagram({ nodes, links }, options = {}) {
       _curTarget  = _curLink?.split('->')[1].trim();
       _subTargets = [..._subSet].map(k => k.split('->')[1].trim());
       applyStyles();
+    
+      if (shouldCenter) {
+        centeringMode = 'lock';           // only lock if random
+        centerOnCurrentTarget(300);
+      } else {
+        centeringMode = 'none';           // turn off automatic centering
+      }
     }
 
     function applyStyles() {
@@ -215,14 +222,18 @@ export function renderDiagram({ nodes, links }, options = {}) {
     function centerOnCurrentTarget(duration = 300) {
       const tgt = nodes.find(n => n.id === _curTarget);
       if (!tgt) return;
-      centeringMode = duration > 0 ? 'none' : 'lock';
+    
       if (duration > 0) {
-        svg.transition().duration(duration).call(zoomBehavior.translateTo, tgt.x, tgt.y).on('end', () => centeringMode = 'lock');
+        centeringMode = 'none'; // During animation, unlock
+        svg.transition()
+          .duration(duration)
+          .call(zoomBehavior.translateTo, tgt.x, tgt.y)
+          .on('end', () => centeringMode = 'lock'); // After animation, lock again
       } else {
         svg.call(zoomBehavior.translateTo, tgt.x, tgt.y);
+        centeringMode = 'lock';
       }
     }
-
     simulation.on('tick', () => {
       linkSel.attr('d', arcCurve);
       arrowSel.attr('d', arcArrow);

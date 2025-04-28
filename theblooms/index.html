@@ -26,7 +26,7 @@
           <input type="checkbox" id="modeToggle" checked>
           <span class="slider"></span>
         </label>
-        <div id="modeLabel">Random Mode</div>
+        <div id="modeLabel">Guided Mode</div>
       </div>
     </div>
 
@@ -38,24 +38,6 @@
     </div>
   </div>
 </div>
-
-<script>
-  function updateVH() {
-    const vh = (window.visualViewport ? window.visualViewport.height : window.innerHeight) * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }
-  
-  // Set it initially
-  updateVH();
-  
-  // Listen to all important events
-  window.addEventListener('resize', updateVH);
-  window.addEventListener('orientationchange', updateVH);
-  window.visualViewport && window.visualViewport.addEventListener('resize', updateVH); // when address bar shrinks/expands
-  window.visualViewport && window.visualViewport.addEventListener('scroll', updateVH); // when visual viewport changes on scroll
-  window.addEventListener('load', updateVH);
-  </script>
-
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script type="module" src="js/main.js"></script>
 </body>
