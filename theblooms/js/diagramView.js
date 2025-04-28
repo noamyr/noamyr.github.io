@@ -31,9 +31,35 @@ export function renderDiagram({ nodes, links }, options = {}) {
     const g   = svg.append('g').attr('class', 'zoom-layer');
 
     const zoomBehavior = d3.zoom()
-      .scaleExtent([1/zoomExtent, zoomExtent])
-      .on('zoom', ({transform}) => g.attr('transform', transform));
+    // custom filter:
+    .filter(function(event) {
+      // Always allow wheel events (desktop pinch/scroll)
+      if (event.type === 'wheel') return true;
+      // On touch devices, allow if >1 touch point (pinch)
+      if (event.sourceEvent && event.sourceEvent.touches && event.sourceEvent.touches.length > 1) {
+        return true;
+      }
+      // Otherwise, only allow single-pointer drag when centering is off:
+      // note: centeringMode is the internal flag you already use
+      if (centeringMode === 'none' && event.type === 'mousedown' && event.button === 0) {
+        return true;
+      }
+      // block everything else (e.g. single-finger panning when centering is on)
+      return false;
+    })
+    .scaleExtent([1/zoomExtent, zoomExtent])
+    .on('zoom', ({transform}) => g.attr('transform', transform));
+
     svg.call(zoomBehavior).call(zoomBehavior.translateTo, 0, 0);
+    function enableZoom() {
+      svg.call(zoomBehavior);
+      console.log("Zoom enabled (Explore Mode)");
+    }
+    
+    function disableZoom() {
+      svg.on('.zoom', null);
+      console.log("Zoom disabled (Guided Mode)");
+    }
 
     const linkLayer = g.append('g').attr('class','link-layer');
     const arrowLayer = g.append('g').attr('class','arrow-layer');
@@ -90,12 +116,13 @@ export function renderDiagram({ nodes, links }, options = {}) {
       applyStyles();
     
       if (shouldCenter) {
-        centeringMode = 'lock';           // only lock if random
+        centeringMode = 'lock';
         centerOnCurrentTarget(300);
       } else {
-        centeringMode = 'none';           // turn off automatic centering
+        centeringMode = 'none';
+        enableZoom(); // ✅ Always enable zoom/pan when no forced centering
       }
-    }
+}
 
     function applyStyles() {
       const visitedSet = new Set(visitedHistory);
@@ -219,21 +246,25 @@ export function renderDiagram({ nodes, links }, options = {}) {
       d.fy = null;
     }
 
-    function centerOnCurrentTarget(duration = 300) {
-      const tgt = nodes.find(n => n.id === _curTarget);
-      if (!tgt) return;
-    
-      if (duration > 0) {
-        centeringMode = 'none'; // During animation, unlock
-        svg.transition()
-          .duration(duration)
-          .call(zoomBehavior.translateTo, tgt.x, tgt.y)
-          .on('end', () => centeringMode = 'lock'); // After animation, lock again
-      } else {
-        svg.call(zoomBehavior.translateTo, tgt.x, tgt.y);
+function centerOnCurrentTarget(duration = 300) {
+  const tgt = nodes.find(n => n.id === _curTarget);
+  if (!tgt) return;
+
+  if (duration > 0) {
+    centeringMode = 'none';
+    svg.transition()
+      .duration(duration)
+      .call(zoomBehavior.translateTo, tgt.x, tgt.y)
+      .on('end', () => {
         centeringMode = 'lock';
-      }
-    }
+        disableZoom();   // After centering finished, lock again
+      });
+  } else {
+    svg.call(zoomBehavior.translateTo, tgt.x, tgt.y);
+    centeringMode = 'lock';
+    disableZoom();
+  }
+}
     simulation.on('tick', () => {
       linkSel.attr('d', arcCurve);
       arrowSel.attr('d', arcArrow);
@@ -280,10 +311,13 @@ export function renderDiagram({ nodes, links }, options = {}) {
       .text(d => d);
   
 
-    _instance = { updateLinks, centerOnCurrentTarget };
-    window._diagramInstance = _instance;  // ✅ Correctly exposed at the end
-  } else {
-    _instance.updateLinks(currentLinkId, subsequentIds);
+      _instance = { updateLinks, centerOnCurrentTarget, enableZoom, disableZoom };
+      window._diagramInstance = _instance;  // ✅ Correctly exposed at the end
+  } 
+  
+  if (!_instance) {
+    _instance = { updateLinks, centerOnCurrentTarget, enableZoom, disableZoom };
+    window._diagramInstance = _instance;
   }
   return _instance;
 }

@@ -167,11 +167,10 @@ function updateCinemaByLinkKey(linkKey) {
 function narrateLink(linkKey) {
   console.log("[narrateLink] narrating:", linkKey);
 
-  // Update cinema box!
   updateCinemaByLinkKey(linkKey);
 
-  speechSynthesis.cancel(); // Always cancel any speech immediately
-  updateDiagram(linkKey, navigationMode === "random");
+  speechSynthesis.cancel(); 
+  updateDiagram(linkKey, navigationMode === "random");  // Pass correct centering
 
   const [_, targetId] = linkKey.split("->").map(s => s.trim());
 
@@ -190,13 +189,11 @@ function narrateLink(linkKey) {
     return;
   }
 
-  // 🔥 Update recent visited memory
   recentVisitedLinks.push(linkKey);
   if (recentVisitedLinks.length > 15) {
-    recentVisitedLinks.shift(); // Forget oldest
+    recentVisitedLinks.shift();
   }
 
-  // 🔥 Update link visuals
   d3.selectAll(".link")
     .classed("visited", function(d) {
       const src = typeof d.source === "object" ? d.source.id : d.source;
@@ -288,25 +285,23 @@ if (overlay) {
 }
 
 /* Mode toggle */
-if (navToggle) {
-  navToggle.addEventListener("change", () => {
-    if (navToggle.checked) {
-      navigationMode = "random";
-      modeLabel.textContent = "Guided Mode";
-      clearManualNextNodes();
-      console.log("Navigation mode: GUIDED");
-        // ✅ Immediately re-center on the current target:
-      if (window._diagramInstance && window._diagramInstance.centerOnCurrentTarget) {
-        window._diagramInstance.centerOnCurrentTarget(300);
-      }
-
-    } else {
-      navigationMode = "manual";
-      modeLabel.textContent = "Explore Mode";
-      clearManualNextNodes();
-      const targetId = currentLinkKey.split("->")[1].trim();
-      showManualNextNodes(targetId);
-      console.log("Navigation mode: EXPLORE");
-    }
-  });
-}
+navToggle.addEventListener("change", () => {
+  if (navToggle.checked) {
+    navigationMode = "random";
+    modeLabel.textContent = "Guided Mode";
+    clearManualNextNodes();
+    console.log("Switching to GUIDED Mode");
+    window._diagramInstance.disableZoom();
+    window._diagramInstance.centerOnCurrentTarget(300);
+  } else {
+    navigationMode = "manual";
+    modeLabel.textContent = "Explore Mode";
+    clearManualNextNodes();
+    const targetId = currentLinkKey.split("->")[1].trim();
+    showManualNextNodes(targetId);
+    console.log("Switching to EXPLORE Mode");
+    window._diagramInstance.enableZoom();
+  }
+  // force re-apply zoom behavior and/or centering:
+  updateDiagram(currentLinkKey, navigationMode === "random");
+});
