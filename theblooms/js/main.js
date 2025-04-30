@@ -190,7 +190,7 @@ function narrateLink(linkKey) {
   }
 
   recentVisitedLinks.push(linkKey);
-  if (recentVisitedLinks.length > 30) {
+  if (recentVisitedLinks.length > 45) {
     recentVisitedLinks.shift();
   }
 
