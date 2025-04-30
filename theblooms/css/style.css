@@ -214,7 +214,7 @@ input:checked + .slider:before {
 
   #diagram {
     flex: 0 0 auto;
-    height: 65vh; /* or 60vh */
+    height: 60vh; /* or 60vh */
     max-height: none;
     min-height: 300px;
     overflow: visible; /* allow diagram edges to show slightly */
