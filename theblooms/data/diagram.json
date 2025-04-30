@@ -2243,7 +2243,7 @@
     },
     {
       "id": "n406",
-      "type": "Global divestment from West Sahara phosphate critically weakens the Dutch agribusiness\u2013Moroccan Government alliance by undermining the financial viability of their extractive partnership and destabilizing its geopolitical legitimacy.",
+      "type": "Global divestment from Western Sahara phosphate reasserts claims of resource sovereignty by rupturing the material foundations of the Dutch agribusiness–Moroccan government alliance, exposing the extractive dependency of their partnership and eroding the geopolitical scaffolding that has historically legitimized the colonial appropriation of Sahrawi land and labor.",
       "fromId": "n125",
       "toId": "n121"
     },
@@ -2453,19 +2453,19 @@
     },
     {
       "id": "n443",
-      "type": "The growing scarcity of phosphate intensifies its strategic role in offsetting nitrogen regulation, binding the two nutrient cycles within capital-driven agro-extractive systems.",
+      "type": "The growing scarcity of phosphate reinforces its strategic role in industrial agriculture, where its availability conditions the efficient uptake of nitrogen, binding both nutrient cycles within the extractive logic of capital accumulation and agro-industrial intensification.",
       "fromId": "n112",
       "toId": "n87"
     },
     {
       "id": "n444",
-      "type": "The Dutch agribusiness\u2013Moroccan Government alliance restructures fertilizer sourcing to maintain profit margins amid nitrogen restrictions, reinforcing dependencies on external phosphate inputs.",
+      "type": "The alliance between Dutch agribusiness and the Moroccan government restructures fertilizer supply chains to preserve profit margins under nitrogen regulations, entrenching geopolitical dependencies on external phosphate reserves and reinforcing the interlinked logics of extraction and accumulation.",
       "fromId": "n114",
       "toId": "n87"
     },
     {
       "id": "n445",
-      "type": "Sustainable fertilizer is instrumentalized to comply with the 2015 Integrated Approach to Nitrogen (PAS), maintaining intensive production under regulatory pressure while concealing extractive continuity.",
+      "type": "Sustainable fertilizer is instrumentalized in the Global North to comply with the 2015 Integrated Approach to Nitrogen (PAS), sustaining intensive production under regulatory pressure while concealing extractive continuity—despite being widely practiced as a low-tech, ecologically attuned solution among small farmers in the Global South.",
       "fromId": "n120",
       "toId": "n98"
     },
@@ -2477,52 +2477,52 @@
     },
     {
       "id": "n448",
-      "type": "The post-nitrogen crisis fertilizer strategy produces sustainable fertilizer not to fulfill ecological objectives, but to manufacture regulatory alibis that justify continued\u2014and often intensified\u2014phosphorus extraction.",
+      "type": "In the wake of the nitrogen crisis, sustainable fertilizer strategies are less about meeting ecological objectives than about generating regulatory alibis that justify continued—and often intensified—phosphorus extraction, exploiting the interdependence of nitrogen and phosphate cycles to sustain agro-industrial productivity.",
       "fromId": "n87",
       "toId": "n133"
     },
     {
       "id": "n449",
-      "type": "The post-nitrogen crisis fertilizer strategy provides both the discursive and material foundation for green agricultural justification, legitimizing ecological narratives while reproducing exploitative input regimes.",
+      "type": "In response to the nitrogen crisis, contemporary fertilizer strategies construct both the discursive and material foundations for green agricultural justification—mobilizing ecological narratives to legitimize policy compliance and innovation, while simultaneously reproducing exploitative input regimes rooted in extractive nutrient cycling.",
       "fromId": "n133",
       "toId": "n120"
     },
     {
       "id": "n450",
-      "type": "The post-nitrogen crisis fertilizer strategy reinforces the Dutch agribusiness\u2013Moroccan Government alliance by deepening phosphate dependency and framing geopolitical entanglement as a sustainable transition.",
+      "type": "The post-nitrogen crisis fertilizer strategy reinforces the Dutch agribusiness–Moroccan government alliance by deepening structural dependency on Moroccan phosphate, reframing this neocolonial entanglement as a sustainable transition—thereby turning ecological crisis into an alibi for renewed extractive relations.",
       "fromId": "n133",
       "toId": "n134"
     },
     {
       "id": "n451",
-      "type": "The post-nitrogen crisis fertilizer strategy appropriates Azolla as a biomimetic solution, abstracting it from Southern agro-ecologies and scaling it up as a green industrial input for the global North.",
+      "type": "The post-nitrogen crisis fertilizer strategy enacts a form of ecological enclosure by appropriating Azolla as a biomimetic solution—abstracting it from its embedded role in Southern agro-ecologies and reengineering it as a scalable green input for industrial agriculture in the Global North.",
       "fromId": "n133",
       "toId": "n88"
     },
     {
-      "id": "n452",
-      "type": "The mass cultivation of Azolla is deployed within green agricultural justification, co-opting its historical role in communal regenerative farming to symbolize high-tech ecological modernization and industrial sustainability.",
-      "fromId": "n88",
-      "toId": "n134"
-    },
-    {
-      "id": "n453",
-      "type": "The mass cultivation of Azolla transforms a historically communal and low-input agricultural practice into a scalable input for industrial farming, enabling the extractive appropriation of regenerative practices under the logic of green growth.",
-      "fromId": "n88",
-      "toId": "n137"
-    },
-    {
-      "id": "n454",
-      "type": "The post-nitrogen crisis fertilizer strategy in Northern agribusiness seizes upon the imagery of regenerative techniques\u2014such as Azolla use\u2014to enable the extractive appropriation of regenerative practices while sustaining industrial supply chains.",
-      "fromId": "n133",
-      "toId": "n137"
-    },
-    {
-      "id": "n455",
-      "type": "The extractive appropriation of regenerative practices provides the rhetorical foundation for green agricultural justification, allowing ecological modernization discourse to legitimize continued extraction.",
-      "fromId": "n137",
-      "toId": "n134"
-    },
+        "id": "n452",
+        "type": "The mass cultivation of Azolla operates as a form of ecological enclosure, appropriating its historical role in communal regenerative farming to serve as a symbolic and material asset within narratives of high-tech ecological modernization and industrial sustainability.",
+        "fromId": "n88",
+        "toId": "n134"
+      },
+      {
+        "id": "n453",
+        "type": "Through enclosure, the mass cultivation of Azolla transforms a historically communal, low-input agricultural practice into a commodified input for industrial farming, enabling the extractive repurposing of regenerative techniques under the logic of green growth.",
+        "fromId": "n88",
+        "toId": "n137"
+      },
+      {
+        "id": "n454",
+        "type": "The post-nitrogen crisis fertilizer strategy in Northern agribusiness enacts ecological enclosure by seizing upon the imagery and techniques of regenerative practices—such as Azolla use—to repackage them as green solutions while maintaining industrial supply chains.",
+        "fromId": "n133",
+        "toId": "n137"
+      },
+      {
+        "id": "n455",
+        "type": "The enclosure and appropriation of regenerative practices serve as the rhetorical infrastructure of green agricultural justification, allowing ecological modernization discourse to obscure and legitimize ongoing extractive regimes.",
+        "fromId": "n137",
+        "toId": "n134"
+      },    
     {
       "id": "n456",
       "type": "The extractive appropriation of regenerative practices reinforces the narrative of sustainable fertilizer by integrating biological techniques like Azolla application, while erasing their embedded social and ecological contexts.",
