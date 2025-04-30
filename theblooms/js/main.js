@@ -190,7 +190,7 @@ function narrateLink(linkKey) {
   }
 
   recentVisitedLinks.push(linkKey);
-  if (recentVisitedLinks.length > 15) {
+  if (recentVisitedLinks.length > 30) {
     recentVisitedLinks.shift();
   }
 
@@ -209,23 +209,30 @@ function narrateLink(linkKey) {
   });
 }
 
-/* Random auto mode continuation */
 function onNarrationEnd(sourceId) {
-  const choices = visibleLinks
-    .filter((l) => {
+  // 1) collect all valid next links
+  const allChoices = visibleLinks
+    .filter(l => {
       const src = typeof l.source === "object" ? l.source.id : l.source;
       return src === sourceId && l.narration;
     })
-    .map(
-      (l) =>
-        `${typeof l.source === "object" ? l.source.id : l.source} -> ${
-          typeof l.target === "object" ? l.target.id : l.target
-        }`
+    .map(l => 
+      `${typeof l.source === "object" ? l.source.id : l.source} -> ${
+        typeof l.target === "object" ? l.target.id : l.target
+      }`
     );
 
-  if (choices.length) {
-    narrateLink(pickRandom(choices));
-  }
+  if (!allChoices.length) return;
+
+  // 2) filter out the ones seen in the last 30 steps
+  const fresh = allChoices.filter(c => !recentVisitedLinks.includes(c));
+
+  // 3) pick randomly among fresh if available, otherwise among all
+  const nextLink = fresh.length > 0
+    ? pickRandom(fresh)
+    : pickRandom(allChoices);
+
+  narrateLink(nextLink);
 }
 
 /* Utility */
