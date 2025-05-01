@@ -114,6 +114,42 @@ a{
     color: #00A95C;
 }
 
+.donation-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  max-width: 90vw;
+  background: white;
+  color: #333;
+  border: 2px solid #7b1fa2; /* Speculation purple */
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 1rem 1.2rem;
+  text-align: center;
+  font-family: 'Barlow', sans-serif;
+  line-height: 1.4;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.donation-popup a {
+  color: #7b1fa2;
+  text-decoration: underline;
+}
+
+.donation-popup.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hidden {
+  display: none;
+}
+
 /* Intro overlay */
 .intro-overlay {
   position: fixed;
@@ -127,7 +163,6 @@ a{
 
 .intro-content {
   width: 100%;
-  min-width: 0;
   margin: 0;
   padding: 16px;
   background: rgba(255, 255, 255, 0.9);
@@ -267,27 +302,13 @@ input:checked + .slider:before {
   }
 
   .intro-overlay {
-    position: fixed;
-    inset: 0;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
   .intro-content {
-    width: 100%;
+    width: 75vw;
+    height: 75vh;
     max-width: none;
-    margin: 0;
-    padding: 1em;
-    background: #fafafa;
-    border-radius: 0;
-    text-align: left;
-    overflow-y: auto;
     max-height: none;
-    height: auto;
-    min-height: 100%;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
   }
 
   #startButton:active {

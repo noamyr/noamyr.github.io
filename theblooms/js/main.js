@@ -205,6 +205,19 @@ function narrateLink(linkKey) {
       onNarrationEnd(targetId);
     }
   });
+
+  const targetNode = visibleNodes.find(n => n.id === linkKey.split("->")[1].trim());
+if (targetNode?.category === "Speculation") {
+  const popup = document.getElementById("donationPopup");
+  if (popup) {
+    popup.classList.remove("hidden");
+    setTimeout(() => popup.classList.add("show"), 50); // fade in
+    setTimeout(() => {
+      popup.classList.remove("show");
+      setTimeout(() => popup.classList.add("hidden"), 300); // wait for fade out
+    }, 15000); // display for 15 sec
+  }
+}
 }
 
 function onNarrationEnd(sourceId) {
