@@ -153,13 +153,11 @@ function updateCinemaByLinkKey(linkKey) {
   }
 
   const imageUrl = `./img/${linkObj.id}.jpg`; 
-  imageElement.src = imageUrl;
-  imageElement.onload = () => {
-    imageElement.style.display = 'block';
-  };
   imageElement.onerror = () => {
-    imageElement.style.display = 'none';
+    imageElement.src = './img/default.jpg';
   };
+  imageElement.src = imageUrl;
+
   const captionText = linkObj.narration || "";
   captionElement.textContent = captionText;
 }
@@ -269,27 +267,35 @@ async function init() {
     currentLinkKey = pickRandom(keys);
     updateDiagram(currentLinkKey);
 
-    document.body.addEventListener("click", () => narrateLink(currentLinkKey), {
-      once: true,
-    });
+    const startButton = document.getElementById("startButton");
+    if (startButton) {
+      startButton.addEventListener("click", () => {
+        document.getElementById("introOverlay").style.display = "none";
+        narrateLink(currentLinkKey);
+      }, { once: true });
+    }
   } catch (err) {
     console.error("Failed to load diagram.json", err);
   }
 }
-init();
 
-/* Overlay intro */
-const overlay = document.getElementById("introOverlay");
-if (overlay) {
-  overlay.addEventListener(
-    "click",
-    () => {
-      overlay.style.display = "none";
-      narrateLink(currentLinkKey);
-    },
-    { once: true }
-  );
+document.addEventListener("DOMContentLoaded", () => {
+  const imageElement = document.getElementById("cinemaImage");
+  const captionElement = document.getElementById("caption");
+
+  // Set default content immediately
+  if (imageElement) {
+    imageElement.src = './img/default.jpg';
+  }
+
+  if (captionElement) {
+    captionElement.textContent = ""; // clear any previous text
+    captionElement.innerHTML = "<em>Speculation in progress...</em>";
 }
+
+  // Now initialize the rest of the script
+  init();
+});
 
 /* Mode toggle */
 navToggle.addEventListener("change", () => {
