@@ -114,36 +114,51 @@ a{
     color: #00A95C;
 }
 
-.donation-popup {
+.popup {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 300px;
-  max-width: 90vw;
-  background: white;
-  color: #333;
-  border: 2px solid #7b1fa2; /* Speculation purple */
-  border-radius: 8px;
   transform: translate(-50%, -50%);
-  z-index: 2000;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  padding: 1rem 1.2rem;
-  text-align: center;
   font-family: 'Barlow', sans-serif;
-  line-height: 1.4;
+  background: #7b1fa2;
+  color: #fafafa;
+  padding: 1rem;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.75);
+  border-radius: 8px;
+  z-index: 1000;
+  max-width: 280px;
+  text-align: center;
   opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
   pointer-events: none;
-  transition: opacity 0.3s ease;
 }
 
-.donation-popup a {
-  color: #7b1fa2;
-  text-decoration: underline;
+.popup h1{
+font-size: 2em;
+margin-bottom: 1rem;
+font-weight: 600;
 }
 
-.donation-popup.show {
+.popup p{
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.popup h1{
+  font-size: 2em;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}  
+
+.popup.show {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
+}
+
+.popup.hidden {
+  display: none;
 }
 
 .hidden {
@@ -210,22 +225,28 @@ a{
   margin-left: 1.5em;
 }
 
+.start-button-wrapper {
+  padding-block: 2em; /* prevents collapsing */
+}
+
 #startButton {
-  cursor: pointer;
-  display: block;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
+  cursor: pointer;
   background: rgba(0, 169, 92, 0.9);
   color: #fafafa;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   font-weight: 500;
-  font-size: 1rem;
-  padding: 1rem 1rem;
+  font-size: 0.9rem;
   border: none;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
   transition: background 0.3s, box-shadow 0.2s, transform 0.2s;
-  text-transform: uppercase;
 }
 
 #startButton:hover {
@@ -299,9 +320,6 @@ input:checked + .slider:before {
     overscroll-behavior: none;
     overflow-x: hidden;
     overflow-y: auto; /* allow vertical scrolling */
-  }
-
-  .intro-overlay {
   }
 
   .intro-content {

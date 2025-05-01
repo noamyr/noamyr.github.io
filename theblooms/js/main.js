@@ -209,13 +209,26 @@ function narrateLink(linkKey) {
   const targetNode = visibleNodes.find(n => n.id === linkKey.split("->")[1].trim());
 if (targetNode?.category === "Speculation") {
   const popup = document.getElementById("donationPopup");
-  if (popup) {
+  const countdownSpan = document.getElementById("popupCountdown");
+  if (popup && countdownSpan) {
+    let remaining = 15;
+
+    // Show popup
     popup.classList.remove("hidden");
-    setTimeout(() => popup.classList.add("show"), 50); // fade in
-    setTimeout(() => {
-      popup.classList.remove("show");
-      setTimeout(() => popup.classList.add("hidden"), 300); // wait for fade out
-    }, 15000); // display for 15 sec
+    setTimeout(() => popup.classList.add("show"), 50);
+
+    countdownSpan.textContent = remaining;
+
+    const interval = setInterval(() => {
+      remaining--;
+      countdownSpan.textContent = remaining;
+
+      if (remaining <= 0) {
+        clearInterval(interval);
+        popup.classList.remove("show");
+        setTimeout(() => popup.classList.add("hidden"), 300);
+      }
+    }, 1000);
   }
 }
 }

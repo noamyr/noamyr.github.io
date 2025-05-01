@@ -13,6 +13,9 @@
 
   <div id="introOverlay" class="intro-overlay">
     <div class="intro-content">
+      <div class="start-button-wrapper">
+        <button id="startButton">Begin<br>Speculating</button>
+      </div>
       <p>
         <strong>The Blooms</strong> is a diagrammatic science fiction that uses multiple blooms—drastic shifts in populations of Azolla, tulips, and reindeer lichens, as well as speculative blooms—as its central narrative framework. Through an interactive web of entanglements, it maps the deep-time metabolic shifts, financial speculation, and ecological cycles that shape these blooms. The project critiques capitalist enclosures of nature, linking colonial trade, geoengineering, nitrogen crises, and speculative markets.
       </p>
@@ -33,12 +36,10 @@
   
       <h2>Credits</h2>
       <p>
-        All concept, writing, diagramming, design, and implementation by <a href="https://www.d-act.org">Noam Youngrak Son</a>.<br>
+        All concept, writing, diagramming, design, and implementation by <a href="https://www.d-act.org" target="_blank">Noam Youngrak Son</a>.<br>
         <em>2025, Maastricht</em>
       </p>
-  
-      <button id="startButton">Start</button>
-    </div>
+      </div>
   </div>
 
 <div id="container">
@@ -60,12 +61,15 @@
     </div>
   </div>
 </div>
-<div id="donationPopup" class="donation-popup hidden">
-  <div class="donation-popup-inner">
-    <p><strong>Support this project?</strong><br />
-    This speculative diagram was created independently.<br />
-    If you’d like to contribute, visit my <a href="https://your-donation-link.com" target="_blank">donation page</a>.</p>
-  </div>
+<div id="donationPopup" class="popup hidden">
+  <h1>ARTISTIC LABOR IS SPECULATIVE</h1>
+<p>
+  <a href="https://ko-fi.com/noamson" target="_blank">Donate here</a>
+  to keep (artistic) speculation going.
+</p>
+<p class="countdown">
+  This window will close in <span id="popupCountdown">15</span> seconds.
+</p>
 </div>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script type="module" src="js/main.js"></script>
