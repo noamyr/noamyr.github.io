@@ -266,18 +266,28 @@ input:checked + .slider:before {
     overflow-y: auto; /* allow vertical scrolling */
   }
 
-  .intro-content {
+  .intro-overlay {
     position: fixed;
     inset: 0;
-    padding: 1em;
-    width: 100vw;
-    height: calc(100% + env(safe-area-inset-bottom));
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .intro-content {
+    width: 100%;
     max-width: none;
-    max-height: none;
+    margin: 0;
+    padding: 1em;
+    background: #fafafa;
     border-radius: 0;
-    box-shadow: none;
+    text-align: left;
     overflow-y: auto;
+    max-height: none;
+    height: auto;
+    min-height: 100%;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
   }
 
   #startButton:active {
