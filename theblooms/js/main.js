@@ -211,7 +211,7 @@ if (targetNode?.category === "Speculation") {
   const popup = document.getElementById("donationPopup");
   const countdownSpan = document.getElementById("popupCountdown");
   if (popup && countdownSpan) {
-    let remaining = 15;
+    let remaining = 5;
 
     // Show popup
     popup.classList.remove("hidden");
