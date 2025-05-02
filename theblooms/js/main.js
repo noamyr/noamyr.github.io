@@ -212,7 +212,6 @@ if (targetNode?.category === "Speculation") {
   const countdownSpan = document.getElementById("popupCountdown");
   if (popup && countdownSpan) {
     let remaining = 5;
-
     // Show popup
     popup.classList.remove("hidden");
     setTimeout(() => popup.classList.add("show"), 50);
