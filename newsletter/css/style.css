@@ -2,9 +2,14 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: #1c1c1c; /* Dark canvas */
+  background-color: #f8f4f2;
   font-family: 'Inter', 'Helvetica Neue', sans-serif;
   color: #eee;
+}
+
+*{
+  margin: 0;
+  padding: 0;
 }
 
 #diagram-container {
@@ -17,12 +22,12 @@ html, body {
 #preview {
   position: absolute;
   pointer-events: none;
-  background: #2a2a2a;
-  color: #f0f0f0;
+  background: #2c2c2c;
+  color: #dcdcdc;
   border: 1px solid #444;
   padding: 6px 10px;
-  border-radius: 4px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   font-size: 0.85rem;
   max-width: 240px;
   display: none;
@@ -31,13 +36,14 @@ html, body {
 }
 
 #legend {
-  font-size: 13px;
-  background: rgba(30, 30, 30, 0.85);
-  color: #ddd;
+  font-size: 12px;
+  background: #2c2c2c;
+  color: #f8f4f2;
   border: 1px solid #444;
-  padding: 8px 12px;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  border-color: #444444;
+  padding: 8px 8px 0 8px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 #legend span {
@@ -46,9 +52,8 @@ html, body {
 
 #nav-controls {
   position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 12px;
+  top: 12px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -57,12 +62,13 @@ html, body {
 
 #nav-controls button {
   font-size: 18px;
-  padding: 6px 10px;
+  padding: 8px 12px;
   cursor: pointer;
   background: #2c2c2c;
-  color: #eee;
-  border: 1px solid #555;
-  border-radius: 4px;
+  color: #f8f4f2;
+  border: 1px solid #444;
+  border-color: #444444;
+  border-radius: 8px;
   transition: background 0.2s ease;
 }
 
@@ -71,12 +77,13 @@ html, body {
 }
 
 #current-node-number {
-  font-size: 13px;
-  background: #2a2a2a;
-  color: #eee;
+  font-size: 12px;
+  background: #2c2c2c;
+  color: #f8f4f2;
   border: 1px solid #444;
-  padding: 6px 10px;
-  border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  border-color: #444444;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
