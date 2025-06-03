@@ -207,7 +207,7 @@ function initDiagram(nodes, links) {
       lastEvent = event;
       const numberPrefix = d.number ? `${d.number}: ` : "";
       const imageHTML = d.image
-        ? `<img src="/images/${d.image}" class="preview-image" />`
+        ? `<img src="./images/${d.image}" class="preview-image" />`
         : "";
       const clickableNote = d.link
         ? `<div class="clickable-note">Click the node to open the link.</div>`
