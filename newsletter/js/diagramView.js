@@ -201,17 +201,29 @@ function initDiagram(nodes, links) {
   });
 
   node
-    .style("cursor", d => d.link ? "pointer" : "default")
-    .on("mouseover", (event, d) => {
-      if (window.innerWidth > 768) {
-        lastEvent = event;
-        const title = d.number ? `<strong>${d.number}: ${d.title}</strong>` : `<strong>${d.title}</strong>`;
-        const clickable = d.link ? `<br><br><em>Click to open</em>` : "";
-        preview
-          .style("display", "block")
-          .html(`${title}<br>${d.caption}${clickable}`);
-      }
-    })    .on("mousemove", (event) => {
+  .style("cursor", d => d.link ? "pointer" : "default")
+  .on("mouseover", (event, d) => {
+    if (window.innerWidth > 768) {
+      lastEvent = event;
+      const numberPrefix = d.number ? `${d.number}: ` : "";
+      const imageHTML = d.image
+        ? `<img src="/images/${d.image}" class="preview-image" />`
+        : "";
+      const clickableNote = d.link
+        ? `<div class="clickable-note">Click the node to open the link.</div>`
+        : "";
+  
+      preview
+        .style("display", "block")
+        .html(`
+          ${imageHTML}
+          <strong>${numberPrefix}${d.title}</strong><br>
+          ${d.caption}
+          ${clickableNote}
+        `);
+    }
+  })
+    .on("mousemove", (event) => {
       if (window.innerWidth > 768) {
         lastEvent = event;
         preview
@@ -224,10 +236,16 @@ function initDiagram(nodes, links) {
         preview.style("display", "none");
       }
     })
- .on("click", (event, d) => {
+    .on("click", (event, d) => {
       const isMobile = window.innerWidth <= 768;
-      const title = d.number ? `<strong>${d.number}: ${d.title}</strong>` : `<strong>${d.title}</strong>`;
-      const clickable = d.link ? `<br><br><em>Tap the node again to open</em>` : "";
+      const numberPrefix = d.number ? `${d.number}: ` : "";
+      const imageHTML = d.image
+        ? `<img src="/images/${d.image}" class="preview-image" />`
+        : "";
+      const clickableNote = d.link
+        ? `<div class="clickable-note">Tap the node again to open the link, or tap anywhere else to close the popup.</div>`
+        : "";
+    
       if (isMobile) {
         if (lastTappedNodeId === d.id) {
           if (d.link) window.open(d.link, "_blank");
@@ -237,15 +255,18 @@ function initDiagram(nodes, links) {
           lastTappedNodeId = d.id;
           preview
             .style("display", "block")
-            .html(`${title}<br>${d.caption}${clickable}`)
-            .style("left", `${(window.innerWidth - 200) / 2}px`)
-            .style("top", `${(window.innerHeight - 80) / 2}px`);
+            .html(`
+              ${imageHTML}
+              <strong>${numberPrefix}${d.title}</strong><br>
+              ${d.caption}
+              ${clickableNote}
+            `);
         }
       } else {
         if (d.link) window.open(d.link, "_blank");
       }
     });
-
+    
   d3.select("body").on("click", (event) => {
     const clickedOnNode = event.target.closest("g");
     if (!clickedOnNode) {
