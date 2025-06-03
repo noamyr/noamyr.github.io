@@ -125,7 +125,7 @@ function initDiagram(nodes, links) {
 
     const text = group.append("text")
       .attr("text-anchor", "middle")
-      .attr("fill", "rgb(245,255,245)")
+      .attr("fill", "#f5f5f5")
       .style("font-size", `${fontSize}px`)
       .style("pointer-events", "none");
 
@@ -186,7 +186,7 @@ function initDiagram(nodes, links) {
 
     const text = group.append("text")
       .attr("text-anchor", "middle")
-      .attr("fill", "rgb(245,255,245)")
+      .attr("fill", "#f5f5f5")
       .style("font-size", `${fontSize}px`)
       .style("pointer-events", "none");
 
