@@ -280,7 +280,7 @@ const linkHitboxes = container.append("g")
       const isMobile = window.innerWidth <= 768;
       const numberPrefix = d.number ? `${d.number}: ` : "";
       const imageHTML = d.image
-        ? `<img src="/images/${d.image}" class="preview-image" />`
+        ? `<img src="./images/${d.image}" class="preview-image" />`
         : "";
       const clickableNote = d.link
         ? `<div class="clickable-note">Tap again to open the link, or tap anywhere else to close the popup.</div>`
