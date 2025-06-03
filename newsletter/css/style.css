@@ -2,8 +2,8 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #f8f4f2;
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  background-color: rgb(245,255,245);
+  font-family: 'Arial', sans-serif;
   color: #eee;
 }
 
@@ -22,9 +22,9 @@ html, body {
 #preview {
   position: absolute;
   pointer-events: none;
-  background: #2c2c2c;
-  color: #dcdcdc;
-  border: 1px solid #444;
+  background: rgb(255,235,235);
+  color: #2c2c2c;
+  border: 1px solid #2c2c2c;
   padding: 6px 10px;
   border-radius: 8px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
@@ -37,10 +37,10 @@ html, body {
 
 #legend {
   font-size: 12px;
-  background: #2c2c2c;
-  color: #f8f4f2;
-  border: 1px solid #444;
-  border-color: #444444;
+  background: #f5f5f5;
+  color: #2c2c2c;
+  border: 1px solid;
+  border-color: #2c2c2c;
   padding: 8px 8px 0 8px;
   border-radius: 8px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
@@ -64,24 +64,24 @@ html, body {
   font-size: 18px;
   padding: 8px 12px;
   cursor: pointer;
-  background: #2c2c2c;
-  color: #f8f4f2;
-  border: 1px solid #444;
+  background: #f5f5f5;
+  color: #2c2c2c;
+  border: 1px solid #2c2c2c;
   border-color: #444444;
   border-radius: 8px;
   transition: background 0.2s ease;
 }
 
 #nav-controls button:hover {
-  background: #444;
+  background: #2c2c2c;
 }
 
 #current-node-number {
   font-size: 12px;
-  background: #2c2c2c;
-  color: #f8f4f2;
-  border: 1px solid #444;
-  border-color: #444444;
+  background: #f5f5f5;
+  color: #2c2c2c;
+  border: 1px solid;
+  border-color: #2c2c2c;
   padding: 8px 12px;
   border-radius: 8px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);

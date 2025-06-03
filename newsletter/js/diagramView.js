@@ -40,9 +40,9 @@ function initDiagram(nodes, links) {
   const container = svg.append("g").attr("class", "container");
 
   const colorMap = {
-    "essay": "#f07d82",           // soft coral pink (used in node bg)
-    "sci-fi": "#88c4d8",          // pastel blue
-    "external link": "#7d91e0",   // soft periwinkle
+    "essay": "#FF665E",           // soft coral pink (used in node bg)
+    "sci-fi": "#00A95C",          // pastel blue
+    "external link": "#0000EE",   // soft periwinkle
     "artwork": "#c49fd4",         // lavender-pink
     "default": "#999999"          // light gray fallback
   };  
@@ -125,7 +125,7 @@ function initDiagram(nodes, links) {
 
     const text = group.append("text")
       .attr("text-anchor", "middle")
-      .attr("fill", "#f8f4f2")
+      .attr("fill", "rgb(245,255,245)")
       .style("font-size", `${fontSize}px`)
       .style("pointer-events", "none");
 
@@ -186,7 +186,7 @@ function initDiagram(nodes, links) {
 
     const text = group.append("text")
       .attr("text-anchor", "middle")
-      .attr("fill", "#111")
+      .attr("fill", "rgb(245,255,245)")
       .style("font-size", `${fontSize}px`)
       .style("pointer-events", "none");
 
