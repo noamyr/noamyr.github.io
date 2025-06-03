@@ -119,6 +119,7 @@ html, body {
   background: rgba(0,255,0);
   padding: 8px;
   border-radius: 8px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
 }
 
 #bottom-buttons {
