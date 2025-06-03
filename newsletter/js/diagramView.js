@@ -40,12 +40,12 @@ function initDiagram(nodes, links) {
   const container = svg.append("g").attr("class", "container");
 
   const colorMap = {
-    "essay": "#FF665E",           // soft coral pink (used in node bg)
-    "sci-fi": "#00A95C",          // pastel blue
-    "external link": "#0000EE",   // soft periwinkle
-    "artwork": "#c49fd4",         // lavender-pink
-    "default": "#999999"          // light gray fallback
-  };  
+    "essay": "#FF665E",
+    "sci-fi": "#00A95C",
+    "external link": "#0000EE",
+    "artwork": "#c49fd4",
+    "default": "#999999"
+  };
 
   const legendData = Object.entries(colorMap).filter(([key]) => key !== "default");
 
@@ -60,84 +60,124 @@ function initDiagram(nodes, links) {
     .enter()
     .append("div")
     .style("margin-bottom", "8px")
-    .html(([key, color]) => `<span style="display:inline-block;width:12px;height:12px;background:${color};margin-right:8px;border-radius:4px;"></span> ${key}`);
+    .html(([key, color]) => `<span style="display:inline-block;width:12px;height:12px;
+      background:${color};margin-right:8px;border-radius:4px;"></span> ${key}`);
 
-  const preview = d3.select("body").append("div")
-    .attr("id", "preview")
-    .style("display", "none")
-    .style("position", "fixed")
-    .style("width", "200px")
-    .style("z-index", "1000")
-    .style("pointer-events", "none");
+const preview = d3.select("body").append("div")
+  .attr("id", "preview")
+  .style("display", "none")
+  .style("position", "fixed")
+  .style("width", "200px")
+  .style("z-index", "1000")
+  .style("pointer-events", window.innerWidth <= 768 ? "auto" : "none"); // 🔁 Enable on mobile
 
   const simulation = d3.forceSimulation(nodes)
     .force("link", d3.forceLink(links).id(d => d.id).distance(200))
     .force("charge", d3.forceManyBody().strength(-300))
     .force("center", d3.forceCenter(width / 2, height / 2));
 
+  // 1) Draw visible links
   const link = container.append("g")
-    .attr("stroke", "#999999")
+    .attr("stroke", "#2c2c2c")
     .attr("stroke-opacity", 0.5)
     .selectAll("line")
     .data(links)
     .join("line")
     .attr("stroke-width", 1);
 
-  const linkLabelGroup = container.append("g")
-    .selectAll("g")
-    .data(links)
-    .join("g")
-    .attr("class", "link-label");
+// 2) Create link label groups (hidden by default)
+const linkLabelGroup = container.append("g")
+  .attr("class", "link-labels")
+  .selectAll("g")
+  .data(links)
+  .join("g")
+  .attr("class", "link-label")
+  .style("display", "none");
 
-  linkLabelGroup.each(function(d) {
-    const group = d3.select(this);
-    const words = d.relation.split(" ");
-    const lines = [];
-    let line = [];
+linkLabelGroup.each(function(d) {
+  const group = d3.select(this);
+  const words = d.relation.split(" ");
+  const lines = [];
+  let line = [];
 
-    words.forEach(word => {
-      const testLine = [...line, word].join(" ");
-      if (testLine.length > 15) {
-        lines.push(line.join(" "));
-        line = [word];
-      } else {
-        line.push(word);
-      }
-    });
-    if (line.length) lines.push(line.join(" "));
-
-    const fontSize = 6;
-    const lineHeight = fontSize * 1.2;
-    const charWidth = fontSize * 0.6;
-    const padding = 2;
-
-    const maxLineLength = Math.max(...lines.map(l => l.length));
-    const textWidth = maxLineLength * charWidth;
-    const textHeight = lines.length * lineHeight;
-
-    group.append("rect")
-      .attr("x", -textWidth / 2 - padding)
-      .attr("y", -textHeight / 2 - padding)
-      .attr("width", textWidth + padding * 2)
-      .attr("height", textHeight + padding * 2)
-      .attr("fill", "#2c2c2c")
-      .attr("rx", 4);
-
-    const text = group.append("text")
-      .attr("text-anchor", "middle")
-      .attr("fill", "#f5f5f5")
-      .style("font-size", `${fontSize}px`)
-      .style("pointer-events", "none");
-
-    const textYOffset = -((lines.length - 1) * lineHeight) / 2 + fontSize * 0.3;
-
-    lines.forEach((lineText, i) => {
-      text.append("tspan")
-        .attr("x", 0)
-        .attr("dy", i === 0 ? textYOffset : lineHeight)
-        .text(lineText);
-    });
+  words.forEach(word => {
+    const testLine = [...line, word].join(" ");
+    if (testLine.length > 30) {
+      lines.push(line.join(" "));
+      line = [word];
+    } else {
+      line.push(word);
+    }
   });
+  if (line.length) lines.push(line.join(" "));
+
+  const fontSize = 6;
+  const lineHeight = fontSize * 1.5;
+  const charWidth = fontSize * 0.5;
+  const padding = fontSize;
+
+  const maxLineLength = Math.max(...lines.map(l => l.length));
+  const textWidth = maxLineLength * charWidth;
+  const textHeight = lines.length * lineHeight;
+
+  group.append("rect")
+    .attr("x", -textWidth / 2 - padding)
+    .attr("y", -textHeight / 2 - padding)
+    .attr("width", textWidth + padding * 2)
+    .attr("height", textHeight + padding * 2)
+    .attr("fill", "rgb(245,255,245)")
+    .attr("rx", 6);
+
+  const text = group.append("text")
+    .attr("text-anchor", "middle")
+    .attr("fill", "#2c2c2c")
+    .style("font-size", `${fontSize}px`)
+    .style("pointer-events", "none");
+
+  const textYOffset = -((lines.length - 1) * lineHeight) / 2 + fontSize * 0.3;
+  lines.forEach((lineText, i) => {
+    text.append("tspan")
+      .attr("x", 0)
+      .attr("dy", i === 0 ? textYOffset : lineHeight)
+      .text(lineText);
+  });
+});
+
+// 3) Create invisible hitboxes over the same links
+const linkHitboxes = container.append("g")
+  .selectAll("line")
+  .data(links)
+  .join("line")
+  .attr("stroke", "transparent")
+  .attr("stroke-width", 20)
+  .style("cursor", "pointer")
+  .on("mouseover", function(event, d) {
+    if (window.innerWidth > 768) {
+      d3.selectAll(".link-label").style("display", "none");
+      d3.select(linkLabelGroup.nodes()[links.indexOf(d)]).style("display", "block");
+    }
+  })
+  .on("mouseout", function(event, d) {
+    if (window.innerWidth > 768) {
+      d3.select(linkLabelGroup.nodes()[links.indexOf(d)]).style("display", "none");
+    }
+  })
+  .on("click", function(event, d) {
+    if (window.innerWidth <= 768) {
+      event.stopPropagation();
+      const label = d3.select(linkLabelGroup.nodes()[links.indexOf(d)]);
+      const isVisible = label.style("display") === "block";
+      d3.selectAll(".link-label").style("display", "none");
+      label.style("display", isVisible ? "none" : "block");
+    }
+  });
+
+  // 4) Hide any open captions if tapping outside on mobile
+  if (window.innerWidth <= 768) {
+    d3.select("body").on("click.linkCaption", () => {
+      d3.selectAll(".link-label").style("display", "none");
+    });
+  }
 
   const node = container.append("g")
     .selectAll("g")
@@ -180,8 +220,8 @@ function initDiagram(nodes, links) {
       .attr("y", -rectHeight / 2)
       .attr("width", rectWidth)
       .attr("height", rectHeight)
-      .attr("rx", 10)
-      .attr("ry", 10)
+      .attr("rx", 8)
+      .attr("ry", 8)
       .attr("fill", colorMap[d.category] || colorMap.default);
 
     const text = group.append("text")
@@ -294,11 +334,17 @@ function initDiagram(nodes, links) {
         .style("top", `${lastEvent.pageY + 10}px`);
     }
 
-    linkLabelGroup.attr("transform", d => {
-      const x = (d.source.x + d.target.x) / 2;
-      const y = (d.source.y + d.target.y) / 2;
-      return `translate(${x},${y})`;
-    });
+linkLabelGroup.attr("transform", d => {
+  const x = (d.source.x + d.target.x) / 2;
+  const y = (d.source.y + d.target.y) / 2;
+  return `translate(${x},${y})`;
+});
+
+linkHitboxes
+  .attr("x1", d => d.source.x)
+  .attr("y1", d => d.source.y)
+  .attr("x2", d => d.target.x)
+  .attr("y2", d => d.target.y);
 
     if (!initialPanDone && numberedNodes.length > 0) {
       panToNode(Math.floor(Math.random() * numberedNodes.length));
@@ -370,4 +416,14 @@ function initDiagram(nodes, links) {
         dragging = false;
       });
   }
+if (window.innerWidth <= 768) {
+  d3.select("#preview").on("click", () => {
+    const tappedNode = nodes.find(n => n.id === lastTappedNodeId);
+    if (tappedNode?.link) {
+      window.open(tappedNode.link, "_blank");
+      lastTappedNodeId = null;
+      preview.style("display", "none");
+    }
+  });
+}
 }
