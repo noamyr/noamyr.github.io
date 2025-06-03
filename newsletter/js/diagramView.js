@@ -283,7 +283,7 @@ const linkHitboxes = container.append("g")
         ? `<img src="/images/${d.image}" class="preview-image" />`
         : "";
       const clickableNote = d.link
-        ? `<div class="clickable-note">Tap the node again to open the link, or tap anywhere else to close the popup.</div>`
+        ? `<div class="clickable-note">Tap again to open the link, or tap anywhere else to close the popup.</div>`
         : "";
     
       if (isMobile) {
