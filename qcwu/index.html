@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QCWU Counter-Archive (v1)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="title">QCWU Counter-Archive</div>
+      <div class="subtitle">Rhizome + Seed Packet intake (v1)</div>
+    </div>
+
+    <div class="controls">
+      <button id="btnReload" class="btn">Reload</button>
+      <button id="btnToggleForm" class="btn">New Seed</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="graphPanel">
+      <div id="graph" class="graph"></div>
+
+      <!-- Bubble preview (positioned by app.js) -->
+      <div id="preview" class="preview previewBubble hidden">
+        <div class="previewHead">
+          <div id="previewLabel" class="previewLabel"></div>
+          <button id="previewClose" class="btn btnSmall">Close</button>
+        </div>
+        <iframe id="previewFrame" class="previewFrame" loading="lazy"></iframe>
+        <div id="previewMeta" class="previewMeta"></div>
+      </div>
+    </section>
+
+    <aside class="sidePanel">
+      <div class="panelBlock">
+        <h2>Seed Packet</h2>
+        <p class="hint">
+          Seeds are additive. A seed must dock into one existing seed (Primary bind).
+          Hover opens a membrane bubble; click pins.
+        </p>
+      </div>
+
+      <div id="formWrap" class="panelBlock hidden">
+        <h3>Submit a Seed</h3>
+
+        <!-- datalist populated by app.js (TITLE values, not ids) -->
+        <datalist id="seedTitleList"></datalist>
+
+        <form id="seedForm" class="form">
+          <label>
+            Title / label *
+            <input name="title_or_label" type="text" required placeholder="Unique name (required)" />
+          </label>
+
+          <label>
+            URL *
+            <input name="return_address_url" type="url" required placeholder="https://..." />
+          </label>
+
+          <label>
+            Call me:
+            <input name="handle" type="text" placeholder="pseudonym / collective / anonymous" />
+          </label>
+
+          <label>
+            Anchor / Place (metadata)
+            <input name="anchor_place" type="text" placeholder="event / feeling / username / concept..." />
+          </label>
+
+          <!-- Primary bind chosen by TITLE, stored as hidden seed_id -->
+          <label>
+            Primary bind (required) *
+            <input id="primaryBindTitle" name="primary_bind_title" type="text" list="seedTitleList"
+                   placeholder="start typing a seed title…" required />
+            <input id="primaryBindId" name="primary_bind" type="hidden" value="" />
+          </label>
+
+          <label>
+            Primary relation
+            <select name="primary_relation_type">
+              <option value="responds_to">responds_to</option>
+              <option value="extends">extends</option>
+              <option value="agrees_with">agrees_with</option>
+              <option value="disagrees_with">disagrees_with</option>
+              <option value="co_constitutive">co_constitutive</option>
+              <option value="asks">asks</option>
+              <option value="documents">documents</option>
+              <option value="clarifies">clarifies</option>
+              <option value="reframes">reframes</option>
+            </select>
+          </label>
+
+          <!-- In conversation with (chips UI; hidden field holds IDs) -->
+          <label>
+            In conversation with
+            <div class="chipsRow">
+              <input id="icwInput" type="text" list="seedTitleList" placeholder="type a seed title, press Enter…" />
+              <button id="icwAddBtn" type="button" class="btn btnSmall">Add</button>
+            </div>
+            <div id="icwChips" class="chips"></div>
+            <input type="hidden" name="in_conversation_with" id="icwHidden" value="" />
+          </label>
+
+          <label>
+            Keywords (comma-separated)
+            <input name="keywords" type="text" placeholder="tags, self-determined language..." />
+          </label>
+
+          <label>
+            Context (1–2 sentences)
+            <textarea name="context" rows="3" placeholder="grain of thought..."></textarea>
+          </label>
+
+          <label>
+            A debt to (free text)
+            <input name="a_debt_to" type="text" placeholder="influences / ghosts / people / works..." />
+          </label>
+
+          <label>
+            Mood
+            <input name="mood" type="text" placeholder="affective tone..." />
+          </label>
+
+          <label>
+            Care mode
+            <select name="care_mode">
+              <option value="look_dont_touch">Look, don’t touch</option>
+              <option value="take_transform_tell_me">Take & transform, but tell me</option>
+              <option value="water_with_your_thoughts">Water it with your own thoughts</option>
+              <option value="let_it_be_forgotten">Let it be forgotten</option>
+            </select>
+          </label>
+
+          <label>
+            Embed policy
+            <select name="embed_policy">
+              <option value="iframe_ok">iframe ok</option>
+              <option value="link_only">link only</option>
+              <option value="no_embed">no embed</option>
+            </select>
+          </label>
+
+          <div class="formRow">
+            <button type="submit" class="btn primary">Submit</button>
+            <button type="button" id="btnCancel" class="btn">Cancel</button>
+          </div>
+
+          <div id="formStatus" class="status"></div>
+        </form>
+      </div>
+
+<div class="panelBlock">
+  <h3>Legend</h3>
+
+<div class="legend">
+
+  <div class="legendRow">
+    <span class="labelSample">(Title)</span>
+    <span>Seed</span>
+  </div>
+
+  <div class="legendRow">
+    <span class="lineSample"></span>
+    <span>Primary bind</span>
+  </div>
+
+  <div class="legendIndent">
+
+    <div class="legendRow">
+      <span class="lineSample blue"></span>
+      <span>agrees_with / responds_to</span>
+    </div>
+
+    <div class="legendRow">
+      <span class="lineSample red"></span>
+      <span>disagrees_with</span>
+    </div>
+
+    <div class="legendRow">
+      <span class="lineSample gray"></span>
+      <span>asks</span>
+    </div>
+
+    <div class="legendRow">
+      <span class="lineSample purple"></span>
+      <span>co_constitutive</span>
+    </div>
+
+    <div class="legendRow">
+      <span class="lineSample orange"></span>
+      <span>extends / documents / clarifies</span>
+    </div>
+
+  </div>
+
+  <div class="legendRow">
+    <span class="lineSample weak"></span>
+    <span>In conversation with (loosely)</span>
+  </div>
+
+</div>
+
+</div>
+
+    </aside>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="app.js"></script>
+</body>
+</html>
