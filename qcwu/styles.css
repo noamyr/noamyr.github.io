@@ -6,6 +6,9 @@
   --muted: rgba(20,20,30,0.56);
   --line: rgba(20,20,30,0.18);
   --line2: rgba(20,20,30,0.10);
+
+  /* NEW: used for mobile sheet height */
+  --topbar-h: 56px;
 }
 
 *{ box-sizing:border-box; }
@@ -157,7 +160,7 @@ h2, h3{
 
 .legendRow {
   display: grid;
-  grid-template-columns: 60px auto; /* fixed sample column */
+  grid-template-columns: 60px auto;
   align-items: center;
   column-gap: 12px;
 }
@@ -201,84 +204,146 @@ h2, h3{
 .lineSample.purple { border-color: #7a5cff; border-top-style: dashed; }
 .lineSample.orange { border-color: #f59e0b; border-top-width: 4px; }
 
+/* =========================================================
+   Preview bubble
+   - Desktop: auto height, no dead space, iframe stays usable
+   - Mobile: fixed bottom sheet that fits viewport (no cropping)
+   ========================================================= */
 
-/* Bubble preview (positioned by app.js) */
+/* Bubble preview (positioned by app.js on desktop) */
 .previewBubble{
   position:absolute;
   z-index: 50;
-  width: min(520px, 46vw);
-  max-height: min(520px, 56vh);
-  overflow:hidden;
+
+  width: min(560px, 46vw);
+  max-height: min(620px, 62vh);
+
+  /* IMPORTANT: don't hide overflow here; let only the meta scroll */
+  overflow: visible;
+
   border-radius: 14px;
   border: 1px solid rgba(20,20,30,0.16);
   background: rgba(255,255,255,0.94);
   box-shadow: 0 18px 44px rgba(0,0,0,0.12);
   backdrop-filter: blur(10px);
+
+  /* NEW: flex column = "no negative space" on short captions */
+  display:flex;
+  flex-direction: column;
+
+  /* allow internal children to compute scroll sizes */
+  min-height: 0;
 }
 
-.previewBubble::before{
-  content:"";
-  position:absolute;
-  left: 18px;
-  top: -10px;
-  width: 18px;
-  height: 18px;
-  transform: rotate(45deg);
-  background: rgba(255,255,255,0.94);
-  border-left: 1px solid rgba(20,20,30,0.16);
-  border-top: 1px solid rgba(20,20,30,0.16);
+/* Header */
+.previewHead{
+  display:flex;
+  align-items:center;              /* FIX: removes "double-line" feel on 1-line titles */
+  justify-content:space-between;
+  gap: 10px;
+  padding: 8px 10px;              /* slightly tighter */
+  border-bottom: 1px solid rgba(20,20,30,0.10);
+
+  /* Keep header clickable even when iframe is below */
+  position: relative;
+  z-index: 3;
 }
 
-.previewBubble.arrowBottom::before{
-  top: auto;
-  bottom: -10px;
-  transform: rotate(225deg);
+/* Title: emphasize + allow up to 2 lines */
+.previewLabel{
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.22;              /* FIX: tighter line-height */
+  color: rgba(15,15,20,0.90);
+  min-width: 0;
+
+  white-space: normal;
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Close button always clickable */
+#previewClose{
+  position: relative;
+  z-index: 4;
+  pointer-events:auto;
+  flex: 0 0 auto;
 }
 
 /* Make iframe feel embedded but not heavy */
 .previewFrame{
   width:100%;
-  height: 260px;
+  height: 360px;                   /* desktop default (you can tune) */
   border: 0;
   background: rgba(20,20,30,0.04);
+
+  /* iframe interactivity */
+  pointer-events: auto;
+
+  /* allow flex sizing */
+  flex: 1 1 auto;
+  min-height: 220px;
 }
 
-.previewHead{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding: 10px 10px;
-  border-bottom: 1px solid rgba(20,20,30,0.10);
-}
-
-.previewLabel{
-  font-size: 12px;
-  color: rgba(15,15,20,0.86);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 80%;
-}
-
+/* Footer/meta area */
 .previewMeta{
   padding: 10px 10px;
   font-size: 12px;
   color: rgba(20,20,30,0.62);
   border-top: 1px solid rgba(20,20,30,0.10);
-  display:flex;
-  justify-content:space-between;
-  gap: 10px;
+
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 10px;
+  align-items: start;
+
+  /* Let meta be compact; scrolling happens inside .previewContext */
+  flex: 0 0 auto;
+  min-height: 0;
+
+  /* IMPORTANT: keep clicks/selection working */
+  pointer-events: auto;
 }
+
+/* Keep the Open link tidy */
 .previewMeta a{
   color: rgba(15,15,20,0.86);
   text-decoration:none;
   border-bottom: 1px solid rgba(20,20,30,0.22);
+  white-space: nowrap;
+  pointer-events:auto;
 }
 .previewMeta a:hover{ border-bottom-color: rgba(20,20,30,0.42); }
 
-/* Prevent preview from stealing hover */
-#preview{ pointer-events:none; }
-#previewClose, #preview a{ pointer-events:auto; }
+.previewMetaLeft{ min-width: 0; }
+.previewMetaRight{ text-align: right; }
+
+/* Context scroll area (caption) */
+.previewContext{
+  grid-column: 1 / -1;
+
+  /* tighter default height on desktop */
+  max-height: 140px;
+  overflow: auto;
+
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(20,20,30,0.06);
+
+  color: rgba(20,20,30,0.70);
+  line-height: 1.45;
+  white-space: pre-wrap;
+
+  /* iOS scroll feel */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Allow interacting with preview */
+#preview { pointer-events: auto; }
+.previewBubble::before { pointer-events: none; }
 
 /* Chips UI */
 .chipsRow{ display:flex; gap:10px; align-items:center; }
@@ -303,9 +368,7 @@ h2, h3{
 }
 .chip button:hover{ color: rgba(15,15,20,0.86); }
 
-/* Node label strip (Mode B) */
-/* Node label-first look (Mode B): no border, tight background */
-/* hard-rect highlight (no pill rounding) */
+/* Node label strip */
 .node-bg{
   fill: rgba(255,255,255,0.78);
 }
@@ -325,11 +388,8 @@ h2, h3{
   stroke-linejoin: miter;
 }
 
-
-
-/* Optional: when pinned/hovered you can add a class later and tint it */
+/* Optional */
 .node.isPinned .node-box { fill: rgba(245,245,248,0.98); }
-
 
 /* Generic thickness helpers */
 .lineSample.thick { border-top-width: 4px; }
@@ -346,8 +406,47 @@ h2, h3{
 .lineSample.rel-co        { border-top-color: #8b5cf6; }
 .lineSample.rel-extends   { border-top-color: #f59e0b; }
 
+/* =========================================================
+   Mobile
+   - Use a FIXED bottom sheet so it fits the viewport
+   - Prevent width shrink / cropping
+   ========================================================= */
 @media (max-width: 980px){
   .layout{ grid-template-columns: 1fr; }
   .sidePanel{ height: 42vh; }
-  .graphPanel{ height: calc(58vh - 56px); border-right:none; border-bottom: 1px solid var(--line2); }
+  .graphPanel{
+    height: calc(58vh - 56px);
+    border-right:none;
+    border-bottom: 1px solid var(--line2);
+  }
+
+  /* Make the preview independent from graphPanel bounds */
+  .previewBubble{
+    position: fixed !important;
+
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 12px !important;
+    top: auto !important;
+
+    width: auto !important;
+    max-width: none !important;
+
+    /* FIT viewport (this fixes the “cropping” + weird max-height behavior) */
+    max-height: calc(100vh - var(--topbar-h) - 24px) !important;
+
+    /* Ensure nothing clips the close button */
+    overflow: visible;
+  }
+
+  /* Give iframe a little less dominance on mobile */
+  .previewFrame{
+    height: 44vh;
+    min-height: 240px;
+  }
+
+  /* Context can scroll in a tighter area */
+  .previewContext{
+    max-height: 22vh;
+  }
 }

@@ -1,35 +1,19 @@
 // app.js
-const API_URL = "https://script.google.com/macros/s/AKfycbzMP5-kMpyZYUdBqsWkow7ZyiZIpIyvJQXNqrDPujefgt40pRrGMdcAJfB7TvQsIHfFew/exec"; // ends with /exec
+const API_URL = "https://script.google.com/macros/s/AKfycbzMP5-kMpyZYUdBqsWkow7ZyiZIpIyvJQXNqrDPujefgt40pRrGMdcAJfB7TvQsIHfFew/exec";
 const HOVER_DELAY_MS = 220;
 
-// Clip nodes (Ableton-ish)
-const MAX_NODE_W = 240;   // slightly smaller
-const NODE_PAD_X = 4;     // was 10
-const NODE_PAD_Y = 2;     // was 7
-const NODE_RX = 0;        // smaller rounding (or 0 for sharp)
+// Node label wrapping
+const MAX_NODE_W = 260;
 
-// Brackets: visual only
-const BRACKET_MODE = "paren"; // "none" | "paren"
+// Hit padding around text for hover/click area + highlight bg
+const HIT_PAD_X = 10;
+const HIT_PAD_Y = 6;
 
-// Bubble placement (you already have similar)
-const BUBBLE_OFFSET_X = 18;
-const BUBBLE_OFFSET_Y = 14;
-const BUBBLE_PAD = 12;
+// Bubble placement
+const BUBBLE_GAP = 18;
+const BUBBLE_PAD = 14;
 
-// Relation visual styles (monochrome, legend-friendly)
-const REL_STYLE = {
-  agrees_with:      { dash: null,        wMul: 1.0 },
-  responds_to:      { dash: null,        wMul: 1.0 },
-  extends:          { dash: null,        wMul: 1.5 },
-  documents:        { dash: null,        wMul: 1.5 },
-  clarifies:        { dash: null,        wMul: 1.5 },
-  reframes:         { dash: null,        wMul: 1.5 },
-  disagrees_with:   { dash: "6,5",       wMul: 1.0 },
-  asks:             { dash: "1,6",       wMul: 1.0 },
-  co_constitutive:  { dash: "8,4,2,4",   wMul: 1.1 },
-  in_conversation_with: { dash: "3,6",   wMul: 1.0 }
-};
-
+// Relation colors (primary bind types)
 const REL_COLOR = {
   responds_to: "#2f6fff",
   agrees_with: "#2f6fff",
@@ -41,6 +25,7 @@ const REL_COLOR = {
   clarifies: "#f59e0b"
 };
 
+// ---- State ----
 let state = {
   seeds: [],
   edges: [],
@@ -52,8 +37,12 @@ let state = {
   idToTitle: new Map(),
 
   hoverTimer: null,
+  hoverOutTimer: null,
+
   hoveredNodeId: null,
   pinnedNodeId: null,
+  overPreview: false,        // <-- NEW: cursor is over preview bubble
+  overNode: false,           // <-- NEW: cursor is over node hitbox
 
   // Preview cache (avoid redundant iframe reload)
   previewNodeId: null,
@@ -90,29 +79,45 @@ const icwChips = document.getElementById("icwChips");
 const icwHidden = document.getElementById("icwHidden");
 const icwSet = new Set(); // seed_ids (internal only)
 
+// ---- Preview bubble hover wiring (CRITICAL to stop flicker) ----
+(function wirePreviewHover() {
+  if (!preview) return;
+
+  // Allow preview bubble to "hold" the hover state
+  preview.addEventListener("mouseenter", () => {
+    state.overPreview = true;
+    if (state.hoverOutTimer) clearTimeout(state.hoverOutTimer);
+    state.hoverOutTimer = null;
+  });
+
+  preview.addEventListener("mouseleave", () => {
+    state.overPreview = false;
+    scheduleHoverClose();
+  });
+
+  previewClose?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    state.pinnedNodeId = null;
+    hidePreview();
+  });
+})();
+
+// ---- Buttons ----
 btnReload?.addEventListener("click", () => loadAndRender());
 btnToggleForm?.addEventListener("click", () => toggleForm());
 btnCancel?.addEventListener("click", () => toggleForm(false));
 
-previewClose?.addEventListener("click", () => {
-  state.pinnedNodeId = null;
-  hidePreview();
-});
-
 // ------------ Form helpers (IDs hidden) ------------
-
 function resetICW() {
   icwSet.clear();
   syncICWHidden();
   renderICWChips();
   if (icwInput) icwInput.value = "";
 }
-
 function syncICWHidden() {
   if (!icwHidden) return;
   icwHidden.value = Array.from(icwSet).join(", ");
 }
-
 function renderICWChips() {
   if (!icwChips) return;
   icwChips.innerHTML = "";
@@ -133,7 +138,6 @@ function renderICWChips() {
     icwChips.appendChild(chip);
   }
 }
-
 function tryAddICWTitle(val) {
   const t = String(val || "").trim();
   if (!t) return;
@@ -159,8 +163,6 @@ primaryBindTitle?.addEventListener("input", () => {
   const id = state.titleToId.get(t) || "";
   if (primaryBindId) primaryBindId.value = id;
 });
-
-// Guard: if user picks from dropdown and blur happens, still resolve
 primaryBindTitle?.addEventListener("change", () => {
   const t = String(primaryBindTitle.value || "").trim();
   const id = state.titleToId.get(t) || "";
@@ -172,7 +174,6 @@ seedForm?.addEventListener("submit", async (ev) => {
   ev.preventDefault();
   formStatus.textContent = "Submitting…";
 
-  // Ensure bind id is resolved
   const t = String(primaryBindTitle?.value || "").trim();
   const bindId = state.titleToId.get(t) || (primaryBindId?.value || "").trim();
   if (!bindId) {
@@ -181,7 +182,6 @@ seedForm?.addEventListener("submit", async (ev) => {
   }
   if (primaryBindId) primaryBindId.value = bindId;
 
-  // Build payload from form
   const fd = new FormData(seedForm);
   const payload = new URLSearchParams(fd);
 
@@ -195,7 +195,6 @@ seedForm?.addEventListener("submit", async (ev) => {
       console.error("Non-JSON response:", text);
       throw new Error("Server did not return JSON. Check Apps Script deployment.");
     }
-
     if (!data.ok) throw new Error(data.error || "Submission failed");
 
     formStatus.textContent = "Submitted ✓";
@@ -216,7 +215,6 @@ function toggleForm(force) {
   if (willShow) {
     formStatus.textContent = "";
     resetICW();
-    // clear bind
     if (primaryBindTitle) primaryBindTitle.value = "";
     if (primaryBindId) primaryBindId.value = "";
   }
@@ -238,9 +236,7 @@ function buildTitleMapsAndDatalist() {
   state.idToTitle.clear();
   if (seedTitleList) seedTitleList.innerHTML = "";
 
-  // Only published seeds for UI pickers
   const seeds = (state.seeds || []).filter(s => (s.moderation_state || "published") !== "hidden");
-
   for (const s of seeds) {
     const id = String(s.seed_id || "").trim();
     const title = String(s.title_or_label || "").trim();
@@ -251,13 +247,13 @@ function buildTitleMapsAndDatalist() {
 
     if (seedTitleList) {
       const opt = document.createElement("option");
-      opt.value = title; // IMPORTANT: title values, not ids
+      opt.value = title;
       seedTitleList.appendChild(opt);
     }
   }
 }
 
-// ------------ Graph building (seeds only, edges typed) ------------
+// ------------ Graph building ------------
 function buildGraph() {
   const nodes = (state.seeds || [])
     .filter(s => (s.moderation_state || "published") !== "hidden")
@@ -286,24 +282,18 @@ function buildGraph() {
     const rel = String(e.relation_type || "responds_to").trim() || "responds_to";
     const isPrimary = String(e.is_primary) === "true" || e.is_primary === true;
 
-    links.push({
-      source: from,
-      target: to,
-      relation: rel,
-      is_primary: isPrimary
-    });
+    links.push({ source: from, target: to, relation: rel, is_primary: isPrimary });
   }
 
   state.nodes = nodes;
   state.links = links;
 }
 
-// ------------ Rendering (D3 force + labels) ------------
-let svg, g, linkSel, nodeSel, labelSel, simulation, zoom;
+// ------------ Rendering (D3 force + text nodes) ------------
+let svg, g, linkSel, simulation, zoom;
 
 function render() {
   graphEl.innerHTML = "";
-
   const { width, height } = graphEl.getBoundingClientRect();
 
   svg = d3.select(graphEl).append("svg")
@@ -312,20 +302,15 @@ function render() {
 
   g = svg.append("g");
 
-  // -----------------------------
   // Background click: unpin + close
-  // -----------------------------
   svg.on("click", () => {
     if (state.pinnedNodeId) {
       state.pinnedNodeId = null;
       hidePreview();
-      updateNodeHighlight();
     }
   });
 
-  // -----------------------------
-  // Zoom (only affects transform + keeps bubble aligned)
-  // -----------------------------
+  // Zoom
   zoom = d3.zoom()
     .scaleExtent([0.2, 6])
     .on("zoom", (event) => {
@@ -338,13 +323,7 @@ function render() {
 
   svg.call(zoom);
 
-  // -----------------------------
-  // Helpers: node label formatting + wrapping
-  // -----------------------------
-  const MAX_NODE_W = 260;   // wrap width (you can lower to tighten)
-  const PAD_X = 6;          // tight background padding
-  const PAD_Y = 3;
-
+  // ---- Label formatting ----
   function bracketize(label) {
     const t = String(label || "").trim();
     if (!t) return "(untitled)";
@@ -352,27 +331,19 @@ function render() {
     return `(${t})`;
   }
 
-  // -----------------------------
-  // Simple edge styling
-  // -----------------------------
-  // REL_COLOR should map: relation_type -> "rgba(r,g,b,a)" (or any CSS color)
-  // Example keys: responds_to, agrees_with, disagrees_with, asks, co_constitutive, extends, documents, clarifies
+  // ---- Edge styling ----
   const FALLBACK_PRIMARY_COLOR = "rgba(120,120,120,0.75)";
   const COLOR_WEAK = "rgba(120,120,120,0.26)";
-  const COLOR_ICW  = "rgba(120,120,120,0.45)"; // make ICW clearly visible
+  const COLOR_ICW  = "rgba(120,120,120,0.52)";
 
-  function rel(d) {
-    return String(d.relation || "responds_to");
-  }
-  function isICW(d) {
-    return rel(d) === "in_conversation_with";
-  }
+  function rel(d) { return String(d.relation || "responds_to"); }
+  function isICW(d) { return rel(d) === "in_conversation_with"; }
 
   function edgeStroke(d) {
     if (isICW(d)) return COLOR_ICW;
     if (d.is_primary) {
       const key = rel(d);
-      return (typeof REL_COLOR === "object" && REL_COLOR && REL_COLOR[key]) ? REL_COLOR[key] : FALLBACK_PRIMARY_COLOR;
+      return (REL_COLOR && REL_COLOR[key]) ? REL_COLOR[key] : FALLBACK_PRIMARY_COLOR;
     }
     return COLOR_WEAK;
   }
@@ -385,20 +356,15 @@ function render() {
 
   function edgeDash(d) {
     if (isICW(d)) return "2,6";
-
     if (!d.is_primary) return "3,8";
-
-    // minimal mapping; keep it simple
     const r = rel(d);
     if (r === "disagrees_with") return "10,6";
     if (r === "asks") return "2,7";
     if (r === "co_constitutive") return "10,4,2,4";
-    return null; // solid
+    return null;
   }
 
-  // -----------------------------
-  // Create links first (behind nodes)
-  // -----------------------------
+  // Links behind nodes
   linkSel = g.append("g")
     .attr("stroke-linecap", "round")
     .selectAll("line")
@@ -408,159 +374,114 @@ function render() {
     .attr("stroke", d => edgeStroke(d))
     .attr("stroke-width", d => edgeWidth(d))
     .attr("stroke-dasharray", d => edgeDash(d))
-    .attr("opacity", d => (isICW(d) ? 0.65 : (d.is_primary ? 0.90 : 0.35)));
+    .attr("opacity", d => (isICW(d) ? 0.75 : (d.is_primary ? 0.92 : 0.35)));
 
-// -----------------------------
-// Nodes as text + transparent hitbox + tight highlight background
-// -----------------------------
-const HIT_PAD_X = 6;
-const HIT_PAD_Y = 4;
+  // ---- Nodes: group with hitbox + bg + centered wrapped text ----
+  const nodeG = g.append("g")
+    .selectAll("g.node")
+    .data(state.nodes)
+    .enter()
+    .append("g")
+    .attr("class", "node")
+    .style("cursor", "pointer")
+    .call(d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended));
 
-const nodeG = g.append("g")
-  .selectAll("g.node")
-  .data(state.nodes)
-  .enter()
-  .append("g")
-  .attr("class", "node")
-  .style("cursor", "pointer")
-  .call(d3.drag()
-    .on("start", dragstarted)
-    .on("drag", dragged)
-    .on("end", dragended)
-  );
+  nodeG.append("rect")
+    .attr("class", "node-hit")
+    .attr("fill", "transparent")
+    .style("pointer-events", "all");
 
-// 1) Hitbox (transparent but interactive)
-nodeG.append("rect")
-  .attr("class", "node-hit")
-  .attr("rx", 0)
-  .attr("ry", 0)
-  .attr("fill", "transparent")
-  .style("pointer-events", "all"); // <- critical
+  nodeG.append("rect")
+    .attr("class", "node-bg")
+    .style("opacity", 0)
+    .style("pointer-events", "none");
 
-// 2) Highlight background (visual only)
-nodeG.append("rect")
-  .attr("class", "node-bg")
-  .attr("rx", 0)
-  .attr("ry", 0)
-  .style("opacity", 0)
-  .style("pointer-events", "none");
+  nodeG.append("text")
+    .attr("class", "node-label")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("text-anchor", "middle")
+    .attr("dominant-baseline", "middle")
+    .style("pointer-events", "none");
 
-// 3) Text
-nodeG.append("text")
-  .attr("class", "node-label")
-  .attr("x", 0)
-  .attr("y", 0)
-  .attr("text-anchor", "middle")
-  .attr("dominant-baseline", "middle")
-  .style("pointer-events", "none");
+  // Attach events to hitbox
+  nodeG.select("rect.node-hit")
+    .on("mouseenter", (event, d) => {
+      state.overNode = true;
+      state.hoveredNodeId = d.id;
+      if (state.hoverOutTimer) clearTimeout(state.hoverOutTimer);
+      state.hoverOutTimer = null;
+      onNodeEnter(event, d);
+      updateNodeHighlight(nodeG);
+    })
+.on("mouseleave", () => {
+  state.overNode = false;
+  state.hoveredNodeId = null;          // <-- add this
+  onNodeLeave();
+  updateNodeHighlight(nodeG);
+  scheduleHoverClose();
+})
+    .on("click", (event, d) => {
+      event.stopPropagation();
+      onNodeClick(event, d);
+      updateNodeHighlight(nodeG);
+    });
 
-// Attach events to the HITBOX (not the group)
-nodeG.select("rect.node-hit")
-  .on("mouseenter", (event, d) => {
-    state.hoveredNode = d;
-    onNodeEnter(event, d);
-    updateNodeHighlight();
-  })
-  .on("mouseleave", () => {
-    state.hoveredNode = null;
-    onNodeLeave();
-    updateNodeHighlight();
-  })
-  .on("click", (event, d) => {
-    event.stopPropagation();
-    onNodeClick(event, d);
-    updateNodeHighlight();
+  // Measure + wrap, then size hitbox/bg using GROUP bbox (stable, accurate)
+  nodeG.each(function(d) {
+    const gEl = d3.select(this);
+    const textEl = gEl.select("text.node-label");
+
+    const shown = bracketize(d.label);
+    textEl.text(null);
+    wrapSvgTextCentered(textEl, shown, MAX_NODE_W);
+
+    const gb = gEl.node().getBBox(); // local coords
+
+    // Expand bbox for hit area
+    const rx = gb.x - HIT_PAD_X;
+    const ry = gb.y - HIT_PAD_Y;
+    const rw = gb.width + HIT_PAD_X * 2;
+    const rh = gb.height + HIT_PAD_Y * 2;
+
+    d._w = rw;
+    d._h = rh;
+
+    gEl.select("rect.node-hit")
+      .attr("x", rx).attr("y", ry).attr("width", rw).attr("height", rh);
+
+    gEl.select("rect.node-bg")
+      .attr("x", rx).attr("y", ry).attr("width", rw).attr("height", rh);
   });
 
-// Measure + wrap once, then size hitbox + bg around text
-nodeG.each(function (d) {
-  const gEl = d3.select(this);
-  const textEl = gEl.select("text.node-label");
+  // Forces (primary tighter, ICW looser)
+  simulation = d3.forceSimulation(state.nodes)
+    .force("link", d3.forceLink(state.links)
+      .id(d => d.id)
+      .distance(d => {
+        if (String(d.relation) === "in_conversation_with") return 220;
+        if (d.is_primary) return 140;
+        return 120;
+      })
+      .strength(d => {
+        if (String(d.relation) === "in_conversation_with") return 0.02;
+        if (d.is_primary) return 0.14;
+        return 0.08;
+      })
+    )
+    .force("charge", d3.forceManyBody().strength(-150))
+    .force("center", d3.forceCenter(width / 2, height / 2))
+    .force("collision", d3.forceCollide()
+      .radius(d => {
+        const w = d._w || 70;
+        const h = d._h || 20;
+        return Math.max(18, Math.sqrt(w*w + h*h) / 2);
+      })
+      .strength(0.8)
+    );
 
-  const shown = bracketize(d.label);
-  textEl.text(null);
-  wrapSvgTextCentered(textEl, shown, MAX_NODE_W);
-
-  const bb = textEl.node().getBBox();
-
-  d._w = bb.width;
-  d._h = bb.height;
-  d._labelW = bb.width;
-
-  // center rects around (0,0)
-  const rx = -(bb.width / 2) - HIT_PAD_X;
-  const ry = -(bb.height / 2) - HIT_PAD_Y;
-  const rw = bb.width + HIT_PAD_X * 2;
-  const rh = bb.height + HIT_PAD_Y * 2;
-
-  gEl.select("rect.node-hit")
-    .attr("x", rx)
-    .attr("y", ry)
-    .attr("width", rw)
-    .attr("height", rh);
-
-  gEl.select("rect.node-bg")
-    .attr("x", rx)
-    .attr("y", ry)
-    .attr("width", rw)
-    .attr("height", rh);
-});
-
-
-  function updateNodeHighlight() {
-    nodeG.select("rect.node-bg")
-      .style("opacity", d => {
-        const isPinned = state.pinnedNodeId && d.id === state.pinnedNodeId;
-        const isHover = state.hoveredNode && d.id === state.hoveredNode.id;
-        return (isPinned || isHover) ? 1 : 0;
-      });
-  }
-
-  // -----------------------------
-  // Forces (shorter links, more collision)
-  // -----------------------------
-  function nodeRadius(d) {
-    // collision based on measured text box (tight but effective)
-    const w = d._w || 60;
-    const h = d._h || 16;
-    return Math.max(18, Math.sqrt(w*w + h*h) / 2);
-  }
-
-// ---- Forces ----
-simulation = d3.forceSimulation(state.nodes)
-  .force("link", d3.forceLink(state.links)
-    .id(d => d.id)
-
-    // PRIMARY = shorter, tighter; ICW = longer, looser
-    .distance(d => {
-      const rel = String(d.relation || "");
-      const isICW = (rel === "in_conversation_with");
-      if (isICW) return 200;              // longer
-      if (d.is_primary) return 150;        // short
-      return 90;                          // fallback (if you ever add other non-primary)
-    })
-
-    .strength(d => {
-      const rel = String(d.relation || "");
-      const isICW = (rel === "in_conversation_with");
-      if (isICW) return 0.01;             // weak spring
-      if (d.is_primary) return 0.1;      // strong spring
-      return 0.12;
-    })
-  )
-
-  // keep your other forces (charge/center/collision) as-is
-  .force("charge", d3.forceManyBody().strength(-140))
-  .force("center", d3.forceCenter(width / 2, height / 2))
-  .force("collision", d3.forceCollide()
-    .radius(d => Math.max(12, (d._labelW ? d._labelW / 2 : 18)))
-    .strength(0.7)
-  );
-
-// A bit more settling helps the strong/weak structure “lock in”
-simulation.alphaDecay(0.08);
-simulation.velocityDecay(0.55);
-
+  simulation.alphaDecay(0.08);
+  simulation.velocityDecay(0.55);
 
   simulation.on("tick", () => {
     linkSel
@@ -569,12 +490,7 @@ simulation.velocityDecay(0.55);
       .attr("x2", d => d.target.x)
       .attr("y2", d => d.target.y);
 
-    // position node group centered on (x,y)
-    nodeG.attr("transform", d => {
-      const w = d._w || 60;
-      const h = d._h || 16;
-return `translate(${d.x}, ${d.y})`;
-    });
+    nodeG.attr("transform", d => `translate(${d.x}, ${d.y})`);
 
     if (state.pinnedNodeId) {
       const n = state.nodes.find(x => x.id === state.pinnedNodeId);
@@ -582,12 +498,8 @@ return `translate(${d.x}, ${d.y})`;
     }
   });
 
-  // initial highlight state
-  updateNodeHighlight();
+  updateNodeHighlight(nodeG);
 
-  // -----------------------------
-  // Drag handlers
-  // -----------------------------
   function dragstarted(event, d) {
     event.sourceEvent?.stopPropagation?.();
     if (!event.active) simulation.alphaTarget(0.25).restart();
@@ -600,23 +512,42 @@ return `translate(${d.x}, ${d.y})`;
   }
   function dragended(event, d) {
     if (!event.active) simulation.alphaTarget(0);
+    if (state.pinnedNodeId === d.id) return; // keep pinned fixed if you want
     d.fx = null;
     d.fy = null;
   }
 }
 
-// ------------ Hover/pin + bubble preview logic ------------
-function onNodeEnter(event, d) {
-  // If pinned to some other node, ignore hover entirely
-  if (state.pinnedNodeId && state.pinnedNodeId !== d.id) return;
+function updateNodeHighlight(nodeG) {
+  nodeG.select("rect.node-bg")
+    .style("opacity", d => {
+      const isPinned = state.pinnedNodeId && d.id === state.pinnedNodeId;
+      const isHover = state.hoveredNodeId && d.id === state.hoveredNodeId;
+      return (isPinned || isHover) ? 1 : 0;
+    });
+}
 
-  state.hoveredNodeId = d.id;
+// ------------ Hover/pin + preview logic ------------
+function scheduleHoverClose() {
+  if (state.pinnedNodeId) return;         // pinned stays
+  if (state.overNode) return;             // still on node
+  if (state.overPreview) return;          // still on preview
+
+  if (state.hoverOutTimer) clearTimeout(state.hoverOutTimer);
+  state.hoverOutTimer = setTimeout(() => {
+    if (state.pinnedNodeId) return;
+    if (state.overNode) return;
+    if (state.overPreview) return;
+    hidePreview();
+  }, 120);
+}
+
+function onNodeEnter(event, d) {
+  if (state.pinnedNodeId && state.pinnedNodeId !== d.id) return;
 
   if (state.hoverTimer) clearTimeout(state.hoverTimer);
   state.hoverTimer = setTimeout(() => {
-    // If pinned, only allow hover to show the pinned node
     if (state.pinnedNodeId && state.pinnedNodeId !== d.id) return;
-
     showPreviewForNode(d, { pinned: false });
   }, HOVER_DELAY_MS);
 }
@@ -624,37 +555,33 @@ function onNodeEnter(event, d) {
 function onNodeLeave() {
   if (state.hoverTimer) clearTimeout(state.hoverTimer);
   state.hoverTimer = null;
-  state.hoveredNodeId = null;
 
-  // If not pinned, hide on mouseout
-  if (!state.pinnedNodeId) hidePreview();
+  // don't hide immediately; let node->preview transition happen
+  scheduleHoverClose();
 }
 
 function onNodeClick(event, d) {
   event.stopPropagation();
 
-  // Toggle pin
   if (state.pinnedNodeId === d.id) {
     state.pinnedNodeId = null;
     hidePreview();
     return;
   }
 
-  // Pin to this node (moves bubble intentionally)
   state.pinnedNodeId = d.id;
   showPreviewForNode(d, { pinned: true });
 }
 
-function showPreviewForNode(d, opts = {}) {
+function showPreviewForNode(d) {
   if (!d || !d.url) return;
 
-  // Don’t redundantly reload iframe (helps stability)
+  // avoid redundant reload
   if (
     state.previewNodeId === d.id &&
     state.previewUrl === d.url &&
     !preview.classList.contains("hidden")
   ) {
-    // Still reposition bubble (node may have moved)
     positionPreviewBubble(d);
     return;
   }
@@ -662,29 +589,19 @@ function showPreviewForNode(d, opts = {}) {
   state.previewNodeId = d.id;
   state.previewUrl = d.url;
 
-  // Embed policy
-  if (d.embed_policy === "no_embed" || d.embed_policy === "link_only") {
-    previewFrame.src = "about:blank";
-    previewFrame.classList.add("hidden");
-  } else {
-    previewFrame.classList.remove("hidden");
-    previewFrame.src = d.url;
-  }
+  previewFrame.classList.remove("hidden");
+  previewFrame.src = d.url;
 
-  // Header label
-  const headerBits = [];
-  if (d.handle) headerBits.push(d.handle);
-  if (d.mood) headerBits.push(`mood: ${d.mood}`);
-  previewLabel.textContent = `${d.label}${headerBits.length ? " — " + headerBits.join(" · ") : ""}`;
+  previewLabel.textContent = d.label;
 
   previewMeta.innerHTML = `
-    <div>
+    <div class="previewMetaLeft">
       <div>care: <strong>${escapeHtml(d.care_mode)}</strong></div>
       ${d.keywords ? `<div>keywords: ${escapeHtml(d.keywords)}</div>` : ""}
       ${d.a_debt_to ? `<div>debt: ${escapeHtml(d.a_debt_to)}</div>` : ""}
-      ${d.context ? `<div style="margin-top:8px;opacity:0.85">${escapeHtml(d.context)}</div>` : ""}
+      ${d.context ? `<div class="previewContext">${escapeHtml(d.context)}</div>` : ""}
     </div>
-    <div style="text-align:right">
+    <div class="previewMetaRight">
       <a href="${escapeAttr(d.url)}" target="_blank" rel="noopener">Open ↗</a>
     </div>
   `;
@@ -701,95 +618,64 @@ function hidePreview() {
   state.previewNodeId = null;
   state.previewUrl = null;
 
-  // Also clear hover timer to avoid reopen after close
   if (state.hoverTimer) clearTimeout(state.hoverTimer);
   state.hoverTimer = null;
+
+  if (state.hoverOutTimer) clearTimeout(state.hoverOutTimer);
+  state.hoverOutTimer = null;
+
+  state.overPreview = false;
+  state.hoveredNodeId = null;
 }
 
-// Position the bubble near the node in screen coordinates.
-// Node stays visible; bubble clamps within viewport.
+// Position bubble near node; clamp inside graph panel
 function positionPreviewBubble(node) {
-  // previewBubble is your #preview element (the bubble)
-  const bubble = preview; // assuming `preview` is the bubble container
+  const bubble = preview;
   if (!bubble || bubble.classList.contains("hidden")) return;
   if (!svg || !node) return;
 
-  // The bubble is absolutely positioned inside the graph panel,
-  // so we MUST compute coordinates relative to graphEl.
   const hostRect = graphEl.getBoundingClientRect();
   const svgEl = svg.node();
   const t = d3.zoomTransform(svgEl);
 
-  // Node position in *screen px* relative to SVG’s top-left
-  const nodeScreenX = node.x * t.k + t.x;
-  const nodeScreenY = node.y * t.k + t.y;
+  const x = node.x * t.k + t.x;
+  const y = node.y * t.k + t.y;
 
-  // Convert to graph panel local coordinates (top-left = 0,0)
-  const x = nodeScreenX; // already relative to SVG inside graphEl
-  const y = nodeScreenY;
-
-  // Measure bubble (after it has content)
-  // (If this returns 0 the first time, call again on next tick; usually fine once open.)
   const bubbleW = bubble.offsetWidth || 520;
   const bubbleH = bubble.offsetHeight || 420;
-
-  const PAD = 14;       // keep away from edges
-  const GAP = 14;       // space between node and bubble
-  const ARROW_PAD = 10; // if you're using arrow styling
 
   const hostW = hostRect.width;
   const hostH = hostRect.height;
 
-  // Decide side based on available room inside the graph panel
+  // Choose side with room; add extra gap so it doesn't spawn under cursor on right edge
   const roomRight = hostW - x;
-  const roomLeft  = x;
-  let placeRight = roomRight >= (bubbleW + GAP + PAD);
-  let placeLeft  = roomLeft  >= (bubbleW + GAP + PAD);
+  const roomLeft = x;
+  const canRight = roomRight >= (bubbleW + BUBBLE_GAP + BUBBLE_PAD);
+  const canLeft = roomLeft >= (bubbleW + BUBBLE_GAP + BUBBLE_PAD);
 
-  // Prefer right, otherwise left, otherwise right (and clamp)
-  let bx = placeRight ? (x + GAP) : (x - bubbleW - GAP);
-  if (!placeRight && !placeLeft) bx = x + GAP; // fallback; clamp later
+  let bx = canRight ? (x + BUBBLE_GAP + 12) : (x - bubbleW - BUBBLE_GAP - 12);
+  if (!canRight && !canLeft) bx = x + BUBBLE_GAP + 12;
 
-  // Vertical placement: prefer centered around node, then clamp
-  let by = y - bubbleH * 0.35; // keeps node still visible above bubble a bit
+  let by = y - bubbleH * 0.35;
 
-  // Clamp to graph panel bounds
-  bx = Math.max(PAD, Math.min(bx, hostW - bubbleW - PAD));
-  by = Math.max(PAD, Math.min(by, hostH - bubbleH - PAD));
+  bx = Math.max(BUBBLE_PAD, Math.min(bx, hostW - bubbleW - BUBBLE_PAD));
+  by = Math.max(BUBBLE_PAD, Math.min(by, hostH - bubbleH - BUBBLE_PAD));
 
-  // Optional: arrow direction class (if you use ::before arrow)
-  // If bubble is above node, arrow points down; if below, arrow points up.
   bubble.classList.toggle("arrowBottom", by < y && (by + bubbleH) < y + 20);
 
   bubble.style.left = `${bx}px`;
   bubble.style.top = `${by}px`;
 }
 
-
-// ------------ Edge style helpers ------------
-function edgeDash(d) {
-  const rel = String(d.relation || "responds_to");
-  const st = REL_STYLE[rel] || REL_STYLE.responds_to;
-  return st.dash || null;
-}
-
-function edgeStrokeWidth(d) {
-  const rel = String(d.relation || "responds_to");
-  const st = REL_STYLE[rel] || REL_STYLE.responds_to;
-  const base = d.is_primary ? 2.4 : 1.1;
-  return base * (st.wMul || 1.0);
-}
-
+// ------------ Wrapping (centered) ------------
 function wrapSvgTextCentered(textSel, str, maxWidth) {
   const words = String(str).split(/\s+/).filter(Boolean);
 
-  textSel.text(null);
-  textSel
+  textSel.text(null)
     .attr("text-anchor", "middle")
     .attr("dominant-baseline", "middle");
 
   const lineHeightEm = 1.15;
-
   let line = [];
   let lineNumber = 0;
 
@@ -804,9 +690,7 @@ function wrapSvgTextCentered(textSel, str, maxWidth) {
     line.push(w);
     tspan.text(line.join(" "));
 
-    // ✅ measure ONLY the current line tspan, not the whole <text>
     const len = tspan.node().getComputedTextLength();
-
     if (len > maxWidth && line.length > 1) {
       line.pop();
       tspan.text(line.join(" "));
@@ -817,22 +701,14 @@ function wrapSvgTextCentered(textSel, str, maxWidth) {
     }
   }
 
-  // recentre vertically (multi-line block around y=0)
   const tspans = textSel.selectAll("tspan").nodes();
   const n = tspans.length || 1;
   const totalEm = (n - 1) * lineHeightEm;
 
-  // set first line upward; subsequent lines keep their dy steps
   textSel.select("tspan").attr("dy", `${-totalEm / 2}em`);
 }
 
-
-
 // ------------ Utils ------------
-function clamp(x, a, b) {
-  return Math.max(a, Math.min(b, x));
-}
-
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({
     "&": "&amp;",
@@ -842,7 +718,6 @@ function escapeHtml(s) {
     "'": "&#039;"
   }[c]));
 }
-
 function escapeAttr(s) {
   return String(s).replace(/"/g, "&quot;");
 }
@@ -859,5 +734,4 @@ async function loadAndRender() {
     alert("Failed to load data. Check API_URL and Apps Script deployment.");
   }
 }
-
 loadAndRender();
