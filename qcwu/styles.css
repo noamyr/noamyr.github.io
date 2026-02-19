@@ -310,11 +310,21 @@ h2, h3{
   fill: rgba(255,255,255,0.78);
 }
 
-.node-label{
-  fill: rgba(20,20,24,0.78);
-  font-size: 12px;
-  letter-spacing: 0.1px;
+.node-label {
+  text-anchor: middle;
+  dominant-baseline: middle;
+  text-align: center;
+
+  fill: rgba(40,40,40,0.95);
+  font-size: 13px;
+  font-weight: 500;
+
+  paint-order: stroke;
+  stroke: rgba(255,255,255,0.9);
+  stroke-width: 4px;
+  stroke-linejoin: miter;
 }
+
 
 
 /* Optional: when pinned/hovered you can add a class later and tint it */

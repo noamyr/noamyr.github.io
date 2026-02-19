@@ -352,38 +352,6 @@ function render() {
     return `(${t})`;
   }
 
-  // Wrap text into tspans (multi-line), no fancy hyphenation
-  function wrapSvgText(textSel, str, maxWidth) {
-    const words = String(str).split(/\s+/).filter(Boolean);
-    textSel.text(null);
-
-    let line = [];
-    let lineNumber = 0;
-    const lineHeightEm = 1.15;
-
-    const makeTspan = (txt) => textSel.append("tspan")
-      .attr("x", textSel.attr("x"))
-      .attr("dy", lineNumber === 0 ? "0em" : `${lineHeightEm}em`)
-      .text(txt);
-
-    let tspan = makeTspan("");
-
-    for (const w of words) {
-      line.push(w);
-      tspan.text(line.join(" "));
-      const node = textSel.node();
-      if (!node) continue;
-
-      if (node.getComputedTextLength() > maxWidth && line.length > 1) {
-        line.pop();
-        tspan.text(line.join(" "));
-        line = [w];
-        lineNumber += 1;
-        tspan = makeTspan(w);
-      }
-    }
-  }
-
   // -----------------------------
   // Simple edge styling
   // -----------------------------
@@ -442,72 +410,102 @@ function render() {
     .attr("stroke-dasharray", d => edgeDash(d))
     .attr("opacity", d => (isICW(d) ? 0.65 : (d.is_primary ? 0.90 : 0.35)));
 
-  // -----------------------------
-  // Nodes as text only + tight highlight background (hover/pin)
-  // -----------------------------
-  const nodeG = g.append("g")
-    .selectAll("g.node")
-    .data(state.nodes)
-    .enter()
-    .append("g")
-    .attr("class", "node")
-    .style("cursor", "pointer")
-    .call(d3.drag()
-      .on("start", dragstarted)
-      .on("drag", dragged)
-      .on("end", dragended)
-    )
-    .on("mouseenter", (event, d) => {
-      state.hoveredNode = d;
-      onNodeEnter(event, d);
-      updateNodeHighlight();
-    })
-    .on("mouseleave", () => {
-      state.hoveredNode = null;
-      onNodeLeave();
-      updateNodeHighlight();
-    })
-    .on("click", (event, d) => {
-      event.stopPropagation();
-      onNodeClick(event, d);
-      updateNodeHighlight();
-    });
+// -----------------------------
+// Nodes as text + transparent hitbox + tight highlight background
+// -----------------------------
+const HIT_PAD_X = 6;
+const HIT_PAD_Y = 4;
 
-  // Background highlight rect (invisible by default)
-  nodeG.append("rect")
-    .attr("class", "node-bg")
-    .attr("rx", 0)
-    .attr("ry", 0)
-    .style("opacity", 0);
+const nodeG = g.append("g")
+  .selectAll("g.node")
+  .data(state.nodes)
+  .enter()
+  .append("g")
+  .attr("class", "node")
+  .style("cursor", "pointer")
+  .call(d3.drag()
+    .on("start", dragstarted)
+    .on("drag", dragged)
+    .on("end", dragended)
+  );
 
-  // Text
-  nodeG.append("text")
-    .attr("class", "node-label")
-    .attr("x", 0)
-    .attr("y", 0)
-    .attr("dominant-baseline", "hanging")
-    .style("pointer-events", "none");
+// 1) Hitbox (transparent but interactive)
+nodeG.append("rect")
+  .attr("class", "node-hit")
+  .attr("rx", 0)
+  .attr("ry", 0)
+  .attr("fill", "transparent")
+  .style("pointer-events", "all"); // <- critical
 
-  // Measure + wrap once
-  nodeG.each(function(d) {
-    const gEl = d3.select(this);
-    const textEl = gEl.select("text.node-label");
+// 2) Highlight background (visual only)
+nodeG.append("rect")
+  .attr("class", "node-bg")
+  .attr("rx", 0)
+  .attr("ry", 0)
+  .style("opacity", 0)
+  .style("pointer-events", "none");
 
-    const shown = bracketize(d.label);
-    textEl.text(null);
-    wrapSvgText(textEl, shown, MAX_NODE_W);
+// 3) Text
+nodeG.append("text")
+  .attr("class", "node-label")
+  .attr("x", 0)
+  .attr("y", 0)
+  .attr("text-anchor", "middle")
+  .attr("dominant-baseline", "middle")
+  .style("pointer-events", "none");
 
-    const bb = textEl.node().getBBox();
-    d._w = bb.width;
-    d._h = bb.height;
-
-    // highlight rect sized tightly around text
-    gEl.select("rect.node-bg")
-      .attr("x", bb.x - PAD_X)
-      .attr("y", bb.y - PAD_Y)
-      .attr("width", bb.width + PAD_X * 2)
-      .attr("height", bb.height + PAD_Y * 2);
+// Attach events to the HITBOX (not the group)
+nodeG.select("rect.node-hit")
+  .on("mouseenter", (event, d) => {
+    state.hoveredNode = d;
+    onNodeEnter(event, d);
+    updateNodeHighlight();
+  })
+  .on("mouseleave", () => {
+    state.hoveredNode = null;
+    onNodeLeave();
+    updateNodeHighlight();
+  })
+  .on("click", (event, d) => {
+    event.stopPropagation();
+    onNodeClick(event, d);
+    updateNodeHighlight();
   });
+
+// Measure + wrap once, then size hitbox + bg around text
+nodeG.each(function (d) {
+  const gEl = d3.select(this);
+  const textEl = gEl.select("text.node-label");
+
+  const shown = bracketize(d.label);
+  textEl.text(null);
+  wrapSvgTextCentered(textEl, shown, MAX_NODE_W);
+
+  const bb = textEl.node().getBBox();
+
+  d._w = bb.width;
+  d._h = bb.height;
+  d._labelW = bb.width;
+
+  // center rects around (0,0)
+  const rx = -(bb.width / 2) - HIT_PAD_X;
+  const ry = -(bb.height / 2) - HIT_PAD_Y;
+  const rw = bb.width + HIT_PAD_X * 2;
+  const rh = bb.height + HIT_PAD_Y * 2;
+
+  gEl.select("rect.node-hit")
+    .attr("x", rx)
+    .attr("y", ry)
+    .attr("width", rw)
+    .attr("height", rh);
+
+  gEl.select("rect.node-bg")
+    .attr("x", rx)
+    .attr("y", ry)
+    .attr("width", rw)
+    .attr("height", rh);
+});
+
 
   function updateNodeHighlight() {
     nodeG.select("rect.node-bg")
@@ -575,7 +573,7 @@ simulation.velocityDecay(0.55);
     nodeG.attr("transform", d => {
       const w = d._w || 60;
       const h = d._h || 16;
-      return `translate(${d.x - w/2}, ${d.y - h/2})`;
+return `translate(${d.x}, ${d.y})`;
     });
 
     if (state.pinnedNodeId) {
@@ -782,38 +780,53 @@ function edgeStrokeWidth(d) {
   return base * (st.wMul || 1.0);
 }
 
-function bracketize(s) {
-  if (BRACKET_MODE === "paren") return `(${s})`;
-  return s;
-}
+function wrapSvgTextCentered(textSel, str, maxWidth) {
+  const words = String(str).split(/\s+/).filter(Boolean);
 
-// Wrap SVG <text> into tspans within maxWidth (px)
-function wrapSvgText(textSel, text, maxWidth) {
-  const words = String(text).split(/\s+/).filter(Boolean);
-  let line = [];
+  textSel.text(null);
+  textSel
+    .attr("text-anchor", "middle")
+    .attr("dominant-baseline", "middle");
+
   const lineHeightEm = 1.15;
 
-  let tspan = textSel.append("tspan")
-    .attr("x", NODE_PAD_X)
-    .attr("dy", "0em");
+  let line = [];
+  let lineNumber = 0;
 
-  for (let i = 0; i < words.length; i++) {
-    line.push(words[i]);
+  const makeTspan = (txt) => textSel.append("tspan")
+    .attr("x", 0)
+    .attr("dy", lineNumber === 0 ? "0em" : `${lineHeightEm}em`)
+    .text(txt);
+
+  let tspan = makeTspan("");
+
+  for (const w of words) {
+    line.push(w);
     tspan.text(line.join(" "));
 
+    // ✅ measure ONLY the current line tspan, not the whole <text>
     const len = tspan.node().getComputedTextLength();
+
     if (len > maxWidth && line.length > 1) {
       line.pop();
       tspan.text(line.join(" "));
 
-      line = [words[i]];
-      tspan = textSel.append("tspan")
-        .attr("x", NODE_PAD_X)
-        .attr("dy", `${lineHeightEm}em`)
-        .text(words[i]);
+      line = [w];
+      lineNumber += 1;
+      tspan = makeTspan(w);
     }
   }
+
+  // recentre vertically (multi-line block around y=0)
+  const tspans = textSel.selectAll("tspan").nodes();
+  const n = tspans.length || 1;
+  const totalEm = (n - 1) * lineHeightEm;
+
+  // set first line upward; subsequent lines keep their dy steps
+  textSel.select("tspan").attr("dy", `${-totalEm / 2}em`);
 }
+
+
 
 // ------------ Utils ------------
 function clamp(x, a, b) {
