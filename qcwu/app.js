@@ -71,6 +71,7 @@ const primaryBindId = document.getElementById("primaryBindId");       // name="p
 
 // Datalist for titles
 const seedTitleList = document.getElementById("seedTitleList");
+const icwTitleList = document.getElementById("icwTitleList");
 
 // Chips UI (in_conversation_with)
 const icwInput = document.getElementById("icwInput");
@@ -141,8 +142,13 @@ function renderICWChips() {
 function tryAddICWTitle(val) {
   const t = String(val || "").trim();
   if (!t) return;
+
   const id = state.titleToId.get(t);
   if (!id) return;
+
+  const bindId = String(primaryBindId?.value || "").trim();
+  if (bindId && id === bindId) return; // exclude primary bind
+
   icwSet.add(id);
   syncICWHidden();
   renderICWChips();
@@ -157,16 +163,38 @@ icwInput?.addEventListener("keydown", (e) => {
   }
 });
 
+function enforceICWExclusions() {
+  const bindId = String(primaryBindId?.value || "").trim();
+  if (!bindId) return;
+
+  // 1) remove if already in ICW
+  if (icwSet.has(bindId)) {
+    icwSet.delete(bindId);
+    syncICWHidden();
+    renderICWChips();
+  }
+
+  // 2) prevent adding it via the input (nice UX)
+  if (icwInput) icwInput.dataset.disallowId = bindId;
+}
+
 // Primary bind: title -> id (hidden field)
 primaryBindTitle?.addEventListener("input", () => {
   const t = String(primaryBindTitle.value || "").trim();
   const id = state.titleToId.get(t) || "";
   if (primaryBindId) primaryBindId.value = id;
+
+  enforceICWExclusions();
+  buildTitleMapsAndDatalist(); // <-- refresh ICW dropdown
 });
+
 primaryBindTitle?.addEventListener("change", () => {
   const t = String(primaryBindTitle.value || "").trim();
   const id = state.titleToId.get(t) || "";
   if (primaryBindId) primaryBindId.value = id;
+
+  enforceICWExclusions();
+  buildTitleMapsAndDatalist(); // <-- refresh ICW dropdown
 });
 
 // ------------ Form submit (POST) ------------
@@ -234,9 +262,12 @@ async function loadData() {
 function buildTitleMapsAndDatalist() {
   state.titleToId.clear();
   state.idToTitle.clear();
+
   if (seedTitleList) seedTitleList.innerHTML = "";
+  if (icwTitleList) icwTitleList.innerHTML = "";
 
   const seeds = (state.seeds || []).filter(s => (s.moderation_state || "published") !== "hidden");
+
   for (const s of seeds) {
     const id = String(s.seed_id || "").trim();
     const title = String(s.title_or_label || "").trim();
@@ -245,13 +276,23 @@ function buildTitleMapsAndDatalist() {
     state.titleToId.set(title, id);
     state.idToTitle.set(id, title);
 
+    // Primary bind list = all titles
     if (seedTitleList) {
       const opt = document.createElement("option");
       opt.value = title;
       seedTitleList.appendChild(opt);
     }
+
+    // ICW list = all titles except current primary bind
+    const bindId = String(primaryBindId?.value || "").trim();
+    if (icwTitleList && (!bindId || id !== bindId)) {
+      const opt2 = document.createElement("option");
+      opt2.value = title;
+      icwTitleList.appendChild(opt2);
+    }
   }
 }
+
 
 // ------------ Graph building ------------
 function buildGraph() {
@@ -263,7 +304,7 @@ function buildGraph() {
       url: String(s.return_address_url || "").trim(),
       handle: String(s.handle || "").trim(),
       care_mode: String(s.care_mode || "look_dont_touch").trim(),
-      embed_policy: String(s.embed_policy || "iframe_ok").trim(),
+      embed_policy: normalizeEmbedPolicy(s.embed_policy),
       keywords: String(s.keywords || "").trim(),
       context: String(s.context || "").trim(),
       mood: String(s.mood || "").trim(),
@@ -589,8 +630,7 @@ function showPreviewForNode(d) {
   state.previewNodeId = d.id;
   state.previewUrl = d.url;
 
-  previewFrame.classList.remove("hidden");
-  previewFrame.src = d.url;
+applyEmbedPolicy(d);
 
   previewLabel.textContent = d.label;
 
@@ -608,6 +648,34 @@ function showPreviewForNode(d) {
 
   preview.classList.remove("hidden");
   positionPreviewBubble(d);
+}
+
+function applyEmbedPolicy(d){
+  const url = String(d.url || "").trim();
+  const policy = String(d.embed_policy || "auto");
+
+  // reset any previous "blocked" state
+  preview.classList.remove("noIframe");
+
+  // always clear first to avoid stale load events
+  previewFrame.onload = null;
+  previewFrame.src = "about:blank";
+
+  if (!url){
+    previewFrame.classList.add("hidden");
+    preview.classList.add("noIframe");
+    return;
+  }
+
+if (d.embed_policy === "no_iframe") {
+  previewFrame.src = "about:blank";
+  previewFrame.classList.add("hidden");
+} else {
+  previewFrame.classList.remove("hidden");
+  previewFrame.onload = null;
+  previewFrame.src = d.url;
+}
+
 }
 
 function hidePreview() {
@@ -706,6 +774,17 @@ function wrapSvgTextCentered(textSel, str, maxWidth) {
   const totalEm = (n - 1) * lineHeightEm;
 
   textSel.select("tspan").attr("dy", `${-totalEm / 2}em`);
+}
+
+function normalizeEmbedPolicy(v){
+  const raw = String(v || "").trim().toLowerCase();
+
+  // new canonical values
+  if (raw === "auto") return "auto";
+  if (raw === "no_iframe" || raw === "no iframe") return "no_iframe";
+
+  // default
+  return "auto";
 }
 
 // ------------ Utils ------------

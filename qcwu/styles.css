@@ -406,6 +406,8 @@ h2, h3{
 .lineSample.rel-co        { border-top-color: #8b5cf6; }
 .lineSample.rel-extends   { border-top-color: #f59e0b; }
 
+.previewBubble.noIframe .previewFrame{ display:none; }
+
 /* =========================================================
    Mobile
    - Use a FIXED bottom sheet so it fits the viewport

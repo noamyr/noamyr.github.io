@@ -48,6 +48,7 @@
 
         <!-- datalist populated by app.js (TITLE values, not ids) -->
         <datalist id="seedTitleList"></datalist>
+        <datalist id="icwTitleList"></datalist>
 
         <form id="seedForm" class="form">
           <label>
@@ -59,6 +60,15 @@
             URL *
             <input name="return_address_url" type="url" required placeholder="https://..." />
           </label>
+
+
+<label>
+  Embed policy *
+  <select id="embedPolicy">
+    <option value="auto" selected>Use iframe</option>
+    <option value="no_iframe">No iframe</option>
+  </select>
+</label>
 
           <label>
             Call me:
@@ -97,7 +107,7 @@
           <label>
             In conversation with
             <div class="chipsRow">
-              <input id="icwInput" type="text" list="seedTitleList" placeholder="type a seed title, press Enter…" />
+              <input id="icwInput" type="text" list="icwTitleList" placeholder="type a seed title, press Enter…" />
               <button id="icwAddBtn" type="button" class="btn btnSmall">Add</button>
             </div>
             <div id="icwChips" class="chips"></div>
@@ -131,15 +141,6 @@
               <option value="take_transform_tell_me">Take & transform, but tell me</option>
               <option value="water_with_your_thoughts">Water it with your own thoughts</option>
               <option value="let_it_be_forgotten">Let it be forgotten</option>
-            </select>
-          </label>
-
-          <label>
-            Embed policy
-            <select name="embed_policy">
-              <option value="iframe_ok">iframe ok</option>
-              <option value="link_only">link only</option>
-              <option value="no_embed">no embed</option>
             </select>
           </label>
 
