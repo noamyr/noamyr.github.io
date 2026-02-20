@@ -473,9 +473,32 @@ function render() {
     const gEl = d3.select(this);
     const textEl = gEl.select("text.node-label");
 
-    const shown = bracketize(d.label);
-    textEl.text(null);
-    wrapSvgTextCentered(textEl, shown, MAX_NODE_W);
+const shownTitle = bracketize(d.label);
+const shownHandle = d.handle ? `${d.handle}` : null;
+
+textEl.text(null);
+
+// render title
+wrapSvgTextCentered(textEl, shownTitle, MAX_NODE_W);
+
+// render handle as separate tspans
+if (shownHandle) {
+  const tspans = textEl.selectAll("tspan").nodes();
+  const lastTspan = tspans[tspans.length - 1];
+
+  const handleTspan = textEl.append("tspan")
+    .attr("x", 0)
+    .attr("dy", "1.2em")
+    .attr("class", "node-handle")
+    .text(shownHandle);
+}
+
+// recenter all tspans including handle
+const tspansAll = textEl.selectAll("tspan").nodes();
+const lineHeightEm = 1.15;
+const totalEm = (tspansAll.length - 1) * lineHeightEm;
+
+d3.select(tspansAll[0]).attr("dy", `${-totalEm/2}em`);
 
     const gb = gEl.node().getBBox(); // local coords
 

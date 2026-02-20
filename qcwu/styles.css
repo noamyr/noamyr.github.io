@@ -388,6 +388,18 @@ h2, h3{
   stroke-linejoin: miter;
 }
 
+.node-handle{
+  fill: rgba(40,40,40,0.55);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+
+  paint-order: stroke;
+  stroke: rgba(255,255,255,0.9);
+  stroke-width: 2px;
+  stroke-linejoin: miter;
+}
+
 /* Optional */
 .node.isPinned .node-box { fill: rgba(245,245,248,0.98); }
 
