@@ -46,12 +46,12 @@ body {
 
 p {
   max-width: 900px;
-  margin-bottom: 4px;
+  margin-bottom: 16px;
 }
 
 details {
   margin-left: var(--page-margin);
-  margin-bottom: 4px;
+  margin-bottom: 16px;
 }
 
 summary {
@@ -273,6 +273,7 @@ iframe {
     margin: var(--page-margin);
     padding-bottom: 12rem;
     font-size: 16px;
+    line-height: 1.2;
   }
 
   .info-bar {
