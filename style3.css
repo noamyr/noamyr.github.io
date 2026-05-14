@@ -1,15 +1,19 @@
+:root {
+  --page-margin: 16px;
+}
+
 * {
-    margin: 0px;
-    padding: 0px;
-    border: 0px;
-    box-sizing: border-box;
-    vertical-align: top;
-    text-align: left;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: top;
+  text-align: left;
 }
 
 a:link {
   color: green;
-  background-color: transparent; 
+  background-color: transparent;
   text-decoration: underline;
 }
 
@@ -26,52 +30,60 @@ a:hover {
 }
 
 body {
-  margin: 12px;
+  margin: var(--page-margin);
+  padding-bottom: 9rem;
+  min-height: 100vh;
+  overflow-y: auto;
+
   font-family: Arial, sans-serif;
   text-rendering: optimizeLegibility;
   line-height: 1.45;
+
   background: #d9ead3;
   color: black;
   font-size: 16px;
 }
 
-p{
-      max-width: 900px;
-      margin-bottom: 4px;
+p {
+  max-width: 900px;
+  margin-bottom: 4px;
 }
 
 details {
-    margin-bottom: 4px;
+  margin-left: var(--page-margin);
+  margin-bottom: 4px;
 }
 
 summary {
+  margin-left: var(--page-margin);
   cursor: pointer;
-      margin-bottom: 4px;
+  margin-bottom: 4px;
 }
 
 iframe {
   width: 100%;
   height: 75vh;
-  border: 0px;
+
+  border-left: 1px solid green;
   margin-bottom: 4px;
 }
+
+/* Footer */
 
 #institution-footer {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
+
+  width: 100vw;
+  max-width: 100vw;
+
   background: green;
   color: white;
-  z-index: 9999;
-}
 
-.footer-control {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  min-height: 2.5rem;
-    padding: 0 8px;
+  z-index: 9999;
+  overflow: hidden;
 }
 
 .footer-bars {
@@ -79,20 +91,26 @@ iframe {
   flex-direction: column;
 }
 
+/* Generic bars */
+
 .info-bar {
   height: 1.8rem;
-  overflow: hidden;
-  white-space: nowrap;
+
   display: flex;
   align-items: center;
-  padding: 0 8px;
+
+  overflow: hidden;
+  white-space: nowrap;
+
+  padding: 0 var(--page-margin);
 }
 
 .info-bar span {
   display: inline-block;
 }
 
-.info-bar.overflow span {
+.info-bar.overflow span,
+.martyr-scroll.overflow span {
   animation-name: marquee;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -108,36 +126,7 @@ iframe {
   }
 }
 
-.martyr-bar {
-  display: flex;
-  align-items: center;
-  padding: 0 8px;
-}
-
-.martyr-label {
-  flex-shrink: 0;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  border-right: 0px solid rgba(255,255,255,0.25);
-  margin-right: 8px;
-}
-
-.martyr-scroll {
-  flex: 1;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.martyr-scroll span {
-  display: inline-block;
-}
-
-.martyr-scroll.overflow span {
-  animation-name: marquee;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
+/* Color bars */
 
 .white-bar {
   background: red;
@@ -154,13 +143,77 @@ iframe {
   color: black;
 }
 
-/* Toggle switch */
+/* Martyr bar */
+
+.martyr-bar {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  max-width: 100%;
+
+  padding: 0 var(--page-margin);
+}
+
+.martyr-label {
+  flex: 0 0 auto;
+
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  white-space: nowrap;
+  padding-right: var(--page-margin);
+}
+
+.martyr-scroll {
+  flex: 1 1 auto;
+  min-width: 0;
+
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.martyr-scroll span {
+  display: inline-block;
+}
+
+/* Footer control */
+
+.footer-question{
+    margin-right: 16px;
+}
+
+.footer-control {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  min-height: 2.5rem;
+
+  padding: 0 var(--page-margin);
+  gap: 4px;
+
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.footer-control > span:first-child {
+  flex: 0 1 auto;
+  min-width: 0;
+
+  white-space: nowrap;
+}
 
 .switch {
+  flex: 0 0 3rem;
+
   position: relative;
   display: inline-block;
+
   width: 3rem;
   height: 1.5rem;
+
   margin: 0 4px;
 }
 
@@ -173,21 +226,29 @@ iframe {
 .slider {
   position: absolute;
   inset: 0;
+
   cursor: pointer;
+
   background: #666;
   border-radius: 999px;
+
   transition: 0.2s;
 }
 
 .slider::before {
   content: "";
+
   position: absolute;
+
   width: 1.1rem;
   height: 1.1rem;
+
   left: 0.2rem;
   top: 0.2rem;
+
   background: white;
   border-radius: 50%;
+
   transition: 0.2s;
 }
 
@@ -198,4 +259,50 @@ iframe {
 .switch input:checked + .slider::before {
   transform: translateX(1.5rem);
   background: black;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  iframe {
+    height: 50vh;
+  }
+
+  body {
+    margin: var(--page-margin);
+    padding-bottom: 12rem;
+    font-size: 16px;
+  }
+
+  .info-bar {
+    height: 1.7rem;
+    padding: 0 var(--page-margin);
+  }
+
+  .martyr-bar {
+    height: 2.8rem;
+    align-items: center;
+
+    padding: 0 var(--page-margin);
+  }
+
+  .martyr-label {
+    max-width: 36vw;
+
+    line-height: 1.1;
+    white-space: normal;
+  }
+
+  .footer-control {
+    min-height: 3.4rem;
+    align-items: center;
+  }
+
+  .footer-control > span:first-child {
+    max-width: 58vw;
+
+    line-height: 1.1;
+    white-space: normal;
+  }
 }
