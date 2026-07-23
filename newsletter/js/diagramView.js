@@ -29,12 +29,17 @@ const state = {
   mode: "explore",
   selectedNodeId: null,
   hoveredNodeId: null,
+  previewNodeId: null,
+  previewPinned: false,
   selectedLink: null,
   currentNumberedIndex: 0,
   visibleNumberedNodes: [],
   exploreTransform: d3.zoomIdentity,
   focusTransitionToken: 0,
   initialNavigationDone: false,
+  sizeByMetric: false,
+  influenceMedian: 1,
+  metricsByNodeId: new Map(),
   simulation: null,
   svg: null,
   zoomLayer: null,
@@ -49,6 +54,10 @@ const diagramContainer = document.getElementById("diagram-container");
 const loadingState = document.getElementById("loading-state");
 const legendItems = document.getElementById("legend-items");
 const searchInput = document.getElementById("node-search");
+const sizeByMetricToggle = document.getElementById("size-by-metric");
+const rankingDescription = document.getElementById("ranking-description");
+const weightFormula = document.getElementById("weight-formula");
+const rankingList = document.getElementById("ranking-list");
 const focusModeToggle = document.getElementById("focus-mode-toggle");
 const modeDescription = document.getElementById("mode-description");
 const resetButton = document.getElementById("reset-controls");
@@ -88,6 +97,8 @@ async function loadDiagram() {
           state.nodeById.has(link.source) &&
           state.nodeById.has(link.target)
       );
+
+    buildNetworkMetrics();
 
     state.activeCategories = new Set(
       state.nodes.map((node) => node.category)
@@ -129,6 +140,99 @@ function parseLink(row, index) {
   };
 }
 
+function buildNetworkMetrics() {
+  const neighborIdsByNode = new Map(
+    state.nodes.map((node) => [node.id, new Set()])
+  );
+
+  state.links.forEach((link) => {
+    neighborIdsByNode.get(link.source)?.add(link.target);
+    neighborIdsByNode.get(link.target)?.add(link.source);
+  });
+
+  state.metricsByNodeId = new Map(
+    state.nodes.map((node) => {
+      const neighborIds = [...(neighborIdsByNode.get(node.id) || [])];
+      const neighbors = neighborIds
+        .map((id) => state.nodeById.get(id))
+        .filter(Boolean);
+      const numberedNeighbors = neighbors
+        .filter((neighbor) => clean(neighbor.number))
+        .sort((a, b) => Number(a.number) - Number(b.number));
+      const externalNeighbors = neighbors.filter(
+        (neighbor) => neighbor.category === "external link"
+      );
+      const numberedValues = numberedNeighbors
+        .map((neighbor) => Number(neighbor.number))
+        .filter(Number.isFinite);
+
+      return [
+        node.id,
+        {
+          neighborIds,
+          neighbors,
+          numberedNeighbors,
+          externalNeighbors,
+          degree: neighborIds.length,
+          studyCount: numberedNeighbors.length,
+          sourceCount: externalNeighbors.length,
+          earliestStudy: numberedValues.length
+            ? Math.min(...numberedValues)
+            : null,
+          latestStudy: numberedValues.length
+            ? Math.max(...numberedValues)
+            : null,
+        },
+      ];
+    })
+  );
+
+  state.influenceMedian = calculateInfluenceMedian();
+}
+
+function getNodeMetrics(nodeOrId) {
+  const id = typeof nodeOrId === "string" ? nodeOrId : nodeOrId?.id;
+  return (
+    state.metricsByNodeId.get(id) || {
+      neighborIds: [],
+      neighbors: [],
+      numberedNeighbors: [],
+      externalNeighbors: [],
+      degree: 0,
+      studyCount: 0,
+      sourceCount: 0,
+      earliestStudy: null,
+      latestStudy: null,
+    }
+  );
+}
+
+function getInfluenceMetricConfig() {
+  return {
+    description:
+      "External links ranked by unique direct connections to numbered studies. Recurrence is used as a trace of influence, not proof of causality.",
+    score: (node) => getNodeMetrics(node).studyCount,
+    eligible: (node) => node.category === "external link",
+    singular: "study",
+    plural: "studies",
+  };
+}
+
+function calculateInfluenceMedian() {
+  const positiveScores = state.nodes
+    .filter((node) => node.category === "external link")
+    .map((node) => getNodeMetrics(node).studyCount)
+    .filter((score) => score > 0)
+    .sort((a, b) => a - b);
+
+  if (!positiveScores.length) return 1;
+
+  const middle = Math.floor(positiveScores.length / 2);
+  return positiveScores.length % 2
+    ? positiveScores[middle]
+    : (positiveScores[middle - 1] + positiveScores[middle]) / 2;
+}
+
 function bindControls() {
   searchInput?.addEventListener("input", () => {
     clearTimeout(searchDebounceTimer);
@@ -163,6 +267,47 @@ function bindControls() {
     });
   });
 
+  sizeByMetricToggle?.addEventListener("change", () => {
+    state.sizeByMetric = sizeByMetricToggle.checked;
+    updateMetricVisuals();
+  });
+
+  rankingList?.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-node-id]");
+    if (!button) return;
+    const node = state.nodeById.get(button.dataset.nodeId);
+    if (!node) return;
+    navigateToNode(node, {
+      focus: state.mode === "focus",
+      showPreview: true,
+    });
+  });
+
+  previewContent?.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-node-id]");
+    if (!button) return;
+    event.stopPropagation();
+    const node = state.nodeById.get(button.dataset.nodeId);
+    if (!node) return;
+    focusNodeFromPreview(node);
+  });
+
+  preview?.addEventListener("click", (event) => {
+    if (
+      event.target.closest(
+        "button, a, input, select, textarea, .preview-relations"
+      )
+    ) return;
+    openPinnedPreviewSource();
+  });
+
+  preview?.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    if (event.target !== preview) return;
+    event.preventDefault();
+    openPinnedPreviewSource();
+  });
+
   focusModeToggle?.addEventListener("change", () => {
     setMode(focusModeToggle.checked ? "focus" : "explore");
   });
@@ -175,6 +320,10 @@ function bindControls() {
   previewClose?.addEventListener("click", (event) => {
     event.stopPropagation();
     hidePreview();
+    if (state.mode === "explore") {
+      state.selectedNodeId = null;
+      updateSelectionStyles();
+    }
   });
 
   window.addEventListener("resize", () => {
@@ -189,6 +338,9 @@ function bindControls() {
         clearSelection({ keepPreview: false });
         clearFocusNeighborhood({ keepZoom: true });
         updateVisibility();
+      } else {
+        state.selectedNodeId = null;
+        updateSelectionStyles();
       }
     }
   });
@@ -296,6 +448,9 @@ function renderDiagram() {
       clearSelection({ keepPreview: false });
       clearFocusNeighborhood({ keepZoom: true });
       updateVisibility();
+    } else {
+      state.selectedNodeId = null;
+      updateSelectionStyles();
     }
   });
 
@@ -438,19 +593,23 @@ function renderDiagram() {
 
   nodeSelection
     .on("mouseenter", (event, node) => {
-      if (isTouchLayout() || isNodeHidden(node)) return;
+      if (isTouchLayout() || isNodeHidden(node) || state.previewPinned) return;
       state.hoveredNodeId = node.id;
       showPreview(node, { event, transient: true });
       emphasizeConnections(node.id);
     })
     .on("mousemove", (event, node) => {
-      if (isTouchLayout() || state.hoveredNodeId !== node.id) return;
+      if (
+        isTouchLayout() ||
+        state.previewPinned ||
+        state.hoveredNodeId !== node.id
+      ) return;
       positionPreviewNearPointer(event);
     })
-    .on("mouseleave", (event, node) => {
+    .on("mouseleave", () => {
       if (isTouchLayout()) return;
       state.hoveredNodeId = null;
-      if (state.selectedNodeId !== node.id) hidePreview();
+      if (!state.previewPinned) hidePreview();
       restoreConnectionOpacity();
     })
     .on("click", (event, node) => {
@@ -472,6 +631,8 @@ function renderDiagram() {
   state.linkHitboxSelection = linkHitboxSelection;
   state.linkLabelSelection = linkLabelSelection;
 
+  updateMetricVisuals({ restartSimulation: false });
+
   const simulation = d3
     .forceSimulation(state.nodes)
     .force(
@@ -488,7 +649,12 @@ function renderDiagram() {
       "collision",
       d3
         .forceCollide()
-        .radius((node) => Math.max(node._width, node._height) / 2 + 10)
+        .radius(
+          (node) =>
+            (Math.max(node._width, node._height) / 2) *
+              (node._visualScale || 1) +
+            10
+        )
         .strength(0.8)
     );
 
@@ -511,10 +677,7 @@ function renderDiagram() {
       return `translate(${x},${y})`;
     });
 
-    nodeSelection.attr(
-      "transform",
-      (node) => `translate(${node.x},${node.y})`
-    );
+    nodeSelection.attr("transform", nodeTransform);
 
     if (!state.initialNavigationDone && simulation.alpha() < 0.45) {
       state.initialNavigationDone = true;
@@ -530,40 +693,38 @@ function renderDiagram() {
 function handleNodeActivation(node, event) {
   if (isNodeHidden(node)) return;
 
-  const isMobile = isTouchLayout();
+  state.selectedNodeId = node.id;
+  updateSelectionStyles();
+  syncCurrentNumberedIndex(node);
 
   if (state.mode === "focus") {
-    state.selectedNodeId = node.id;
-    updateSelectionStyles();
     applyFocusNeighborhood(node.id, { animate: true, recenter: true });
-    showPreview(node, { event, transient: false });
-    syncCurrentNumberedIndex(node);
-    return;
   }
 
-  if (isMobile) {
-    if (state.selectedNodeId === node.id && node.link) {
-      window.open(node.link, "_blank", "noopener,noreferrer");
-      clearSelection({ keepPreview: false });
-      return;
-    }
+  showPreview(node, { event, transient: false });
+}
 
-    state.selectedNodeId = node.id;
-    updateSelectionStyles();
-    showPreview(node, { event, transient: false });
-    syncCurrentNumberedIndex(node);
-    return;
+function focusNodeFromPreview(node) {
+  if (!node) return;
+
+  state.selectedNodeId = node.id;
+  updateSelectionStyles();
+
+  if (state.mode !== "focus") {
+    setMode("focus");
   }
 
-  if (node.link) {
-    window.open(node.link, "_blank", "noopener,noreferrer");
-  } else {
-    state.selectedNodeId = node.id;
-    updateSelectionStyles();
-    showPreview(node, { event, transient: false });
-  }
+  navigateToNode(node, {
+    focus: true,
+    showPreview: true,
+  });
+}
 
-  syncCurrentNumberedIndex(node);
+function openPinnedPreviewSource() {
+  if (!state.previewPinned || !state.previewNodeId) return;
+  const node = state.nodeById.get(state.previewNodeId);
+  if (!node?.link) return;
+  window.open(node.link, "_blank", "noopener,noreferrer");
 }
 
 function setMode(mode) {
@@ -611,6 +772,9 @@ function resetControls() {
   );
 
   if (searchInput) searchInput.value = "";
+  state.sizeByMetric = false;
+  if (sizeByMetricToggle) sizeByMetricToggle.checked = false;
+  updateMetricVisuals();
 
   legendItems
     ?.querySelectorAll('input[type="checkbox"][data-category]')
@@ -670,6 +834,7 @@ function updateVisibility() {
 
   updateNumberedNavigation(visibleNodeIds);
   updateResultCount(visibleNodeIds, linkVisible);
+  updateRankingList();
 
   if (state.mode === "focus" && state.selectedNodeId) {
     applyFocusNeighborhood(state.selectedNodeId, {
@@ -700,12 +865,18 @@ function nodeMatchesSearch(node) {
 }
 
 function nodeSearchText(node) {
+  const relatedText = getNodeMetrics(node).neighbors.flatMap((neighbor) => [
+    neighbor.title,
+    neighbor.caption,
+  ]);
+
   return [
     node.id,
     node.number,
     node.title,
     node.caption,
     node.category,
+    ...relatedText,
   ]
     .map(clean)
     .join(" ")
@@ -1034,10 +1205,22 @@ function zoomToNodeSet(nodeIds, animate = true) {
   const topPadding = 54;
   const bottomPadding = 72;
 
-  const minX = d3.min(nodes, (node) => node.x - node._width / 2);
-  const maxX = d3.max(nodes, (node) => node.x + node._width / 2);
-  const minY = d3.min(nodes, (node) => node.y - node._height / 2);
-  const maxY = d3.max(nodes, (node) => node.y + node._height / 2);
+  const minX = d3.min(
+    nodes,
+    (node) => node.x - (node._width * (node._visualScale || 1)) / 2
+  );
+  const maxX = d3.max(
+    nodes,
+    (node) => node.x + (node._width * (node._visualScale || 1)) / 2
+  );
+  const minY = d3.min(
+    nodes,
+    (node) => node.y - (node._height * (node._visualScale || 1)) / 2
+  );
+  const maxY = d3.max(
+    nodes,
+    (node) => node.y + (node._height * (node._visualScale || 1)) / 2
+  );
 
   const boundsWidth = Math.max(1, maxX - minX);
   const boundsHeight = Math.max(1, maxY - minY);
@@ -1078,6 +1261,7 @@ function showPreview(node, options = {}) {
   if (!preview || !previewContent || !node) return;
 
   const { event = null, transient = false } = options;
+  const metrics = getNodeMetrics(node);
   const numberPrefix = node.number ? `${escapeHTML(node.number)}: ` : "";
   const imageHTML = node.image
     ? `<img src="./images/${escapeAttribute(node.image)}" class="preview-image" alt="">`
@@ -1085,8 +1269,85 @@ function showPreview(node, options = {}) {
   const captionHTML = node.caption
     ? `<div class="preview-caption">${escapeHTML(node.caption)}</div>`
     : "";
-  const linkHTML = node.link
-    ? `<a class="preview-link" href="${escapeAttribute(node.link)}" target="_blank" rel="noopener noreferrer">Open source ↗</a>`
+  const linkHTML =
+    node.link && !transient
+      ? `<div class="preview-open-hint">Click this card again to open source ↗</div>`
+      : "";
+
+  const metricItems = [
+    `${metrics.degree} ${metrics.degree === 1 ? "relation" : "relations"}`,
+  ];
+
+  if (node.category === "external link") {
+    metricItems.push(
+      `${metrics.studyCount} linked ${
+        metrics.studyCount === 1 ? "study" : "studies"
+      }`
+    );
+
+    if (metrics.studyCount > 0) {
+      metricItems.push(`${formatWeightRatio(metrics.studyCount)}× median weight`);
+    }
+  } else if (clean(node.number)) {
+    metricItems.push(
+      `${metrics.sourceCount} ${
+        metrics.sourceCount === 1 ? "source" : "sources"
+      }`
+    );
+  }
+
+  if (
+    node.category === "external link" &&
+    metrics.earliestStudy !== null &&
+    metrics.latestStudy !== null &&
+    metrics.earliestStudy !== metrics.latestStudy
+  ) {
+    metricItems.push(`#${metrics.earliestStudy}–#${metrics.latestStudy}`);
+  }
+
+  const metricsHTML = `
+    <div class="preview-metrics">
+      ${metricItems
+        .map(
+          (item) =>
+            `<span class="preview-metric">${escapeHTML(item)}</span>`
+        )
+        .join("")}
+    </div>
+  `;
+
+  const relationNodes =
+    node.category === "external link"
+      ? metrics.numberedNeighbors
+      : metrics.externalNeighbors;
+
+  const relationsTitle =
+    node.category === "external link"
+      ? "Directly linked studies"
+      : "Connected references";
+
+  const relationsHTML = relationNodes.length
+    ? `
+      <div class="preview-relations">
+        <div class="preview-relations-title">${relationsTitle}</div>
+        <div class="preview-neighbor-list">
+          ${relationNodes
+            .map((neighbor) => {
+              const label = neighbor.number
+                ? `#${neighbor.number} ${neighbor.title}`
+                : neighbor.title;
+              return `
+                <button class="preview-neighbor" type="button" data-node-id="${escapeAttribute(
+                  neighbor.id
+                )}">
+                  ${escapeHTML(label)}
+                </button>
+              `;
+            })
+            .join("")}
+        </div>
+      </div>
+    `
     : "";
 
   previewContent.innerHTML = `
@@ -1094,11 +1355,26 @@ function showPreview(node, options = {}) {
     <strong>${numberPrefix}${escapeHTML(node.title)}</strong>
     ${captionHTML}
     <div class="preview-category">${escapeHTML(node.category)}</div>
+    ${metricsHTML}
+    ${relationsHTML}
     ${linkHTML}
   `;
 
+  state.previewNodeId = node.id;
+  state.previewPinned = !transient;
+
   preview.classList.add("is-open");
+  preview.classList.toggle("is-pinned", !transient);
+  preview.classList.toggle("is-linkable", !transient && Boolean(node.link));
   preview.dataset.transient = transient ? "true" : "false";
+  preview.dataset.pinned = transient ? "false" : "true";
+  preview.tabIndex = !transient && node.link ? 0 : -1;
+  preview.setAttribute(
+    "aria-label",
+    !transient && node.link
+      ? `${node.title}. Click again to open source.`
+      : `${node.title}. Node details.`
+  );
 
   if (!isTouchLayout() && event) {
     positionPreviewNearPointer(event);
@@ -1136,7 +1412,15 @@ function positionPreviewBesideNode(node) {
 }
 
 function hidePreview() {
-  preview?.classList.remove("is-open");
+  state.previewNodeId = null;
+  state.previewPinned = false;
+  preview?.classList.remove("is-open", "is-pinned", "is-linkable");
+  if (preview) {
+    preview.dataset.transient = "false";
+    preview.dataset.pinned = "false";
+    preview.tabIndex = -1;
+    preview.setAttribute("aria-label", "Node details");
+  }
   if (previewContent) previewContent.innerHTML = "";
 }
 
@@ -1226,6 +1510,125 @@ function isLinkLabelOpen(linkId) {
   return node?.style.display === "block";
 }
 
+function updateRankingList() {
+  const config = getInfluenceMetricConfig();
+  if (rankingDescription) {
+    rankingDescription.textContent = config.description;
+  }
+
+  if (weightFormula) {
+    const medianLabel = Number.isInteger(state.influenceMedian)
+      ? state.influenceMedian
+      : state.influenceMedian.toFixed(1);
+    weightFormula.textContent = `Make node size relative to weight`;
+  }
+
+  if (!rankingList) return;
+
+  const rankedNodes = state.nodes
+    .filter((node) => config.eligible(node) && nodeMatchesBaseFilters(node))
+    .map((node) => ({
+      node,
+      score: config.score(node),
+      degree: getNodeMetrics(node).degree,
+    }))
+    .filter((entry) => entry.score > 0)
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        b.degree - a.degree ||
+        a.node.title.localeCompare(b.node.title)
+    )
+    .slice(0, 8);
+
+  if (!rankedNodes.length) {
+    rankingList.innerHTML =
+      '<li class="ranking-empty">No ranked nodes match the current filters.</li>';
+    return;
+  }
+
+  let displayRank = 0;
+  let previousScore = null;
+
+  rankingList.innerHTML = rankedNodes
+    .map((entry, index) => {
+      if (entry.score !== previousScore) {
+        displayRank = index + 1;
+        previousScore = entry.score;
+      }
+
+      const unit = entry.score === 1 ? config.singular : config.plural;
+      const numberPrefix = entry.node.number
+        ? `#${entry.node.number} `
+        : "";
+
+      return `
+        <li>
+          <button
+            class="ranking-item"
+            type="button"
+            data-node-id="${escapeAttribute(entry.node.id)}"
+            title="${escapeAttribute(entry.node.title)}"
+          >
+            <span class="ranking-position">${displayRank}</span>
+            <span class="ranking-name">${escapeHTML(
+              numberPrefix + entry.node.title
+            )}</span>
+            <span class="ranking-score">${entry.score} ${unit} · ${formatWeightRatio(entry.score)}×</span>
+          </button>
+        </li>
+      `;
+    })
+    .join("");
+}
+
+function formatWeightRatio(score) {
+  const median = Math.max(state.influenceMedian || 1, 1);
+  const ratio = score / median;
+  return Number.isInteger(ratio) ? String(ratio) : ratio.toFixed(1);
+}
+
+function clamp(value, minimum, maximum) {
+  return Math.min(maximum, Math.max(minimum, value));
+}
+
+function updateMetricVisuals(options = {}) {
+  const { restartSimulation = true } = options;
+  const config = getInfluenceMetricConfig();
+  const median = Math.max(state.influenceMedian || 1, 1);
+
+  state.nodes.forEach((node) => {
+    const eligible = config.eligible(node);
+    const score = eligible ? config.score(node) : 0;
+    const relativeWeight = score > 0 ? score / median : 0;
+
+    node._visualScale =
+      state.sizeByMetric && eligible
+        ? clamp(relativeWeight, 0.5, 3.25)
+        : 1;
+  });
+
+  state.nodeSelection?.attr("transform", nodeTransform);
+
+  const collision = state.simulation?.force("collision");
+  collision?.radius(
+    (node) =>
+      (Math.max(node._width, node._height) / 2) *
+        (node._visualScale || 1) +
+      10
+  );
+
+  if (restartSimulation && state.simulation) {
+    state.simulation.alpha(0.28).restart();
+  }
+}
+
+function nodeTransform(node) {
+  const x = Number.isFinite(node.x) ? node.x : 0;
+  const y = Number.isFinite(node.y) ? node.y : 0;
+  return `translate(${x},${y}) scale(${node._visualScale || 1})`;
+}
+
 function updateResultCount(visibleNodeIds, linkVisible) {
   if (!resultCount) return;
 
@@ -1304,7 +1707,8 @@ function colorForCategory(category) {
 
 function nodeAccessibleLabel(node) {
   const number = node.number ? `Study ${node.number}. ` : "";
-  return `${number}${node.title}. ${node.category}. ${node.caption}`.trim();
+  const metrics = getNodeMetrics(node);
+  return `${number}${node.title}. ${node.category}. ${metrics.degree} relations. ${node.caption}`.trim();
 }
 
 function wrapWords(text, maxCharacters) {
@@ -1334,10 +1738,6 @@ function normalizeSearch(value) {
 
 function clean(value) {
   return String(value ?? "").trim();
-}
-
-function clamp(value, min, max) {
-  return Math.min(max, Math.max(min, value));
 }
 
 function isTouchLayout() {

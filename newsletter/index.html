@@ -43,7 +43,7 @@
       </p>
 
       <label class="search-field" for="node-search">
-        <span>Search by number or keyword</span>
+        <span>Search nodes and immediate relations</span>
         <input
           id="node-search"
           type="search"
@@ -52,13 +52,30 @@
           placeholder="e.g. 21, attention, Le Guin">
       </label>
 
+      <section class="ranking-control" aria-labelledby="weight-toggle-label">
+        <div class="weight-toggle-row">
+          <span id="weight-toggle-label" class="weight-toggle-label">Make external-link size relative to weight</span>
+          <label class="mode-switch weight-switch">
+            <input
+              id="size-by-metric"
+              type="checkbox"
+              aria-labelledby="weight-toggle-label">
+            <span class="mode-switch-track" aria-hidden="true">
+              <span class="mode-switch-thumb"></span>
+            </span>
+          </label>
+        </div>
+
+        <div id="weight-formula" class="weight-formula"></div>
+      </section>
+
       <fieldset id="legend" class="legend">
         <legend>Visibility</legend>
         <div id="legend-items" class="legend-items"></div>
       </fieldset>
 
       <p class="interaction-note">
-        In focus mode, select a node to show its immediate relations. Select a neighbouring node to continue through the network.
+        Hover for details. Click a node to pin its card; click the pinned card to open its source.
       </p>
     </aside>
 
@@ -69,7 +86,7 @@
       <button id="random-node" type="button" aria-label="Random numbered study" title="Random numbered study">↝</button>
     </nav>
 
-    <div id="preview" role="dialog" aria-live="polite" aria-label="Node details">
+    <div id="preview" role="dialog" aria-live="polite" aria-label="Node details" tabindex="-1">
       <button id="preview-close" type="button" aria-label="Close node details">×</button>
       <div id="preview-content"></div>
     </div>
