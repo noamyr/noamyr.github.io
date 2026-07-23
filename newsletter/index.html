@@ -24,7 +24,19 @@
           <div class="panel-title">Diagram controls</div>
           <div id="result-count" class="result-count" aria-live="polite"></div>
         </div>
-        <button id="reset-controls" class="text-button" type="button">Reset</button>
+        <div class="panel-actions">
+          <button id="reset-controls" class="text-button" type="button">Reset</button>
+          <button
+            id="interface-panel-toggle"
+            class="panel-collapse-toggle"
+            type="button"
+            aria-expanded="true"
+            aria-controls="interface-panel"
+            aria-label="Collapse diagram controls"
+            title="Collapse diagram controls">
+            <span class="panel-collapse-icon" aria-hidden="true">−</span>
+          </button>
+        </div>
       </div>
 
       <div class="mode-control" role="group" aria-label="Diagram mode">

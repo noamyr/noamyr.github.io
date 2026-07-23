@@ -108,6 +108,59 @@ label {
   line-height: 1.2;
 }
 
+.panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.panel-collapse-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  border: 1px solid rgba(44, 44, 44, 0.22);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.panel-collapse-toggle:hover,
+.panel-collapse-toggle:focus-visible {
+  border-color: var(--focus-color);
+  color: var(--focus-color);
+  outline: none;
+}
+
+.panel-collapse-icon {
+  font-size: 17px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+/* Collapsed state: retain only the heading and expand button. */
+#interface-panel.is-collapsed {
+  width: auto;
+  max-height: none;
+  overflow: hidden;
+}
+
+#interface-panel.is-collapsed > :not(.panel-heading) {
+  display: none;
+}
+
+#interface-panel.is-collapsed .panel-heading {
+  align-items: center;
+  margin-bottom: 0;
+}
+
+#interface-panel.is-collapsed .result-count,
+#interface-panel.is-collapsed #reset-controls {
+  display: none;
+}
+
 .result-count {
   min-height: 1.25em;
   margin-top: 3px;

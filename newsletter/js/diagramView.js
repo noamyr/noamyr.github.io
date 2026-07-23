@@ -61,6 +61,8 @@ const rankingList = document.getElementById("ranking-list");
 const focusModeToggle = document.getElementById("focus-mode-toggle");
 const modeDescription = document.getElementById("mode-description");
 const resetButton = document.getElementById("reset-controls");
+const interfacePanel = document.getElementById("interface-panel");
+const interfacePanelToggle = document.getElementById("interface-panel-toggle");
 const resultCount = document.getElementById("result-count");
 const currentNodeNumber = document.getElementById("current-node-number");
 const previousButton = document.getElementById("prev-node");
@@ -312,6 +314,7 @@ event.target.closest(
   });
 
   resetButton?.addEventListener("click", resetControls);
+  interfacePanelToggle?.addEventListener("click", toggleInterfacePanel);
   previousButton?.addEventListener("click", () => stepNumberedNode(-1));
   nextButton?.addEventListener("click", () => stepNumberedNode(1));
   randomButton?.addEventListener("click", navigateToRandomNumberedNode);
@@ -343,6 +346,26 @@ event.target.closest(
       }
     }
   });
+}
+
+function toggleInterfacePanel() {
+  if (!interfacePanel || !interfacePanelToggle) return;
+
+  const collapsed = interfacePanel.classList.toggle("is-collapsed");
+  const action = collapsed ? "Expand" : "Collapse";
+
+  interfacePanelToggle.setAttribute("aria-expanded", String(!collapsed));
+  interfacePanelToggle.setAttribute(
+    "aria-label",
+    `${action} diagram controls`
+  );
+  interfacePanelToggle.title = `${action} diagram controls`;
+
+  const icon = interfacePanelToggle.querySelector(".panel-collapse-icon");
+  if (icon) icon.textContent = collapsed ? "+" : "−";
+
+  // Focus-mode framing reserves space for the panel, so recalculate it.
+  window.requestAnimationFrame(resizeDiagram);
 }
 
 function buildLegend() {
