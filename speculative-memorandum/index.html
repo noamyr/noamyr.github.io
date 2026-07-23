@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Speculative Memorandum</title>
+  <meta name="description" content="An append-only rhizomatic writing map for a speculative memorandum and its derivatives.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="thumbnail.png">
+</head>
+<body>
+  <div id="loadingOverlay" class="loadingOverlay">
+    <div class="loadingInner">
+      <div class="spinner" aria-hidden="true"></div>
+      <div class="loadingText">Loading writing map…</div>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="title">Speculative Memorandum</div>
+      <div class="subtitle">A rhizomatic agreement and its derivative documents</div>
+      <div id="lastUpdated" class="lastUpdated">Not loaded yet</div>
+    </div>
+
+    <div class="controls">
+      <button id="btnReload" class="btn" type="button">Refresh now</button>
+      <button id="btnToggleForm" class="btn" type="button">Add entry</button>
+      <button id="btnToggleRelationForm" class="btn" type="button">Add relation</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="graphPanel" aria-label="Speculative memorandum writing map">
+      <div id="graph" class="graph"></div>
+
+      <div id="preview" class="preview previewBubble hidden" aria-live="polite">
+        <div class="previewHead">
+          <div id="previewLabel" class="previewLabel"></div>
+          <button id="previewClose" class="btn btnSmall" type="button">Close</button>
+        </div>
+        <div id="previewBody" class="previewBody"></div>
+      </div>
+
+      <div id="emptyState" class="graphEmpty hidden">
+        No entries match the current view.
+      </div>
+    </section>
+
+    <aside class="sidePanel">
+
+      <section id="formWrap" class="panelBlock formPanel hidden">
+        <h2 id="entryFormHeading">Add an entry</h2>
+        <p id="branchNotice" class="hint hidden"></p>
+        <p class="hint">The only categorical distinction is between the memorandum itself and its derivatives.</p>
+
+        <form id="entryForm" class="mappingForm">
+          <div class="formSection">
+            <h3>Write the entry</h3>
+
+            <label>
+              <span>Kind</span>
+              <select name="entry_kind" required>
+                <option value="memorandum">Memorandum</option>
+                <option value="derivative">Derivative</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Clause number, section, or document code</span>
+              <input name="label_or_number" placeholder="e.g. Clause 4.2 / Annex B / FILE-2031-09">
+            </label>
+
+            <label>
+              <span>Title</span>
+              <input name="title" placeholder="Untitled">
+            </label>
+
+            <label>
+              <span>Body</span>
+              <textarea name="body" rows="12" placeholder="Write the clause, fragment, record, or narrative here…"></textarea>
+            </label>
+
+            <div class="keywordField">
+              <span class="fieldTitle">Keywords</span>
+              <div class="tagPicker" data-keyword-picker="entry">
+                <div class="keywordTags" data-keyword-tags aria-live="polite"></div>
+                <input name="keywords" type="hidden">
+                <input class="keywordTextInput" data-keyword-text list="keywordSuggestions" autocomplete="off" placeholder="Type or choose a keyword, then press Enter">
+              </div>
+              <span class="fieldHelp">Existing keywords autocomplete; new keywords are also accepted.</span>
+            </div>
+
+            <label>
+              <span>Attachment URL, optional</span>
+              <input name="attachment_url" type="url" placeholder="Google Drive or public URL">
+            </label>
+
+            <label>
+              <span>Created by</span>
+              <input name="created_by" placeholder="Name or collective">
+            </label>
+          </div>
+
+          <div id="optionalConnectionSection" class="formSection">
+            <h3>Optionally connect it to the map</h3>
+
+            <label>
+              <span>Connect from existing entry</span>
+              <select name="connect_from_id"><option value="">No connection</option></select>
+            </label>
+
+            <label>
+              <span>Relation</span>
+              <textarea name="connection_relation_text" rows="4" placeholder="Describe the relation in ordinary language…"></textarea>
+            </label>
+
+            <label>
+              <span>Relation attachment URL, optional</span>
+              <input name="connection_attachment_url" type="url" placeholder="Document, image, audio, or other source">
+            </label>
+          </div>
+
+          <div class="formActions">
+            <button type="submit" class="btn primary">Submit entry</button>
+            <button id="btnCancel" type="button" class="btn">Cancel</button>
+          </div>
+          <p id="formStatus" class="formStatus"></p>
+        </form>
+      </section>
+
+      <section id="relationFormWrap" class="panelBlock formPanel hidden">
+        <h2>Add a relation</h2>
+        <p class="hint">Relations have no taxonomy. Write what one entry does to, with, through, or against another.</p>
+
+        <form id="relationForm" class="mappingForm">
+          <div class="formSection">
+            <label>
+              <span>From</span>
+              <select name="from_id" required><option value="">Select an entry</option></select>
+            </label>
+
+            <label>
+              <span>To</span>
+              <select name="to_id" required><option value="">Select an entry</option></select>
+            </label>
+
+            <label>
+              <span>Relation</span>
+              <textarea name="relation_text" rows="6" required placeholder="Describe the relation in ordinary language…"></textarea>
+            </label>
+
+            <label>
+              <span>Attachment URL, optional</span>
+              <input name="attachment_url" type="url" placeholder="Document, image, audio, or other source">
+            </label>
+
+            <label>
+              <span>Created by</span>
+              <input name="created_by" placeholder="Name or collective">
+            </label>
+          </div>
+
+          <div class="formActions">
+            <button type="submit" class="btn primary">Submit relation</button>
+            <button id="btnRelationCancel" type="button" class="btn">Cancel</button>
+          </div>
+          <p id="relationFormStatus" class="formStatus"></p>
+        </form>
+      </section>
+
+      <section id="editFormWrap" class="panelBlock formPanel hidden">
+        <h2 id="editFormTitle">Save a new version</h2>
+        <p class="hint amendmentPrinciple">Editing appends a complete snapshot. The source row and every previous state remain intact.</p>
+
+        <form id="editForm" class="mappingForm">
+          <input name="target_kind" type="hidden">
+          <input name="target_id" type="hidden">
+          <input name="previous_version_id" type="hidden">
+
+          <div id="entryEditFields" class="formSection">
+            <label>
+              <span>Kind</span>
+              <select name="entry_kind">
+                <option value="memorandum">Memorandum</option>
+                <option value="derivative">Derivative</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Clause number, section, or document code</span>
+              <input name="label_or_number">
+            </label>
+
+            <label>
+              <span>Title</span>
+              <input name="title">
+            </label>
+
+            <label>
+              <span>Body</span>
+              <textarea name="body" rows="18"></textarea>
+            </label>
+
+            <div class="keywordField">
+              <span class="fieldTitle">Keywords</span>
+              <div class="tagPicker" data-keyword-picker="edit">
+                <div class="keywordTags" data-keyword-tags aria-live="polite"></div>
+                <input name="keywords" type="hidden">
+                <input class="keywordTextInput" data-keyword-text list="keywordSuggestions" autocomplete="off" placeholder="Type or choose a keyword, then press Enter">
+              </div>
+              <span class="fieldHelp">Removing a keyword is recorded in the new version snapshot.</span>
+            </div>
+          </div>
+
+          <div id="relationEditFields" class="formSection hidden">
+            <label>
+              <span>From</span>
+              <select name="from_id"><option value="">Select an entry</option></select>
+            </label>
+
+            <label>
+              <span>To</span>
+              <select name="to_id"><option value="">Select an entry</option></select>
+            </label>
+
+            <label>
+              <span>Relation</span>
+              <textarea name="relation_text" rows="9"></textarea>
+            </label>
+          </div>
+
+          <label>
+            <span>Attachment URL</span>
+            <input name="attachment_url" type="url">
+          </label>
+
+          <label>
+            <span>Change note</span>
+            <input name="change_note" placeholder="What changed, and why?">
+          </label>
+
+          <label>
+            <span>Edited by</span>
+            <input name="created_by" placeholder="Name or collective">
+          </label>
+
+          <div class="formActions">
+            <button type="submit" class="btn primary">Save new version</button>
+            <button id="btnEditCancel" type="button" class="btn">Cancel</button>
+          </div>
+          <p id="editFormStatus" class="formStatus">Shortcut: Ctrl/Cmd + S.</p>
+        </form>
+      </section>
+
+            <section class="panelBlock filterPanel">
+        <div class="filterHead">
+          <div>
+            <h2>Filter the writing map</h2>
+            <p class="hint">Explore shows the filtered map. Focus isolates the selected entry and its immediate relations.</p>
+          </div>
+
+          <div class="viewModeControl" role="group" aria-label="Map view mode">
+            <span class="viewModeLabel">Explore</span>
+            <label class="modeSwitch">
+              <input id="focusModeToggle" type="checkbox" aria-label="Toggle focus mode">
+              <span class="modeSwitchTrack" aria-hidden="true"><span class="modeSwitchThumb"></span></span>
+            </label>
+            <span class="viewModeLabel">Focus</span>
+          </div>
+
+          <button id="btnResetFilters" class="btn btnSmall" type="button">Reset</button>
+        </div>
+
+        <label class="searchField">
+          <span>Search</span>
+          <input id="mapSearch" type="search" autocomplete="off" placeholder="Search titles, bodies, relations, or authors">
+        </label>
+
+        <section class="kindLegendBlock" aria-labelledby="entryKindsLegendTitle">
+          <h3 id="entryKindsLegendTitle">Entry kinds</h3>
+          <div class="legend compactLegend">
+            <div class="legendRow"><span class="nodeSwatch memorandum"></span><span>Memorandum</span></div>
+            <div class="legendRow"><span class="nodeSwatch derivative"></span><span>Derivative</span></div>
+          </div>
+        </section>
+
+        <section class="keywordFilterBlock" aria-labelledby="keywordFilterTitle">
+          <div class="keywordFilterHead">
+            <h3 id="keywordFilterTitle">Filter by keyword</h3>
+            <span class="hint">Matches any selected keyword</span>
+          </div>
+          <div class="tagPicker" data-keyword-picker="filter">
+            <div class="keywordTags" data-keyword-tags aria-live="polite"></div>
+            <input class="keywordTextInput" data-keyword-text list="keywordSuggestions" autocomplete="off" placeholder="Type or choose a keyword, then press Enter">
+          </div>
+        </section>
+
+        <div id="filterResultCount" class="filterResultCount"></div>
+      </section>
+
+      <section class="panelBlock">
+        <h2>How to use it</h2>
+        <p class="hint">Click an entry or relation to inspect it. From the preview you can edit, branch a derivative, or connect an entry elsewhere.</p>
+      </section>
+
+      <section class="panelBlock">
+        <h2>Connection</h2>
+        <p id="connectionStatus" class="hint">Loading…</p>
+      </section>
+    </aside>
+  </main>
+
+  <datalist id="keywordSuggestions"></datalist>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="app.js"></script>
+</body>
+</html>
