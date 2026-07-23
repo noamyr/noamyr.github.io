@@ -294,10 +294,9 @@ function bindControls() {
 
   preview?.addEventListener("click", (event) => {
     if (
-      event.target.closest(
-        "button, a, input, select, textarea, .preview-relations"
-      )
-    ) return;
+event.target.closest(
+  "button, a, input, select, textarea, .preview-caption, .preview-relations"
+)    ) return;
     openPinnedPreviewSource();
   });
 
@@ -1350,16 +1349,22 @@ function showPreview(node, options = {}) {
     `
     : "";
 
-  previewContent.innerHTML = `
-    ${imageHTML}
+previewContent.innerHTML = `
+  ${imageHTML}
+
+  <div class="preview-scroll-body">
     <strong>${numberPrefix}${escapeHTML(node.title)}</strong>
     ${captionHTML}
-    <div class="preview-category">${escapeHTML(node.category)}</div>
+
+    <div class="preview-category">
+      ${escapeHTML(node.category)}
+    </div>
+
     ${metricsHTML}
     ${relationsHTML}
     ${linkHTML}
-  `;
-
+  </div>
+`;
   state.previewNodeId = node.id;
   state.previewPinned = !transient;
 
