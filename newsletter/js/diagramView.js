@@ -1632,7 +1632,7 @@ function updateMetricVisuals(options = {}) {
 
     node._visualScale =
       state.sizeByMetric && eligible
-        ? clamp(relativeWeight, 0.5, 3.25)
+        ? clamp(relativeWeight, 0.5, 5)
         : 1;
   });
 
