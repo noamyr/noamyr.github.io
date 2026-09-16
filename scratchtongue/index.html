@@ -13,6 +13,7 @@ sun moon star water rain river lake sea salt stone sand dust earth cloud fog sky
 fire ash burn road mountain red green yellow white black night day year warm cold full new old good bad
 rotten dirty straight round sharp dull smooth wet dry correct near far right left at in with and if because name
 `.trim().split(/\s+/).map(x => x.toLowerCase()));
+const WORDNET_STOPWORDS = new Set(["a", "an", "the"]);
 const WORD_RE = /[A-Za-z]+(?:['’][A-Za-z]+)*/g;
 const TOKEN_RE = /([A-Za-z]+(?:['’][A-Za-z]+)*|\r?\n|[^\S\r\n]+|[^A-Za-z\s]+)/g;
 function simpleLemmas(word){
@@ -294,6 +295,16 @@ continue;
 }
 WORD_RE.lastIndex=0;
 total++;
+const lowerTok = tok.toLowerCase().replace(/’/g, "'");
+
+// Don't send grammatical articles through WordNet.
+// They simply disappear unless explicitly part of the Swadesh list.
+if (WORDNET_STOPWORDS.has(lowerTok)) {
+lost++;
+trace.append(span("lost",tok,"grammatical article → lost"));
+continue;
+}
+
 const anchor=exactAnchor(tok,inflect);
 if(anchor){
 direct++;
