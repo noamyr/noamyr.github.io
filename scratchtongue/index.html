@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Scratch Tongue</title><style>:root{--bg:#d9ead3;--panel:#fff;--ink:#171717;--muted:#77736b;--line:#d8d4ca;--direct:#171717;--approx:#6d6558;--lost:#c5c0b6;--accent:#171717;}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;}header{padding:26px 28px 18px;border-bottom:1px solid var(--line);display:flex;gap:24px;align-items:baseline;flex-wrap:wrap;}h1{font-size:22px;margin:0;font-weight:600;letter-spacing:.02em}.sub{font-size:12px;color:var(--muted)}main{padding:22px 28px 40px;max-width:1500px;margin:auto}.controls{display:grid;grid-template-columns:1.25fr .8fr .7fr auto;gap:14px;align-items:end;margin-bottom:18px;}label{display:block;font:12px/1.2 "Arial Narrow",Arial,Helvetica,sans-serif;color:var(--muted);margin-bottom:6px}select,input[type="range"],button{width:100%;font:inherit;}select,button{min-height:38px;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:0;}button{cursor:pointer}button:hover{border-color:#8f8a80}.distanceRow{display:flex;gap:10px;align-items:center}.distanceRow output{min-width:22px;text-align:right;font-size:12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}.panel{background:var(--panel);border:1px solid var(--line)}.panel h2{font:12px/1.2 "Arial Narrow",Arial,Helvetica,sans-serif;font-weight:500;color:var(--muted);margin:0;padding:10px 12px;border-bottom:1px solid var(--line);text-transform:uppercase;letter-spacing:.08em;}.panelHead{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);}.panelHead h2{border-bottom:0;flex:1}.copyBtn{width:auto;min-height:0;padding:6px 10px;margin-right:7px;font:11px/1 "Arial Narrow",Arial,Helvetica,sans-serif;background:transparent;}textarea{width:100%;min-height:120px;height:auto;resize:none;overflow:hidden;border:0;outline:none;padding:18px;font:16px/1.6 Arial,Helvetica,sans-serif;color:var(--ink);background:transparent;}#output{min-height:120px;padding:18px;white-space:pre-wrap;font:16px/1.6 Arial,Helvetica,sans-serif;}.meta{margin-top:18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}.stat{border-top:1px solid var(--line);padding-top:8px}.stat b{display:block;font-size:18px;font-weight:500}.stat span{font:11px/1.2 "Arial Narrow",Arial,Helvetica,sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}details{margin-top:18px;border-top:1px solid var(--line);padding-top:12px}summary{cursor:pointer;font:12px/1.3 "Arial Narrow",Arial,Helvetica,sans-serif;}#trace{margin-top:12px;padding:14px;background:var(--panel);border:1px solid var(--line);font:14px/1.7 "Arial Narrow",Arial,Helvetica,sans-serif;white-space:pre-wrap;}#pathDetail{margin-top:8px;padding:12px 14px;border:1px solid var(--line);background:var(--panel);font:13px/1.55 "Arial Narrow",Arial,Helvetica,sans-serif;white-space:pre-wrap;min-height:42px}.direct{color:var(--direct)}.approx{color:var(--approx);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;cursor:pointer}.approx.sel{background:var(--ink);color:var(--panel);text-decoration:none}.lost{color:var(--lost);text-decoration:line-through}.status{font:12px/1.4 "Arial Narrow",Arial,Helvetica,sans-serif;color:var(--muted);min-height:18px;margin:9px 0 0}.note{font:12px/1.5 "Arial Narrow",Arial,Helvetica,sans-serif;color:var(--muted);margin-top:16px;max-width:1000px}code{font-family:inherit}@media (max-width:900px){.controls,.grid,.meta{grid-template-columns:1fr}}</style></head><body><header><h1>SCRATCH TONGUE</h1><div class="sub">English prose reduced to a 207-item Swadesh list using WordNet 3.1 synonym and hypernym paths.</div></header><main><div class="controls"><div><label for="mode">Method</label><select id="mode"><option value="hypernym" selected>WordNet — synonym / hypernym</option><option value="literal">Exact Swadesh match</option></select></div><div><label for="distance">Maximum WordNet distance</label><div class="distanceRow"><input id="distance" type="range" min="0" max="5" value="5"><output id="distanceOut">5</output></div></div><div><label for="inflect">Inflection handling</label><select id="inflect"><option value="on">simple normalization on</option><option value="off">exact forms only</option></select></div><div><button id="erode">APPLY</button></div></div><div class="grid"><section class="panel"><h2>Source</h2><textarea id="source">I’m sorry, someone whispered. The first blow landed, and its sound spread through darkness. Soon the night was filled with dull echoes of iron striking wood. Every tree was cut with apologetic precision. Some women wept as they worked. Others paused after each trunk fell, touching the exposed rings as though commemorating an old companion whose death they themselves had chosen. Many of these women had planted the very trees they were now felling. After every fallen tree, the soil was opened by the same hands that had cut it. Millet, beans, cowpeas, sorghum, and many other seeds I couldn’t even identify were sown over it.</textarea></section><section class="panel"><div class="panelHead"><h2>Output</h2><button id="copyOutput" class="copyBtn" type="button">COPY</button></div><div id="output"></div></section></div><div class="meta"><div class="stat"><b id="totalN">0</b><span>source words</span></div><div class="stat"><b id="directN">0</b><span>exact matches</span></div><div class="stat"><b id="approxN">0</b><span>WordNet matches</span></div><div class="stat"><b id="lostN">0</b><span>removed</span></div></div><div id="status" class="status"></div><details><summary>Trace</summary><div id="trace"></div><div id="pathDetail">Click a WordNet match to show its path.</div></details><details><summary>Technical notes</summary><div class="note"><p><b>Method.</b> The input is tokenized into words and punctuation. Exact matches are normalized to Swadesh forms. In WordNet mode, unmatched words are checked against Princeton WordNet 3.1 and may be replaced by a same-synset word or a hypernym that occurs in the Swadesh list. Maximum distance sets the number of WordNet steps allowed. Common English inflections are normalized before matching. Gendered singular human third-person pronouns are normalized to singular <i>they</i>. Output uses sentence case.</p><p><b>Swadesh list.</b> A Swadesh list is “a compilation of tentatively universal concepts for the purposes of lexicostatistics. That is, a Swadesh list is a list of forms and concepts which all languages, without exception, have terms for, such as star, hand, water, kill, sleep, and so forth. The number of such terms is small – a few hundred at most, or possibly less than a hundred. The inclusion or exclusion of many terms is subject to debate among linguists; thus, there are several different lists, and some authors may refer to ‘Swadesh lists.’ The Swadesh list is named after linguist Morris Swadesh.<br><br>Translations of a Swadesh list into a set of languages allow for researchers to quantify the interrelatedness of those languages. Swadesh lists are used in lexicostatistics (the quantitative assessment of the genealogical relatedness of languages) and glottochronology (the dating of language divergence). For instance, the terms on a Swadesh list can be compared between two languages (since both languages will have them) to see if they are related and how closely, thus giving useful information that can be further applied to comparison of the languages. (Actual lexicostatistics is quite complicated, and usually sets of languages are compared.)” <a href="https://en.wikipedia.org/wiki/Swadesh_list" target="_blank" rel="noreferrer">Wikipedia</a></p></div></details></main><script>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Scratch Tongue</title><style>:root{--bg:#d9ead3;--panel:#fff;--ink:#171717;--muted:#77736b;--line:#d8d4ca;--direct:#171717;--approx:#6d6558;--lost:#c5c0b6;--accent:#171717;}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;}header{padding:26px 28px 18px;border-bottom:1px solid var(--line);display:flex;gap:24px;align-items:baseline;flex-wrap:wrap;}h1{font-size:22px;margin:0;font-weight:600;letter-spacing:.02em}.sub{font-size:12px;color:var(--muted)}main{padding:22px 28px 40px;max-width:1500px;margin:auto}.controls{display:flex;gap:14px;align-items:flex-end;margin-bottom:18px;flex-wrap:wrap}.control{display:flex;flex-direction:column;gap:6px}.control.method{flex:1 1 360px}.control.distance{flex:1 1 240px;max-width:360px}.control.inflection{flex:0 1 300px}.control.interpretive{flex:0 0 auto}.control.apply{flex:0 0 auto}label{display:block;font:12px/1.2 "Arial Narrow",Arial,Helvetica,sans-serif;color:var(--muted);margin-bottom:6px}select,input[type="range"],button{width:100%;font:inherit;}select,button{height:38px;min-height:38px;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:0;}button{cursor:pointer;white-space:nowrap}button:hover{border-color:#8f8a80}.toggleWrap{height:38px;display:flex;align-items:center}.switch{display:inline-flex;margin:0}.switch input{position:absolute;opacity:0;pointer-events:none}.switch .slider{display:flex;align-items:center;justify-content:center;min-width:58px;height:38px;padding:0 12px;border:1px solid var(--line);background:var(--panel);color:var(--muted);cursor:pointer;font:12px/1 "Arial Narrow",Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:.06em}.switch .slider:after{content:"OFF"}.switch input:checked+.slider{background:var(--ink);color:var(--panel);border-color:var(--ink)}.switch input:checked+.slider:after{content:"ON"}.distanceRow{height:38px;display:flex;gap:10px;align-items:center;padding:0 2px}.distanceRow output{min-width:22px;text-align:right;font-size:12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}.panel{background:var(--panel);border:1px solid var(--line)}.panel h2{font:12px/1.2 "Arial Narrow",Arial,Helvetica,sans-serif;font-weight:500;color:var(--muted);margin:0;padding:10px 12px;border-bottom:1px solid var(--line);text-transform:uppercase;letter-spacing:.08em;}.panelHead{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);}.panelHead h2{border-bottom:0;flex:1}.copyBtn{width:auto;min-height:0;padding:6px 10px;margin-right:7px;font:11px/1 "Arial Narrow",Arial,Helvetica,sans-serif;background:transparent;}textarea{width:100%;min-height:120px;height:auto;resize:none;overflow:hidden;border:0;outline:none;padding:18px;font:16px/1.6 Arial,Helvetica,sans-serif;color:var(--ink);background:transparent;}#output{min-height:120px;padding:18px;white-space:pre-wrap;font:16px/1.6 Arial,Helvetica,sans-serif;}.meta{margin-top:18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}.stat{border-top:1px solid var(--line);padding-top:8px}.stat b{display:block;font-size:18px;font-weight:500}.stat span{font:11px/1.2 "Arial Narrow",Arial,Helvetica,sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}details{margin-top:18px;border-top:1px solid var(--line);padding-top:12px}summary{cursor:pointer;font:12px/1.3 "Arial Narrow",Arial,Helvetica,sans-serif;}#trace{margin-top:12px;padding:14px;background:var(--panel);border:1px solid var(--line);font:14px/1.7 "Arial Narrow",Arial,Helvetica,sans-serif;white-space:pre-wrap;}#pathDetail{margin-top:8px;padding:12px 14px;border:1px solid var(--line);background:var(--panel);font:13px/1.55 "Arial Narrow",Arial,Helvetica,sans-serif;white-space:pre-wrap;min-height:42px}.direct{color:var(--direct)}.approx{color:var(--approx);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;cursor:pointer}.approx.sel{background:var(--ink);color:var(--panel);text-decoration:none}.lost{color:var(--lost);text-decoration:line-through}.status{font:12px/1.4 "Arial Narrow",Arial,Helvetica,sans-serif;color:var(--muted);min-height:18px;margin:9px 0 0}.note{font:12px/1.5 "Arial Narrow",Arial,Helvetica,sans-serif;color:var(--muted);margin-top:16px;max-width:1000px}code{font-family:inherit}@media (max-width:900px){.controls{display:grid;grid-template-columns:1fr 1fr}.control.method,.control.distance,.control.inflection,.control.interpretive,.control.apply{max-width:none;flex:none}.grid,.meta{grid-template-columns:1fr}}@media (max-width:620px){.controls{grid-template-columns:1fr}.control.apply label{display:none}}</style></head><body><header><h1>SCRATCH TONGUE</h1><div class="sub">English prose reduced to a 207-item Swadesh list using WordNet 3.1 relations.</div></header><main><div class="controls"><div class="control method"><label for="mode">Method</label><select id="mode"><option value="literal">Literal remainder</option><option value="hypernym" selected>WordNet — synonym / hypernym</option></select></div><div class="control distance"><label for="distance">Maximum WordNet distance</label><div class="distanceRow"><input id="distance" type="range" min="0" max="5" value="5"><output id="distanceOut">5</output></div></div><div class="control inflection"><label for="inflect">Inflection handling</label><select id="inflect"><option value="on">simple normalization on</option><option value="off">exact forms only</option></select></div><div class="control interpretive"><label for="interpretive">Interpretative relations</label><div class="toggleWrap"><label class="switch"><input id="interpretive" type="checkbox" checked><span class="slider"></span></label></div></div><div class="control apply"><label aria-hidden="true">&nbsp;</label><button id="erode">APPLY</button></div></div><div class="grid"><section class="panel"><h2>Source</h2><textarea id="source">I’m sorry, someone whispered. The first blow landed, and its sound spread through darkness. Soon the night was filled with dull echoes of iron striking wood. Every tree was cut with apologetic precision. Some women wept as they worked. Others paused after each trunk fell, touching the exposed rings as though commemorating an old companion whose death they themselves had chosen. Many of these women had planted the very trees they were now felling. After every fallen tree, the soil was opened by the same hands that had cut it. Millet, beans, cowpeas, sorghum, and many other seeds I couldn’t even identify were sown over it.</textarea></section><section class="panel"><div class="panelHead"><h2>Output</h2><button id="copyOutput" class="copyBtn" type="button">COPY</button></div><div id="output"></div></section></div><div class="meta"><div class="stat"><b id="totalN">0</b><span>source words</span></div><div class="stat"><b id="directN">0</b><span>exact matches</span></div><div class="stat"><b id="approxN">0</b><span>WordNet matches</span></div><div class="stat"><b id="lostN">0</b><span>removed</span></div></div><div id="status" class="status"></div><details><summary>Trace</summary><div id="trace"></div><div id="pathDetail">Click a WordNet match to show its path.</div></details><details><summary>Technical notes</summary><div class="note"><p><b>Method.</b> The input is tokenized into words and punctuation. Exact matches are normalized to Swadesh forms. In WordNet mode, unmatched words are first checked for same-synset and hypernym paths to a Swadesh item. If <i>Interpretative relations</i> is on and that search finds no result, the search also uses antonym, hyponym, meronym and holonym, entailment, cause, similar-to, derivational, attribute, participle, pertainym, verb-group, also-see, and domain relations. An antonym path produces <i>not</i> plus the surviving Swadesh item when the number of antonym steps is odd. Maximum distance sets the number of WordNet relation steps allowed. Common English inflections are normalized before matching. Gendered singular human third-person pronouns are normalized to singular <i>they</i>. Output uses sentence case.</p><p><b>Swadesh list.</b> A Swadesh list is “a compilation of tentatively universal concepts for the purposes of lexicostatistics. That is, a Swadesh list is a list of forms and concepts which all languages, without exception, have terms for, such as star, hand, water, kill, sleep, and so forth. The number of such terms is small – a few hundred at most, or possibly less than a hundred. The inclusion or exclusion of many terms is subject to debate among linguists; thus, there are several different lists, and some authors may refer to ‘Swadesh lists.’ The Swadesh list is named after linguist Morris Swadesh.<br><br>Translations of a Swadesh list into a set of languages allow for researchers to quantify the interrelatedness of those languages. Swadesh lists are used in lexicostatistics (the quantitative assessment of the genealogical relatedness of languages) and glottochronology (the dating of language divergence). For instance, the terms on a Swadesh list can be compared between two languages (since both languages will have them) to see if they are related and how closely, thus giving useful information that can be further applied to comparison of the languages. (Actual lexicostatistics is quite complicated, and usually sets of languages are compared.)” <a href="https://en.wikipedia.org/wiki/Swadesh_list" target="_blank" rel="noreferrer">Wikipedia</a></p></div></details></main><script>
 "use strict";
 const SWADESH = new Set(`
 I you he it we they this that here there who what where when how not all many some few other
@@ -96,31 +96,22 @@ if (offsets.length) map.set(lemma, offsets);
 return map;
 }
 function parseData(text){
-const map = new Map();
-for (const line of text.split(/\r?\n/)){
-if (!line || /^\s/.test(line)) continue;
-const bar = line.indexOf("|");
-const core = (bar >= 0 ? line.slice(0,bar) : line).trim();
-const gloss = bar >= 0 ? line.slice(bar+1).trim() : "";
-const t = core.split(/\s+/);
-if (t.length < 5 || !/^\d+$/.test(t[0])) continue;
-let i = 0;
-const offset = t[i++];
-i++;
-const ssType = t[i++];
-const wCnt = parseInt(t[i++],16);
-const words = [];
-for (let w=0; w<wCnt; w++){
-words.push(t[i++].replace(/_/g," ").toLowerCase());
-i++;
+const map=new Map();
+for(const line of text.split(/\r?\n/)){
+if(!line||/^\s/.test(line))continue;
+const bar=line.indexOf("|"),core=(bar>=0?line.slice(0,bar):line).trim(),gloss=bar>=0?line.slice(bar+1).trim():"",t=core.split(/\s+/);
+if(t.length<5||!/^\d+$/.test(t[0]))continue;
+let i=0;
+const offset=t[i++];i++;
+const ssType=t[i++],wCnt=parseInt(t[i++],16),words=[];
+for(let w=0;w<wCnt;w++){words.push(t[i++].replace(/_/g," ").toLowerCase());i++}
+const pCnt=Number(t[i++]),pointers=[];
+for(let p=0;p<pCnt;p++){
+const symbol=t[i++],target=t[i++],pos=canonicalPos(t[i++]),st=t[i++];
+const sourceIndex=parseInt(st.slice(0,2),16)||0,targetIndex=parseInt(st.slice(2),16)||0;
+pointers.push({symbol,offset:target,pos,sourceIndex,targetIndex});
 }
-const pCnt = Number(t[i++]);
-const hypernyms = [];
-for (let p=0; p<pCnt; p++){
-const symbol = t[i++], target = t[i++], pos = canonicalPos(t[i++]); i++;
-if (symbol === "@" || symbol === "@i") hypernyms.push({offset:target,pos});
-}
-map.set(offset,{offset, type:canonicalPos(ssType), words, hypernyms, gloss});
+map.set(offset,{offset,type:canonicalPos(ssType),words,pointers,gloss});
 }
 return map;
 }
@@ -174,37 +165,62 @@ if (one) return one;
 }
 return null;
 }
-async function closestWordNet(word,maxDistance,inflect=true){
+const RELATION_LABELS={
+"@":"hypernym","@i":"instance hypernym","~":"hyponym","~i":"instance hyponym","!":"antonym",
+"#m":"member holonym","#s":"substance holonym","#p":"part holonym",
+"%m":"member meronym","%s":"substance meronym","%p":"part meronym",
+"*":"entailment",">":"cause","&":"similar to","+":"derivational","=":"attribute",
+"<":"participle","\\":"pertainym / derived from","$":"verb group","^":"also see",
+";c":"domain topic","-c":"domain member topic",";r":"domain region","-r":"domain member region",";u":"domain usage","-u":"domain member usage"
+};
+const BASE_RELATIONS=new Set(["@","@i"]);
+const INTERPRETATIVE_RELATIONS=new Set(["~","~i","!","#m","#s","#p","%m","%s","%p","*",
+">","&","+","=","<","\\","$","^",";c","-c",";r","-r",";u","-u"]);
+const RELATION_ORDER=["&","+","!","*",">","%p","%m","%s","#p","#m","#s","~","~i","=","<","\\","$","^",";c",";r",";u","-c","-r","-u","@","@i"];
+function relationRank(symbol){const i=RELATION_ORDER.indexOf(symbol);return i<0?999:i}
+function pointerApplies(ptr,syn,term){
+if(ptr.sourceIndex===0)return true;
+return (syn.words[ptr.sourceIndex-1]||"")===term;
+}
+async function searchWordNet(word,maxDistance,inflect=true,interpretative=false){
 if(maxDistance<=0)return null;
 const initial=await lookupInitialSynsets(word,inflect);
 if(!initial.length)return null;
-const raw=word.toLowerCase();
-const q=initial.map(n=>({...n,depth:0,term:n.sourceLemma,steps:n.sourceLemma!==raw?[{from:raw,relation:"inflection",to:n.sourceLemma}]:[]}));
+const raw=word.toLowerCase().replace(/’/g,"'");
+const q=initial.map(n=>({...n,depth:0,term:n.sourceLemma,negated:false,steps:n.sourceLemma!==raw?[{from:raw,relation:"inflection",to:n.sourceLemma}]:[]}));
 const seen=new Set();
 while(q.length){
-const node=q.shift(),key=node.pos+":"+node.offset;
+const node=q.shift(),key=node.pos+":"+node.offset+":"+node.term+":"+node.negated;
 if(seen.has(key))continue;
 seen.add(key);
 const data=await ensureData(node.pos),syn=data.get(node.offset);
 if(!syn)continue;
 const anchor=synsetAnchor(syn);
 if(anchor){
-const srcDirect=exactAnchor(word,inflect);
-const dist=srcDirect?0:Math.max(1,node.depth);
+const dist=node.depth===0?1:node.depth;
 if(dist<=maxDistance){
 const steps=node.steps.slice();
 if(node.term!==anchor)steps.push({from:node.term,relation:"synonym",to:anchor});
-return{anchor,distance:dist,steps,gloss:syn.gloss};
+const output=node.negated?"not "+anchor:anchor;
+return{anchor,output,distance:dist,steps,gloss:syn.gloss,interpretative};
 }}
 if(node.depth>=maxDistance)continue;
-for(const h of syn.hypernyms){
-const targetPos=canonicalPos(h.pos);
+const allowed=syn.pointers.filter(ptr=>BASE_RELATIONS.has(ptr.symbol)||(interpretative&&INTERPRETATIVE_RELATIONS.has(ptr.symbol))).filter(ptr=>pointerApplies(ptr,syn,node.term)).sort((a,b)=>relationRank(a.symbol)-relationRank(b.symbol));
+for(const ptr of allowed){
+const targetPos=canonicalPos(ptr.pos);
 if(!POS_FILES[targetPos])continue;
-const nextData=await ensureData(targetPos),targetSyn=nextData.get(h.offset);
+const targetData=await ensureData(targetPos),targetSyn=targetData.get(ptr.offset);
 if(!targetSyn)continue;
-const head=targetSyn.words[0]||"?";
-q.push({pos:targetPos,offset:h.offset,depth:node.depth+1,term:head,steps:[...node.steps,{from:node.term,relation:"hypernym",to:head}]});
+const term=ptr.targetIndex>0?(targetSyn.words[ptr.targetIndex-1]||targetSyn.words[0]||"?"):(targetSyn.words[0]||"?");
+const label=RELATION_LABELS[ptr.symbol]||ptr.symbol;
+q.push({pos:targetPos,offset:ptr.offset,depth:node.depth+1,term,negated:ptr.symbol==="!"?!node.negated:node.negated,steps:[...node.steps,{from:node.term,relation:label,to:term}]});
 }}
+return null;
+}
+async function closestWordNet(word,maxDistance,inflect=true,interpretative=true){
+const strict=await searchWordNet(word,maxDistance,inflect,false);
+if(strict)return strict;
+if(interpretative)return await searchWordNet(word,maxDistance,inflect,true);
 return null;
 }
 function setStatus(s){ document.getElementById("status").textContent=s || ""; }
@@ -245,11 +261,12 @@ return s;
 function showPath(el,source,result){
 document.querySelectorAll("#trace .approx.sel").forEach(x=>x.classList.remove("sel"));
 el.classList.add("sel");
-const lines=[source+" → "+result.anchor,""];
+const lines=[source+" → "+result.output,""];
 if(result.steps.length){
 lines.push(result.steps[0].from);
 for(const step of result.steps)lines.push("  "+step.relation+" → "+step.to);
-}else lines.push(source+" → "+result.anchor);
+}else lines.push(source+" → "+result.output);
+if(result.output!==result.anchor)lines.push("  negation → "+result.output);
 lines.push("","WordNet distance: "+result.distance);
 document.getElementById("pathDetail").textContent=lines.join("\n");
 }
@@ -259,6 +276,7 @@ autoGrowSource();const source=document.getElementById("source").value;
 const mode=document.getElementById("mode").value;
 const maxDist=Number(document.getElementById("distance").value);
 const inflect=document.getElementById("inflect").value==="on";
+const interpretative=document.getElementById("interpretive").checked;
 const tokens=source.match(TOKEN_RE) || [];
 const outParts=[];
 const trace=document.getElementById("trace");
@@ -285,15 +303,15 @@ continue;
 }
 if(mode==="hypernym" && maxDist>0){
 let result=null;
-try { result=await closestWordNet(tok,maxDist,inflect); }
+try { result=await closestWordNet(tok,maxDist,inflect,interpretative); }
 catch(e){
 console.error(e);
 setStatus("WordNet data could not load. "+e.message);
 }
 if(result){
 approx++;
-outParts.push(matchCase(tok,result.anchor));
-const a=span("approx",tok,`${tok} → ${result.anchor}`);
+outParts.push(matchCase(tok,result.output));
+const a=span("approx",tok,`${tok} → ${result.output}`);
 a.tabIndex=0;
 a.setAttribute("role","button");
 a.addEventListener("click",()=>showPath(a,tok,result));
