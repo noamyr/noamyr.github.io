@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scratch Tongue</title>
+<style>:root{--bg:#d9ead3;--panel:#fff;--ink:#171717;--muted:#77736b;--line:#d8d4ca;--direct:#171717;--approx:#6d6558;--lost:#c5c0b6;--accent:#171717;}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;}header{padding:26px 28px 18px;border-bottom:1px solid var(--line);display:flex;gap:24px;align-items:baseline;flex-wrap:wrap;}h1{font-size:22px;margin:0;font-weight:600;letter-spacing:.02em}.sub{font-size:12px;color:var(--muted)}main{padding:22px 28px 40px;max-width:1500px;margin:auto}.controls{display:grid;grid-template-columns:1.25fr .8fr .7fr auto;gap:14px;align-items:end;margin-bottom:18px;}label{display:block;font:12px/1.2 "Arial Narrow",Arial,Helvetica,sans-serif;color:var(--muted);margin-bottom:6px}select,input[type="range"],button{width:100%;font:inherit;}select,button{min-height:38px;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 10px;border-radius:0;}button{cursor:pointer}button:hover{border-color:#8f8a80}.distanceRow{display:flex;gap:10px;align-items:center}.distanceRow output{min-width:22px;text-align:right;font-size:12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}.panel{background:var(--panel);border:1px solid var(--line);min-height:390px}.panel h2{font:12px/1.2 "Arial Narrow",Arial,Helvetica,sans-serif;font-weight:500;color:var(--muted);margin:0;padding:10px 12px;border-bottom:1px solid var(--line);text-transform:uppercase;letter-spacing:.08em;}.panelHead{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);}.panelHead h2{border-bottom:0;flex:1}.copyBtn{width:auto;min-height:0;padding:6px 10px;margin-right:7px;font:11px/1 "Arial Narrow",Arial,Helvetica,sans-serif;background:transparent;}textarea{width:100%;height:350px;resize:vertical;border:0;outline:none;padding:18px;font:16px/1.6 Arial,Helvetica,sans-serif;color:var(--ink);background:transparent;}#output{min-height:350px;padding:18px;white-space:pre-wrap;font:16px/1.6 Arial,Helvetica,sans-serif;}.meta{margin-top:18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}.stat{border-top:1px solid var(--line);padding-top:8px}.stat b{display:block;font-size:18px;font-weight:500}.stat span{font:11px/1.2 "Arial Narrow",Arial,Helvetica,sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}details{margin-top:18px;border-top:1px solid var(--line);padding-top:12px}summary{cursor:pointer;font:12px/1.3 "Arial Narrow",Arial,Helvetica,sans-serif;}#trace{margin-top:12px;padding:14px;background:var(--panel);border:1px solid var(--line);font:14px/1.7 "Arial Narrow",Arial,Helvetica,sans-serif;white-space:pre-wrap;}.direct{color:var(--direct)}.approx{color:var(--approx);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}.lost{color:var(--lost);text-decoration:line-through}.status{font:12px/1.4 "Arial Narrow",Arial,Helvetica,sans-serif;color:var(--muted);min-height:18px;margin:9px 0 0}.note{font:12px/1.5 "Arial Narrow",Arial,Helvetica,sans-serif;color:var(--muted);margin-top:16px;max-width:1000px}code{font-family:inherit}@media (max-width:900px){.controls,.grid,.meta{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<header>
+<h1>SCRATCH TONGUE</h1>
+<div class="sub">English prose reduced to a 207-item Swadesh list using WordNet 3.1 synonym and hypernym paths.</div>
+</header>
+<main>
+<div class="controls">
+<div>
+<label for="mode">Method</label>
+<select id="mode">
+<option value="hypernym" selected>WordNet — synonym / hypernym</option>
+<option value="literal">Exact Swadesh match</option>
+</select>
+</div>
+<div>
+<label for="distance">Maximum WordNet distance</label>
+<div class="distanceRow">
+<input id="distance" type="range" min="0" max="5" value="5">
+<output id="distanceOut">5</output>
+</div>
+</div>
+<div>
+<label for="inflect">Inflection handling</label>
+<select id="inflect">
+<option value="on">simple normalization on</option>
+<option value="off">exact forms only</option>
+</select>
+</div>
+<div>
+<button id="erode">APPLY</button>
+</div>
+</div>
+<div class="grid">
+<section class="panel">
+<h2>Source</h2>
+<textarea id="source">I’m sorry, someone whispered. The first blow landed, and its sound spread through darkness. Soon the night was filled with dull echoes of iron striking wood. Every tree was cut with apologetic precision. Some women wept as they worked. Others paused after each trunk fell, touching the exposed rings as though commemorating an old companion whose death they themselves had chosen. Many of these women had planted the very trees they were now felling. After every fallen tree, the soil was opened by the same hands that had cut it. Millet, beans, cowpeas, sorghum, and many other seeds I couldn’t even identify were sown over it.</textarea>
+</section>
+<section class="panel">
+<div class="panelHead">
+<h2>Output</h2>
+<button id="copyOutput" class="copyBtn" type="button">COPY</button>
+</div>
+<div id="output"></div>
+</section>
+</div>
+<div class="meta">
+<div class="stat"><b id="totalN">0</b><span>source words</span></div>
+<div class="stat"><b id="directN">0</b><span>exact matches</span></div>
+<div class="stat"><b id="approxN">0</b><span>WordNet matches</span></div>
+<div class="stat"><b id="lostN">0</b><span>removed</span></div>
+</div>
+<div id="status" class="status"></div>
+<details>
+<summary>Trace</summary>
+<div id="trace"></div>
+</details>
+<details><summary>Technical notes</summary><div class="note"><p><b>Method.</b> The input is tokenized into words and punctuation. Exact matches are normalized to Swadesh forms. In WordNet mode, unmatched words are checked against Princeton WordNet 3.1 and may be replaced by a same-synset word or a hypernym that occurs in the Swadesh list. Maximum distance sets the number of WordNet steps allowed. Common English inflections are normalized before matching. Gendered singular human third-person pronouns are normalized to singular <i>they</i>. Output uses sentence case.</p><p><b>Swadesh list.</b> A Swadesh list is “a compilation of tentatively universal concepts for the purposes of lexicostatistics. That is, a Swadesh list is a list of forms and concepts which all languages, without exception, have terms for, such as star, hand, water, kill, sleep, and so forth. The number of such terms is small – a few hundred at most, or possibly less than a hundred. The inclusion or exclusion of many terms is subject to debate among linguists; thus, there are several different lists, and some authors may refer to ‘Swadesh lists.’ The Swadesh list is named after linguist Morris Swadesh.<br><br>Translations of a Swadesh list into a set of languages allow for researchers to quantify the interrelatedness of those languages. Swadesh lists are used in lexicostatistics (the quantitative assessment of the genealogical relatedness of languages) and glottochronology (the dating of language divergence). For instance, the terms on a Swadesh list can be compared between two languages (since both languages will have them) to see if they are related and how closely, thus giving useful information that can be further applied to comparison of the languages. (Actual lexicostatistics is quite complicated, and usually sets of languages are compared.)” <a href="https://en.wikipedia.org/wiki/Swadesh_list" target="_blank" rel="noreferrer">Wikipedia</a></p></div></details>
+</main>
+<script>
+"use strict";
+const SWADESH = new Set(`
+I you he it we they this that here there who what where when how not all many some few other
+one two three four five big long wide thick heavy small short narrow thin woman man person
+child wife husband mother father animal fish bird dog louse snake worm tree forest stick fruit
+seed leaf root bark flower grass rope skin meat blood bone fat egg horn tail feather hair head
+ear eye nose mouth tooth tongue fingernail foot leg knee hand wing belly guts neck back breast
+heart liver drink eat bite suck spit vomit blow breathe laugh see hear know think smell fear sleep
+live die kill fight hunt hit cut split stab scratch dig swim fly walk come lie sit stand turn fall
+give hold squeeze rub wash wipe pull push throw tie sew count say sing play float flow freeze swell
+sun moon star water rain river lake sea salt stone sand dust earth cloud fog sky wind snow ice smoke
+fire ash burn road mountain red green yellow white black night day year warm cold full new old good bad
+rotten dirty straight round sharp dull smooth wet dry correct near far right left at in with and if because name
+`.trim().split(/\s+/).map(x => x.toLowerCase()));
+const WORD_RE = /[A-Za-z]+(?:['’][A-Za-z]+)*/g;
+const TOKEN_RE = /([A-Za-z]+(?:['’][A-Za-z]+)*|\r?\n|[^\S\r\n]+|[^A-Za-z\s]+)/g;
+function simpleLemmas(word){
+const w = word.toLowerCase().replace(/’/g, "'");
+const out = new Set([w]);
+if (w.endsWith("'s")) out.add(w.slice(0,-2));
+if (w.endsWith("ies") && w.length > 4) out.add(w.slice(0,-3)+"y");
+if (w.endsWith("ves") && w.length > 4) { out.add(w.slice(0,-3)+"f"); out.add(w.slice(0,-3)+"fe"); }
+if (w.endsWith("ing") && w.length > 5) {
+let b=w.slice(0,-3); out.add(b); out.add(b+"e");
+if (b.length>2 && b.at(-1)===b.at(-2)) out.add(b.slice(0,-1));
+}
+if (w.endsWith("ed") && w.length > 4) {
+let b=w.slice(0,-2); out.add(b); out.add(b+"e");
+if (b.length>2 && b.at(-1)===b.at(-2)) out.add(b.slice(0,-1));
+}
+if (w.endsWith("es") && w.length > 4) { out.add(w.slice(0,-2)); out.add(w.slice(0,-1)); }
+if (w.endsWith("s") && !w.endsWith("ss") && w.length > 3) out.add(w.slice(0,-1));
+const irregular = {
+am:"I", is:"be", are:"be", was:"be", were:"be", me:"I", my:"I", mine:"I", myself:"I", us:"we", our:"we", ours:"we", ourselves:"we", them:"they", their:"they", theirs:"they", themselves:"they", your:"you", yours:"you", yourself:"you", yourselves:"you",
+men:"man", women:"woman", children:"child", people:"person",
+feet:"foot", teeth:"tooth", geese:"goose",
+mice:"mouse", lice:"louse",
+fell:"fall", fallen:"fall", came:"come",
+saw:"see", seen:"see", heard:"hear",
+knew:"know", known:"know", thought:"think",
+gave:"give", given:"give", held:"hold",
+ate:"eat", eaten:"eat", drank:"drink", drunk:"drink",
+slept:"sleep", died:"die", killed:"kill",
+fought:"fight", dug:"dig", swam:"swim", flew:"fly",
+sat:"sit", stood:"stand", threw:"throw",
+sang:"sing", burnt:"burn", burned:"burn",
+better:"good", worse:"bad"
+};
+if (irregular[w]) out.add(irregular[w].toLowerCase());
+return [...out];
+}
+function exactAnchor(word, inflect=true){
+const w=word.toLowerCase().replace(/’/g,"'");
+if(["he","she","him","her","his","hers","himself","herself"].includes(w)) return "they";
+const candidates = inflect ? simpleLemmas(word) : [w];
+for (const c of candidates) if (SWADESH.has(c)) return c;
+return null;
+}
+function matchCase(source, target){
+if (/^[A-Z]/.test(source)) return target[0].toUpperCase()+target.slice(1);
+return target;
+}
+const POS_FILES = {
+n:{index:"index.noun", data:"data.noun"},
+v:{index:"index.verb", data:"data.verb"},
+a:{index:"index.adj", data:"data.adj"},
+r:{index:"index.adv", data:"data.adv"}
+};
+const BASE = "https://cdn.jsdelivr.net/npm/wordnet-db@3.1.14/dict/";
+const wnCache = {
+indexes: new Map(),
+data: new Map(),
+loadingIndex: new Map(),
+loadingData: new Map()
+};
+function canonicalPos(p){ return p === "s" ? "a" : p; }
+async function fetchText(url){
+const res = await fetch(url);
+if (!res.ok) throw new Error("Could not load "+url+" ("+res.status+")");
+return await res.text();
+}
+function parseIndex(text){
+const map = new Map();
+for (const line of text.split(/\r?\n/)){
+if (!line || /^\s/.test(line)) continue;
+const t = line.trim().split(/\s+/);
+if (t.length < 7) continue;
+const lemma = t[0].replace(/_/g," ").toLowerCase();
+const synsetCnt = Number(t[2]);
+const pCnt = Number(t[3]);
+const start = 6 + pCnt;
+const offsets = t.slice(start, start + synsetCnt);
+if (offsets.length) map.set(lemma, offsets);
+}
+return map;
+}
+function parseData(text){
+const map = new Map();
+for (const line of text.split(/\r?\n/)){
+if (!line || /^\s/.test(line)) continue;
+const bar = line.indexOf("|");
+const core = (bar >= 0 ? line.slice(0,bar) : line).trim();
+const gloss = bar >= 0 ? line.slice(bar+1).trim() : "";
+const t = core.split(/\s+/);
+if (t.length < 5 || !/^\d+$/.test(t[0])) continue;
+let i = 0;
+const offset = t[i++];
+i++;
+const ssType = t[i++];
+const wCnt = parseInt(t[i++],16);
+const words = [];
+for (let w=0; w<wCnt; w++){
+words.push(t[i++].replace(/_/g," ").toLowerCase());
+i++;
+}
+const pCnt = Number(t[i++]);
+const hypernyms = [];
+for (let p=0; p<pCnt; p++){
+const symbol = t[i++], target = t[i++], pos = canonicalPos(t[i++]); i++;
+if (symbol === "@" || symbol === "@i") hypernyms.push({offset:target,pos});
+}
+map.set(offset,{offset, type:canonicalPos(ssType), words, hypernyms, gloss});
+}
+return map;
+}
+async function ensureIndex(pos){
+pos = canonicalPos(pos);
+if (wnCache.indexes.has(pos)) return wnCache.indexes.get(pos);
+if (wnCache.loadingIndex.has(pos)) return wnCache.loadingIndex.get(pos);
+const promise = (async()=>{
+setStatus("Loading WordNet "+POS_FILES[pos].index+" …");
+const text = await fetchText(BASE+POS_FILES[pos].index);
+const parsed = parseIndex(text);
+wnCache.indexes.set(pos,parsed);
+return parsed;
+})();
+wnCache.loadingIndex.set(pos,promise);
+try { return await promise; }
+finally { wnCache.loadingIndex.delete(pos); }
+}
+async function ensureData(pos){
+pos = canonicalPos(pos);
+if (wnCache.data.has(pos)) return wnCache.data.get(pos);
+if (wnCache.loadingData.has(pos)) return wnCache.loadingData.get(pos);
+const promise = (async()=>{
+setStatus("Loading WordNet "+POS_FILES[pos].data+" …");
+const text = await fetchText(BASE+POS_FILES[pos].data);
+const parsed = parseData(text);
+wnCache.data.set(pos,parsed);
+return parsed;
+})();
+wnCache.loadingData.set(pos,promise);
+try { return await promise; }
+finally { wnCache.loadingData.delete(pos); }
+}
+async function lookupInitialSynsets(word, inflect=true){
+const lemmas = inflect ? simpleLemmas(word) : [word.toLowerCase()];
+const hits = [];
+for (const pos of Object.keys(POS_FILES)){
+const idx = await ensureIndex(pos);
+for (const lemma0 of lemmas){
+const lemma = lemma0.replace(/_/g," ");
+const offsets = idx.get(lemma);
+if (offsets) for (const offset of offsets) hits.push({pos,offset,sourceLemma:lemma});
+}
+}
+return hits;
+}
+function synsetAnchor(syn){
+for (const w of syn.words){
+const one = w.includes(" ") ? null : exactAnchor(w,true);
+if (one) return one;
+}
+return null;
+}
+async function closestWordNet(word,maxDistance,inflect=true){
+if (maxDistance <= 0) return null;
+const initial = await lookupInitialSynsets(word,inflect);
+if (!initial.length) return null;
+const q = initial.map(n=>({...n, depth:0, path:[word.toLowerCase()]}));
+const seen = new Set();
+while(q.length){
+const node=q.shift();
+const key=node.pos+":"+node.offset;
+if (seen.has(key)) continue;
+seen.add(key);
+const data = await ensureData(node.pos);
+const syn = data.get(node.offset);
+if (!syn) continue;
+const anchor=synsetAnchor(syn);
+if (anchor){
+const srcDirect = exactAnchor(word,inflect);
+const dist = srcDirect ? 0 : Math.max(1,node.depth);
+if (dist <= maxDistance){
+const head = syn.words[0] || anchor;
+let path=node.path.slice();
+if (path.at(-1)!==head && head!==anchor) path.push(head);
+if (path.at(-1)!==anchor) path.push(anchor);
+return {anchor,distance:dist,path,gloss:syn.gloss};
+}
+}
+if (node.depth >= maxDistance) continue;
+for (const h of syn.hypernyms){
+const targetPos=canonicalPos(h.pos);
+if (!POS_FILES[targetPos]) continue;
+const nextData = await ensureData(targetPos);
+const targetSyn = nextData.get(h.offset);
+if (!targetSyn) continue;
+const head = targetSyn.words[0] || "?";
+q.push({
+pos:targetPos, offset:h.offset, depth:node.depth+1,
+path:[...node.path,head]
+});
+}
+}
+return null;
+}
+function setStatus(s){ document.getElementById("status").textContent=s || ""; }
+function cleanRemainder(s){
+return s
+.replace(/[ \t]+([,.;:!?])/g,"$1")
+.replace(/([([{])\s+/g,"$1")
+.replace(/[ \t]{2,}/g," ")
+.replace(/^[ \t]+|[ \t]+$/gm,"")
+.replace(/([,;:])(?=\s*(?:\n|$))/g,"")
+.replace(/\n{3,}/g,"\n\n")
+.trim();
+}
+function sentenceCaseRemainder(s){
+let atSentenceStart = true;
+let out = "";
+const parts = s.match(/([A-Za-z]+(?:['’][A-Za-z]+)*|\r?\n|[^A-Za-z\n]+)/g) || [];
+for (const part of parts){
+if (/^[A-Za-z]/.test(part)){
+let w = part.toLowerCase();
+if (w === "i") w = "I";
+else if (atSentenceStart) w = w[0].toUpperCase() + w.slice(1);
+out += w;
+atSentenceStart = false;
+} else {
+out += part;
+if (/[.!?]/.test(part) || /\n\s*\n/.test(part)) atSentenceStart = true;
+}
+}
+return out;
+}
+function span(cls,text,title=""){
+const s=document.createElement("span");
+s.className=cls; s.textContent=text;
+if(title) s.title=title;
+return s;
+}
+async function transform(){
+const source=document.getElementById("source").value;
+const mode=document.getElementById("mode").value;
+const maxDist=Number(document.getElementById("distance").value);
+const inflect=document.getElementById("inflect").value==="on";
+const tokens=source.match(TOKEN_RE) || [];
+const outParts=[];
+const trace=document.getElementById("trace");
+trace.innerHTML="";
+let total=0,direct=0,approx=0,lost=0;
+document.getElementById("erode").disabled=true;
+try{
+for (const tok of tokens){
+if (!WORD_RE.test(tok)){
+WORD_RE.lastIndex=0;
+outParts.push(tok);
+trace.append(tok);
+continue;
+}
+WORD_RE.lastIndex=0;
+total++;
+const anchor=exactAnchor(tok,inflect);
+if(anchor){
+direct++;
+outParts.push(matchCase(tok,anchor));
+trace.append(span("direct",tok,`direct survivor → ${anchor}`));
+continue;
+}
+if(mode==="hypernym" && maxDist>0){
+let result=null;
+try { result=await closestWordNet(tok,maxDist,inflect); }
+catch(e){
+console.error(e);
+setStatus("WordNet data could not load. "+e.message);
+}
+if(result){
+approx++;
+outParts.push(matchCase(tok,result.anchor));
+const title = `${tok} → ${result.anchor}\ndistance ${result.distance}\n${result.path.join(" → ")}${result.gloss ? "\n"+result.gloss : ""}`;
+trace.append(span("approx",tok,title));
+continue;
+}
+}
+lost++;
+trace.append(span("lost",tok,"lost"));
+}
+document.getElementById("output").textContent=sentenceCaseRemainder(cleanRemainder(outParts.join("")));
+document.getElementById("totalN").textContent=total;
+document.getElementById("directN").textContent=direct;
+document.getElementById("approxN").textContent=approx;
+document.getElementById("lostN").textContent=lost;
+if(mode==="literal") setStatus("Exact matching complete.");
+else if(!document.getElementById("status").textContent.startsWith("WordNet could not"))
+setStatus(`WordNet matching complete.`);
+} finally {
+document.getElementById("erode").disabled=false;
+}
+}
+document.getElementById("distance").addEventListener("input",e=>{
+document.getElementById("distanceOut").textContent=e.target.value;
+});
+document.getElementById("mode").addEventListener("change",e=>{
+document.getElementById("distance").disabled=e.target.value==="literal";
+});
+document.getElementById("erode").addEventListener("click",transform);
+document.getElementById("copyOutput").addEventListener("click", async ()=>{
+const text = document.getElementById("output").textContent;
+if (!text) return;
+const btn = document.getElementById("copyOutput");
+try{
+await navigator.clipboard.writeText(text);
+btn.textContent = "COPIED";
+} catch(e){
+const range = document.createRange();
+range.selectNodeContents(document.getElementById("output"));
+const sel = window.getSelection();
+sel.removeAllRanges();
+sel.addRange(range);
+document.execCommand("copy");
+sel.removeAllRanges();
+btn.textContent = "COPIED";
+}
+setTimeout(()=>btn.textContent="COPY",1200);
+});
+document.getElementById("distance").disabled=false;
+transform();
+</script>
+</body>
+</html>
